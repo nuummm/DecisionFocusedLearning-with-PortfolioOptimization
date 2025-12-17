@@ -1,14 +1,121 @@
-\documentclass{article}
-\usepackage{graphicx} % Required for inserting images
+\documentclass[a4paper,10.5pt,ja=standard,xeLaTeX]{bxjsreport}
 
-\title{Decision Focused Learning with Portfolio Optimization}
-\author{kensei nosaka}
-\date{December 2025}
+\usepackage{geometry}
+\geometry{top=25mm,bottom=25mm,left=25mm,right=25mm}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\setmainfont{Times New Roman}
+\setsansfont{Helvetica}
+\setCJKmainfont[
+  Path=fonts/ipaex/ipaex/,
+  UprightFont=ipaexm.ttf,
+  BoldFont=ipamp.ttf,
+  Extension=.ttf
+]{ipaexm.ttf}
+\setCJKsansfont[
+  Path=fonts/ipaex/ipaex/,
+  UprightFont=ipaexg.ttf,
+  BoldFont=ipaexg.ttf,
+  Extension=.ttf
+]{ipaexg.ttf}
+\setCJKmonofont[
+  Path=fonts/ipaex/ipaex/,
+  UprightFont=ipag.ttf,
+  Extension=.ttf
+]{ipag.ttf}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage[subrefformat=parens]{subcaption}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{float}
+\usepackage{comment}
+\usepackage{url}
+\usepackage{multirow}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\theoremstyle{definition}
+\newtheorem{theorem}{定理}
+\renewcommand{\proofname}{\textbf{証明}}
+
+\setcounter{tocdepth}{3}
+\setcounter{page}{-1}
+\setlength{\parskip}{0em}
+\setlength{\topsep}{0em}
+
+\title{意思決定重視学習を用いた制約付き平均--分散ポートフォリオ最適化}
+\author{野坂 健成}
+\date{\today}
 
 \begin{document}
 
 \maketitle
+\thispagestyle{empty}
+\newpage
 
-\section{Introduction}
+\pagenumbering{roman}
+\tableofcontents
+\listoffigures
+\newpage
+\setcounter{page}{1}
+\pagenumbering{arabic}
 
+\chapter{序論}
+\section{研究背景}
+現代のポートフォリオ最適化では，平均--分散や期待リターンの予測を通じて投資比率を決定するアプローチが広く用いられている．しかし，短期的な資産配分や高相関な市場環境では，予測誤差が最終的な投資判断に大きな影響を与え，安定したリターンを確保することが難しいことが知られている．そのため，意思決定性能そのものを最適化するための手法への関心が高まっている．
+
+\section{研究目的と本論文の位置づけ}
+本研究は，Decision-Focused Learning (DFL) の枠組みを用いて，制約付き平均--分散ポートフォリオ最適化問題に対し意思決定損失を直接扱うことで，従来の「predict-then-optimize」を超える投資判断の安定性を目指すものである．特に，ロングオンリー・予算制約付きの問題に焦点を当て，双対性や KKT 条件を活用した bilevel optimization によってリスク回避パラメータや共分散の構造パラメータを同時に調整することを試みる．
+
+\section{本論文の貢献}
+主な貢献は以下のとおりである．
+\begin{enumerate}
+    \item 制約付き平均--分散問題を下位問題とする bilevel 形式の DFL モデルを提示し，意思決定損失を明示的に最小化する枠組みを構築した．
+    \item 共分散行列の構造パラメータやリスク回避度を最適化変数に含めることで，モデル全体を安定した投資判断に導く設計を行った．
+    \item 人工データおよび実データによる数値実験を通じて，既存の OLS ベース手法と比較して特定のリスク環境で安定した投資性能を確認した．
+\end{enumerate}
+
+\section{論文構成}
+第2章では，Decision-Focused Learning を含む関連研究とモデル化上の課題を整理する．第3章では提案手法の定式化と数値解法の要点を示す．第4章では実データを使った数値実験の設計と結果をまとめ，第5章で結論・今後の課題を述べる．
+
+\chapter{関連研究と理論的基盤}
+\section{Decision-Focused Learning の概要}
+DFL は, 予測誤差ではなく最終的な意思決定に基づく損失関数を直接最小化する枠組みであり, 予測器と最適化器を連結して end-to-end に学習することで意思決定性能が向上することが報告されている. ポートフォリオ問題においては, 期待リターン・共分散の予測誤差が直接的にリターン損失につながるため, DFL による直接最適化が有効と考えられる.
+
+\section{コヒレントリスク指標}
+意思決定の損失指標としてコヒレントリスク（例えば $\alpha$-CVaR）の双対表現を用いる．最大化問題を導入することで意思決定損失の関数形を明示でき, データ依存の摂動に対して頑健な表現が得られる. 本研究では, $\alpha$-CVaR が生成する確率分布空間から逆問題として得られる双対変数を上位問題の変数とし, リスクとリターンをバランスする最小化問題を構築する.
+
+\section{線形制御方策との接続}
+線形制御方策を用いる線形モデルでは, 過去 $|K|$ 期間の各資産の収益率を特徴量として利用し, 投資比率を線型結合で表現することで計算容易な最適化問題が得られる. 既存研究では LCP（Linear Control Policy）の正則化やロバスト化が行われているが, DFL の文脈ではこの方策に対する構造的な正則化や共分散構造の学習を組み合わせることが有効である.
+
+\chapter{提案手法}
+\section{構造的正則化付き DFL モデル}
+提案手法では, 次のような bilevel 最適化モデルを採用する. 下位問題として不等式制約付き平均--分散最適化を明示し, 上位問題ではコヒレントリスクを目的関数に，予測パラメータやリスク回避度を調整する. 同時に，固有の管理コストや取引コストに対応する形で構造的正則化（グループ正則化や共分散構造の制約）を導入することで, 投資先資産へのスパースな選択と過剰適合の抑制を両立させる.
+
+\section{パラメータ学習と数値解法}
+上位の DFL 問題に含まれるパラメータ（リスク係数，正則化重み，共分散構造パラメータ）は連続変数として扱われ, 微分可能な損失関数に基づいて勾配法で最適化される. 下位問題は凸な平均--分散プログラムの形式を保ち, KKT 条件を利用して上位問題への埋め込みを行うことで勾配を得る. これにより, ロバストな意思決定性能が担保される.
+
+\chapter{数値実験}
+\section{実験デザイン}
+人工データ・実データとして短期タクティカルな米国株式収益率を用い, 高相関かつ小サンプルの環境を再現した. 評価指標としてシャープレシオと投資先資産数を用い, 提案手法と従来の OLS ベースの predict-then-optimize 手法およびロバスト化手法との比較を行った.
+
+\section{結果と考察}
+実験において, $\theta$（リスク回避度）が大きい場合には提案手法が最も高いシャープレシオを達成し, 入力資産と投資資産の選択を同時に行う構造的正則化により管理コストに配慮したポートフォリオ選択が実現された. また, 2 つ目の実験では正則化強度を上げることで投資先資産数が減少しつつシャープレシオが維持される傾向が確認された.
+
+\chapter{結論}
+本研究では, Decision-Focused Learning に構造的正則化を組み合わせた制約付き平均--分散ポートフォリオ最適化フレームワークを提案した. 実験により, 高リスク回避環境において既存手法よりも安定した標本外投資成績を得られることを示し, 入力資産と投資資産の同時選択や集約によって過剰適合を抑制できることを確認した. 今後は非線形制御方策や周期的な正則化重みの設計を含めた拡張を検討する.
+
+\chapter*{謝辞}
+\addcontentsline{toc}{chapter}{\numberline{}謝辞}
+本研究をご指導くださった高野祐一准教授をはじめ，議論に協力してくださった研究室の皆様に深く感謝いたします．
+
+\newpage
+\chapter*{謝辞}
+\addcontentsline{toc}{chapter}{\numberline{}謝辞}
+本研究をご指導くださった高野祐一准教授をはじめ，議論に協力してくださった研究室の皆様に深く感謝いたします．
 \end{document}
