@@ -1,6 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1765963407.93529 "/Users/kensei/VScode/卒業研究2/Decision Focused Learning with Portfolio Optimization/main.tex" "main.pdf" "main" 1765963410.56658 0
-  "/Users/kensei/VScode/卒業研究2/Decision Focused Learning with Portfolio Optimization/main.tex" 1765963402.79328 51697 533b1d2d946751d6ed79104ce30df9ed ""
+["pdflatex"] 1765985267.56637 "main.tex" "main.pdf" "main" 1765985280.48346 0
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1246382020 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1246382020 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
@@ -103,10 +102,18 @@
   "/usr/local/texlive/2025/texmf-var/web2c/xetex/xelatex.fmt" 1765283217 5639808 c4fae1519276c229f4257e2ad8b39b50 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
   "figs/baseline_cum_return.png" 1765962743.34667 119613 700a6b8d2b4a59735d44705af4ab24e7 ""
-  "main.aux" 1765963410.22404 9652 b710035f579163b28eef857e3e72c61a "pdflatex"
-  "main.lof" 1765963410.22617 257 ebd986cd9f73e13b87b00f3e436f05cd "pdflatex"
-  "main.tex" 1765963402.79328 51697 533b1d2d946751d6ed79104ce30df9ed ""
-  "main.toc" 1765963410.22605 3429 742e143963abc466b7ee6128b16fa250 "pdflatex"
+  "figs/formulation_elapsed_ok_vs_warning.png" 1765973769.40477 26661 1366a1c5d893938c3eac723793725fe4 ""
+  "figs/formulation_warning_breakdown_dual_vs_kkt.png" 1765977331.38889 19800 ddbb7aa0da2cedc64400137b820c4323 ""
+  "figs/init_effect_wealth.png" 1765984818.12326 83473 fe978dee33cc8a0f095fbad4afae5d38 ""
+  "figs/perturb_weak_cumret_dual.png" 1765980262.4501 109831 bc83d64d2a5e7e41c6b9c33ba7c94d49 ""
+  "figs/perturb_weak_cumret_kkt.png" 1765980262.4558 80453 13c0ac1bdc22c94bd8191a407a278fbb ""
+  "figs/perturb_weak_cvar_boxplot.png" 1765980262.43139 21432 6fec581cf0d98ae0e9f1317b728a2f0d ""
+  "figs/perturb_weak_sharpe_boxplot.png" 1765980262.42621 19196 da860378635d1e5b4aec7dfcd37e8010 ""
+  "figs/perturb_weak_terminal_wealth_boxplot.png" 1765980262.43808 17978 009dcec4860d4f9314b477e9ef4d1382 ""
+  "main.aux" 1765985278.22259 13093 a50543c773f824377f4a4d9701306ff4 "pdflatex"
+  "main.lof" 1765985278.29229 950 456d05d5c54a1b91940f5d2a2fcbebcb "pdflatex"
+  "main.tex" 1765985244.43935 67129 d9b508cdf80a9c6d008dbca7ece275a4 ""
+  "main.toc" 1765985278.29211 4190 23f9a4516ee30527483453ac58db8bb9 "pdflatex"
   (generated)
   "main.aux"
   "main.lof"

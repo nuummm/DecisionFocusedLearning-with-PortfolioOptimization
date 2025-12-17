@@ -35,9 +35,20 @@
 \contentsline {subsection}{\numberline {4.1.6}初期化およびソルバー設定}{15}{}%
 \contentsline {section}{\numberline {4.2}実験結果}{15}{}%
 \contentsline {subsection}{\numberline {4.2.1}実データによるベースライン比較}{15}{}%
-\contentsline {section}{\numberline {4.3}考察}{18}{}%
-\contentsline {section}{\numberline {4.4}補足分析}{18}{}%
-\contentsline {chapter}{\numberline {第5章}結論}{19}{}%
-\contentsline {chapter}{\hbox to\@lnumwidth {\hfil }\hspace {0pt}参考文献}{20}{}%
-\contentsline {chapter}{参考文献}{21}{}%
-\contentsline {chapter}{\hbox to\@lnumwidth {\hfil }\hspace {0pt}謝辞}{23}{}%
+\contentsline {subsection}{\numberline {4.2.2}Dual formulation と KKT formulation の数値的比較}{18}{}%
+\contentsline {subsubsection}{数値計算の信頼性}{18}{}%
+\contentsline {subsubsection}{計算コストの比較}{19}{}%
+\contentsline {subsubsection}{解の同等性の検証}{20}{}%
+\contentsline {subsubsection}{探索経路摂動に対する頑健性}{21}{}%
+\contentsline {subsubsection}{小結}{23}{}%
+\contentsline {subsection}{\numberline {4.2.3}初期解導入の効果（DFL-CF init）}{23}{}%
+\contentsline {subsubsection}{累積リターンの比較}{23}{}%
+\contentsline {subsubsection}{全期間の性能指標比較}{24}{}%
+\contentsline {subsubsection}{計算時間への影響}{24}{}%
+\contentsline {subsubsection}{小結}{25}{}%
+\contentsline {section}{\numberline {4.3}考察}{25}{}%
+\contentsline {section}{\numberline {4.4}補足分析}{25}{}%
+\contentsline {chapter}{\numberline {第5章}結論}{26}{}%
+\contentsline {chapter}{\hbox to\@lnumwidth {\hfil }\hspace {0pt}参考文献}{27}{}%
+\contentsline {chapter}{参考文献}{28}{}%
+\contentsline {chapter}{\hbox to\@lnumwidth {\hfil }\hspace {0pt}謝辞}{30}{}%

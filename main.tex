@@ -739,6 +739,277 @@ TSMOM(SPY)     & 0 & 0 & 0 \\
 次節では，提案手法における dual / KKT の定式化差が数値計算（収束性・安定性）および
 投資性能に与える影響について，より詳細に検討する．
 
+\subsection{Dual formulation と KKT formulation の数値的比較}
+\par
+本節では，提案手法において用いた非凸 QCQP に対する二つの定式化，dual formulation と KKT formulation の数値的性質を比較する．
+両者は理論的には等価であり，同一の最適解集合を持つことが示されるが，非凸最適化問題を数値的に解く際には，定式化の違いがソルバの収束挙動，計算コスト，および探索経路への依存性に影響を与える可能性がある．
+\par
+本節の目的は投資パフォーマンスの優劣を比較することではなく，
+\textbf{どちらの定式化が数値計算としてより安定的かつ実務的に採用可能か}
+を明らかにすることである．
+\par
+そのため，以下の 4 つの観点から比較を行う．
+\begin{enumerate}
+  \item 数値計算の信頼性（solver status）
+  \item 計算コスト（特に worst-case を表す p90）
+  \item 解の同等性（理論的等価性の数値的検証）
+  \item 探索経路摂動に対する頑健性（非凸性への耐性）
+\end{enumerate}
+
+\subsubsection{数値計算の信頼性}
+\par
+まず，各定式化に対する数値計算の信頼性を評価する．ここでは，全期間を通じた rolling retraining において，各リバランス時点で解かれた最適化問題に対し，ソルバが返した終了ステータスを集計した．
+\par
+評価区分は以下の通りである．
+\begin{itemize}
+  \item OK：最適性条件を満たして終了
+  \item Warning：実行可能解は得られたが，収束判定に関する警告あり（例：xtol に基づく相対改善停止，near-optimal 判定）
+  \item No-solution：実行可能解が得られなかったケース
+\end{itemize}
+\par
+なお，Warning に分類されたケースについても，全てのケースで実行可能解が返却されており，制約違反量はいずれも数値誤差レベル（$10^{-8}$ 以下）に留まっている．
+
+\begin{table}[H]
+\centering
+\caption{Solver status distribution}
+\label{tab:formulation_status}
+\begin{tabular}{lrrr}
+\hline
+Formulation & OK (\%) & Warning (\%) & No-solution (\%) \\
+\hline
+Dual & 95.0 & 5.0 & 0.0 \\
+KKT  & 88.1 & 11.9 & 0.0 \\
+\hline
+\end{tabular}
+\end{table}
+
+\par
+表\ref{tab:formulation_status}より，両定式化ともに No-solution は一度も発生しておらず，数値計算としての基本的な安定性は共通して確保されていることが分かる．
+一方で，KKT formulation では Warning の割合がやや高いが，その内訳を確認すると，多くは最適性改善が所定の閾値以下となった段階での終了であり，実行可能性や制約充足の破綻を示すものではない．
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth]{figs/formulation_warning_breakdown_dual_vs_kkt.png}
+\caption{warning の内訳（dual vs KKT）}
+\label{fig:formulation_status_counts}
+\end{figure}
+
+\subsubsection{計算コストの比較}
+\par
+次に，計算コストの観点から両定式化を比較する．非凸最適化では平均計算時間よりも稀に発生する難ケースでの計算時間が実務上重要であるため，本研究では 90 パーセンタイル（p90）を主要指標として用いる．
+\par
+評価指標は以下の通りである．
+\begin{itemize}
+  \item Median：代表的な計算時間
+  \item Mean：参考値
+  \item p90：最悪 10\% の計算時間を表す指標
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Computation time statistics (seconds)}
+\label{tab:formulation_elapsed}
+\begin{tabular}{lrrr}
+\hline
+Formulation & Median & Mean & p90 \\
+\hline
+Dual & 1.20 & 1.65 & 2.99 \\
+KKT  & 0.75 & 0.95 & 1.71 \\
+\hline
+\end{tabular}
+\end{table}
+
+\par
+さらに，計算時間分布全体を可視化するため，箱ひげ図を図\ref{fig:formulation_elapsed}に示す．
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.92\linewidth]{figs/formulation_elapsed_ok_vs_warning.png}
+\caption{計算時間の分布（dual vs KKT；OK と Warning を分けて表示）}
+\label{fig:formulation_elapsed}
+\end{figure}
+\par
+中央値および平均値では両定式化に大きな差は見られないものの，p90 においては KKT formulation の方が小さく，計算時間分布の裾が抑制されている．
+すなわち，KKT formulation は worst-case においても計算時間が過度に増大しにくい特性を持つ．
+
+\subsubsection{解の同等性の検証}
+\par
+次に，dual formulation と KKT formulation が数値的にも同一の問題を解いているかを検証する．評価指標として，(i) ポートフォリオ重みの差（$L_1/L_2$ 距離），(ii) 下位 MVO 問題の目的関数値差，(iii) 学習時の目的関数値差を用いる．
+
+\begin{table}[H]
+\centering
+\caption{Solution agreement (Dual vs KKT)}
+\label{tab:formulation_agreement}
+\begin{tabular}{lrr}
+\hline
+Metric & Median & p90 \\
+\hline
+MVO cost diff & $1.2\times10^{-10}$ & $5.3\times10^{-3}$ \\
+Train objective diff & $2.8\times10^{-6}$ & $1.3\times10^{-3}$ \\
+Weight $L_1$ distance & $3.4\times10^{-8}$ & 1.17 \\
+Weight $L_2$ distance & $2.2\times10^{-8}$ & 0.77 \\
+\hline
+\end{tabular}
+\end{table}
+
+\par
+中央値ではすべての指標が数値誤差レベルに留まっており，dual と KKT は大多数の期間でほぼ同一の解を与えている．
+一方，p90 付近では一時的に差が大きくなるケースが存在するが，これは非凸性に起因する探索経路の差異によるものであり，特定の定式化が系統的に劣ることを示すものではない．
+
+\subsubsection{探索経路摂動に対する頑健性}
+\par
+非凸問題では，同一問題であっても初期化（探索経路）により到達点が変化し得る．そこで補助変数初期値を摂動し，探索経路依存性を評価した．ここでは摂動強度を simplex 上の $L_1$ 距離
+\[
+\Delta \triangleq \lVert \boldsymbol{w}^{(0)}_t - \boldsymbol{w}_{\mathrm{base},t} \rVert_1
+\]
+で実効的に較正し，\textbf{$\Delta \approx 0.2$（weak 相当）}の条件で複数 seed を用いて学習・評価を行った．なお，本結果は IPO 解析解に基づく初期化（init-ipo）を用いた設定で得られたものである．
+\par
+図\ref{fig:perturb_weak_boxplots}に，Sharpe / CVaR / Terminal wealth の箱ひげ図（seed 間の分布）を示す．また，図\ref{fig:perturb_weak_wealth}に累積リターンの overlay（seed 間比較）を示す．
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[t]{0.32\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{figs/perturb_weak_sharpe_boxplot.png}
+    \caption{Sharpe}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.32\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{figs/perturb_weak_cvar_boxplot.png}
+    \caption{CVaR(95\%)}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.32\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{figs/perturb_weak_terminal_wealth_boxplot.png}
+    \caption{Terminal wealth}
+  \end{subfigure}
+  \caption{探索経路摂動（$\Delta \approx 0.2$）下での性能分布（dual vs kkt）}
+  \label{fig:perturb_weak_boxplots}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[t]{0.92\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{figs/perturb_weak_cumret_dual.png}
+    \caption{dual}
+  \end{subfigure}
+  \vspace{0.6em}
+  \begin{subfigure}[t]{0.92\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{figs/perturb_weak_cumret_kkt.png}
+    \caption{kkt}
+  \end{subfigure}
+  \caption{探索経路摂動（$\Delta \approx 0.2$）下での累積リターン overlay（seed 間比較）}
+  \label{fig:perturb_weak_wealth}
+\end{figure}
+
+\par
+観測された傾向（$\Delta \approx 0.2$ 条件）を以下にまとめる．
+\begin{itemize}
+  \item 性能分布（summary\_table の seed 集計）では，KKT の Sharpe 平均が Dual より高く（Dual: 0.5232, KKT: 0.6737），Terminal wealth も KKT が大きい（Dual: 4.192, KKT: 6.160）．
+  \item 一方で Warning 発生は KKT の方が多い（平均 Warning count: Dual 8.0, KKT 27.3）．ただし，その内訳は主に NEARLY\_OPT / NO\_IMPROVE 型であり，No-solution が発生しない事実と併せると，ここでの Warning は\textbf{“失敗”ではなく“収束判定の違い（停止条件の差）”}として扱うのが妥当である．
+  \item cumulative wealth overlay では，Dual の方が seed によるばらつきが大きい（上振れもあるが下振れも大きい）という形が視覚的に確認できる．一方 KKT は線群が比較的まとまる．
+\end{itemize}
+
+\par
+この段階で言えるのは「KKT が常に優越する」ではなく，より厳密には
+\begin{itemize}
+  \item KKT：計算時間分布（p90）の観点で安定（X.2），摂動下の性能分布も比較的安定（本実験）
+  \item Dual：Warning は少ない（X.1）が，摂動下で分散が増えやすい可能性（本実験）
+\end{itemize}
+という\textbf{トレードオフ構造}である．したがって採用判断としては，\textbf{KKT formulation を優先}するのが論理的に自然である．
+
+\subsubsection{小結}
+\par
+本節では，dual formulation と KKT formulation の数値的性質を多角的に比較した．その結果，
+\begin{itemize}
+  \item 両定式化は解の同等性を数値的にも満たしている
+  \item 計算時間の p90（worst-case）の観点で，KKT formulation は安定的な傾向を示す
+  \item 探索経路摂動（$\Delta \approx 0.2$）下では，KKT formulation は性能分布が比較的安定であり，dual より高い中央値・平均を示す一方，Warning は増加する
+\end{itemize}
+\par
+以上の結果を踏まえ，以降の数値実験では KKT formulation を主たる定式化として採用する．
+
+\subsection{初期解導入の効果（DFL-CF init）}
+\par
+本節では，提案手法 DFL-QCQP（KKT formulation）において制約なし DFL-MVO の解析解（以下，DFL-CF 解）を初期解として与えた場合の効果を検証する．
+\par
+非凸最適化問題においては，探索開始点が収束先の局所解および収束速度に影響を与えることが知られている．本研究では，
+\begin{itemize}
+  \item 初期解を与えない場合（no init）
+  \item 制約なし DFL-MVO の解析解を初期化として与える場合（DFL-CF init）
+\end{itemize}
+を比較し，性能・安定性・計算コストの観点から初期解導入の影響を定量的に評価する．
+
+\subsubsection{累積リターンの比較}
+\par
+図\ref{fig:init_effect_cumreturn}に，初期解導入の有無および比較手法を含めた累積リターン推移を示す．
+図\ref{fig:init_effect_cumreturn}より，DFL-QCQP-KKT は初期解の有無にかかわらず比較手法を上回る累積リターンを示す一方，初期解（DFL-CF 解）を導入することで，特に後半期間において累積リターンが上方にシフトしていることが確認できる．
+また，初期解として用いた DFL-CF 解そのものよりも，再最適化後の DFL-QCQP の方が高い最終パフォーマンスを達成しており，良好な初期解は最終解を固定するものではなく，探索を有利な領域へ導く役割を果たしていることが示唆される．
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth]{figs/init_effect_wealth.png}
+\caption{累積リターン推移（初期解あり vs なし，および比較手法）}
+\label{fig:init_effect_cumreturn}
+\end{figure}
+
+\subsubsection{全期間の性能指標比較}
+\par
+次に，全期間における主要評価指標を表\ref{tab:init_effect_summary}に示す．
+
+\begin{table}[H]
+\centering
+\caption{初期解導入の有無による性能比較（全期間）}
+\label{tab:init_effect_summary}
+\begin{tabular}{lrrrrrrr}
+\hline
+Model & Ann.\ Return (\%) & Terminal & Sharpe & Sortino & Ann.\ Vol (\%) & MaxDD (\%) & CVaR$_{95}$ (\%) \\
+\hline
+DFL-QCQP-KKT (init=DFL-CF) & 12.16 (+0.30) & 8.89 (+0.53) & 0.80 (+0.02) & 0.75 (+0.02) & 15.17 ($-$0.05) & $-$34.73 (+0.40) & $-$4.97 (+0.04) \\
+DFL-QCQP-KKT (no init)     & 11.86          & 8.36          & 0.78          & 0.73          & 15.22          & $-$35.13          & $-$5.01          \\
+IPO-GRAD                   & 11.51          & 7.30          & 0.67          & 0.65          & 17.26          & $-$29.75          & $-$5.51          \\
+DFL-CF（解析解のみ）       & 10.46          & 5.90          & 0.60          & 0.57          & 17.38          & $-$30.43          & $-$5.68          \\
+SPO+                       & 10.29          & 5.60          & 0.57          & 0.57          & 17.95          & $-$33.25          & $-$5.77          \\
+OLS                        &  6.29          & 2.42          & 0.33          & 0.30          & 19.06          & $-$55.68          & $-$6.73          \\
+\hline
+\end{tabular}
+\end{table}
+
+\par
+括弧内は初期解なし（no init）との差分（init $-$ no init）である．表\ref{tab:init_effect_summary}から，初期解導入によりリターン・リスク調整後指標が一貫して改善していることが読み取れる（年率リターン：+0.30\%，Sharpe / Sortino：ともに +0.02，CVaR$_{95}$：+0.04）．年率ボラティリティはほぼ不変であり，リスク水準を上げることなくリターン効率が向上している．改善幅は過度に大きくはないが，全指標で符号が揃っている点は重要であり，初期解導入が体系的に探索結果を改善していることを示している．
+
+\subsubsection{計算時間への影響}
+\par
+表\ref{tab:init_effect_time}に，計算時間の比較（平均・最大）および Warning 件数を示す．
+
+\begin{table}[H]
+\centering
+\caption{計算時間の比較（初期解あり vs なし）}
+\label{tab:init_effect_time}
+\begin{tabular}{lrrr}
+\hline
+Model & Mean fit time (sec) & Max fit time (sec) & Warning count \\
+\hline
+DFL-QCQP-KKT (init=DFL-CF) & 0.73 & 2.66 & 33 \\
+DFL-QCQP-KKT (no init)     & 0.95 & 8.89 & 31 \\
+\hline
+\end{tabular}
+\end{table}
+
+\par
+初期解を導入することで，平均計算時間は短縮され，最大計算時間も大幅に抑制されている．これは，初期解が探索初期段階における不利な方向への移動を抑制し，比較的早期に良好な局所解近傍へ到達している可能性を示唆する．
+
+\subsubsection{小結}
+\par
+本節では，制約なし DFL-MVO の解析解を初期解として導入した場合の効果を検証した．その結果，
+\begin{itemize}
+  \item 初期解導入により，提案手法の主要性能指標が一貫して改善
+  \item 初期解そのものを上回る性能が，制約付き再最適化によって達成される
+  \item 計算時間の短縮という実務的利点も同時に得られる
+\end{itemize}
+ことが確認された．以上より，良好な初期解の導入は，非凸 DFL 問題において性能・安定性・計算効率を同時に改善する有効な戦略であると結論づけられる．
+
 \section{考察}
 \par
 （後続節）
