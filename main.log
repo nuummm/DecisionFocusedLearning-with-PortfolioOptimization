@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.12.9)  9 DEC 2025 22:09
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.12.9)  17 DEC 2025 16:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -31,20 +31,6 @@ Package: iftex 2024/12/12 v1.0g TeX engine tests
 (/usr/local/texlive/2025/texmf-dist/tex/latex/bxjscls/bxjscompat.sty
 Package: bxjscompat 2024/07/19 v2.9c BXJS document classes
 )
-
-! Class bxjsreport Error: An engine option must be explicitly given.
-
-See the bxjsreport class documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.889       engine option.\MessageBreak\@ehc}
-                                             
-When you use a Japanese-driver you must specify a correct
-engine option.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
 \jsc@mpt=\dimen143
 \jsc@mmm=\dimen144
 \jsZw=\dimen145
@@ -55,6 +41,7 @@ If that doesn't work, type  X <return>  to quit.
 \Cvs=\dimen149
 \Chs=\dimen150
 \fullwidth=\dimen151
+
 (/usr/local/texlive/2025/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
 
@@ -263,11 +250,11 @@ ani;language=dflt;"
 ))
 
 Package geometry Warning: Over-specification in `h'-direction.
-    `width' (454.10269pt) is ignored.
+    `width' (414.70561pt) is ignored.
 
 
 Package geometry Warning: Over-specification in `v'-direction.
-    `height' (701.39043pt) is ignored.
+    `height' (640.53917pt) is ignored.
 
 
 Package fontspec Info: 
@@ -574,12 +561,7 @@ Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
 Document Style - pseudocode environments for use with the `algorithmicx' style
 )
 \c@theorem=\count328
-
-
-LaTeX Warning: Unused global option(s):
-    [10.5pt,xeLaTeX].
-
-(./main.aux)
+ (./main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
@@ -609,26 +591,26 @@ LaTeX Font Info:    ... okay on input line 55.
 * hratio: 1:1
 * vratio: 1:1
 * modes: includehead includefoot truedimen 
-* h-part:(L,W,R)=(71.13188pt, 455.24411pt, 71.13188pt)
-* v-part:(T,H,B)=(71.13188pt, 702.78308pt, 71.13188pt)
-* \paperwidth=597.50787pt
-* \paperheight=845.04684pt
-* \textwidth=455.24411pt
-* \textheight=645.86725pt
-* \oddsidemargin=-1.1381pt
-* \evensidemargin=-1.1381pt
-* \topmargin=-1.1381pt
+* h-part:(L,W,R)=(71.13188pt, 403.40547pt, 71.13188pt)
+* v-part:(T,H,B)=(71.13188pt, 629.46848pt, 71.13188pt)
+* \paperwidth=545.66924pt
+* \paperheight=771.73224pt
+* \textwidth=403.40547pt
+* \textheight=577.49054pt
+* \oddsidemargin=5.13214pt
+* \evensidemargin=5.13214pt
+* \topmargin=5.13214pt
 * \headheight=10.0pt
-* \headsep=18.45792pt
+* \headsep=15.98897pt
 * \topskip=10.0pt
-* \footskip=28.45792pt
+* \footskip=25.98897pt
 * \marginparwidth=18.49426pt
 * \marginparsep=18.49426pt
 * \columnsep=18.49426pt
 * \skip\footins=16.0pt plus 5.0pt minus 2.0pt
-* \hoffset=0.0pt
-* \voffset=0.0pt
-* \mag=1000
+* \hoffset=0.00548pt
+* \voffset=0.00548pt
+* \mag=1095
 * \@twocolumnfalse
 * \@twosidefalse
 * \@mparswitchfalse
@@ -788,23 +770,23 @@ LaTeX Font Info:    Font shape `TU/ipaexm.ttf(0)/m/n' will be
 ]
 LaTeX Font Info:    Font shape `TU/ipaexg.ttf(0)/m/n' will be
 (Font)              scaled to size 23.00687pt on input line 62.
+ (./main.toc
 
-No file main.toc.
+[1
+
+])
 \tf@toc=\write4
 \openout4 = `main.toc'.
 
 
 
-[1
-
-]
-No file main.lof.
+[2] (./main.lof)
 \tf@lof=\write5
 \openout5 = `main.lof'.
 
 
 
-[2
+[3
 
 ]
 第1章
@@ -812,41 +794,73 @@ LaTeX Font Info:    Font shape `TU/ipaexg.ttf(0)/m/n' will be
 (Font)              scaled to size 19.17854pt on input line 68.
 LaTeX Font Info:    Font shape `TU/ipaexg.ttf(0)/m/n' will be
 (Font)              scaled to size 13.31586pt on input line 69.
+LaTeX Font Info:    Font shape `TU/ipaexm.ttf(0)/b/n' will be
+(Font)              scaled to size 9.24713pt on input line 73.
 
 
 [1
 
 ]
+
+[2]
+
+[3]
 第2章
-
-
-[2
-
-]
-第3章
-
-
-[3
-
-]
-第4章
+LaTeX Font Info:    Font shape `TU/ipaexg.ttf(0)/m/n' will be
+(Font)              scaled to size 11.09656pt on input line 159.
 
 
 [4
 
 ]
+
+[5]
+
+[6]
+第3章
+
+
+[7
+
+]
+
+[8]
+
+[9]
+
+[10]
+
+[11]
+第4章
+
+
+[12
+
+]
+
+[13]
+
+[14]
+
+[15]
 第5章
 
 
-[5
+[16
 
 ]
 
-[6
+[17
 
 ]
 
-[7
+[18
+
+]
+
+[19]
+
+[20
 
 ] (./main.aux)
  ***********
@@ -855,12 +869,12 @@ L3 programming layer <2022/08/05>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 11504 strings out of 473832
- 262218 string characters out of 5729481
- 687408 words of memory out of 5000000
- 34353 multiletter control sequences out of 15000+600000
- 572702 words of font info for 144 fonts, out of 8000000 for 9000
+ 11778 strings out of 473832
+ 276136 string characters out of 5729481
+ 696856 words of memory out of 5000000
+ 34613 multiletter control sequences out of 15000+600000
+ 572774 words of font info for 153 fonts, out of 8000000 for 9000
  1353 hyphenation exceptions out of 8191
- 109i,6n,111p,385b,358s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 109i,13n,111p,385b,360s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.pdf (10 pages).
+Output written on main.xdv (24 pages, 264268 bytes).
