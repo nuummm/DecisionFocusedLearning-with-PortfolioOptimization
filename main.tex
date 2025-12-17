@@ -498,7 +498,7 @@ DFL-QCQP-DUAL \eqref{eq:dfl_dual} と DFL-QCQP-KKT \eqref{eq:dfl_kkt} は，理�
 
 \subsection{使用データおよび学習・再バランス設定}
 \par
-実データ実験では，短期タクティカル・アセットアロケーション（Tactical Asset Allocation; TAA）を想定し，週次リターンデータを用いる．分析期間は 2006年1月から2025年12月とし，以下の4資産を投資対象とする．
+実データ実験では，短期タクティカル・アセットアロケーション（Tactical Asset Allocation; TAA）を想定し，週次リターンデータを用いる．分析期間は 2006 年 1 月から 2025 年 12 月とし，以下の 4 資産を投資対象とする．
 \begin{itemize}
   \item SPY：米国株式（S\&P 500）
   \item GLD：金
@@ -506,14 +506,16 @@ DFL-QCQP-DUAL \eqref{eq:dfl_dual} と DFL-QCQP-KKT \eqref{eq:dfl_kkt} は，理�
   \item TLT：米国長期国債
 \end{itemize}
 \par
-各時点における特徴量 $\boldsymbol{x}_t$ として，直近26週のリターン平均を用いる．モデルの学習および更新は，以下のローリング手順により行う．
+各時点 $t$ における特徴量 $\boldsymbol{x}_t$ として，直近 26 週のリターン平均を用いる．この設定は，短期的な市場トレンドを捉えつつ，過度なノイズへの反応を抑制することを意図したものであり，短期 TAA において一般的に用いられる時間スケールに基づいている．
+\par
+モデルの学習および更新は，以下のローリング手順により行う．
 \begin{itemize}
-  \item 直近26週のデータを用いて予測モデルのパラメータを推定
-  \item 推定したパラメータを次の4週間にわたって固定して使用
+  \item 直近 26 週のデータを用いて予測モデルのパラメータを推定
+  \item 推定したパラメータを次の 4 週間にわたって固定して使用
   \item 以降，同様の手順を繰り返す
 \end{itemize}
 \par
-この設定は，短期・中期の実務運用における代表的な再バランス頻度を反映している．
+この再バランス頻度は，推定誤差の増幅や過度な売買を避けつつ，市場環境の変化に一定程度追随することを目的として設定している．なお，本章の実験では，学習窓長や再バランス頻度の最適化は行わず，すべての比較手法に対して同一の設定を用いることで，モデル構造および学習方式の違いに焦点を当てる．これらのパラメータに対する感度分析については，後続の補足実験において検討する．
 
 \subsection{共分散行列の推定（OAS $\times$ EWMA）}
 \par
@@ -617,8 +619,125 @@ c(\boldsymbol{w}, \boldsymbol{r})
 また，DFL 系手法では，現時点の実データ実験では初期値として $\boldsymbol{\theta}=\boldsymbol{0}$ を用い（必要に応じて投資配分は等配分，補助変数は $0$ から開始する），初期化に起因する差をできるだけ抑える．一方で，後続の実験では IPO の解析解（IPO-analytic）に基づく初期化やアンカーも併せて検討し，初期化の影響も含めて評価する．
 
 \section{実験結果}
+
+\subsection{実データによるベースライン比較}
 \par
-（後続節）
+本節では，第3章で導出した提案手法である Decision-Focused Learning（DFL）に基づく
+DFL-QCQP モデル（dual 定式化および KKT 定式化）について，
+\textbf{初期解（warm-start）および正則化項（アンカー・罰則項）を一切導入しないベースライン設定}
+の下で，既存手法との比較評価を行う．
+\par
+比較対象として，従来の予測誤差最小化に基づく OLS（PTO），
+予測統合型の手法である IPO（analytic / gradient），
+ならびに代表的な Decision-Focused Learning 手法である SPO+ を含める．
+また，単純な投資戦略として $1/N$ ポートフォリオ，
+時系列モメンタム（TSMOM; SPY），Buy-and-Hold（SPY）をベンチマークとして用いる．
+\par
+評価指標として，年率リターン（ann\_return），最終資産（terminal\_wealth），
+リスク調整後指標（Sharpe 比・Sortino 比），
+リスク指標（年率ボラティリティ，最大ドローダウン，CVaR(95\%)），
+および運用上重要な売買回転率（平均ターンオーバー）を用いる．
+なお，本実験では取引コスト（bps）を加味した実行ベースの損益系列に基づき指標を算出している
+（詳細は第4.1節を参照）．
+
+%========================
+% Figure: cum return
+%========================
+\par
+まず，図\ref{fig:baseline_cumreturn}に，2006年から2025年までの全期間における各手法の累積リターン推移を示す．
+図\ref{fig:baseline_cumreturn}より，提案手法（DFL-QCQP）は dual / KKT のいずれの定式化においても，
+多くの比較手法を上回る累積リターンを示していることが確認できる．
+特に，長期にわたる運用期間を通じて，リターンの上振れだけでなく，
+下落局面における毀損の抑制も一定程度観察される．
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth]{figs/baseline_cum_return.png}
+\caption{累積リターン推移（2006--2025，ベースライン設定）}
+\label{fig:baseline_cumreturn}
+\end{figure}
+
+%========================
+% Table 1: summary metrics
+%========================
+\par
+次に，表\ref{tab:baseline_summary}に主要なパフォーマンス指標をまとめる．
+提案手法は年率リターン・最終資産において上位であるだけでなく，
+Sharpe 比・CVaR(95\%) といったリスク調整後指標においても良好な値を示している．
+このことは，単なるリターンの増大ではなく，
+\textbf{リスク制御を伴った意思決定の改善}が実現されている可能性を示唆する．
+\par
+また，ターンオーバーの観点では，
+提案手法（DFL-QCQP）は IPO-analytic や OLS と同程度の水準に収まっており，
+性能改善が売買過多のみによって生じているとは言い難い．
+さらに，dual と KKT の比較では，
+KKT 定式化が多くの指標で僅かに優位である一方，
+両者の性能差は大きくなく，定式化の違いが投資性能に与える影響は限定的であることも示唆される．
+
+\begin{table}[H]
+\centering
+\caption{パフォーマンス比較（2006--2025，ベースライン設定）}
+\label{tab:baseline_summary}
+\begin{tabular}{lrrrrrrrr}
+\hline
+Model & Ann.\ Return & Terminal & Sharpe & Sortino & Ann.\ Vol & MaxDD & CVaR95 & Turnover \\
+\hline
+DFL-QCQP-kkt  & \textbf{11.86} & \textbf{8.36} & \textbf{0.78} & \textbf{0.73} & 15.22 & -35.13 & 5.01 & 23.98 \\
+DFL-QCQP-dual & 11.54 & 7.79 & 0.75 & 0.72 & 15.45 & -36.39 & 5.03 & 23.96 \\
+IPO-analytic  & 10.46 & 5.90 & 0.60 & 0.57 & 17.38 & -30.43 & 5.68 & 24.24 \\
+Buy\&Hold(SPY)& 10.40 & 5.67 & 0.57 & 0.52 & 18.16 & -58.36 & 6.23 & \textbf{0.00} \\
+SPO+          &  8.10 & 3.62 & 0.45 & 0.44 & 17.91 & -33.37 & 5.93 & 20.69 \\
+1/N           &  7.16 & 3.65 & 0.63 & 0.59 & \textbf{11.43} & -33.49 & \textbf{3.67} & \textbf{0.00} \\
+TSMOM(SPY)    &  7.25 & 3.66 & 0.61 & 0.46 & 11.92 & \textbf{-24.66} & 4.26 & 1.45 \\
+IPO-GRAD      &  7.48 & 3.13 & 0.40 & 0.37 & 18.49 & -55.15 & 6.44 & 20.19 \\
+OLS           &  6.29 & 2.42 & 0.33 & 0.30 & 19.06 & -55.68 & 6.73 & 20.79 \\
+\hline
+\end{tabular}
+\end{table}
+
+%========================
+% Table 2: significance test
+%========================
+\par
+最後に，表\ref{tab:baseline_significance}に，
+Sharpe 比，CVaR(95\%)，最終資産（terminal wealth）に関して，
+ブートストラップに基づく統計的検定（対応あり）を行った結果を示す．
+表中の ``1'' は，提案手法が比較対象に対して \textbf{5\%水準で有意に優れている}ことを表し，
+``0'' は有意差が確認できないことを表す．
+\par
+表\ref{tab:baseline_significance}より，
+提案手法は CVaR(95\%) および最終資産において複数の比較手法に対して一貫して有意な改善を示している．
+一方で，Sharpe 比については必ずしも全ての比較で有意差が成立しておらず，
+提案手法の改善が「平均リターンの上昇」だけではなく，
+\textbf{下方リスク（tail risk）の抑制を通じた改善}として現れている可能性が高い．
+なお，TSMOM(SPY) に対しては有意差が確認できない指標も残っており，
+トレンドフォロー型の単純戦略が本実験設定において一定の競争力を持つことも示唆される．
+
+\begin{table}[H]
+\centering
+\caption{統計的有意性（5\%水準，1: DFLが有意に優位，0: 有意差なし）}
+\label{tab:baseline_significance}
+\begin{tabular}{lccc}
+\hline
+Compared model (vs DFL-QCQP-kkt) & Sharpe & CVaR95 & Final wealth \\
+\hline
+1/N            & 0 & 1 & 1 \\
+Buy\&Hold(SPY) & 0 & 1 & 1 \\
+IPO-GRAD       & 1 & 1 & 1 \\
+IPO-analytic   & 0 & 1 & 1 \\
+OLS            & 1 & 1 & 1 \\
+SPO+           & 0 & 1 & 1 \\
+TSMOM(SPY)     & 0 & 0 & 0 \\
+\hline
+\end{tabular}
+\end{table}
+
+\par
+以上より，特別な初期化や正則化を行わないベースライン設定においても，
+提案手法（DFL-QCQP）は既存の予測主導型手法（OLS）および代表的 DFL 手法（SPO+），
+ならびに IPO 系手法に対して競争力のある投資性能を示すことが確認できる．
+次節では，提案手法における dual / KKT の定式化差が数値計算（収束性・安定性）および
+投資性能に与える影響について，より詳細に検討する．
 
 \section{考察}
 \par

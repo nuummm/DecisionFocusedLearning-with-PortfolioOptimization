@@ -1,10 +1,6 @@
 # Fdb version 4
-["xdvipdfmx"] 1765956550.45998 "main.xdv" "main.pdf" "main" 1765956551.42563 0
-  "main.xdv" 1765956550.38299 264268 52da1c667889a783b24249a95837c180 "xelatex"
-  (generated)
-  "main.pdf"
-  (rewritten before read)
-["xelatex"] 1765956548.48658 "main.tex" "main.xdv" "main" 1765956551.4235 0
+["pdflatex"] 1765963407.93529 "/Users/kensei/VScode/卒業研究2/Decision Focused Learning with Portfolio Optimization/main.tex" "main.pdf" "main" 1765963410.56658 0
+  "/Users/kensei/VScode/卒業研究2/Decision Focused Learning with Portfolio Optimization/main.tex" 1765963402.79328 51697 533b1d2d946751d6ed79104ce30df9ed ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1246382020 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1246382020 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
@@ -106,14 +102,15 @@
   "/usr/local/texlive/2025/texmf-dist/web2c/texmf.cnf" 1739380943 42148 61becc7c670cd061bb319c643c27fdd4 ""
   "/usr/local/texlive/2025/texmf-var/web2c/xetex/xelatex.fmt" 1765283217 5639808 c4fae1519276c229f4257e2ad8b39b50 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "main.aux" 1765956550.37923 8707 44c526c4302b2d121776759877b324c8 "xelatex"
-  "main.lof" 1765956550.38187 125 784ac1bbf8d7924b7e7a38ab0289a442 "xelatex"
-  "main.tex" 1765956543.42616 44511 f564e715da129fa20cf18c77f50109ac ""
-  "main.toc" 1765956550.38169 3329 4bcd0b72b7ab4470c646c9012e163f25 "xelatex"
+  "figs/baseline_cum_return.png" 1765962743.34667 119613 700a6b8d2b4a59735d44705af4ab24e7 ""
+  "main.aux" 1765963410.22404 9652 b710035f579163b28eef857e3e72c61a "pdflatex"
+  "main.lof" 1765963410.22617 257 ebd986cd9f73e13b87b00f3e436f05cd "pdflatex"
+  "main.tex" 1765963402.79328 51697 533b1d2d946751d6ed79104ce30df9ed ""
+  "main.toc" 1765963410.22605 3429 742e143963abc466b7ee6128b16fa250 "pdflatex"
   (generated)
   "main.aux"
   "main.lof"
   "main.log"
+  "main.pdf"
   "main.toc"
-  "main.xdv"
   (rewritten before read)

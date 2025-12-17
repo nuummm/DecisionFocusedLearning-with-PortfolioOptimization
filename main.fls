@@ -2,7 +2,7 @@ PWD /Users/kensei/VScode/卒業研究2/Decision Focused Learning with Portfolio 
 INPUT /usr/local/texlive/2025/texmf.cnf
 INPUT /usr/local/texlive/2025/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2025/texmf-var/web2c/xetex/xelatex.fmt
-INPUT main.tex
+INPUT /Users/kensei/VScode/卒業研究2/Decision Focused Learning with Portfolio Optimization/main.tex
 OUTPUT main.log
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/bxjscls/bxjsreport.cls
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/bxjscls/bxjsreport.cls
@@ -168,7 +168,6 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/rsfs/rsfs5.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr8.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr6.tfm
-OUTPUT main.xdv
 INPUT ./main.toc
 INPUT ./main.toc
 INPUT main.toc
@@ -197,4 +196,7 @@ INPUT ./main.lof
 INPUT ./main.lof
 INPUT main.lof
 OUTPUT main.lof
+INPUT ./figs/baseline_cum_return.png
+INPUT ./figs/baseline_cum_return.png
+INPUT ./figs/baseline_cum_return.png
 INPUT main.aux
