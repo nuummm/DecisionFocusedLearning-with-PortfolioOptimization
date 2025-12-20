@@ -35,20 +35,26 @@
 \contentsline {subsection}{\numberline {4.1.6}初期化およびソルバー設定}{15}{}%
 \contentsline {section}{\numberline {4.2}実験結果}{15}{}%
 \contentsline {subsection}{\numberline {4.2.1}実データによるベースライン比較}{15}{}%
-\contentsline {subsection}{\numberline {4.2.2}Dual formulation と KKT formulation の数値的比較}{18}{}%
-\contentsline {subsubsection}{数値計算の信頼性}{18}{}%
-\contentsline {subsubsection}{計算コストの比較}{19}{}%
-\contentsline {subsubsection}{解の同等性の検証}{20}{}%
-\contentsline {subsubsection}{探索経路摂動に対する頑健性}{21}{}%
-\contentsline {subsubsection}{小結}{23}{}%
-\contentsline {subsection}{\numberline {4.2.3}初期解導入の効果（DFL-CF init）}{23}{}%
-\contentsline {subsubsection}{累積リターンの比較}{23}{}%
-\contentsline {subsubsection}{全期間の性能指標比較}{24}{}%
-\contentsline {subsubsection}{計算時間への影響}{24}{}%
-\contentsline {subsubsection}{小結}{25}{}%
-\contentsline {section}{\numberline {4.3}考察}{25}{}%
-\contentsline {section}{\numberline {4.4}補足分析}{25}{}%
-\contentsline {chapter}{\numberline {第5章}結論}{26}{}%
-\contentsline {chapter}{\hbox to\@lnumwidth {\hfil }\hspace {0pt}参考文献}{27}{}%
-\contentsline {chapter}{参考文献}{28}{}%
-\contentsline {chapter}{\hbox to\@lnumwidth {\hfil }\hspace {0pt}謝辞}{30}{}%
+\contentsline {subsection}{\numberline {4.2.2}Dual formulation と KKT formulation の数値的比較}{17}{}%
+\contentsline {subsubsection}{数値計算の信頼性}{17}{}%
+\contentsline {subsubsection}{計算コストの比較}{18}{}%
+\contentsline {subsubsection}{解の同等性の検証}{19}{}%
+\contentsline {subsubsection}{探索経路摂動に対する頑健性}{20}{}%
+\contentsline {subsubsection}{小結}{22}{}%
+\contentsline {subsection}{\numberline {4.2.3}初期解導入の効果（DFL-CF init）}{22}{}%
+\contentsline {subsubsection}{累積リターンの比較}{22}{}%
+\contentsline {subsubsection}{全期間の性能指標比較}{23}{}%
+\contentsline {subsubsection}{計算時間への影響}{23}{}%
+\contentsline {subsubsection}{統計的有意性（ブートストラップ検定）}{24}{}%
+\contentsline {subsubsection}{小結}{24}{}%
+\contentsline {subsection}{\numberline {4.2.4}提案手法の性質分析（Decision-Focused Learning の観点）}{25}{}%
+\contentsline {subsubsection}{予測精度と意思決定品質の乖離}{25}{}%
+\contentsline {subsubsection}{ポートフォリオ解 $\bm {w}$ の構造的特徴}{26}{}%
+\contentsline {subsubsection}{最大リターン資産の捕捉行動}{26}{}%
+\contentsline {subsubsection}{小括}{27}{}%
+\contentsline {section}{\numberline {4.3}考察}{27}{}%
+\contentsline {section}{\numberline {4.4}補足分析}{27}{}%
+\contentsline {chapter}{\numberline {第5章}結論}{28}{}%
+\contentsline {chapter}{\hbox to\@lnumwidth {\hfil }\hspace {0pt}参考文献}{29}{}%
+\contentsline {chapter}{参考文献}{30}{}%
+\contentsline {chapter}{\hbox to\@lnumwidth {\hfil }\hspace {0pt}謝辞}{32}{}%

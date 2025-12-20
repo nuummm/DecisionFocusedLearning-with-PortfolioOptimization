@@ -2,7 +2,7 @@ PWD /Users/kensei/VScode/卒業研究2/Decision Focused Learning with Portfolio 
 INPUT /usr/local/texlive/2025/texmf.cnf
 INPUT /usr/local/texlive/2025/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2025/texmf-var/web2c/xetex/xelatex.fmt
-INPUT main.tex
+INPUT /Users/kensei/VScode/卒業研究2/Decision Focused Learning with Portfolio Optimization/main.tex
 OUTPUT main.log
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/bxjscls/bxjsreport.cls
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/bxjscls/bxjsreport.cls
@@ -199,9 +199,16 @@ OUTPUT main.lof
 INPUT ./figs/baseline_cum_return.png
 INPUT ./figs/baseline_cum_return.png
 INPUT ./figs/baseline_cum_return.png
-INPUT ./figs/formulation_warning_breakdown_dual_vs_kkt.png
-INPUT ./figs/formulation_warning_breakdown_dual_vs_kkt.png
-INPUT ./figs/formulation_warning_breakdown_dual_vs_kkt.png
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmmi9.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmsy9.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex9.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmbx9.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmmib9.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy9.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr9.tfm
 INPUT ./figs/formulation_elapsed_ok_vs_warning.png
 INPUT ./figs/formulation_elapsed_ok_vs_warning.png
 INPUT ./figs/formulation_elapsed_ok_vs_warning.png
@@ -220,7 +227,10 @@ INPUT ./figs/perturb_weak_cumret_dual.png
 INPUT ./figs/perturb_weak_cumret_kkt.png
 INPUT ./figs/perturb_weak_cumret_kkt.png
 INPUT ./figs/perturb_weak_cumret_kkt.png
-INPUT ./figs/init_effect_wealth.png
-INPUT ./figs/init_effect_wealth.png
-INPUT ./figs/init_effect_wealth.png
+INPUT ./figs/wealth_selected_models_with_baseline_kkt.png
+INPUT ./figs/wealth_selected_models_with_baseline_kkt.png
+INPUT ./figs/wealth_selected_models_with_baseline_kkt.png
+INPUT ./figs/dfl_r2_vs_sharpe_scatter.png
+INPUT ./figs/dfl_r2_vs_sharpe_scatter.png
+INPUT ./figs/dfl_r2_vs_sharpe_scatter.png
 INPUT main.aux
