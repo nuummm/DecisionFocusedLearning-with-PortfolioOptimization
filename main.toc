@@ -41,18 +41,18 @@
 \contentsline {subsubsection}{全期間の性能指標比較}{16}{}%
 \contentsline {subsubsection}{初期解摂動に対する頑健性}{16}{}%
 \contentsline {subsubsection}{計算時間への影響}{17}{}%
-\contentsline {subsubsection}{統計的有意性}{18}{}%
+\contentsline {subsubsection}{統計的有意性}{17}{}%
 \contentsline {subsection}{\numberline {4.2.4}提案手法の性質分析}{18}{}%
 \contentsline {subsubsection}{予測精度と意思決定品質の乖離}{18}{}%
 \contentsline {subsubsection}{意思決定誤差の分布}{19}{}%
-\contentsline {subsubsection}{ターンオーバーと性能の関係}{20}{}%
+\contentsline {subsubsection}{ターンオーバーと性能の関係}{19}{}%
 \contentsline {subsubsection}{最大ウェイト資産のスイッチ頻度と性能の関係}{20}{}%
 \contentsline {subsubsection}{ポートフォリオ解 $\bm {w}$ の構造的特徴}{21}{}%
-\contentsline {subsubsection}{最大リターン資産の捕捉行動}{22}{}%
+\contentsline {subsubsection}{最大リターン資産の捕捉行動}{21}{}%
 \contentsline {subsubsection}{条件数レジーム別の相対優位}{22}{}%
 \setcounter {tocdepth}{1}
-\contentsline {section}{\numberline {4.3}補足分析}{24}{}%
-\contentsline {subsection}{\numberline {4.3.1}危機局面における挙動}{24}{}%
+\contentsline {section}{\numberline {4.3}補足分析}{23}{}%
+\contentsline {subsection}{\numberline {4.3.1}危機局面における挙動}{23}{}%
 \contentsline {chapter}{\numberline {第5章}結論}{27}{}%
 \contentsline {chapter}{謝辞}{28}{}%
 \contentsline {chapter}{参考文献}{29}{}%

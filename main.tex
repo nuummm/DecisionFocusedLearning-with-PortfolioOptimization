@@ -1117,14 +1117,14 @@ PFL                        & 0.33          & 2.42          &  6.29          & 19
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.95\linewidth]{figs/init_perturbation_boxplots.png}
-\caption{初期解摂動下での結果分布：初期解ありと初期解なしの比較}
+\includegraphics[width=0.95\linewidth]{figs/localoptB_init_vs_none_boxplots.png}
+\caption{初期解摂動下での結果分布：初期解ありと初期解なしの比較（Sharpe比,CVaR$_{95}$）}
 \label{fig:init_perturbation_boxplots}
 \end{figure}
 
 \par
-図\ref{fig:init_perturbation_boxplots}より,初期解ありは初期解なしと比較して,Sharpe 比の中央値が高く（$+0.007$）,分散（IQR）が小さい傾向が確認できる.また,最終資産の中央値も初期解ありで高い（$+0.084$）一方,CVaR$_{95}$ loss の中央値差は僅少である.
-これらは,初期解の摂動に対しても性能が大きく崩れにくく,かつ解のばらつきが抑制されることを示唆しており,初期解導入が探索を安定な局所解近傍へ導く効果を持つ可能性を支持する.
+図\ref{fig:init_perturbation_boxplots}より,初期解ありは初期解なしと比較して,Sharpe 比の中央値が高く,分散（IQR）も小さい傾向が確認できる.一方,CVaR$_{95}$ については中央値差は小さいが,初期解ありは分布のばらつきが抑えられている.
+以上より,初期解導入は摂動下でも性能の再現性を高め,探索をより安定な局所解近傍へ導く効果を持つ可能性が示唆される.
 
 \begin{table}[H]
 \centering
@@ -1320,14 +1320,14 @@ PFL                       & 212.86 & 137.13 & 530.95 & 1204.22 \\
 \begin{subfigure}{0.48\linewidth}
   \centering
   \includegraphics[width=\linewidth]{figs/switchfreq_vs_sharpe.png}
-  \caption{SwitchFreq と Sharpe 比}
+  \caption{スイッチ頻度 と Sharpe 比}
   \label{fig:switchfreq_vs_sharpe}
 \end{subfigure}
 \hfill
 \begin{subfigure}{0.48\linewidth}
   \centering
   \includegraphics[width=\linewidth]{figs/switchfreq_vs_cvar95.png}
-  \caption{SwitchFreq と CVaR(95\%) loss}
+  \caption{スイッチ頻度 と CVaR(95\%) loss}
   \label{fig:switchfreq_vs_cvar}
 \end{subfigure}
 \caption{最大ウェイト資産のスイッチ頻度と性能の関係}
@@ -1348,14 +1348,13 @@ PFL                       & 212.86 & 137.13 & 530.95 & 1204.22 \\
 \setlength{\tabcolsep}{4pt}
 \begin{tabular}{lrrrrr}
 \hline
-Model & Switch count & SwitchFreq & Sharpe & CVaR$_{95}$ \\
+Model & スイッチ頻度 & Sharpe & CVaR$_{95}$ \\
 \hline
-DFL-OPT-K (init=DFL-CF)   & 246 & 0.237 & 0.802 & 4.97 \\
-DFL-OPT-K (no init)       & 246 & 0.237 & 0.779 & 5.01 \\
-DFL-CF                    & 256 & 0.247 & 0.602 & 5.68 \\
-IPO-GRAD                  & 262 & 0.253 & 0.714 & 5.48 \\
-SPO+                      & 222 & 0.214 & 0.581 & 5.77 \\
-PFL                       & 219 & 0.211 & 0.330 & 6.73 \\
+DFL-OPT-K                 & 0.237 & 0.802 & 4.97 \\
+DFL-CF                    & 0.256 & 0.602 & 5.68 \\
+IPO-GRAD                  & 0.262 & 0.714 & 5.48 \\
+SPO+                      & 0.222 & 0.581 & 5.77 \\
+PFL                       & 0.219 & 0.330 & 6.73 \\
 \hline
 \end{tabular}
 \end{table}
@@ -1373,7 +1372,7 @@ PFL                       & 219 & 0.211 & 0.330 & 6.73 \\
 \hline
 Model & $H$ & $N_{\mathrm{eff}}$ & $\max_i w_i$ & $P(\max_i w_i \ge 0.95)$ \\
 \hline
-DFL-OPT-K & 0.771 & 1.478 & 0.826 & 0.488 \\
+DFL-OPT-K    & 0.771 & 1.478 & 0.826 & 0.488 \\
 DFL-CF       & 0.967 & 1.057 & 0.976 & 0.914 \\
 IPO-GRAD     & 0.964 & 1.061 & 0.973 & 0.903 \\
 OLS          & 0.947 & 1.096 & 0.960 & 0.865 \\

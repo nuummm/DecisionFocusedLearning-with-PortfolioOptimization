@@ -5,12 +5,12 @@
 \contentsline {figure}{\numberline {4.1}{\ignorespaces 累積リターン推移}}{12}{}%
 \contentsline {figure}{\numberline {4.2}{\ignorespaces 探索経路摂動に対する頑健性：ベースラインとの絶対値の差の分布}}{15}{}%
 \contentsline {figure}{\numberline {4.3}{\ignorespaces 累積リターン推移 : 初期解あり vs なし,およびベンチマークを除いた比較手法}}{16}{}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces 初期解摂動下での結果分布：初期解ありと初期解なしの比較}}{17}{}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces $R^2$ と意思決定品質の関係}}{19}{}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces 初期解摂動下での結果分布：初期解ありと初期解なしの比較（Sharpe比,CVaR$_{95}$）}}{17}{}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces $R^2$ と意思決定品質の関係}}{18}{}%
 \contentsline {figure}{\numberline {4.6}{\ignorespaces 意思決定誤差の比較}}{19}{}%
 \contentsline {figure}{\numberline {4.7}{\ignorespaces 売買量とリスク調整後性能の関係}}{20}{}%
-\contentsline {figure}{\numberline {4.8}{\ignorespaces 最大ウェイト資産のスイッチ頻度と性能の関係}}{21}{}%
-\contentsline {figure}{\numberline {4.9}{\ignorespaces 条件数レジーム別の相対優位 : (上) 週次リターン差 $\Delta r_t$ の分布, (左下) 優越率, (右下) 有効資産数の比較}}{23}{}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces 最大ウェイト資産のスイッチ頻度と性能の関係}}{20}{}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces 条件数レジーム別の相対優位 : (上) 週次リターン差 $\Delta r_t$ の分布, (左下) 優越率, (右下) 有効資産数の比較}}{22}{}%
 \contentsline {figure}{\numberline {4.10}{\ignorespaces 条件数レジーム別の意思決定誤差の比較}}{23}{}%
 \contentsline {figure}{\numberline {4.11}{\ignorespaces COVID-19 ショックにおける累積資産推移}}{24}{}%
 \contentsline {figure}{\numberline {4.12}{\ignorespaces COVID-19 ショックにおける資産配分の推移}}{25}{}%
