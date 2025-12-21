@@ -3,17 +3,16 @@
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces 累積リターン推移（2006--2025,ベースライン設定）}}{12}{}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces 計算時間の分布（DFL-OPT-D vs DFL-OPT-K ; Optimal と Warning を分けて表示）}}{14}{}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces 探索経路摂動（$\Delta \approx 0.2$）下での性能分布（dual vs kkt）}}{15}{}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces 探索経路摂動（$\Delta \approx 0.2$）下での累積リターン overlay（seed 間比較）}}{15}{}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces 累積リターン推移（初期解あり vs なし,および比較手法）}}{17}{}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces 初期解摂動（$\Delta \approx 0.2$）下での結果分布：初期解あり（DFL-CF init）と初期解なし（no init）の比較（10 seeds）}}{18}{}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces 予測精度（$R^2 \times 10^{4}$）と意思決定品質の関係（取引コスト控除後）}}{20}{}%
-\contentsline {figure}{\numberline {4.8}{\ignorespaces opportunity loss の比較（全期間；小さいほど良い）}}{20}{}%
-\contentsline {figure}{\numberline {4.9}{\ignorespaces 売買量とリスク調整後性能の関係（取引コスト控除後）}}{21}{}%
-\contentsline {figure}{\numberline {4.10}{\ignorespaces 最大ウェイト資産の切替頻度（SwitchFreq）と性能の関係（取引コスト控除後）}}{22}{}%
-\contentsline {figure}{\numberline {4.11}{\ignorespaces 条件数レジーム別の相対優位（DFL-QCQP-KKT(init) − OLS）：(上) 週次リターン差 $\Delta r_t$ の分布,(左下) dominance ratio $P(\Delta r_t>0)$,(右下) 有効資産数 $N_{\mathrm {eff}}$ の比較}}{24}{}%
-\contentsline {figure}{\numberline {4.12}{\ignorespaces 条件数レジーム別の機会損失（opportunity loss；小さいほど良い）：DFL-QCQP-KKT(init) と OLS の比較.破線は各分布の p90 を示す}}{24}{}%
-\contentsline {figure}{\numberline {4.13}{\ignorespaces COVID-19 ショック（2020年）における累積資産推移（開始=1）}}{26}{}%
-\contentsline {figure}{\numberline {4.14}{\ignorespaces COVID-19 ショック（2020年）における資産配分の推移（上から：DFL-QCQP-KKT, SPO+, IPO-GRAD, DFL-CF, OLS）}}{27}{}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces 探索経路摂動（$\Delta \approx 0.2$）下での性能分布（dual vs kkt）}}{14}{}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces 探索経路摂動（$\Delta \approx 0.2$）下での累積リターン overlay（seed 間比較）}}{15}{}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces 累積リターン推移（初期解あり vs なし,および比較手法）}}{16}{}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces 初期解摂動（$\Delta \approx 0.2$）下での結果分布：初期解あり（DFL-CF init）と初期解なし（no init）の比較（10 seeds）}}{18}{}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces 予測精度（$R^2 \times 10^{4}$）と意思決定品質の関係（取引コスト控除後）}}{20}{}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces opportunity loss の比較（全期間；小さいほど良い）}}{20}{}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces 売買量とリスク調整後性能の関係（取引コスト控除後）}}{21}{}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces 最大ウェイト資産の切替頻度（SwitchFreq）と性能の関係（取引コスト控除後）}}{22}{}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces 条件数レジーム別の相対優位（DFL-QCQP-KKT(init) − OLS）：(上) 週次リターン差 $\Delta r_t$ の分布,(左下) dominance ratio $P(\Delta r_t>0)$,(右下) 有効資産数 $N_{\mathrm {eff}}$ の比較}}{24}{}%
+\contentsline {figure}{\numberline {4.11}{\ignorespaces 条件数レジーム別の機会損失（opportunity loss；小さいほど良い）：DFL-QCQP-KKT(init) と OLS の比較.破線は各分布の p90 を示す}}{24}{}%
+\contentsline {figure}{\numberline {4.12}{\ignorespaces COVID-19 ショック（2020年）における累積資産推移（開始=1）}}{26}{}%
+\contentsline {figure}{\numberline {4.13}{\ignorespaces COVID-19 ショック（2020年）における資産配分の推移（上から：DFL-QCQP-KKT, SPO+, IPO-GRAD, DFL-CF, OLS）}}{27}{}%
 \addvspace {10\jsc@mpt }

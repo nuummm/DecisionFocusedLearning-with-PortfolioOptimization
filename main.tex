@@ -890,15 +890,7 @@ KKT  & 0.75 & 0.95 & 1.71 \\
 \end{table}
 
 \par
-さらに,計算時間分布全体を可視化するため,箱ひげ図を図\ref{fig:formulation_elapsed}に示す.
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.92\linewidth]{figs/formulation_elapsed_ok_vs_warning.png}
-\caption{計算時間の分布（DFL-OPT-D vs DFL-OPT-K ; Optimal と Warning を分けて表示）}
-\label{fig:formulation_elapsed}
-\end{figure}
-\par
-中央値および平均値では両定式化に大きな差は見られないものの,p90 においては DFL-OPT-K の方が小さく,計算時間分布の裾が抑制されている.
+表\ref{tab:formulation_elapsed}より,中央値および平均値では両定式化に大きな差は見られないものの,p90 においては DFL-OPT-K の方が小さく,計算時間分布の裾が抑制されている.
 すなわち,DFL-OPT-K は最悪ケースにおいても計算時間が過度に増大しにくい特性を持つ.
 
 \subsubsection{解の同等性の検証}
@@ -921,18 +913,18 @@ KKT  & 0.75 & 0.95 & 1.71 \\
 \end{table}
 
 \par
-中央値ではすべての指標が数値誤差レベルに留まっており,dual と KKT は大多数の期間でほぼ同一の解を与えている.
+中央値ではすべての指標が数値誤差レベルに留まっており, DAUL と KKT は大多数の期間でほぼ同一の解を与えている.
 一方,p90 付近では一時的に差が大きくなるケースが存在するが,これは非凸性に起因する探索経路の差異によるものであり,特定の定式化が系統的に劣ることを示すものではない.
 
 \subsubsection{探索経路摂動に対する頑健性}
 \par
-非凸問題では,同一問題であっても初期化（探索経路）により到達点が変化し得る.そこで補助変数初期値を摂動し,探索経路依存性を評価した.ここでは摂動強度を simplex 上の $L_1$ 距離
+非凸問題では,同一問題であっても初期値による探索経路の変化で到達する局所解が変化し得る.そこで補助変数のうち、投資配分の初期値を摂動し,探索経路依存性を評価した.ここでは摂動強度を simplex 上の $L_1$ 距離
 \[
 \Delta \triangleq \lVert \boldsymbol{w}^{(0)}_t - \boldsymbol{w}_{\mathrm{base},t} \rVert_1
 \]
-で実効的に較正し,$\Delta \approx 0.2$（weak 相当）の条件で複数 seed を用いて学習・評価を行った.なお,本結果は IPO 解析解に基づく初期化（init-ipo）を用いた設定で得られたものである.
+で実効的に較正し,$\Delta \approx 0.2$の条件で複数 seed を用いて学習・評価を行った.
 \par
-図\ref{fig:perturb_weak_boxplots}に,Sharpe / CVaR / Terminal wealth の箱ひげ図（seed 間の分布）を示す.また,図\ref{fig:perturb_weak_wealth}に累積リターンの overlay（seed 間比較）を示す.
+図\ref{fig:perturb_weak_boxplots}に, Sharpe / CVaR / Terminal wealth の箱ひげ図（seed 間の分布）を示す.
 
 \begin{figure}[H]
   \centering
@@ -955,22 +947,6 @@ KKT  & 0.75 & 0.95 & 1.71 \\
   \label{fig:perturb_weak_boxplots}
 \end{figure}
 
-\begin{figure}[H]
-  \centering
-  \begin{subfigure}[t]{0.92\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{figs/perturb_weak_cumret_dual.png}
-    \caption{dual}
-  \end{subfigure}
-  \vspace{0.6em}
-  \begin{subfigure}[t]{0.92\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{figs/perturb_weak_cumret_kkt.png}
-    \caption{kkt}
-  \end{subfigure}
-  \caption{探索経路摂動（$\Delta \approx 0.2$）下での累積リターン overlay（seed 間比較）}
-  \label{fig:perturb_weak_wealth}
-\end{figure}
 
 \par
 観測された傾向（$\Delta \approx 0.2$ 条件）を以下にまとめる.
@@ -988,16 +964,6 @@ KKT  & 0.75 & 0.95 & 1.71 \\
 \end{itemize}
 というトレードオフ構造である.したがって採用判断としては,KKT formulation を優先するのが論理的に自然である.
 
-\subsubsection{小結}
-\par
-本節では,dual formulation と KKT formulation の数値的性質を多角的に比較した.その結果,
-\begin{itemize}
-  \item 両定式化は解の同等性を数値的にも満たしている
-  \item 計算時間の p90（worst-case）の観点で,KKT formulation は安定的な傾向を示す
-  \item 探索経路摂動（$\Delta \approx 0.2$）下では,KKT formulation は性能分布が比較的安定であり,dual より高い中央値・平均を示す一方,Warning は増加する
-\end{itemize}
-\par
-以上の結果を踏まえ,以降の数値実験では KKT formulation を主たる定式化として採用する.
 
 \subsection{初期解導入の効果（DFL-CF init）}
 \par

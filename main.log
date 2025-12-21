@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.12.9)  21 DEC 2025 15:36
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.12.9)  21 DEC 2025 15:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -868,11 +868,6 @@ File: figs/baseline_cum_return.png Graphic file (type bmp)
 [12]
 
 [13]
-File: figs/formulation_elapsed_ok_vs_warning.png Graphic file (type bmp)
-<figs/formulation_elapsed_ok_vs_warning.png>
-
-
-[14]
 File: figs/perturb_weak_sharpe_boxplot.png Graphic file (type bmp)
 <figs/perturb_weak_sharpe_boxplot.png>
 File: figs/perturb_weak_cvar_boxplot.png Graphic file (type bmp)
@@ -884,6 +879,8 @@ File: figs/perturb_weak_cumret_dual.png Graphic file (type bmp)
 File: figs/perturb_weak_cumret_kkt.png Graphic file (type bmp)
 <figs/perturb_weak_cumret_kkt.png>
 
+
+[14]
 
 [15]
 File: figs/wealth_selected_models_with_baseline_kkt.png Graphic file (type bmp)
@@ -904,7 +901,7 @@ File: figs/init_perturbation_boxplots.png Graphic file (type bmp)
 File: figs/r2_vs_sharpe_scatter.png Graphic file (type bmp)
 <figs/r2_vs_sharpe_scatter.png>
 LaTeX Font Info:    Font shape `TU/HaranoAjiMincho-Regular.otf(1)/m/n' will be
-(Font)              scaled to size 8.32242pt on input line 1159.
+(Font)              scaled to size 8.32242pt on input line 1151.
 File: figs/r2_vs_cvar_scatter.png Graphic file (type bmp)
 <figs/r2_vs_cvar_scatter.png>
 File: figs/opportunity_loss_boxplot.png Graphic file (type bmp)
@@ -959,7 +956,7 @@ File: figs/weights_comparison_covid_2020.png Graphic file (type bmp)
 ]
 LaTeX Font Info:    Font shape `TU/HaranoAjiMincho-Regular.otf(1)/m/it' will be
 
-(Font)              scaled to size 9.24713pt on input line 1497.
+(Font)              scaled to size 9.24713pt on input line 1489.
 
 
 [30
@@ -985,12 +982,12 @@ L3 programming layer <2022/08/05>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 12533 strings out of 473832
- 299640 string characters out of 5729481
- 725764 words of memory out of 5000000
- 35348 multiletter control sequences out of 15000+600000
+ 12523 strings out of 473832
+ 299194 string characters out of 5729481
+ 725721 words of memory out of 5000000
+ 35339 multiletter control sequences out of 15000+600000
  570087 words of font info for 136 fonts, out of 8000000 for 9000
  1353 hyphenation exceptions out of 8191
  109i,13n,113p,622b,716s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.xdv (38 pages, 576512 bytes).
+Output written on main.xdv (38 pages, 574368 bytes).

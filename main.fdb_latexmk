@@ -1,10 +1,10 @@
 # Fdb version 4
-["xdvipdfmx"] 1766298995.00359 "main.xdv" "main.pdf" "main" 1766299000.02814 0
-  "main.xdv" 1766298994.82858 576512 007ce4036bc2e49266a562560141c932 "xelatex"
+["xdvipdfmx"] 1766299771.20735 "main.xdv" "main.pdf" "main" 1766299775.70843 0
+  "main.xdv" 1766299771.05468 574368 86be4d804f278f22615f5b20395e7dfb "xelatex"
   (generated)
   "main.pdf"
   (rewritten before read)
-["xelatex"] 1766298991.0285 "main.tex" "main.xdv" "main" 1766299000.02515 0
+["xelatex"] 1766299767.18708 "main.tex" "main.xdv" "main" 1766299775.70637 0
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1246382020 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1246382020 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
@@ -106,7 +106,6 @@
   "figs/baseline_cum_return.png" 1765962743.34667 119613 700a6b8d2b4a59735d44705af4ab24e7 ""
   "figs/cond_binned_opploss_dfl_vs_ols.png" 1766216104.96936 93014 ee05d807ad48d6b2160205b98abfb23a ""
   "figs/cond_regime_rel_adv_2tier.png" 1766216104.60856 140975 4902d604f9209d79f8addbc75d1b6cf1 ""
-  "figs/formulation_elapsed_ok_vs_warning.png" 1765973769.40477 26661 1366a1c5d893938c3eac723793725fe4 ""
   "figs/init_perturbation_boxplots.png" 1766216422.39095 187424 082f53be6d8d5974f4716ece2df72c89 ""
   "figs/opportunity_loss_boxplot.png" 1766217237.03867 129323 8d41b2ed8b93e5d8750fabf0ec2608d1 ""
   "figs/opportunity_loss_median_bar.png" 1766217237.04167 80899 a12631558676cd35d175481b62f066dd ""
@@ -124,10 +123,10 @@
   "figs/wealth_selected_models_with_baseline_kkt.png" 1765986299.76299 260239 9200ba56d99f3379f0efe9f2462a9e59 ""
   "figs/wealth_window_covid_2020.png" 1766217699.6624 82488 b43a6cffc3ae0de3e9fd7685a65ec90c ""
   "figs/weights_comparison_covid_2020.png" 1766217699.66556 51637 4300112000796db2ecab5cbcc5ab362f ""
-  "main.aux" 1766298994.81956 24307 6d067282a3e7963f0b5d6b7d2397dcb7 "xelatex"
-  "main.lof" 1766298994.8272 2530 3f9ea1bafd120d1e9c09bb5aca052cdb "xelatex"
-  "main.tex" 1766298971.6033 98168 33f89cad79befbf053604e3581e0d5e9 ""
-  "main.toc" 1766298994.8266 5186 4c2002af046d1fc9d163f4cb4fffdd26 "xelatex"
+  "main.aux" 1766299771.04761 24016 2e625beac47b4b325192e28943a9fa8d "xelatex"
+  "main.lof" 1766299771.05348 2374 8ea591d495f2c0176a4652ba1b25491e "xelatex"
+  "main.tex" 1766299720.09598 97855 4944f0c6277635207f7d94d189591c37 ""
+  "main.toc" 1766299771.05306 5186 988a50eb51d49f566d25ae66606fcc82 "xelatex"
   (generated)
   "main.aux"
   "main.lof"

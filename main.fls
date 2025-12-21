@@ -194,9 +194,6 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/rsfs/rsfs5.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr9.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr6.tfm
-INPUT ./figs/formulation_elapsed_ok_vs_warning.png
-INPUT ./figs/formulation_elapsed_ok_vs_warning.png
-INPUT ./figs/formulation_elapsed_ok_vs_warning.png
 INPUT ./figs/perturb_weak_sharpe_boxplot.png
 INPUT ./figs/perturb_weak_sharpe_boxplot.png
 INPUT ./figs/perturb_weak_sharpe_boxplot.png

@@ -39,7 +39,7 @@
 \contentsline {subsubsection}{小結}{16}{}%
 \contentsline {subsection}{\numberline {4.2.3}初期解導入の効果（DFL-CF init）}{16}{}%
 \contentsline {subsubsection}{累積リターンの比較}{16}{}%
-\contentsline {subsubsection}{全期間の性能指標比較}{17}{}%
+\contentsline {subsubsection}{全期間の性能指標比較}{16}{}%
 \contentsline {subsubsection}{初期解摂動に対する頑健性（$\Delta \approx 0.2$,10 seeds）}{17}{}%
 \contentsline {subsubsection}{計算時間への影響}{18}{}%
 \contentsline {subsubsection}{統計的有意性（ブートストラップ検定）}{19}{}%
