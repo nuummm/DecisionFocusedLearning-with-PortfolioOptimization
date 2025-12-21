@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.12.9)  21 DEC 2025 17:31
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.12.9)  21 DEC 2025 20:07
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -526,25 +526,26 @@ Document Style - pseudocode environments for use with the `algorithmicx' style
 )
 \c@theorem=\count338
 \c@proposition=\count339
+\c@savedtocdepth=\count340
  (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -587,58 +588,58 @@ Package fontspec Info:
 
 \symlegacymaths=\mathgroup10
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 100.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 100.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 100.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 100.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 100.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 100.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 100.
-LaTeX Font Info:    Redeclaring math accent \check on input line 100.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 100.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 100.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 100.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 100.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 100.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 100.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 100.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 100.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 100.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 100.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 100.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 100.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 100.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 100.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 100.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 100.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 102.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 102.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 102.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 102.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 102.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 102.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 102.
+LaTeX Font Info:    Redeclaring math accent \check on input line 102.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 102.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 102.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 102.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 102.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 102.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 102.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 102.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 102.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 102.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 102.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 102.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 102.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 102.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 102.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 102.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 102.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 100.
+(Font)              `operators' in the math version `normal' on input line 102.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/TimesNewRoman(0)/m/n on input line 100.
+(Font)                  OT1/cmr/m/n --> TU/TimesNewRoman(0)/m/n on input line 102.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 100.
+(Font)              `operators' in the math version `bold' on input line 102.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/TimesNewRoman(0)/m/n on input line 100.
+(Font)                  OT1/cmr/bx/n --> TU/TimesNewRoman(0)/m/n on input line 102.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  TU/TimesNewRoman(0)/m/n --> TU/TimesNewRoman(0)/m/n on input line 100.
+(Font)                  TU/TimesNewRoman(0)/m/n --> TU/TimesNewRoman(0)/m/n on input line 102.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/TimesNewRoman(0)/m/it on input line 100.
+(Font)                  OT1/cmr/m/it --> TU/TimesNewRoman(0)/m/it on input line 102.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/TimesNewRoman(0)/b/n on input line 100.
+(Font)                  OT1/cmr/bx/n --> TU/TimesNewRoman(0)/b/n on input line 102.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/Helvetica(0)/m/n on input line 100.
+(Font)                  OT1/cmss/m/n --> TU/Helvetica(0)/m/n on input line 102.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 100.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 102.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  TU/TimesNewRoman(0)/m/n --> TU/TimesNewRoman(0)/b/n on input line 100.
+(Font)                  TU/TimesNewRoman(0)/m/n --> TU/TimesNewRoman(0)/b/n on input line 102.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> TU/TimesNewRoman(0)/b/it on input line 100.
+(Font)                  OT1/cmr/bx/it --> TU/TimesNewRoman(0)/b/it on input line 102.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/Helvetica(0)/b/n on input line 100.
+(Font)                  OT1/cmss/bx/n --> TU/Helvetica(0)/b/n on input line 102.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 100.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 102.
 LaTeX Font Info:    Font shape `TU/HaranoAjiMincho-Regular.otf(1)/m/n' will be
-(Font)              scaled to size 9.24713pt on input line 100.
+(Font)              scaled to size 9.24713pt on input line 102.
 
 Package fontspec Info: 
 (fontspec)             HaranoAjiGothic-Medium.otf scale = 0.924715.
@@ -678,7 +679,7 @@ Package fontspec Info:
 (fontspec)             <->s*[0.924715]"[HaranoAjiGothic-Bold.otf]/OT:script=hani;language=dflt;slant=0.2;"
 
 LaTeX Font Info:    Font shape `TU/HaranoAjiGothic-Medium.otf(0)/m/n' will be
-(Font)              scaled to size 9.24713pt on input line 100.
+(Font)              scaled to size 9.24713pt on input line 102.
 
 Package fontspec Info: 
 (fontspec)             HaranoAjiGothic-Medium.otf scale = 0.924715.
@@ -687,16 +688,16 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    Font shape `TU/HaranoAjiMincho-Regular.otf(1)/m/n' will be
-(Font)              scaled to size 13.31586pt on input line 108.
+(Font)              scaled to size 13.31586pt on input line 110.
 LaTeX Font Info:    Font shape `TU/HaranoAjiMincho-Regular.otf(1)/b/n' will be
-(Font)              scaled to size 15.97903pt on input line 114.
+(Font)              scaled to size 15.97903pt on input line 116.
 
 
 [1
 
 ]
 LaTeX Font Info:    Font shape `TU/HaranoAjiMincho-Regular.otf(1)/b/n' will be
-(Font)              scaled to size 19.17854pt on input line 131.
+(Font)              scaled to size 19.17854pt on input line 134.
  (./main.toc
 LaTeX Font Info:    Trying to load font information for U+msa on input line 2.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -709,28 +710,26 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 LaTeX Font Info:    Trying to load font information for U+rsfs on input line 2.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
-)
-
-[1
-
-])
+))
 \tf@toc=\write4
 \openout4 = `main.toc'.
 
 
 
-[2] (./main.lof)
+[1
+
+] (./main.lof)
 \tf@lof=\write5
 \openout5 = `main.lof'.
 
 
 
-[3
+[2
 
 ]
 第1章
 LaTeX Font Info:    Font shape `TU/HaranoAjiGothic-Medium.otf(0)/m/n' will be
-(Font)              scaled to size 13.31586pt on input line 142.
+(Font)              scaled to size 13.31586pt on input line 147.
 
 
 [1
@@ -748,7 +747,7 @@ LaTeX Font Info:    Font shape `TU/HaranoAjiGothic-Medium.otf(0)/m/n' will be
 [4]
 第3章
 LaTeX Font Info:    Font shape `TU/HaranoAjiGothic-Medium.otf(0)/m/n' will be
-(Font)              scaled to size 11.09656pt on input line 334.
+(Font)              scaled to size 11.09656pt on input line 390.
 
 
 [5
@@ -757,7 +756,7 @@ LaTeX Font Info:    Font shape `TU/HaranoAjiGothic-Medium.otf(0)/m/n' will be
 
 [6]
 LaTeX Font Info:    Font shape `TU/HaranoAjiMincho-Regular.otf(1)/b/n' will be
-(Font)              scaled to size 9.24713pt on input line 593.
+(Font)              scaled to size 9.24713pt on input line 676.
 
 
 [7]
@@ -778,12 +777,13 @@ File: figs/baseline_cum_return.png Graphic file (type bmp)
 
 
 [12]
+LaTeX Font Info:    Font shape `TU/HaranoAjiMincho-Regular.otf(1)/m/n' will be
+(Font)              scaled to size 8.32242pt on input line 956.
+
 
 [13]
 File: figs/delta2_absdiff_sharpe_boxplot.png Graphic file (type bmp)
 <figs/delta2_absdiff_sharpe_boxplot.png>
-LaTeX Font Info:    Font shape `TU/HaranoAjiMincho-Regular.otf(1)/m/n' will be
-(Font)              scaled to size 8.32242pt on input line 936.
 File: figs/delta2_absdiff_cvar95_boxplot.png Graphic file (type bmp)
 <figs/delta2_absdiff_cvar95_boxplot.png>
 File: figs/delta4_absdiff_sharpe_boxplot.png Graphic file (type bmp)
@@ -844,57 +844,50 @@ File: figs/cond_binned_opploss_dfl_vs_ols.png Graphic file (type bmp)
 [23]
 File: figs/wealth_window_covid_2020.png Graphic file (type bmp)
 <figs/wealth_window_covid_2020.png>
-
-
-[24]
 File: figs/weights_comparison_covid_2020.png Graphic file (type bmp)
 <figs/weights_comparison_covid_2020.png>
 
 
+[24]
+
 [25]
 
 [26]
-
-[27]
 第5章
 
+
+[27
+
+]
 
 [28
 
 ]
-LaTeX Font Info:    Font shape `TU/HaranoAjiMincho-Regular.otf(1)/m/it' will be
-(Font)              scaled to size 9.24713pt on input line 1443.
-
 
 [29
 
 ]
+LaTeX Font Info:    Font shape `TU/HaranoAjiMincho-Regular.otf(1)/m/it' will be
+(Font)              scaled to size 9.24713pt on input line 1638.
 
-[30]
 
-[31
-
-]
-
-[32
+[30
 
 ]
 
-[33
-
-] (./main.aux)
+[31] (./main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2022/08/05>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 12493 strings out of 473832
- 297371 string characters out of 5729481
- 719510 words of memory out of 5000000
- 35309 multiletter control sequences out of 15000+600000
- 570087 words of font info for 136 fonts, out of 8000000 for 9000
+ 12371 strings out of 473832
+ 287062 string characters out of 5729481
+ 719184 words of memory out of 5000000
+ 35186 multiletter control sequences out of 15000+600000
+ 570095 words of font info for 137 fonts, out of 8000000 for 9000
  1353 hyphenation exceptions out of 8191
- 109i,13n,113p,705b,715s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 109i,13n,113p,503b,702s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.pdf (37 pages).
+Output written on main.pdf (34 pages).

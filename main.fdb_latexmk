@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1766305893.93905 "/Users/kensei/VScode/卒業研究2/Decision Focused Learning with Portfolio Optimization/main.tex" "main.pdf" "main" 1766305915.39728 0
-  "/Users/kensei/VScode/卒業研究2/Decision Focused Learning with Portfolio Optimization/main.tex" 1766305807.67645 94924 f5ce7d8ec850aa651e7fbe3fbeffbe12 ""
+["pdflatex"] 1766315223.95209 "/Users/kensei/VScode/卒業研究2/Decision Focused Learning with Portfolio Optimization/main.tex" "main.pdf" "main" 1766315233.06238 0
+  "/Users/kensei/VScode/卒業研究2/Decision Focused Learning with Portfolio Optimization/main.tex" 1766315203.68011 95108 7db8ffea4c2eb74171626bbb94450023 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1246382020 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1246382020 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
@@ -118,10 +118,10 @@
   "figs/wealth_selected_models_with_baseline_kkt.png" 1765986299.76299 260239 9200ba56d99f3379f0efe9f2462a9e59 ""
   "figs/wealth_window_covid_2020.png" 1766217699.6624 82488 b43a6cffc3ae0de3e9fd7685a65ec90c ""
   "figs/weights_comparison_covid_2020.png" 1766217699.66556 51637 4300112000796db2ecab5cbcc5ab362f ""
-  "main.aux" 1766305910.00062 23173 89c9270913c5303db795e1dff3d619ac "pdflatex"
-  "main.lof" 1766305910.0144 2251 558bed2b7330425f82ddf1a45240af31 "pdflatex"
-  "main.tex" 1766305807.67645 94924 f5ce7d8ec850aa651e7fbe3fbeffbe12 ""
-  "main.toc" 1766305910.01408 4942 094e3605d9078333c4d938e430aed12b "pdflatex"
+  "main.aux" 1766315230.88011 21484 f211ac3dadb63597b5694436c6af7750 "pdflatex"
+  "main.lof" 1766315230.88384 1684 6d4489fce0060604ed7b8d06f92bb50c "pdflatex"
+  "main.tex" 1766315203.68011 95108 7db8ffea4c2eb74171626bbb94450023 ""
+  "main.toc" 1766315230.8836 4571 bdafd5e1e136c69c6f47ca9d6606cfda "pdflatex"
   (generated)
   "main.aux"
   "main.lof"
