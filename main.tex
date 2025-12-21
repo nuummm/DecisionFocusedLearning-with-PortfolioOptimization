@@ -14,15 +14,27 @@
 \setsansfont{Helvetica}
 \setjamainfont[
   UprightFont=HaranoAjiMincho-Regular.otf,
-  BoldFont=HaranoAjiMincho-Bold.otf
+  BoldFont=HaranoAjiMincho-Bold.otf,
+  ItalicFont=HaranoAjiMincho-Regular.otf,
+  ItalicFeatures={FakeSlant=0.2},
+  BoldItalicFont=HaranoAjiMincho-Bold.otf,
+  BoldItalicFeatures={FakeSlant=0.2}
 ]{HaranoAjiMincho-Regular.otf}
 \setjasansfont[
   UprightFont=HaranoAjiGothic-Medium.otf,
-  BoldFont=HaranoAjiGothic-Bold.otf
+  BoldFont=HaranoAjiGothic-Bold.otf,
+  ItalicFont=HaranoAjiGothic-Medium.otf,
+  ItalicFeatures={FakeSlant=0.2},
+  BoldItalicFont=HaranoAjiGothic-Bold.otf,
+  BoldItalicFeatures={FakeSlant=0.2}
 ]{HaranoAjiGothic-Medium.otf}
 \setjamonofont[
   UprightFont=HaranoAjiGothic-Medium.otf,
-  BoldFont=HaranoAjiGothic-Bold.otf
+  BoldFont=HaranoAjiGothic-Bold.otf,
+  ItalicFont=HaranoAjiGothic-Medium.otf,
+  ItalicFeatures={FakeSlant=0.2},
+  BoldItalicFont=HaranoAjiGothic-Bold.otf,
+  BoldItalicFeatures={FakeSlant=0.2}
 ]{HaranoAjiGothic-Medium.otf}
 
 \usepackage{graphicx}
@@ -42,7 +54,8 @@
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \theoremstyle{definition}
-\newtheorem{theorem}{定理}
+\newtheorem{theorem}{定理}[chapter]
+\newtheorem{proposition}{命題}[chapter]
 \renewcommand{\proofname}{証明}
 
 \setcounter{tocdepth}{3}
@@ -133,14 +146,14 @@
 近年は機械学習の発展により,各資産の将来リターンをデータ駆動的に推定し,
 その推定値を最適化問題に入力して投資配分を得る枠組みが一般的である.
 このとき,多くの場合で予測誤差を最小化する目的で学習される.
-しかし,この学習目標が必ずしも投資成績（意思決定品質）の改善に直結するとは限らないことが指摘されている.
+しかし,この学習目標が必ずしも投資成績（意思決定品質）の改善に直結するとは限らないことが指摘されている\cite{lahoud2025,mandi2024}.
 このギャップの一因は,予測と最適化を独立に扱う二段階構造にある.
 すなわち,わずかな予測誤差であっても最適化段階で増幅され,最終的な投資配分が大きく変化し,
 結果としてリスク調整後成績などの評価指標が悪化する場合があり得る.
-この現象は,推定不確実性が大きい局面や制約を含む現実的設定において,より顕在化しやすい.
+この現象は,推定不確実性が大きい局面や制約を含む現実的設定において,より顕在化しやすい\cite{chopraziemba1993}.
 \par
 以上を背景として,近年,予測精度そのものではなく,後続の最適化問題を通じて定義される意思決定の質を直接最適化する
-意思決定重視学習（Decision-Focused Learning;  DFL）が注目されている.
+意思決定重視学習（Decision-Focused Learning;  DFL）が注目されている\cite{mandi2024}.
 本論文では,「推定値に基づいて得られる投資配分が,理想的配分と比べてどれだけ目的関数値を悪化させるか」を意思決定誤差（機会損失）と呼ぶ.
 DFL では,予測モデルの学習目標を「推定値と実現値の誤差」ではなく,この意思決定誤差を直接最小化するように定める.
 
@@ -180,20 +193,24 @@ c(\boldsymbol{w}_i^\star,\boldsymbol{r}_i)
 
 \section{関連研究}
 \par
-ポートフォリオ最適化は Markowitz による平均--分散ポートフォリオ最適化モデル（Mean--Variance Optimization; MVO）を起点として,
+ポートフォリオ最適化は Markowitz による平均--分散ポートフォリオ最適化モデル（Mean--Variance Optimization; MVO）\cite{markowitz1952} を起点として,
 制約付き最適化,ロバスト最適化,推定誤差を考慮した手法など多岐に拡張されてきた.
 MVO は,期待リターンとリスクを明示的に扱えるため,理論的にも実務的にも解釈しやすい基準モデルとして広く用いられてきた.
 一方で,期待リターン推定は回帰・時系列モデルから機械学習まで幅広く研究されている.
+平均推定誤差が最適配分に与える影響の大きさは,Chopra and Ziemba\cite{chopraziemba1993} により定量的に示されている.
 
 \par
 従来の多くの研究および実務では,予測モデルを予測誤差（MSE など）の最小化で学習する予測精度重視学習（Prediction-Focused Learning; PFL）に基づき,得られた推定値を最適化問題に入力して投資配分を決定する.
-このように,推定誤差の最小化により推定モデルを学習し,得られた推定値を最適化問題に入力して投資配分を得る二段階構造が広く用いられている.
-しかし,PFL による学習目的は最終的な最適化目的と必ずしも一致しないため,予測誤差と投資成績の乖離が生じ得る.
+このように,推定誤差の最小化により推定モデルを学習し,得られた推定値を最適化問題に入力して投資配分を得る二段階構造が広く用いられている\cite{lahoud2025}.
+しかし,PFL による学習目的は最終的な最適化目的と必ずしも一致しないため,予測誤差と投資成績の乖離が生じ得る\cite{mandi2024}.
 
 \par
-この課題に対し,予測と最適化を統合的に扱う枠組みとして DFL が提案されている.
+この課題に対し,予測と最適化を統合的に扱う枠組みとして DFL が提案されている\cite{mandi2024}.
 DFL では,学習過程に最適化問題を組み込み,最適化解を介して定義される意思決定誤差を直接最小化する.
-近年は,この学習を可能にするための定式化や再定式化,および数値計算上の安定性に関する検討が進められている.
+さらに,平均--分散ポートフォリオ選択に DFL を適用し,推定モデルが意思決定構造によりどのように影響を受けるかを分析する研究も報告されている\cite{lee2025}.
+\par
+また,平均--分散ポートフォリオ最適化に対して推定と最適化を統合的に扱う予測統合型手法として IPO が提案されている\cite{butlerkwon2023}.
+加えて,DFL を悲観的二段階最適化として厳密に捉える理論的整理\cite{bucarey2024} や,数値安定性の改善に関するアルゴリズム的検討\cite{shah2022} も進められている.
 
 \section{本研究の貢献}
 \par
@@ -230,7 +247,7 @@ DFL では,学習過程に最適化問題を組み込み,最適化解を介し�
 平均--分散モデルに基づくポートフォリオ最適化問題は,目的関数 \eqref{eq:mvo_obj} を最小化し,制約 \eqref{eq:mvo_budget}--\eqref{eq:mvo_nonneg} のもとで投資配分を決定する問題として定式化される.
 \begin{align}
 c(\boldsymbol{w}, \boldsymbol{r})
-&= -\boldsymbol{r}^\top \boldsymbol{w}
+&:= -(1-\delta)\boldsymbol{r}^\top \boldsymbol{w}
 + \frac{\delta}{2}\boldsymbol{w}^\top \boldsymbol{V}\boldsymbol{w},
 \label{eq:mvo_obj}\\
 \boldsymbol{1}^\top \boldsymbol{w}
@@ -241,12 +258,12 @@ c(\boldsymbol{w}, \boldsymbol{r})
 \label{eq:mvo_nonneg}
 \end{align}
 \par
-ここで $\delta>0$ はリスク回避パラメータであり,大きいほど分散リスクを重視した投資配分が得られる.目的関数 $c(\boldsymbol{w}, \boldsymbol{r})$ は,最小化問題として扱うために期待リターン項に負号を付した形で表現しており,期待リターンを大きくするほど $-\boldsymbol{r}^\top \boldsymbol{w}$ が小さくなる.一方で $\frac{\delta}{2}\boldsymbol{w}^\top \boldsymbol{V}\boldsymbol{w}$ は分散リスクを表す.共分散行列 $\boldsymbol{V}$ が正定値である場合,本問題は凸二次計画問題となり,大域的最適解が一意に定まる.
+ここで $0\le\delta\le 1$ は,期待リターン項と分散リスク項の比重を直接制御するパラメータである.最小化問題として扱うために期待リターン項に負号を付しており,期待リターンを大きくするほど $-\boldsymbol{r}^\top \boldsymbol{w}$ が小さくなる.また $\frac{\delta}{2}\boldsymbol{w}^\top \boldsymbol{V}\boldsymbol{w}$ は分散リスクを表す.共分散行列 $\boldsymbol{V}$ が正定値である場合,本問題は凸二次計画問題となり,大域的最適解が一意に定まる.なお,標準的な平均--分散モデルで用いられるリスク回避係数 $\gamma>0$ を用いた表現 $-\boldsymbol{r}^\top\boldsymbol{w}+\frac{\gamma}{2}\boldsymbol{w}^\top\boldsymbol{V}\boldsymbol{w}$ は,係数の単調変換（$\gamma=\frac{\delta}{1-\delta}$, $\delta\in[0,1)$）により \eqref{eq:mvo_obj} と対応する.
 
 \par
-実際の運用においては,期待リターン $\boldsymbol{r}$ および共分散行列 $\boldsymbol{V}$ は未知であり,過去データから推定される.特に期待リターンの推定誤差は,最適化問題 \eqref{eq:mvo_obj}--\eqref{eq:mvo_nonneg} の解に大きな影響を与えることが知られている.
+実際の運用においては,期待リターン $\boldsymbol{r}$ および共分散行列 $\boldsymbol{V}$ は未知であり,過去データから推定される.特に期待リターンの推定誤差は,最適化問題 \eqref{eq:mvo_obj}--\eqref{eq:mvo_nonneg} の解に大きな影響を与えることが知られている\cite{chopraziemba1993}.
 \par
-このため,実務では回帰モデルや時系列モデル,近年では機械学習手法を用いてリターンを推定し,その推定値を最適化問題に入力するという枠組みが一般的に用いられている.本稿では,期待リターンの推定値を $\hat{\boldsymbol{r}}$ として表す.
+このため,実務では回帰モデルや時系列モデル,近年では機械学習手法を用いてリターンを推定し,その推定値を最適化問題に入力するという枠組みが一般的に用いられている\cite{lahoud2025}.本稿では,期待リターンの推定値を $\hat{\boldsymbol{r}}$ として表す.
 \par
 本章では,期待リターンは特徴量に対して線形に表現できると仮定し,特徴量ベクトル $\boldsymbol{x}_i \in \mathbb{R}^d$ に基づいて次期リターンの推定値を次の形で与える.
 \begin{equation}
@@ -265,12 +282,12 @@ c(\boldsymbol{w}, \boldsymbol{r})
 \label{eq:ols}
 \end{equation}
 \par
-得られた推定値 $\hat{\boldsymbol{r}}_i$ を用いて,ポートフォリオ最適化問題 \eqref{eq:mvo_obj}--\eqref{eq:mvo_nonneg} を解くことで投資配分が決定される.本稿では,このように推定誤差の最小化を学習目的とし,推定と最適化を分離して扱う枠組みを PFL と呼ぶ.
+得られた推定値 $\hat{\boldsymbol{r}}_i$ を用いて,ポートフォリオ最適化問題 \eqref{eq:mvo_obj}--\eqref{eq:mvo_nonneg} を解くことで投資配分が決定される.本稿では,このように推定誤差の最小化を学習目的とし,推定と最適化を分離して扱う枠組みを PFL と呼ぶ\cite{lahoud2025,mandi2024}.
 
 \section{予測統合型アプローチ（IPO）}
 \par
 \par
-推定と最適化の分離に起因する課題に対し,Butler and Kwon は,推定モデルの学習段階にポートフォリオ最適化問題を直接組み込む予測統合型アプローチとして,Integrating Prediction in Mean--Variance Portfolio Optimization（IPO）を提案した.
+推定と最適化の分離に起因する課題に対し,Butler and Kwon \cite{butlerkwon2023} は,推定モデルの学習段階にポートフォリオ最適化問題を直接組み込む予測統合型アプローチとして,Integrating Prediction in Mean--Variance Portfolio Optimization（IPO）を提案した.
 \par
 IPO は,推定モデルのパラメータを,予測誤差ではなく「推定に基づいて得られる最終的な意思決定の良さ」を通じて更新する枠組みである.例えば,各時点 $t$ において推定値 $\hat{\boldsymbol{r}}_t(\boldsymbol{\theta})$ が与えられたとき,ポートフォリオ最適化の最適解を $\boldsymbol{w}^*(\hat{\boldsymbol{r}}_t)$ とすると,IPO は次の最適化問題として表現できる.
 \begin{equation}
@@ -292,11 +309,19 @@ c(\boldsymbol{w},\,\hat{\boldsymbol{r}}_t).
 \par
 一方で, IPO は一般に非凸最適化問題として定式化され,勾配ベースの手法により学習が行われる.そのため,計算コストの増大や,初期値に依存した局所解への収束,制約付き設定における数値的安定性といった課題も指摘されている.特に,非負制約や予算制約を含む実務的な平均--分散最適化問題に対しては,学習の安定性が必ずしも保証されない場合がある.
 
+\section{意思決定考慮型アプローチ（SPO+）}
+\par
+推定と最適化の分離に起因する課題に対し,Elmachtoub and Grigas \cite{elmachtoubgrigas2022} は Smart Predict--then--Optimize（SPO+）を提案した.SPO+ は,従来の二段階法の枠組みを維持しつつ,最適化問題の構造を反映した surrogate loss を用いて推定モデルを学習する手法である.
+\par
+この点で SPO+ は,純粋な prediction-focused learning よりも意思決定を意識した学習を行う一方,最適化問題を学習ループに完全に組み込む DFL とは異なり,二段階構造に基づくアプローチと位置づけられる.
+\par
+本研究では,SPO+ を「二段階法における意思決定考慮型手法」の代表例として比較対象に含める.
+
 \section{共分散行列の推定}
 \par
-本研究では期待リターンの推定に焦点を当て,共分散行列の推定そのものは研究対象としない.共分散推定誤差がポートフォリオ最適化の安定性に与える影響は大きく,shrinkage 推定や時間減衰を考慮した推定法など,これまでに多くの手法が提案されてきた.
+本研究では期待リターンの推定に焦点を当て,共分散行列の推定そのものは研究対象としない.共分散推定誤差がポートフォリオ最適化の安定性に与える影響は大きく,shrinkage 推定\cite{chen2010oas} や時間減衰を考慮した推定法\cite{jpm2006riskmetrics} など,これまでに多くの手法が提案されてきた.
 \par
-本研究では,これら既存研究の知見に基づき,小標本・短期ローリング設定において数値的安定性が高いことが知られている手法として,Oracle Approximating Shrinkage（OAS）と Exponentially Weighted Moving Average（EWMA）を組み合わせた共分散推定法を採用する.共分散推定手法の比較や最適化は本研究の主目的ではないため,以降の数値実験では全ての比較手法に対して同一の共分散推定法を用い,これを固定した上で,DFL による推定モデル学習の効果に焦点を当てる.
+本研究では,これら既存研究の知見に基づき,小標本・短期ローリング設定において数値的安定性が高いことが知られている手法として,Oracle Approximating Shrinkage（OAS）\cite{chen2010oas} と Exponentially Weighted Moving Average（EWMA）\cite{jpm2006riskmetrics} を組み合わせた共分散推定法を採用する.共分散推定手法の比較や最適化は本研究の主目的ではないため,以降の数値実験では全ての比較手法に対して同一の共分散推定法を用い,これを固定した上で,DFL による推定モデル学習の効果に焦点を当てる.
 
 %========================
 % 第3章：提案手法
@@ -304,7 +329,7 @@ c(\boldsymbol{w},\,\hat{\boldsymbol{r}}_t).
 \chapter{提案手法}
 \section{二段階最適化モデル}
 \par
-本章では,DFL の枠組みに基づき,平均--分散ポートフォリオ最適化問題を二段階最適化問題として定式化する.本研究では,第2章の標準形におけるリスク回避パラメータ（$\delta>0$）を,リターン項とリスク項の双方に重みとして反映させた形で正規化し,$\delta\in[0,1]$ により両者を重み付けした修正平均--分散モデルを用いる.この表現は,リターン重視とリスク重視の度合いを $[0,1]$ 上で直接制御できるようにしたものであり,第2章の標準形とはパラメータ化が異なるだけで,係数の単調変換により対応する.
+本章では,DFL の枠組みに基づき,平均--分散ポートフォリオ最適化問題を二段階最適化問題として定式化する.以降,第2章で導入した平均--分散コスト $c(\cdot,\cdot)$（$\delta\in[0,1]$ によりリターン項とリスク項を重み付けした形）を用いる.
 
 \subsection{問題設定と推定モデル}
 \par
@@ -356,11 +381,11 @@ c(\boldsymbol{w}_i, \boldsymbol{r}_i).
 \label{eq:ideal_solution_new}
 \end{equation}
 \par
-この投資配分は実運用では利用できないが,DFL における意思決定誤差の評価基準として用いる.
+この投資配分は実運用では利用できないが,学習ではこの理想解に対する目的関数差を最小化することで意思決定誤差の低減を図る.
 
 \subsection{上位問題：意思決定誤差最小化}
 \par
-Decision-Focused Learning では,予測モデルのパラメータ $\boldsymbol{\theta}$ を,予測誤差ではなく意思決定の質を通じて学習する.本研究では,各時点 $i$ における意思決定誤差を次のように定義する.
+DFL では,予測モデルのパラメータ $\boldsymbol{\theta}$ を,予測誤差ではなく意思決定の質を通じて学習する.本研究では,各時点 $i$ における意思決定誤差を次のように定義する.
 \begin{equation}
 \ell_i(\boldsymbol{\theta})
 = c\!\left(\hat{\boldsymbol{w}}_i(\boldsymbol{\theta}, \boldsymbol{x}_i), \boldsymbol{r}_i\right)
@@ -369,8 +394,6 @@ Decision-Focused Learning では,予測モデルのパラメータ $\boldsymbol{
 \end{equation}
 \par
 このとき,上位問題は次の二段階最適化問題として定式化される.
-\begin{subequations}
-\label{eq:upper_level_new}
 \begin{align}
 \min_{\boldsymbol{\theta}} \quad
 & \frac{1}{T}\sum_{i=1}^{T} \ell_i(\boldsymbol{\theta}),
@@ -380,37 +403,33 @@ Decision-Focused Learning では,予測モデルのパラメータ $\boldsymbol{
 \ \text{は}\ \eqref{eq:lower_level_new}\ \text{の最適解}.
 \label{eq:upper_level_constraint}
 \end{align}
-\end{subequations}
 \par
 すなわち,本研究で扱う問題は,制約付き平均--分散ポートフォリオ最適化を下位問題に含む二段階最適化問題である.
 
 \subsection{問題の性質と再定式化への動機}
 \par
-定式化 \eqref{eq:upper_level_new} は,下位問題に $\arg\min$ 演算子を含むため,直接的な数値計算が困難である.また,下位問題の解を通じて定義される目的関数は一般に非凸となる.
+定式化 \eqref{eq:upper_level_obj}--\eqref{eq:upper_level_constraint} は,下位問題に $\arg\min$ 演算子を含むため,直接的な数値計算が困難である.さらに,目的関数は下位問題の最適解写像 $\hat{\boldsymbol{w}}_i(\boldsymbol{\theta},\boldsymbol{x}_i)$ を介して $\boldsymbol{\theta}$ に依存するため,一般に非凸となる.
 \par
-そこで本研究では,下位問題の最適性条件を用いて $\arg\min$ 演算子を除去し,単一レベルの非凸二次計画問題として再定式化する.次節では,強双対性条件に基づく定式化（DFL-OPT-D）および KKT 条件に基づく定式化（DFL-OPT-K）について詳述する.
+そこで本研究では,先行研究 \cite{bucarey2024} を参考に,下位問題の最適性条件を用いて $\arg\min$ を含む二段階構造を単一レベルの非凸二次計画問題へ再定式化する.次節では,強双対性条件に基づく定式化（DFL-OPT-D）および KKT 条件に基づく定式化（DFL-OPT-K）を示す.
 
 \section{再定式化による単一レベル最適化問題}
 \par
-前節で定式化した二段階最適化問題 \eqref{eq:upper_level_new} は,下位問題に $\arg\min$ 演算子を含むため,直接的な数値計算が困難である.そこで本節では,下位問題の最適性条件を用いて $\arg\min$ 演算子を除去し,単一レベルの最適化問題として再定式化する.本研究では,先行研究に従い,(1) 強双対性条件に基づく再定式化（DFL-OPT-D）,(2) KKT 条件に基づく再定式化（DFL-OPT-K）の2通りの定式化を考える.
+本節では,前節の方針に従い,単一レベル化した2通りの定式化として,(1) 強双対性条件に基づく DFL-OPT-D,(2) KKT 条件に基づく DFL-OPT-K を示す.
 
 \subsection{下位問題のラグランジュ関数}
 \par
 各時点 $i$ における下位問題 \eqref{eq:lower_level_new} を再掲する.ここでは簡単のため $\hat{\boldsymbol{r}}_i := \hat{\boldsymbol{r}}_i(\boldsymbol{\theta}, \boldsymbol{x}_i)$ とおく.
-\begin{subequations}
-\label{eq:lower_level_recall}
 \begin{align}
-\min_{\boldsymbol{w}_i \in \mathbb{R}^d} \quad
+\min_{\boldsymbol{w}_i} \quad
 & -(1-\delta)\hat{\boldsymbol{r}}_i^\top \boldsymbol{w}_i
 + \frac{\delta}{2}\boldsymbol{w}_i^\top \boldsymbol{V}_i \boldsymbol{w}_i,
-\label{eq:lower_level_recall_obj}\\
+\label{eq:lower_level_recall}\\
 \text{s.t.} \quad
 & \boldsymbol{1}^\top \boldsymbol{w}_i = 1,
 \label{eq:lower_level_recall_budget}\\
 & \boldsymbol{w}_i \ge \boldsymbol{0}.
 \label{eq:lower_level_recall_nonneg}
 \end{align}
-\end{subequations}
 \par
 等式制約および不等式制約に対応するラグランジュ乗数を,それぞれ $\mu_i \in \mathbb{R}$,$\boldsymbol{\lambda}_i \in \mathbb{R}^d_{\ge 0}$ とすると,ラグランジュ関数は次のように与えられる.
 \begin{equation}
@@ -419,7 +438,7 @@ Decision-Focused Learning では,予測モデルのパラメータ $\boldsymbol{
 &=
 -(1-\delta)\hat{\boldsymbol{r}}_i^\top \boldsymbol{w}_i
 + \frac{\delta}{2}\boldsymbol{w}_i^\top \boldsymbol{V}_i \boldsymbol{w}_i
-+ \mu_i(\boldsymbol{1}^\top \boldsymbol{w}_i - 1)
++ \mu_i(1-\boldsymbol{1}^\top \boldsymbol{w}_i)
 - \boldsymbol{\lambda}_i^\top \boldsymbol{w}_i.
 \end{aligned}
 \label{eq:lagrangian}
@@ -427,35 +446,49 @@ Decision-Focused Learning では,予測モデルのパラメータ $\boldsymbol{
 
 \subsection{強双対性条件に基づく再定式化（DFL-OPT-D）}
 \par
-下位問題 \eqref{eq:lower_level_recall} は凸二次計画問題であり,スレーター条件が満たされるため,強双対性が成立する.このとき,原問題と双対問題の最適値が一致することから,次の条件が成り立つ.
+下位問題 \eqref{eq:lower_level_recall} は,$\boldsymbol{V}_i\succ\boldsymbol{0}$ および $\delta>0$ の仮定の下で目的関数が強凸となる凸二次計画問題である.また,制約集合 $\{\boldsymbol{w}\mid \boldsymbol{1}^\top\boldsymbol{w}=1,\ \boldsymbol{w}\ge\boldsymbol{0}\}$ は非空であり,例えば $\boldsymbol{w}=\frac{1}{d}\boldsymbol{1}$ は等式制約を満たし,かつ $\boldsymbol{w}>\boldsymbol{0}$ を満たす.したがって Slater 条件が成立する.
+以上より,本問題は強双対性を満たし,双対問題が存在する.
+\par
+弱双対性より,任意の主問題の実行可能解 $\boldsymbol{w}_i$ と双対変数 $(\boldsymbol{\lambda}_i,\mu_i)$（$\boldsymbol{\lambda}_i\ge\boldsymbol{0}$）に対して,双対目的値は主問題目的値の下界となる.
 \begin{equation}
 \begin{aligned}
 -(1-\delta)\hat{\boldsymbol{r}}_i^\top \boldsymbol{w}_i
 + \frac{\delta}{2}\boldsymbol{w}_i^\top \boldsymbol{V}_i \boldsymbol{w}_i
-\le
-\mu_i,
+\ge
+ \mu_i-\frac{\delta}{2}\boldsymbol{w}_i^\top \boldsymbol{V}_i \boldsymbol{w}_i,
 \end{aligned}
 \label{eq:dual_value}
 \end{equation}
 \par
+強双対性より,最適解においては \eqref{eq:dual_value} の不等式は等号で成立する.
+\par
 さらに,ラグランジュ関数の一階条件より,
 \begin{equation}
-\delta \boldsymbol{V}_i \boldsymbol{w}_i
+\begin{aligned}
+\nabla_{\boldsymbol{w}_i}\mathcal{L}_i(\boldsymbol{w}_i,\mu_i,\boldsymbol{\lambda}_i)
+&= \delta \boldsymbol{V}_i \boldsymbol{w}_i
 -(1-\delta)\hat{\boldsymbol{r}}_i
-=
--\mu_i \boldsymbol{1}
-+ \boldsymbol{\lambda}_i.
+ - \mu_i \boldsymbol{1}
+ - \boldsymbol{\lambda}_i\\
+&= \boldsymbol{0}.
+\end{aligned}
 \label{eq:dual_stationarity}
 \end{equation}
 \par
-以上を用いることで,二段階最適化問題 \eqref{eq:upper_level_new} は,次の単一レベル最適化問題として再定式化される.
-\begin{subequations}
-\label{eq:dfl_dual}
+また,強双対性と \eqref{eq:dual_stationarity} を用いると,最適値一致条件は次の等式として表せる（導出は Appendix に示す）.
+\begin{equation}
+\delta \boldsymbol{w}_i^\top \boldsymbol{V}_i \boldsymbol{w}_i
+-(1-\delta)\hat{\boldsymbol{r}}_i^\top \boldsymbol{w}_i
+=\mu_i.
+\label{eq:dual_strong_simplified}
+\end{equation}
+\par
+以上を用いることで,二段階最適化問題 \eqref{eq:upper_level_obj}--\eqref{eq:upper_level_constraint} は,次の単一レベル最適化問題として再定式化される.
 \begin{align}
 \min_{\boldsymbol{\theta}, \{\boldsymbol{w}_i,\mu_i,\boldsymbol{\lambda}_i\}_{i=1}^{T}}
 \quad
 & \frac{1}{T}\sum_{i=1}^{T}
-\left(
+ \left(
 -(1-\delta)\boldsymbol{r}_i^\top \boldsymbol{w}_i
 + \frac{\delta}{2}\boldsymbol{w}_i^\top \boldsymbol{V}_i \boldsymbol{w}_i
 \right),
@@ -470,19 +503,19 @@ Decision-Focused Learning では,予測モデルのパラメータ $\boldsymbol{
 & \boldsymbol{\lambda}_i \ge \boldsymbol{0},
 \qquad i=1,\dots,T,
 \label{eq:dfl_dual_lambda_nonneg}\\
-& -(1-\delta)\hat{\boldsymbol{r}}_i^\top \boldsymbol{w}_i
-+ \frac{\delta}{2}\boldsymbol{w}_i^\top \boldsymbol{V}_i \boldsymbol{w}_i
-\le \mu_i,
+& \delta \boldsymbol{w}_i^\top \boldsymbol{V}_i \boldsymbol{w}_i
+-(1-\delta)\hat{\boldsymbol{r}}_i^\top \boldsymbol{w}_i
+= \mu_i,
 \qquad i=1,\dots,T,
 \label{eq:dfl_dual_value}\\
 & \delta \boldsymbol{V}_i \boldsymbol{w}_i
 -(1-\delta)\hat{\boldsymbol{r}}_i
-= -\mu_i \boldsymbol{1}
-+ \boldsymbol{\lambda}_i,
+- \mu_i \boldsymbol{1}
+- \boldsymbol{\lambda}_i
+= \boldsymbol{0},
 \qquad i=1,\dots,T.
 \label{eq:dfl_dual_stationarity}
 \end{align}
-\end{subequations}
 \par
 この定式化を DFL-OPT-D と呼ぶ.
 
@@ -492,16 +525,18 @@ Decision-Focused Learning では,予測モデルのパラメータ $\boldsymbol{
 \par
 一次の最適性条件
 \begin{equation}
-\delta \boldsymbol{V}_i \boldsymbol{w}_i
+\begin{aligned}
+\nabla_{\boldsymbol{w}_i}\mathcal{L}_i(\boldsymbol{w}_i,\mu_i,\boldsymbol{\lambda}_i)
+&= \delta \boldsymbol{V}_i \boldsymbol{w}_i
 -(1-\delta)\hat{\boldsymbol{r}}_i
-= -\mu_i \boldsymbol{1}
-+ \boldsymbol{\lambda}_i,
+ - \mu_i \boldsymbol{1}
+ - \boldsymbol{\lambda}_i\\
+&= \boldsymbol{0},
+\end{aligned}
 \label{eq:kkt_stationarity}
 \end{equation}
 \par
 実行可能性条件
-\begin{subequations}
-\label{eq:kkt_feasible}
 \begin{align}
 \boldsymbol{1}^\top \boldsymbol{w}_i &= 1,
 \label{eq:kkt_budget}\\
@@ -510,7 +545,6 @@ Decision-Focused Learning では,予測モデルのパラメータ $\boldsymbol{
 \boldsymbol{\lambda}_i &\ge \boldsymbol{0}.
 \label{eq:kkt_lambda_nonneg}
 \end{align}
-\end{subequations}
 \par
 相補性条件
 \begin{equation}
@@ -519,13 +553,11 @@ Decision-Focused Learning では,予測モデルのパラメータ $\boldsymbol{
 \end{equation}
 \par
 これらを用いることで,次の単一レベル最適化問題が得られる.
-\begin{subequations}
-\label{eq:dfl_kkt}
 \begin{align}
 \min_{\boldsymbol{\theta}, \{\boldsymbol{w}_i,\mu_i,\boldsymbol{\lambda}_i\}_{i=1}^{T}}
 \quad
 & \frac{1}{T}\sum_{i=1}^{T}
-\left(
+ \left(
 -(1-\delta)\boldsymbol{r}_i^\top \boldsymbol{w}_i
 + \frac{\delta}{2}\boldsymbol{w}_i^\top \boldsymbol{V}_i \boldsymbol{w}_i
 \right),
@@ -542,77 +574,82 @@ Decision-Focused Learning では,予測モデルのパラメータ $\boldsymbol{
 \label{eq:dfl_kkt_lambda_nonneg}\\
 & \delta \boldsymbol{V}_i \boldsymbol{w}_i
 -(1-\delta)\hat{\boldsymbol{r}}_i
-= -\mu_i \boldsymbol{1}
-+ \boldsymbol{\lambda}_i,
+- \mu_i \boldsymbol{1}
+- \boldsymbol{\lambda}_i
+= \boldsymbol{0},
 \qquad i=1,\dots,T,
 \label{eq:dfl_kkt_stationarity}\\
 & \boldsymbol{\lambda}_i \odot \boldsymbol{w}_i = \boldsymbol{0},
 \qquad i=1,\dots,T.
 \label{eq:dfl_kkt_complementarity}
 \end{align}
-\end{subequations}
 \par
 この定式化を DFL-OPT-K と呼ぶ.
 
-\subsection{二つの再定式化の性質}
+\subsection{DFL-OPT-D と DFL-OPT-K の関係}
 \par
-DFL-OPT-D \eqref{eq:dfl_dual} と DFL-OPT-K \eqref{eq:dfl_kkt} は,理論的には下位問題の最適性条件を表現しており,同一の解集合を持つ.一方で,数値計算の観点からは両者は異なる特徴を持つ.DFL-OPT-D は相補性条件を含まない一方で,非線形な不等式制約を含む.DFL-OPT-K は相補性条件という非線形制約を含むが,制約の構造はより直接的である.
+本節では,提案手法である DFL-OPT-D と DFL-OPT-K の理論的関係を整理する.両者はいずれも同一の下位ポートフォリオ最適化問題 \eqref{eq:lower_level_recall} に基づいて導出されるが,下位問題の最適性条件の表現方法が異なる.
 \par
-これらの違いにより,実際の数値計算では,初期化やソルバーの探索挙動に依存して,解の安定性や収束性に差が生じる可能性がある.これらの点については,第4章の数値実験において詳しく検証する.
-
-\section{計算量および解法に関する注意}
+\begin{proposition}[DFL-OPT-D と DFL-OPT-K の理論的同値性]
+\label{prop:equivalence}
+各 $i=1,\dots,T$ に対して,下位のポートフォリオ最適化問題 \eqref{eq:lower_level_recall} が凸二次計画問題であり,Slater 条件を満たすと仮定する.このとき,DFL-OPT-D（\eqref{eq:dfl_dual_obj}--\eqref{eq:dfl_dual_stationarity}）と DFL-OPT-K（\eqref{eq:dfl_kkt_obj}--\eqref{eq:dfl_kkt_complementarity}）は同一の解集合を持つ.すなわち,両定式化は理論的に等価である.
+\end{proposition}
 \par
-本章で示した DFL-OPT-D および DFL-OPT-K は,いずれも単一レベルの最適化問題として定式化されているが,その計算量的性質には注意が必要である.
+\noindent
+（証明は Appendix に示す.）
 \par
-まず,両定式化はいずれも非線形制約を含む非凸二次計画問題（non-convex QCQP）であり,一般にはグローバル最適解を保証する多項式時間アルゴリズムは存在しない.そのため,数値計算においては,局所最適解への収束や初期化への依存といった問題が生じ得る.
+以上より,DFL-OPT-D と DFL-OPT-K は理論的には等価である.しかしながら,数値計算の観点からは両者は異なる特徴を持つ.DFL-OPT-D は相補性条件を含まない一方で,双対関数を含む非線形な等式制約\eqref{eq:dfl_dual_value}を含む.一方,DFL-OPT-K は相補性条件という非線形制約を含むが,制約構造はより直接的である.
 \par
-次に,DFL-OPT-D と DFL-OPT-K は理論的には下位問題の最適性条件を表現しており,同一の解集合を持つ.しかしながら,数値計算の観点からは両者は異なる特徴を持つ.DFL-OPT-D は相補性条件を含まない一方で,非線形な不等式制約を含む.一方,DFL-OPT-K は相補性条件という非線形制約を含むが,制約構造はより直接的である.この違いにより,ソルバーの探索挙動や収束性に差が生じる可能性がある.
-\par
-さらに,本研究で扱う問題は,上位問題と下位問題が強く結合しているため,初期解の選択が数値計算の安定性に影響を与えることがある.特に,異なる初期化を用いた場合に,異なる局所解に収束する可能性がある点には留意が必要である.
-\par
-以上を踏まえ,本研究では,特定の解法に依存した結論を導くのではなく,複数の再定式化および初期化条件のもとで数値実験を行い,提案手法の挙動と特性を総合的に評価する立場を取る.
+これらはいずれも非線形制約を含む非凸最適化問題であるため,一般には大域的最適解を保証する多項式時間アルゴリズムは存在せず,数値計算においては局所解への収束や初期値依存性が生じ得る.これらの違いが数値的安定性や計算効率に与える影響については,第4章の数値実験において比較・検討する.
 
 %========================
 % 第4章：数値実験
 %========================
 \chapter{数値実験}
 \par
-本章では,第3章で提案した Decision-Focused Learning（DFL）に基づくポートフォリオ最適化手法について,実データを用いた数値実験によりその特性を検証する.本節では,実験の基本方針,使用データ,共分散推定方法,比較手法,ならびに初期化およびソルバー設定について述べる.
+\noindent
+本章では,第3章で提案した DFL-OPT-D および DFL-OPT-K の数値的挙動と実務的有効性を,実データを用いたタクティカル・アセット・アロケーション（Tactical Asset Allocation; TAA）の文脈で評価する.特に,（i）dual 定式化と KKT 定式化の数値的差異,（ii）初期化の影響,（iii）提案手法がどのような状況で相対的な優位性を示すか,という点に焦点を当てる.
 
 \section{実データ実験の設定}
+\par
+\noindent
+本節では,実験の基本方針,使用データ,共分散推定方法,比較手法,ならびに初期化およびソルバー設定について述べる.本章を通じて,比較手法間で実験設定を可能な限り統一し,学習枠組みおよび定式化の違いに起因する差異に焦点を当てる.
 
 \subsection{実験の基本方針}
 \par
-第3章で示した DFL-OPT-D および DFL-OPT-K は,いずれも非凸な二次計画問題として定式化される.このため,数値計算においては初期解やソルバーの探索挙動に依存して,異なる局所解に収束する可能性がある.
+第3章で示したとおり, DFL-OPT-D および DFL-OPT-K はいずれも,下位に制約付き平均--分散最適化問題を含む非凸な非線形最適化問題として定式化される.そのため,数値計算においては初期解やソルバー設定に依存して,異なる局所解へ収束する可能性がある.
 \par
-本研究の目的は,特定の初期化やソルバー調整によって得られた「最良の局所解」をもって性能を主張することではなく,実務的な制約条件の下で,意思決定重視学習としてどのような挙動・特性が現れるかを評価することにある.
+本研究の目的は,特定の初期化やハイパーパラメータ調整によって得られた「最良の局所解」を主張することではない.むしろ,実務的に自然な制約条件と統一された実験設定の下で, DFL に基づく定式化がどのような挙動・特性を示すかを体系的に評価することを目的とする.
 \par
-そのため,実データおよび実務を想定した制約条件を用いたうえで,比較手法間では可能な範囲で予測モデル,取引制約,入力情報,評価指標を揃え,初期化およびソルバー設定を明示して再現性を確保する.ただし SPO+ は線形最適化を前提とするため,本研究の制約付き MVO をそのまま下位問題として扱えない.そこで SPO+ では,リスク項を制約側に組み込むことで線形最適化に整合する形に変換した設定を用い,その他の条件は可能な限り統一する.
+このため,本章では可能な限り
+\begin{itemize}
+  \item 使用データ
+  \item 特徴量設計
+  \item 制約条件
+  \item 評価指標
+  \item 初期化およびソルバー設定
+\end{itemize}
+を比較手法間で統一し,モデル構造および学習方式の違いそのものに起因する差異に焦点を当てる.
 
 \subsection{使用データおよび学習・再バランス設定}
 \par
-実データ実験では,短期タクティカル・アセットアロケーション（Tactical Asset Allocation; TAA）を想定し,週次リターンデータを用いる.分析期間は 2006/01/01 から 2025/12/31 までの 20 年間とする（最終提出時には取得可能な最新データに基づき同区間の系列へ差し替える）.投資対象は以下の 4 資産とする.
+実データ実験では,短期タクティカル・アセット・アロケーション（Tactical Asset Allocation; TAA）を想定し, Yahoo Finance から取得した調整後終値に基づく週次リターン（2006 年 1 月から 2025 年 12 月）を用いる.投資対象は,異なるリスク特性を代表する ETF として,以下の 4 資産を選択する.
 \begin{itemize}
-  \item SPY：米国株式（S\&P 500）
-  \item GLD：金
-  \item EEM：新興国株式
-  \item TLT：米国長期国債
+  \item SPDR S\&P 500 ETF Trust（SPY）：米国株式
+  \item SPDR Gold Shares（GLD）：金
+  \item iShares MSCI Emerging Markets ETF（EEM）：新興国株式
+  \item iShares 20+ Year Treasury Bond ETF（TLT）：米国長期国債
 \end{itemize}
 \par
-各時点 $t$ における特徴量 $\boldsymbol{x}_t$ として,直近 26 週のリターン平均を用いる.この設定は,短期的な市場トレンドを捉えつつ,過度なノイズへの反応を抑制することを意図したものであり,短期 TAA において一般的に用いられる時間スケールに基づいている.
+各時点 $t$ における特徴量 $\boldsymbol{x}_t$ として,直近 26 週の週次リターン平均を用いる.これは,短期的なトレンド情報を反映しつつ,週次データに内在するノイズを一定程度平滑化するための設定である.
 \par
-モデルの学習および更新は,以下のローリング手順により行う.
-\begin{itemize}
-  \item 直近 26 週のデータを用いて予測モデルのパラメータを推定
-  \item 推定したパラメータを次の 4 週間にわたって固定して使用
-  \item 以降,同様の手順を繰り返す
-\end{itemize}
+モデルの学習およびポートフォリオの更新はローリング手順に基づき,直近 26 週（約半年）の週次リターンを用いて推定を行い,推定したパラメータは次の 4 週間（約 1 か月）にわたって固定して用いる.これにより,週次データの短期ノイズに過度に反応することを抑えつつ,半年程度の情報に基づく短期的な状態推定と月次の運用更新という時間スケールを両立する.
 \par
-この再バランス頻度は,推定誤差の増幅や過度な売買を避けつつ,市場環境の変化に一定程度追随することを目的として設定している.なお,本章の実験では,学習窓長や再バランス頻度の最適化は行わず,すべての比較手法に対して同一の設定を用いることで,モデル構造および学習方式の違いに焦点を当てる.これらのパラメータに対する感度分析については,後続の補足実験において検討する.
+なお,以降の実験ではリスクとリターンのトレードオフ係数を中庸的な設定として $\delta=0.5$ に固定する.本章ではハイパーパラメータ最適化は目的とせず,すべての手法で学習窓長と更新頻度を共通に固定することで,第 3 章の定式化および学習枠組みの差異の影響を比較する.
 
-\subsection{共分散行列の推定（OAS $\times$ EWMA）}
+\subsection{共分散行列の推定}
 \par
-本研究では,ポートフォリオ最適化に用いる共分散行列 $\boldsymbol{V}_t$ を,時間減衰を考慮した標本共分散行列に対して Oracle Approximating Shrinkage（OAS）を適用する方法により推定する.
+本研究では,ポートフォリオ最適化に用いる共分散行列 $\boldsymbol{V}_t$ を,時間減衰を考慮した標本共分散行列に対して Oracle Approximating Shrinkage（OAS）を適用する方法により推定する \cite{chen2010oas}.
 \par
 まず,時点 $t$ における EWMA 共分散行列 $\boldsymbol{S}_t$ を次式で定義する.
 \begin{equation}
@@ -624,7 +661,7 @@ DFL-OPT-D \eqref{eq:dfl_dual} と DFL-OPT-K \eqref{eq:dfl_kkt} は,理論的に�
 \label{eq:ewma_cov}
 \end{equation}
 \par
-ここで,$L=13$ はローリング窓長,$\alpha=0.97$ は時間減衰率であり,実務における業界慣例に基づき固定する.また,$\bar{\boldsymbol{r}}_t$ は同窓内の平均リターンを表す.
+ここで,$L=13$ はローリング窓長（約四半期）であり,本研究の短期ローリング設定に基づき固定する.また,$\alpha=0.97$ は時間減衰率であり,実務における業界慣例に基づき固定する \cite{jpm2006riskmetrics}.$\bar{\boldsymbol{r}}_t$ は同窓内の平均リターンを表す.
 \par
 次に,OAS に基づく縮小共分散行列 $\boldsymbol{V}_t$ を次のように定義する.
 \begin{equation}
@@ -636,109 +673,96 @@ DFL-OPT-D \eqref{eq:dfl_dual} と DFL-OPT-K \eqref{eq:dfl_kkt} は,理論的に�
 \label{eq:oas_cov}
 \end{equation}
 \par
-ここで $\phi_t\in[0,1]$ は縮小強度であり,OAS により解析的に決定される.具体的には,$d$ 次元,共分散推定に用いる（実効的な）サンプルサイズを $n_{\mathrm{eff}}$ とすると,
-\begin{equation}
-\phi_t
-= \min\left\{
-1,\ 
-\frac{\left(1-\frac{2}{d}\right)\mathrm{tr}(\boldsymbol{S}_t^2)+\mathrm{tr}(\boldsymbol{S}_t)^2}
-{\left(n_{\mathrm{eff}}+1-\frac{2}{d}\right)\left(\mathrm{tr}(\boldsymbol{S}_t^2)-\frac{\mathrm{tr}(\boldsymbol{S}_t)^2}{d}\right)}
-\right\}.
-\label{eq:oas_phi}
-\end{equation}
+ここで $\phi_t\in[0,1]$ は縮小強度であり,OAS により解析的に決定される.また,EWMA のように観測に重みを付ける場合,$n_{\mathrm{eff}}$ は「時間減衰率 $\alpha$ に対応する実効サンプルサイズ」とみなせる \cite{jpm2006riskmetrics}.OAS は,小標本下において標本共分散行列の推定誤差を抑制しつつ,分散構造の情報を保持する点で知られており,本研究のような短期ローリング設定と高い親和性を持つ \cite{chen2010oas}.縮小係数 $\phi_t$ および $n_{\mathrm{eff}}$ の具体式は Appendix に示す.
 \par
-EWMA のように観測に重みを付ける場合,$n_{\mathrm{eff}}$ は「時間減衰率 $\alpha$ に対応する実効サンプルサイズ」とみなせる.本研究のように有限窓 $L$ を用いるとき,重みを正規化した $\tilde{w}_k := \frac{(1-\alpha)\alpha^k}{1-\alpha^L}$（$k=0,\dots,L-1$）に対して
-\begin{equation}
-n_{\mathrm{eff}}
-:= \frac{1}{\sum_{k=0}^{L-1}\tilde{w}_k^2}
-= \frac{(1-\alpha^L)^2}{(1-\alpha)^2}\cdot\frac{1-\alpha^2}{1-\alpha^{2L}}
-= \frac{1+\alpha}{1-\alpha}\cdot\frac{(1-\alpha^L)^2}{1-\alpha^{2L}}.
-\label{eq:neff_ewma}
-\end{equation}
-\par
-特に $L$ が十分大きい場合には $n_{\mathrm{eff}} \approx \frac{1+\alpha}{1-\alpha}$ となる.OAS は,小標本下において標本共分散行列の推定誤差を抑制しつつ,分散構造の情報を保持する点で知られており,本研究のような短期ローリング設定と高い親和性を持つ.
+本研究では,共分散推定手法の比較や最適化は目的とせず,すべての手法に対して同一の $\boldsymbol{V}_t$ を用いる.これにより,推定リターンと意思決定の統合方法（PFL / IPO / DFL）の違いに焦点を当てる.
 
-\subsection{トレードオフ係数 $\delta$ の設定}
+\subsection{評価指標}
 \par
-本研究では,第3章で導入した修正平均--分散コスト関数
-\begin{equation}
-c(\boldsymbol{w}, \boldsymbol{r})
-= -(1-\delta)\boldsymbol{r}^\top \boldsymbol{w}
-+ \frac{\delta}{2}\boldsymbol{w}^\top \boldsymbol{V}\boldsymbol{w}
-\label{eq:delta_cost}
-\end{equation}
-を用いる.
+本章の数値実験におけるポートフォリオ性能の評価には,リターン水準,リスク水準,リスク調整後パフォーマンス,および売買行動の安定性を多面的に捉えるため,以下の指標を用いる.いずれの指標も,取引コスト（bps）を考慮した実行ベースの損益系列に基づいて算出する.
 \par
-実データ実験においては,リスクとリターンのバランスを取った中庸的な設定として $\delta=0.5$ をデフォルト値として固定する.$\delta$ を学習対象や探索変数とせず固定することで,（i）解法の不安定性とパラメータ感度を分離する,（ii）定式化および解法（dual / KKT）の影響に焦点を当てる,という実験設計上の意図を明確にする.
+\noindent リターン指標
+\begin{itemize}
+  \item 年率リターン（Annualized Return）：期間全体の累積リターンから年率換算した平均成長率を用いる.
+  \item 最終資産価値（Final Wealth）：初期資産を 1 としたときの評価期間終了時点における累積資産額を用いる.
+\end{itemize}
+\par
+\noindent リスク調整後指標
+\begin{itemize}
+  \item Sharpe 比：無リスク利子率を 0 と仮定し,年率リターンを年率ボラティリティで除した値として定義する.
+    \[
+    \mathrm{Sharpe}=\frac{\mu}{\sigma},
+    \]
+    ここで $\mu$ は年率リターン,$\sigma$ は年率ボラティリティである.
+\end{itemize}
+\par
+\noindent リスク指標
+\begin{itemize}
+  \item 年率ボラティリティ（Annualized Volatility）：週次リターンの標準偏差を年率換算した値とする.
+  \item 最大ドローダウン（Maximum Drawdown）：累積資産曲線におけるピークからの最大下落率を測定する.
+  \item CVaR(95\%)：リターン分布の下位 5\% における平均損失を用い,極端な損失リスクを評価する.
+\end{itemize}
+\par
+\noindent 売買行動・安定性指標
+\begin{itemize}
+  \item 平均ターンオーバー（Turnover）：各リバランス時点におけるポートフォリオ変更量の平均値を用いる.
+  \item スイッチ頻度（Switch Frequency）：リバランス時点において,最大ウェイトを持つ資産が前期から変更された割合を測定する.本指標は,意思決定の安定性およびポートフォリオ構成の急激な変化の度合いを捉える目的で導入する.
+\end{itemize}
+\par
+以上の評価指標は,すべての比較手法に対して同一の定義および算出方法を適用する.これにより,手法間の性能差が定式化および学習枠組みの違いに起因するものであることを明確にする.
 
 \subsection{比較手法}
 \par
-実データ実験では,予測モデル,制約条件,評価指標を可能な限り統一したうえで,以下の手法を比較対象として用いる.
+実データ実験では,予測モデルや制約条件等を可能な限り統一したうえで,以下の手法を比較対象として用いる.
 \par
-PFL の基準：
+\noindent 提案手法
 \begin{itemize}
-  \item OLS + MVO（PFL）：期待リターンを最小二乗誤差で推定し,得られた推定値 $\hat{\boldsymbol{r}}$ を平均--分散最適化に入力して配分を決定する,実務でも最も標準的な構成.
+  \item DFL-OPT-D：第3章で導出した強双対性条件に基づく提案手法.
+  \item DFL-OPT-K：第3章で導出した KKT 条件に基づく提案手法.
 \end{itemize}
 \par
-予測統合型（IPO）／end-to-end 系：
+\noindent Prediction-Focused Learning の基準
 \begin{itemize}
-  \item IPO（analytic）：ポートフォリオ最適化を予測パラメータ学習に統合した IPO を,制約を外した設定で解析的に解ける形として実装したもの（本研究では初期化・アンカーとしても利用する）.
-  \item IPO-GRAD：下位最適化問題を通じて勾配を伝播させる勾配ベースの統合学習（end-to-end）手法.
+  \item OLS + MVO：期待リターンを最小二乗誤差で推定し,得られた推定値 $\hat{\boldsymbol{r}}$ を平均--分散最適化に入力して配分を決定する,実務でも標準的な構成.これを PFL の基準手法として採用する.
 \end{itemize}
 \par
-Decision-Focused Learning 系：
+\noindent 予測統合型手法
 \begin{itemize}
-  \item SPO+：線形最適化問題に対して機会損失の凸上界を構成することで,勾配ベースの学習を可能にした先駆的手法である.一方で,平均--分散ポートフォリオ最適化のような二次目的関数および制約付き問題に対しては,機会損失の上界構成が直接適用できない.本研究は,SPO+ が前提とする近似的枠組みを用いず,下位問題の最適性条件を明示的に組み込むことで,制約付き MVO に対する悲観的二段階最適化を直接扱う.
-  \item DFL-OPT-D / DFL-OPT-K：第3章で導出した dual / KKT 再定式化に基づく提案手法.ここで DFL は Decision-Focused Learning,OPT は Optimization-based / Optimization-driven を表す.
+  \item IPO-GRAD：最適化問題を学習ループに組み込み,下位最適化問題を通じて勾配を伝播させる End-to-End 手法 \cite{butlerkwon2023}.
 \end{itemize}
 \par
-ベンチマーク（運用戦略）：
+\noindent Decision-Focused Learning 系
 \begin{itemize}
-  \item Buy-and-Hold（SPY）：株式市場に対する単純な長期保有戦略.
+  \item DFL-CF：\eqref{eq:upper_level_obj}--\eqref{eq:upper_level_constraint} の下位問題において制約を外した場合に得られる解析解に基づく手法であり,\cite{butlerkwon2023} に示される解析的解に対応する.本研究では,解析解ベースの基準および初期化候補として用いる.
+  \item SPO+：線形最適化問題に対して機会損失の凸上界を構成することで,勾配ベースの学習を可能にした手法 \cite{elmachtoubgrigas2022}.本研究の制約付き平均--分散問題には直接適用できないため,近似的設定により比較対象に含める.
+\end{itemize}
+\par
+\noindent ベンチマーク（運用戦略）
+\begin{itemize}
+  \item Buy-and-Hold（S\&P 500）：株式市場に対する単純な長期保有戦略.
   \item 等分散投資（$1/N$）：推定誤差に依存しない頑健な基準配分.
-  \item 時系列モメンタム（TSMOM-SPY）：TAA 的な比較として代表的なトレンドフォロー戦略.
 \end{itemize}
 
 \subsection{初期化およびソルバー設定}
 \par
-第3章で述べたとおり,本研究で扱う最適化問題は非凸であり,初期化およびソルバー設定が数値結果に影響を与える可能性がある.本研究では,非線形最適化ソルバーとして KNITRO を用い,以下の方針で設定を行う.
-\begin{itemize}
-  \item 内点法（Interior/Direct）を採用する
-  \item BFGS による近似ヘッセ行列を使用する
-  \item 反復回数および収束許容誤差を十分厳しく設定する
-  \item スレッド数を 1 に固定し,再現性を確保する
-\end{itemize}
+第3章で述べたとおり,本研究で扱う最適化問題は非凸であり,初期化により到達する局所解が変化し得る.本研究では,非線形最適化ソルバーとして KNITRO を用い,ソルバー設定は原則として全手法で統一する.
 \par
-また,DFL 系手法では,現時点の実データ実験では初期値として $\boldsymbol{\theta}=\boldsymbol{0}$ を用い（必要に応じて投資配分は等配分,補助変数は $0$ から開始する）,初期化に起因する差をできるだけ抑える.一方で,後続の実験では IPO の解析解（IPO-analytic）に基づく初期化やアンカーも併せて検討し,初期化の影響も含めて評価する.
+DFL 系手法では,実データ実験におけるデフォルト初期値として $\boldsymbol{\theta}=\boldsymbol{0}$ を用い,その他の変数は中立的な初期値から開始する.後続の実験では,DFL-CF に基づく初期化も導入し,初期化の影響を検証する.
 
 \section{実験結果}
 
 \subsection{実データによるベースライン比較}
 \par
-本節では,第3章で導出した提案手法である Decision-Focused Learning（DFL）に基づく
-DFL-OPT-D / DFL-OPT-K（dual 定式化および KKT 定式化）について,
-初期解（warm-start）および正則化項（アンカー・罰則項）を一切導入しないベースライン設定
-の下で,既存手法との比較評価を行う.
-\par
-比較対象として,従来の予測誤差最小化に基づく OLS（PFL）,
-予測統合型の手法である IPO（analytic / gradient）,
-ならびに代表的な Decision-Focused Learning 手法である SPO+ を含める.
-また,単純な投資戦略として $1/N$ ポートフォリオ,
-時系列モメンタム（TSMOM; SPY）,Buy-and-Hold（SPY）をベンチマークとして用いる.
-\par
-評価指標として,年率リターン（ann\_return）,最終資産（terminal\_wealth）,
-リスク調整後指標（Sharpe 比・Sortino 比）,
-リスク指標（年率ボラティリティ,最大ドローダウン,CVaR(95\%)）,
-および運用上重要な売買回転率（平均ターンオーバー）を用いる.
-なお,本実験では取引コスト（bps）を加味した実行ベースの損益系列に基づき指標を算出している
-（詳細は第4.1節を参照）.
+本節では,第3章で導出した提案手法である
+DFL-OPT-D / DFL-OPT-K について,既存手法との比較評価を行う.
+
 
 %========================
 % Figure: cum return
 %========================
 \par
-まず,図\ref{fig:baseline_cumreturn}に,2006年から2025年までの全期間における各手法の累積リターン推移を示す.
-図\ref{fig:baseline_cumreturn}より,提案手法（DFL-OPT-D / DFL-OPT-K）は dual / KKT のいずれの定式化においても,
+まず,図\ref{fig:baseline_cumreturn}に, 2006/01/01 から 2025/12/31 までの全期間における各手法の累積リターン推移を示す.
+図\ref{fig:baseline_cumreturn}より,提案手法は DFL-OPT-D / DFL-OPT-K のいずれの定式化においても,
 多くの比較手法を上回る累積リターンを示していることが確認できる.
 特に,長期にわたる運用期間を通じて,リターンの上振れだけでなく,
 下落局面における毀損の抑制も一定程度観察される.
@@ -756,13 +780,10 @@ DFL-OPT-D / DFL-OPT-K（dual 定式化および KKT 定式化）について,
 \par
 次に,表\ref{tab:baseline_summary}に主要なパフォーマンス指標をまとめる.
 提案手法は年率リターン・最終資産において上位であるだけでなく,
-Sharpe 比・CVaR(95\%) loss といったリスク調整後指標においても良好な値を示している.
+Sharpe 比・CVaR(95\%) といったリスク調整後指標においても良好な値を示している.
 このことは,単なるリターンの増大ではなく,
 リスク制御を伴った意思決定の改善が実現されている可能性を示唆する.
 \par
-また,ターンオーバーの観点では,
-提案手法（DFL-OPT-D / DFL-OPT-K）は IPO-analytic や OLS と同程度の水準に収まっており,
-性能改善が売買過多のみによって生じているとは言い難い.
 さらに,dual と KKT の比較では,
 KKT 定式化が多くの指標で僅かに優位である一方,
 両者の性能差は大きくなく,定式化の違いが投資性能に与える影響は限定的であることも示唆される.
@@ -772,34 +793,30 @@ KKT 定式化が多くの指標で僅かに優位である一方,
 \caption{パフォーマンス比較（2006--2025,ベースライン設定）}
 \label{tab:baseline_summary}
 \resizebox{\linewidth}{!}{%
-\begin{tabular}{lrrrrrrrr}
+\begin{tabular}{lrrrrrr}
 \hline
-Model & Ann.\ Return & Terminal & Sharpe & Sortino & Ann.\ Vol & MaxDD & CVaR(95\%) loss & Turnover \\
+Model & Sharpe & Terminal & Ann.\ Return & Ann.\ Vol & CVaR(95\%) & MaxDD \\
 \hline
-DFL-OPT-K  & 11.86 & 8.36 & 0.78 & 0.73 & 15.22 & -35.13 & 5.01 & 23.98 \\
-DFL-OPT-D  & 11.54 & 7.79 & 0.75 & 0.72 & 15.45 & -36.39 & 5.03 & 23.96 \\
-IPO-analytic  & 10.46 & 5.90 & 0.60 & 0.57 & 17.38 & -30.43 & 5.68 & 24.24 \\
-Buy\&Hold(SPY)& 10.40 & 5.67 & 0.57 & 0.52 & 18.16 & -58.36 & 6.23 & 0.00 \\
-SPO+          &  8.10 & 3.62 & 0.45 & 0.44 & 17.91 & -33.37 & 5.93 & 20.69 \\
-1/N           &  7.16 & 3.65 & 0.63 & 0.59 & 11.43 & -33.49 & 3.67 & 0.00 \\
-TSMOM-SPY     &  7.25 & 3.66 & 0.61 & 0.46 & 11.92 & -24.66 & 4.26 & 1.45 \\
-IPO-GRAD      &  7.48 & 3.13 & 0.40 & 0.37 & 18.49 & -55.15 & 6.44 & 20.19 \\
-OLS           &  6.29 & 2.42 & 0.33 & 0.30 & 19.06 & -55.68 & 6.73 & 20.79 \\
+DFL-OPT-K  & \textbf{0.78} & \textbf{8.36} & \textbf{11.86} & 15.22 & 5.01 & -35.13 \\
+DFL-OPT-D  & 0.75 & 7.79 & 11.54 & 15.45 & 5.03 & -36.39 \\
+DFL-CF  & 0.60 & 5.90 & 10.46 & 17.38 & 5.68 & \textbf{-30.43} \\
+IPO-GRAD      & 0.40 & 3.13 &  7.48 & 18.49 & 6.44 & -55.15 \\
+SPO+          & 0.45 & 3.62 &  8.10 & 17.91 & 5.93 & -33.37 \\
+PFL           & 0.33 & 2.42 &  6.29 & 19.06 & 6.73 & -55.68 \\
+Buy\&Hold & 0.57 & 5.67 & 10.40 & 18.16 & 6.23 & -58.36 \\
+1/N           & 0.63 & 3.65 &  7.16 & \textbf{11.43} & \textbf{3.67} & -33.49 \\
 \hline
 \end{tabular}
 }
 \end{table}
 
 \par
-以上より,特別な初期化や正則化を行わないベースライン設定においても,
-提案手法（DFL-OPT-D / DFL-OPT-K）は既存の予測主導型手法（OLS）および代表的 DFL 手法（SPO+）,
-ならびに IPO 系手法に対して競争力のある投資性能を示すことが確認できる.
-次節では,提案手法における dual / KKT の定式化差が数値計算（収束性・安定性）および
-投資性能に与える影響について,より詳細に検討する.
+以上より,提案手法（DFL-OPT-D / DFL-OPT-K）は既存の予測主導型手法（PFL）および代表的 DFL 手法（SPO+）,
+ならびに IPO 手法に対して競争力のある投資性能を示すことが確認できる.
 
-\subsection{Dual formulation と KKT formulation の数値的比較}
+\subsection{DFL-OPT-D と DFL-OPT-K の数値的比較}
 \par
-本節では,提案手法において用いた非凸 QCQP に対する二つの定式化,dual formulation と KKT formulation の数値的性質を比較する.
+本節では,二つの提案手法の数値的性質を比較する.
 両者は理論的には等価であり,同一の最適解集合を持つことが示されるが,非凸最適化問題を数値的に解く際には,定式化の違いがソルバの収束挙動,計算コスト,および探索経路への依存性に影響を与える可能性がある.
 \par
 本節の目的は投資パフォーマンスの優劣を比較することではなく,
@@ -808,57 +825,45 @@ OLS           &  6.29 & 2.42 & 0.33 & 0.30 & 19.06 & -55.68 & 6.73 & 20.79 \\
 \par
 そのため,以下の 4 つの観点から比較を行う.
 \begin{enumerate}
-  \item 数値計算の信頼性（solver status）
-  \item 計算コスト（特に worst-case を表す p90）
-  \item 解の同等性（理論的等価性の数値的検証）
-  \item 探索経路摂動に対する頑健性（非凸性への耐性）
+  \item 数値計算の信頼性
+  \item 計算コスト
+  \item 解の同等性
+  \item 探索経路摂動に対する頑健性
 \end{enumerate}
 
 \subsubsection{数値計算の信頼性}
 \par
 まず,各定式化に対する数値計算の信頼性を評価する.ここでは,全期間を通じた rolling retraining において,各リバランス時点で解かれた最適化問題に対し,ソルバが返した終了ステータスを集計した.
 \par
-評価区分は以下の通りである.
+評価区分は以下の通りである.また、本実験では実行可能解が得られなかったケースはなかった。
 \begin{itemize}
-  \item OK：最適性条件を満たして終了
-  \item Warning：実行可能解は得られたが,収束判定に関する警告あり（例：xtol に基づく相対改善停止,near-optimal 判定）
-  \item No-solution：実行可能解が得られなかったケース
+  \item Optimal：最適性条件を満たして終了
+  \item Warning：実行可能解は得られたが,収束判定に関する警告あり \\
+  警告内容の内訳
+  \item Nearly optimal：最適性改善が所定の閾値以下となった段階での終了
+  \item No improve：最適性改善が全く見られない段階での終了
+  \item xtol iters：相対変化が xtol 未満となった段階での終了
 \end{itemize}
 \par
 なお,Warning に分類されたケースについても,全てのケースで実行可能解が返却されており,制約違反量はいずれも数値誤差レベル（$10^{-8}$ 以下）に留まっている.
 
 \begin{table}[H]
 \centering
-\caption{Solver status distribution and warning breakdown}
+\caption{ソルバー終了ステータスの分布とWarning内訳}
 \label{tab:formulation_status}
 \small
-\begin{tabular}{lrrr}
+\begin{tabular}{lrrrrr}
 \hline
-\multicolumn{4}{l}{(A) Solver status distribution} \\
-Formulation & OK (\%) & Warning (\%) & No-solution (\%) \\
+Formulation & Optimal (\%) & Warning (\%) & Nearly optimal & No improve & xtol iters \\
 \hline
-Dual & 95.0 & 5.0 & 0.0 \\
-KKT  & 88.1 & 11.9 & 0.0 \\
-\hline
-\end{tabular}
-\par\medskip
-\begin{tabular}{lp{0.62\linewidth}rr}
-\hline
-\multicolumn{4}{l}{(B) Warning breakdown (within Warning)} \\
-Formulation & Reason & Count & Share (\%) \\
-\hline
-Dual & NEARLY\_OPT: 改善不可（Nearly optimal） & 9 & 69.2 \\
-Dual & NO\_IMPROVE: 改善不可 & 2 & 15.4 \\
-Dual & XTOL\_ITERS: 相対変化が xtol 未満（xtol\_iters） & 2 & 15.4 \\
-KKT  & NEARLY\_OPT: 改善不可（Nearly optimal） & 21 & 67.7 \\
-KKT  & NO\_IMPROVE: 改善不可 & 7 & 22.6 \\
-KKT  & XTOL\_ITERS: 相対変化が xtol 未満（xtol\_iters） & 3 & 9.7 \\
+Dual & 95.0 & 5.0 & 9 & 2 & 2 \\
+KKT  & 88.1 & 11.9 & 21 & 7 & 3 \\
 \hline
 \end{tabular}
 \end{table}
 
 \par
-表\ref{tab:formulation_status}より,両定式化ともに No-solution は一度も発生しておらず,数値計算としての基本的な安定性は共通して確保されていることが分かる.
+表\ref{tab:formulation_status}より,数値計算としての基本的な安定性は共通して確保されていることが分かる.
 一方で,KKT formulation では Warning の割合がやや高いが,その内訳を確認すると,多くは最適性改善が所定の閾値以下となった段階での終了であり,実行可能性や制約充足の破綻を示すものではない.
 
 \subsubsection{計算コストの比較}
@@ -867,18 +872,16 @@ KKT  & XTOL\_ITERS: 相対変化が xtol 未満（xtol\_iters） & 3 & 9.7 \\
 \par
 評価指標は以下の通りである.
 \begin{itemize}
-  \item Median：代表的な計算時間
-  \item Mean：参考値
   \item p90：最悪 10\% の計算時間を表す指標
 \end{itemize}
 
 \begin{table}[H]
 \centering
-\caption{Computation time statistics (seconds)}
+\caption{計算時間の要約統計（秒）}
 \label{tab:formulation_elapsed}
 \begin{tabular}{lrrr}
 \hline
-Formulation & Median & Mean & p90 \\
+Formulation & 中央値 & 平均 & p90 \\
 \hline
 Dual & 1.20 & 1.65 & 2.99 \\
 KKT  & 0.75 & 0.95 & 1.71 \\
@@ -891,29 +894,28 @@ KKT  & 0.75 & 0.95 & 1.71 \\
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.92\linewidth]{figs/formulation_elapsed_ok_vs_warning.png}
-\caption{計算時間の分布（dual vs KKT；OK と Warning を分けて表示）}
+\caption{計算時間の分布（DFL-OPT-D vs DFL-OPT-K ; Optimal と Warning を分けて表示）}
 \label{fig:formulation_elapsed}
 \end{figure}
 \par
-中央値および平均値では両定式化に大きな差は見られないものの,p90 においては KKT formulation の方が小さく,計算時間分布の裾が抑制されている.
-すなわち,KKT formulation は worst-case においても計算時間が過度に増大しにくい特性を持つ.
+中央値および平均値では両定式化に大きな差は見られないものの,p90 においては DFL-OPT-K の方が小さく,計算時間分布の裾が抑制されている.
+すなわち,DFL-OPT-K は最悪ケースにおいても計算時間が過度に増大しにくい特性を持つ.
 
 \subsubsection{解の同等性の検証}
 \par
-次に,dual formulation と KKT formulation が数値的にも同一の問題を解いているかを検証する.評価指標として,(i) ポートフォリオ重みの差（$L_1/L_2$ 距離）,(ii) 下位 MVO 問題の目的関数値差,(iii) 学習時の目的関数値差を用いる.
+次に,DFL-OPT-D と DFL-OPT-K が数値的にも同一の問題を解いているかを検証する.評価指標として,(i) ポートフォリオ重みの差（$L_1$ 距離）,(ii) 下位 MVO 問題の目的関数値差,(iii) 学習時の目的関数値差を用いる.
 
 \begin{table}[H]
 \centering
-\caption{Solution agreement (Dual vs KKT)}
+\caption{解の一致度（dual vs KKT）}
 \label{tab:formulation_agreement}
 \begin{tabular}{lrr}
 \hline
-Metric & Median & p90 \\
+指標 & 中央値 & p90 \\
 \hline
-MVO cost diff & $1.2\times10^{-10}$ & $5.3\times10^{-3}$ \\
-Train objective diff & $2.8\times10^{-6}$ & $1.3\times10^{-3}$ \\
-Weight $L_1$ distance & $3.4\times10^{-8}$ & 1.17 \\
-Weight $L_2$ distance & $2.2\times10^{-8}$ & 0.77 \\
+下位MVO目的関数値差 & $1.2\times10^{-10}$ & $5.3\times10^{-3}$ \\
+学習目的関数値差 & $2.8\times10^{-6}$ & $1.3\times10^{-3}$ \\
+重み$L_1$距離 & $3.4\times10^{-8}$ & 1.17 \\
 \hline
 \end{tabular}
 \end{table}
@@ -1482,130 +1484,192 @@ OLS          & $-$11.10 & 12.06 & $-$0.29 \\
 本研究の限界として,(i) 非凸 QCQP のため局所解・初期化・ソルバ設定に依存し得ること,(ii) 4資産・単純制約の設定に限定していること,(iii) 取引コストやモデル不確実性の扱いが限定的であることが挙げられる.今後は,多資産化や現実的制約（売買制約・上限制約・コストモデル）の導入,$\delta$ や共分散推定法に関する感度分析の拡張,ならびに解法の安定化（初期化・正則化・グローバル探索の併用）を通じて,実務適用可能性の検証を進める.
 
 %========================
+% Appendix
+%========================
+\appendix
+\chapter*{Appendix}
+\addcontentsline{toc}{chapter}{Appendix}
+\section*{命題 \ref{prop:equivalence} の証明}
+\addcontentsline{toc}{section}{命題 \ref{prop:equivalence} の証明}
+\par
+本章では,DFL-OPT-D と DFL-OPT-K が理論的に同値であることを示す.
+\begin{proof}
+各 $i=1,\dots,T$ に対して,下位のポートフォリオ最適化問題 \eqref{eq:lower_level_recall} は目的関数が強凸な二次関数であり,等式制約および非負制約からなる凸制約集合を持つ凸二次計画問題である.また,$\boldsymbol{w}_i>\boldsymbol{0}$ かつ $\boldsymbol{1}^\top\boldsymbol{w}_i=1$ を満たす内点が存在するため,Slater 条件が成り立つ.したがって,強双対性が成立する.
+\par
+強双対性の成立より,下位問題の最適解は KKT 条件を満たす点と必要十分に一致する.すなわち,ある双対変数 $(\mu_i,\boldsymbol{\lambda}_i)$ が存在して,停留条件
+\[
+\delta \boldsymbol{V}_i \boldsymbol{w}_i-(1-\delta)\hat{\boldsymbol{r}}_i-\mu_i\boldsymbol{1}-\boldsymbol{\lambda}_i=\boldsymbol{0},
+\]
+主問題の可行性
+\[
+\boldsymbol{1}^\top\boldsymbol{w}_i=1,\quad \boldsymbol{w}_i\ge\boldsymbol{0},
+\]
+双対可行性
+\[
+\boldsymbol{\lambda}_i\ge\boldsymbol{0},
+\]
+および相補性条件
+\[
+\boldsymbol{\lambda}_i\odot\boldsymbol{w}_i=\boldsymbol{0}
+\]
+が同時に成り立つとき, $\boldsymbol{w}_i$ は下位問題の最適解である.
+\par
+DFL-OPT-K は,上記の KKT 条件を制約として直接組み込んだ定式化である.一方,DFL-OPT-D は,主問題の可行性と双対可行性に加え,停留条件 \eqref{eq:dfl_dual_stationarity} と最適値一致条件 \eqref{eq:dfl_dual_value} を課すことで下位問題の最適性を表現している.強双対性が成立する凸最適化問題においては,これらの条件は KKT 条件と同値であるため,DFL-OPT-D により許容される $(\boldsymbol{w}_i,\mu_i,\boldsymbol{\lambda}_i)$ の集合は,DFL-OPT-K により許容される集合と一致する.
+\par
+以上より,DFL-OPT-D（\eqref{eq:dfl_dual_obj}--\eqref{eq:dfl_dual_stationarity}）と DFL-OPT-K（\eqref{eq:dfl_kkt_obj}--\eqref{eq:dfl_kkt_complementarity}）は同一の解集合を持ち,理論的に等価であることが示された.
+\end{proof}
+
+\section*{DFL-OPT-D における強双対性制約の導出}
+\addcontentsline{toc}{section}{DFL-OPT-D における強双対性制約の導出}
+\par
+ここでは,本文 \eqref{eq:dual_value} および \eqref{eq:dual_strong_simplified}（したがって \eqref{eq:dfl_dual_value}）の導出を,双対関数 $g_i$ の導出を含めて示す.
+\par
+まず,ラグランジュ関数 \eqref{eq:lagrangian} に基づき,双対関数を
+\[
+g_i(\mu_i,\boldsymbol{\lambda}_i)
+:=\inf_{\boldsymbol{w}_i\in\mathbb{R}^d}\mathcal{L}_i(\boldsymbol{w}_i,\mu_i,\boldsymbol{\lambda}_i)
+\]
+と定義する.ここで $\mathcal{L}_i$ を $\boldsymbol{w}_i$ で最小化する停留条件は本文 \eqref{eq:dual_stationarity} であり,これより
+\[
+\tilde{\boldsymbol{w}}_i(\mu_i,\boldsymbol{\lambda}_i)
+=\frac{1}{\delta}\boldsymbol{V}_i^{-1}\!\left((1-\delta)\hat{\boldsymbol{r}}_i+\mu_i\boldsymbol{1}+\boldsymbol{\lambda}_i\right)
+\]
+を得る.これを代入すると,双対関数は
+\[
+g_i(\mu_i,\boldsymbol{\lambda}_i)
+=\mu_i-\frac{1}{2\delta}
+\left((1-\delta)\hat{\boldsymbol{r}}_i+\mu_i\boldsymbol{1}+\boldsymbol{\lambda}_i\right)^\top
+\boldsymbol{V}_i^{-1}
+\left((1-\delta)\hat{\boldsymbol{r}}_i+\mu_i\boldsymbol{1}+\boldsymbol{\lambda}_i\right)
+\]
+と表される.
+\par
+次に,停留条件 \eqref{eq:dual_stationarity} を
+\[
+\delta \boldsymbol{V}_i \boldsymbol{w}_i=(1-\delta)\hat{\boldsymbol{r}}_i+\mu_i\boldsymbol{1}+\boldsymbol{\lambda}_i
+\]
+と書き直し,右辺を $z_i$ とおくと $z_i=\delta \boldsymbol{V}_i\boldsymbol{w}_i$ である.これを上式に代入すると
+\[
+g_i(\mu_i,\boldsymbol{\lambda}_i)
+=\mu_i-\frac{1}{2\delta}(\delta \boldsymbol{V}_i\boldsymbol{w}_i)^\top \boldsymbol{V}_i^{-1}(\delta \boldsymbol{V}_i\boldsymbol{w}_i)
+=\mu_i-\frac{\delta}{2}\boldsymbol{w}_i^\top \boldsymbol{V}_i \boldsymbol{w}_i
+\]
+となり,双対目的値は停留条件を介して $V_i^{-1}$ を含まない形に簡約できる.
+\par
+弱双対性より,任意の主問題の実行可能解 $\boldsymbol{w}_i$ と双対変数 $(\mu_i,\boldsymbol{\lambda}_i)$（$\boldsymbol{\lambda}_i\ge\boldsymbol{0}$）に対して,主問題目的値は双対目的値の上界である.したがって,
+\[
+-(1-\delta)\hat{\boldsymbol{r}}_i^\top \boldsymbol{w}_i
++\frac{\delta}{2}\boldsymbol{w}_i^\top \boldsymbol{V}_i \boldsymbol{w}_i
+\ge
+\mu_i-\frac{\delta}{2}\boldsymbol{w}_i^\top \boldsymbol{V}_i \boldsymbol{w}_i
+\]
+が成り立つ.これが本文 \eqref{eq:dual_value} である.両辺に $\frac{\delta}{2}\boldsymbol{w}_i^\top \boldsymbol{V}_i \boldsymbol{w}_i$ を加えると
+\[
+\delta \boldsymbol{w}_i^\top \boldsymbol{V}_i \boldsymbol{w}_i-(1-\delta)\hat{\boldsymbol{r}}_i^\top \boldsymbol{w}_i
+\ge \mu_i
+\]
+を得る.
+\par
+最後に,強双対性より最適解においては弱双対性の不等式が等号で成立する.このとき KKT 条件の相補性 $\boldsymbol{\lambda}_i\odot\boldsymbol{w}_i=\boldsymbol{0}$ が成り立ち,導出中に現れる $\boldsymbol{\lambda}_i^\top\boldsymbol{w}_i$ が消えるため,最適値一致条件は
+\[
+\delta \boldsymbol{w}_i^\top \boldsymbol{V}_i \boldsymbol{w}_i-(1-\delta)\hat{\boldsymbol{r}}_i^\top \boldsymbol{w}_i
+= \mu_i
+\]
+と表される.これが本文 \eqref{eq:dual_strong_simplified} の等式であり,DFL-OPT-D では各 $i$ についてこの関係を制約 \eqref{eq:dfl_dual_value} として課している.
+
+\section*{OAS 縮小係数と実効サンプルサイズ}
+\addcontentsline{toc}{section}{OAS 縮小係数と実効サンプルサイズ}
+\par
+ここでは,第4章で用いた OAS の縮小係数 $\phi_t$ と,EWMA の重みに対応する実効サンプルサイズ $n_{\mathrm{eff}}$ の具体式を示す.
+\par
+まず,$d$ 次元の共分散推定に用いるサンプルサイズを $n_{\mathrm{eff}}$ とすると,OAS による縮小係数は
+\begin{equation}
+\phi_t
+= \min\left\{
+1,\ 
+\frac{\left(1-\frac{2}{d}\right)\mathrm{tr}(\boldsymbol{S}_t^2)+\mathrm{tr}(\boldsymbol{S}_t)^2}
+{\left(n_{\mathrm{eff}}+1-\frac{2}{d}\right)\left(\mathrm{tr}(\boldsymbol{S}_t^2)-\frac{\mathrm{tr}(\boldsymbol{S}_t)^2}{d}\right)}
+\right\}
+\tag{A.1}
+\end{equation}
+で与えられる.
+\par
+次に,EWMA における減衰率 $\alpha$ は,重み付き標本に基づく共分散推定の「記憶長」を制御するパラメータとして解釈できる \cite{jpm2006riskmetrics}.特に,重み $w_k=(1-\alpha)\alpha^k$ に対して定義される実効サンプルサイズ
+\[
+\mathrm{ESS}:=\frac{1}{\sum_k w_k^2}
+\]
+を用いると,EWMA はおよそ $\mathrm{ESS}\approx \frac{1+\alpha}{1-\alpha}$ 個の独立標本に相当する情報量を持つと解釈できる \cite{jpm2006riskmetrics}.本研究ではこの対応関係に基づき,短期ローリング設定における数値的安定性と反応性のバランスを考慮して $\alpha$ を設定する.
+\par
+本研究のように有限窓 $L$ を用いるとき,重みを正規化した $\tilde{w}_k := \frac{(1-\alpha)\alpha^k}{1-\alpha^L}$（$k=0,\dots,L-1$）に対して
+\begin{equation}
+n_{\mathrm{eff}}
+:= \frac{1}{\sum_{k=0}^{L-1}\tilde{w}_k^2}
+= \frac{(1-\alpha^L)^2}{(1-\alpha)^2}\cdot\frac{1-\alpha^2}{1-\alpha^{2L}}
+= \frac{1+\alpha}{1-\alpha}\cdot\frac{(1-\alpha^L)^2}{1-\alpha^{2L}}
+\tag{A.2}
+\end{equation}
+となる.特に $L$ が十分大きい場合には $n_{\mathrm{eff}} \approx \frac{1+\alpha}{1-\alpha}$ となり,上の $\mathrm{ESS}$ の近似と整合する.
+
+%========================
 % 参考文献
 %========================
 \chapter*{参考文献}
 \addcontentsline{toc}{chapter}{\numberline{}参考文献}
 \begin{thebibliography}{99}
 
-\bibitem{lee2024returnprediction}
-Lee, J.,
-\newblock Return Prediction for Mean-Variance Portfolio Selection: How Decision-Focused Learning Shapes Forecasting Models,
-\newblock Proceedings of \ldots\ (to appear), 2024.
-\par
-意思決定重視学習（Decision-Focused Learning; DFL）を平均--分散ポートフォリオ選択に適用し,予測モデルが意思決定構造にどのような影響を与えるかを分析した研究.
-\par\bigskip
-
-\bibitem{kim2025covariance}
-Kim, J., Tae, I., Lee, Y.,
-\newblock Estimating Covariance for Global Minimum Variance Portfolio: A Decision-Focused Learning Approach,
-\newblock arXiv preprint arXiv:2508.10776, 2025.
-\par
-DFL の枠組みを用いてグローバル最小分散ポートフォリオ（GMVP）の共分散推定問題を再定式化し,機会損失最小化の観点から理論的および実証的検討を行った研究.
-\par\bigskip
-
-\par\bigskip
-\noindent 一般的な Decision-Focused Learning 理論
-\par\medskip
-
-\bibitem{butlerkwon2021ipo}
-Butler, J.\ B., Kwon, S.\ J.,
-\newblock Integrating Prediction in Mean-Variance Portfolio Optimization,
-\newblock 2021.
-\par
-予測モデルとポートフォリオ最適化問題を統合的に扱う予測統合型最適化（Integrated Prediction and Optimization; IPO）の枠組みを提案した先行研究.
-\par\bigskip
-
-\bibitem{mwp2024dflsurvey}
-M.\ W.\ P.\ et al.,
-\newblock Decision-Focused Learning: Foundations, State of the Art, Benchmark and Future Opportunities,
-\newblock arXiv preprint, 2024.
-\par
-Decision-Focused Learning の基礎理論から最新動向,代表的ベンチマークおよび今後の研究課題までを包括的に整理した総説論文.
-\par\bigskip
-
-\bibitem{butlerkwon_pessimistic}
-Butler, J.\ B., Kwon, S.\ J.,
-\newblock Decision-Focused Predictions via Pessimistic Bilevel Optimization: Complexity and Algorithms,
-\newblock Journal / arXiv, Year.
-\par
-DFL を悲観的二段階最適化として定式化し,計算複雑性および再定式化手法を理論的に解析した研究.
-\par\bigskip
-
-\bibitem{shah2022locallyoptimized}
-Shah, S., et al.,
-\newblock Learning Locally Optimized Decision Losses,
-\newblock Advances in Neural Information Processing Systems (NeurIPS), 2022.
-\par
-最適化問題を含む機会損失の微分可能近似を提案し,DFL の一般的学習枠組みを拡張した研究.
-\par\bigskip
-
-\par\bigskip
-\noindent 共分散推定・Shrinkage モデル
-\par\medskip
-
-\bibitem{ledoitwolf2004}
-Ledoit, O., Wolf, M.,
-\newblock A Well-Conditioned Estimator for Large-Dimensional Covariance Matrices,
-\newblock Journal of Multivariate Analysis, 2004.
-\par
-高次元環境における共分散行列の shrinkage 推定法を提案した基礎的研究.
-\par\bigskip
-
-\bibitem{bodnar2021dynamic}
-Bodnar, T.,
-\newblock Dynamic Shrinkage Estimation of the High-Dimensional Minimum-Variance Portfolio,
-\newblock arXiv preprint arXiv:2106.02131, 2021.
-\par
-GMV ポートフォリオに対する動的 shrinkage 共分散推定モデルを提案した研究.
-\par\bigskip
-
-\bibitem{bodnar2022two}
-Bodnar, T., Parolya, N., Thors\'en, E.,
-\newblock Two Is Better Than One: Regularized Shrinkage of Large Minimum Variance Portfolio,
-\newblock arXiv preprint arXiv:2202.06666, 2022.
-\par
-共分散推定とポートフォリオ重み正則化を同時に行う二重 shrinkage モデルを理論的に分析した研究.
-\par\bigskip
-
-\bibitem{tan2020cv}
-Tan, V., Zohren, S.,
-\newblock Estimation of Large Financial Covariances: A Cross-Validation Approach,
-\newblock arXiv preprint arXiv:2012.05757, 2020.
-\par
-交差検証を用いた大規模金融共分散推定手法を提案した研究.
-\par\bigskip
-
-\par\bigskip
-\noindent 伝統的ポートフォリオ最適化理論
-\par\medskip
-
 \bibitem{markowitz1952}
-Markowitz, H.,
-\newblock Portfolio Selection,
-\newblock The Journal of Finance, 1952.
-\par
-平均--分散ポートフォリオ理論を提唱した近代ポートフォリオ理論の原典.
-\par\bigskip
+Markowitz, H. (1952).
+\newblock Portfolio Selection.
+\newblock \emph{The Journal of Finance}, 7(1), 77--91.
 
-\par\bigskip
-\noindent 関連応用研究
-\par\medskip
+\bibitem{chopraziemba1993}
+Chopra, V. K., \& Ziemba, W. T. (1993).
+\newblock The Effect of Errors in Means, Variances, and Covariances on Optimal Portfolio Choice.
+\newblock \emph{The Journal of Portfolio Management}, 19(2), 6--11.
 
-\bibitem{anis2025cardinality}
-Anis, H.\ T., et al.,
-\newblock End-to-End, Decision-Based, Cardinality-Constrained Portfolio Optimization,
-\newblock Journal of \ldots, 2025.
-\par
-End-to-end 学習と DFL を組み合わせ,組合せ制約付きポートフォリオ最適化問題を扱った研究.
-\par\bigskip
+\bibitem{lahoud2025}
+Lahoud, A. A., Khan, A. S., Schaffernicht, E., Trincavelli, M., \& Stork, J. A. (2025).
+\newblock Predict-and-Optimize Techniques for Data-Driven Optimization Problems: A Review.
+\newblock \emph{Neural Processing Letters}, 57, 40.
 
-\bibitem{kim2025semidfl}
-Kim, Juhyeong,
-\newblock Semi-Decision-Focused Learning with Deep Ensembles: A Practical Framework for Robust Portfolio Optimization,
-\newblock Proceedings of the International Conference on Learning Representations (ICLR), 2025.
-\par
-Deep Ensemble と DFL を統合した実務志向のロバストポートフォリオ最適化手法を提案した研究.
+\bibitem{butlerkwon2023}
+Butler, A., \& Kwon, R. H. (2023).
+\newblock Integrating Prediction in Mean--Variance Portfolio Optimization.
+\newblock \emph{Quantitative Finance}, 23(3), 429--452.
+
+\bibitem{mandi2024}
+Mandi, J., Kotary, J., Berden, S., Mulamba, M., Bucarey, V., \& Fioretto, F. (2024).
+\newblock Decision-Focused Learning: Foundations, State of the Art, Benchmark and Future Opportunities.
+\newblock \emph{Journal of Artificial Intelligence Research}, 81, 1623--1701.
+
+\bibitem{lee2025}
+Lee, J., Jeon, H., Bae, H., \& Lee, Y. (2025).
+\newblock Return Prediction for Mean-Variance Portfolio Selection: How Decision-Focused Learning Shapes Forecasting Models.
+\newblock In \emph{Proceedings of ICAIF 2025}, 114--122.
+
+\bibitem{bucarey2024}
+Bucarey, V., Calder\'{o}n, S., Mu\~{n}oz, G., \& Semet, F. (2024).
+\newblock Decision-Focused Predictions via Pessimistic Bilevel Optimization.
+\newblock In \emph{Proceedings of CPAIOR 2024}, LNCS 14742, 127--135.
+
+\bibitem{shah2022}
+Shah, S., Wang, K., Chen, H., Perrault, A., Doshi-Velez, F., \& Tambe, M. (2022).
+\newblock Decision-Focused Learning without Decision-Oracles: Learning Locally Optimized Decision Losses.
+\newblock In \emph{Advances in Neural Information Processing Systems (NeurIPS 2022)}.
+
+\bibitem{elmachtoubgrigas2022}
+Elmachtoub, A. N., \& Grigas, P. (2022).
+\newblock Smart Predict, Then Optimize.
+\newblock \emph{Management Science}, 68(1), 9--26.
+
+\bibitem{chen2010oas}
+Chen, Y., Wiesel, A., \& Hero, A. O. (2010).
+\newblock Shrinkage estimation of high-dimensional covariance matrices.
+\newblock \emph{IEEE Transactions on Signal Processing}, 58(10), 5016--5029.
+
+\bibitem{jpm2006riskmetrics}
+Morgan, J. P. (2006).
+\newblock \emph{RiskMetrics Technical Document}, 4th ed.
 
 \end{thebibliography}
 

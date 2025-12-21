@@ -1,0 +1,66 @@
+\contentsline {chapter}{\numberline {第1章}序論}{1}{}%
+\contentsline {section}{\numberline {1.1}研究背景}{1}{}%
+\contentsline {section}{\numberline {1.2}問題設定}{1}{}%
+\contentsline {section}{\numberline {1.3}関連研究}{1}{}%
+\contentsline {section}{\numberline {1.4}本研究の貢献}{2}{}%
+\contentsline {section}{\numberline {1.5}論文構成}{2}{}%
+\contentsline {chapter}{\numberline {第2章}既存手法}{3}{}%
+\contentsline {section}{\numberline {2.1}ポートフォリオ最適化モデル}{3}{}%
+\contentsline {section}{\numberline {2.2}予測統合型アプローチ（IPO）}{3}{}%
+\contentsline {section}{\numberline {2.3}意思決定考慮型アプローチ（SPO+）}{4}{}%
+\contentsline {section}{\numberline {2.4}共分散行列の推定}{4}{}%
+\contentsline {chapter}{\numberline {第3章}提案手法}{5}{}%
+\contentsline {section}{\numberline {3.1}二段階最適化モデル}{5}{}%
+\contentsline {subsection}{\numberline {3.1.1}問題設定と推定モデル}{5}{}%
+\contentsline {subsection}{\numberline {3.1.2}下位問題：制約付きポートフォリオ最適化}{5}{}%
+\contentsline {subsection}{\numberline {3.1.3}理想的な投資配分}{5}{}%
+\contentsline {subsection}{\numberline {3.1.4}上位問題：意思決定誤差最小化}{5}{}%
+\contentsline {subsection}{\numberline {3.1.5}問題の性質と再定式化への動機}{6}{}%
+\contentsline {section}{\numberline {3.2}再定式化による単一レベル最適化問題}{6}{}%
+\contentsline {subsection}{\numberline {3.2.1}下位問題のラグランジュ関数}{6}{}%
+\contentsline {subsection}{\numberline {3.2.2}強双対性条件に基づく再定式化（DFL-OPT-D）}{6}{}%
+\contentsline {subsection}{\numberline {3.2.3}KKT 条件に基づく再定式化（DFL-OPT-K）}{7}{}%
+\contentsline {subsection}{\numberline {3.2.4}DFL-OPT-D と DFL-OPT-K の関係}{7}{}%
+\contentsline {chapter}{\numberline {第4章}数値実験}{9}{}%
+\contentsline {section}{\numberline {4.1}実データ実験の設定}{9}{}%
+\contentsline {subsection}{\numberline {4.1.1}実験の基本方針}{9}{}%
+\contentsline {subsection}{\numberline {4.1.2}使用データおよび学習・再バランス設定}{9}{}%
+\contentsline {subsection}{\numberline {4.1.3}共分散行列の推定}{10}{}%
+\contentsline {subsection}{\numberline {4.1.4}評価指標}{10}{}%
+\contentsline {subsection}{\numberline {4.1.5}比較手法}{11}{}%
+\contentsline {subsection}{\numberline {4.1.6}初期化およびソルバー設定}{11}{}%
+\contentsline {section}{\numberline {4.2}実験結果}{12}{}%
+\contentsline {subsection}{\numberline {4.2.1}実データによるベースライン比較}{12}{}%
+\contentsline {subsection}{\numberline {4.2.2}DFL-OPT-D と DFL-OPT-K の数値的比較}{13}{}%
+\contentsline {subsubsection}{数値計算の信頼性}{13}{}%
+\contentsline {subsubsection}{計算コストの比較}{13}{}%
+\contentsline {subsubsection}{解の同等性の検証}{14}{}%
+\contentsline {subsubsection}{探索経路摂動に対する頑健性}{14}{}%
+\contentsline {subsubsection}{小結}{16}{}%
+\contentsline {subsection}{\numberline {4.2.3}初期解導入の効果（DFL-CF init）}{16}{}%
+\contentsline {subsubsection}{累積リターンの比較}{16}{}%
+\contentsline {subsubsection}{全期間の性能指標比較}{17}{}%
+\contentsline {subsubsection}{初期解摂動に対する頑健性（$\Delta \approx 0.2$,10 seeds）}{17}{}%
+\contentsline {subsubsection}{計算時間への影響}{18}{}%
+\contentsline {subsubsection}{統計的有意性（ブートストラップ検定）}{19}{}%
+\contentsline {subsubsection}{小結}{19}{}%
+\contentsline {subsection}{\numberline {4.2.4}提案手法の性質分析（Decision-Focused Learning の観点）}{19}{}%
+\contentsline {subsubsection}{予測精度と意思決定品質の乖離}{20}{}%
+\contentsline {subsubsection}{機会損失（opportunity loss）の分布}{20}{}%
+\contentsline {subsubsection}{売買量（ターンオーバー）と性能の関係}{21}{}%
+\contentsline {subsubsection}{最大ウェイト資産の切替頻度（SwitchFreq）と性能の関係}{21}{}%
+\contentsline {subsubsection}{ポートフォリオ解 $\bm {w}$ の構造的特徴}{22}{}%
+\contentsline {subsubsection}{最大リターン資産の捕捉行動}{23}{}%
+\contentsline {subsubsection}{条件数（cond）レジーム別の相対優位}{23}{}%
+\contentsline {subsubsection}{小括}{25}{}%
+\contentsline {section}{\numberline {4.3}考察}{25}{}%
+\contentsline {section}{\numberline {4.4}補足分析}{25}{}%
+\contentsline {subsection}{\numberline {4.4.1}危機局面（COVID-19, 2020年）における挙動}{25}{}%
+\contentsline {chapter}{\numberline {第5章}結論}{29}{}%
+\contentsline {chapter}{Appendix}{30}{}%
+\contentsline {section}{命題 \ref {prop:equivalence} の証明}{30}{}%
+\contentsline {section}{DFL-OPT-D における強双対性制約の導出}{30}{}%
+\contentsline {section}{OAS 縮小係数と実効サンプルサイズ}{31}{}%
+\contentsline {chapter}{\hbox to\@lnumwidth {\hfil }\hspace {0pt}参考文献}{32}{}%
+\contentsline {chapter}{参考文献}{33}{}%
+\contentsline {chapter}{\hbox to\@lnumwidth {\hfil }\hspace {0pt}謝辞}{34}{}%
