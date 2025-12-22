@@ -693,6 +693,96 @@ DFL-OPT-K は,下位問題の KKT 条件を直接組み込んだ定式化であ�
 DFL-OPT-D は,提案手法の理論的背景を補完する定式化として位置づける.
 
 %========================
+% 解写像の局所感度と条件数（追加）
+%========================
+\subsection*{解写像の局所感度と条件数}
+\par
+命題 \ref{prop:equivalence} より，DFL-OPT-D と DFL-OPT-K は理論的には同値である．
+一方で，第4章の数値実験では，条件数が高い局面において手法間で意思決定誤差の tail や
+ポートフォリオの集中度（$N_{\mathrm{eff}}$ や $\max_i w_i$）に差が現れることが観察された．
+この差を解釈するため，本節では，下位の制約付き凸二次計画問題における最適解写像
+$(\hat{\boldsymbol{r}},\boldsymbol{V})\mapsto \boldsymbol{w}^*(\hat{\boldsymbol{r}},\boldsymbol{V})$
+の局所感度に関する標準的結果を，本研究の文脈に合わせて整理する．
+\par
+以下では，各時点を固定し，次の下位問題（平均--分散最適化）を考える：
+\begin{equation}
+\boldsymbol{w}^*(\hat{\boldsymbol{r}},\boldsymbol{V})
+\in
+\arg\min_{\boldsymbol{w}}
+\left\{
+-(1-\delta)\hat{\boldsymbol{r}}^\top \boldsymbol{w}
++\frac{\delta}{2}\boldsymbol{w}^\top \boldsymbol{V}\boldsymbol{w}
+\ \middle|\
+\boldsymbol{1}^\top \boldsymbol{w}=1,\ \boldsymbol{w}\ge\boldsymbol{0}
+\right\}.
+\label{eq:lower_qp_sensitivity}
+\end{equation}
+\par
+本問題は $\delta>0$ かつ $\boldsymbol{V}\succ\boldsymbol{0}$ の下で強凸であり，最適解は一意に定まる．
+さらに，不等式制約のアクティブ集合（$\boldsymbol{w}$ の正の成分集合）が近傍で不変である局所では，
+$\boldsymbol{w}^*$ は $\hat{\boldsymbol{r}}$ に関して滑らかに変化し，その感度は
+$\boldsymbol{V}$ の数値的性質（特に最小固有値）によって上から抑えられることが知られている
+（パラメトリック凸QPの感度解析における標準結果）．
+\par
+この点を明確化するため，以下の命題を示す．
+（厳密な導出は Appendix に示す．）
+本命題はパラメトリック凸QPの感度解析における標準結果であり，本研究では第4章の実験結果の解釈のために再掲する。
+また、大域的なLipschitz性ではなく，アクティブ集合固定下の局所結果に限定する。
+
+\begin{proposition}[最適解写像の局所感度（アクティブ集合固定）]
+\label{prop:local_sensitivity}
+$\delta>0$，$\boldsymbol{V}\succ\boldsymbol{0}$ とし，
+\eqref{eq:lower_qp_sensitivity} の最適解を $\boldsymbol{w}^*(\hat{\boldsymbol{r}},\boldsymbol{V})$ とする．
+ある $(\hat{\boldsymbol{r}},\boldsymbol{V})$ の近傍で，
+アクティブ集合 $A:=\{j\mid w^*_j>0\}$ が不変であると仮定する．
+このとき，$A$ 上の解 $\boldsymbol{w}^*_A$ は $\hat{\boldsymbol{r}}_A$ に関して affine であり，
+そのヤコビアンは
+\begin{equation}
+\frac{\partial \boldsymbol{w}^*_A}{\partial \hat{\boldsymbol{r}}_A}
+=
+\frac{1-\delta}{\delta}\left(
+\boldsymbol{V}_{AA}^{-1}
+-
+\boldsymbol{V}_{AA}^{-1}\boldsymbol{1}
+(\boldsymbol{1}^\top \boldsymbol{V}_{AA}^{-1}\boldsymbol{1})^{-1}
+\boldsymbol{1}^\top \boldsymbol{V}_{AA}^{-1}
+\right)
+\label{eq:jacobian_affine}
+\end{equation}
+で与えられる．
+したがって，同一アクティブ集合内での任意の摂動 $\Delta\hat{\boldsymbol{r}}$ に対し
+\begin{equation}
+\|\Delta \boldsymbol{w}^*\|_2
+\le
+C_A\,
+\frac{1-\delta}{\delta}\,
+\frac{1}{\lambda_{\min}(\boldsymbol{V}_{AA})}\,
+\|\Delta \hat{\boldsymbol{r}}\|_2
+\label{eq:lipschitz_bound}
+\end{equation}
+を満たす定数 $C_A<\infty$ が存在する．
+\end{proposition}
+
+\par
+命題 \ref{prop:local_sensitivity} は，アクティブ集合が固定される局所では，
+$\hat{\boldsymbol{r}}$ の誤差（あるいは数値誤差）が $\boldsymbol{w}^*$ に増幅される度合いが
+$\lambda_{\min}(\boldsymbol{V}_{AA})$ により支配されることを意味する．
+特に，$\boldsymbol{V}$ の条件数が大きい局面では一般に
+$\lambda_{\min}(\boldsymbol{V}_{AA})$ が小さくなりやすく，
+同じ大きさの $\Delta\hat{\boldsymbol{r}}$ に対して $\boldsymbol{w}^*$ が大きく変動し得る．
+さらに，アクティブ集合の切替えが生じる境界近傍では，
+この変動が「少数資産への極端集中」へ遷移する形で観測される可能性がある．
+\par
+本研究では共分散推定として OAS 縮小を用いるため，
+$\boldsymbol{V}_\phi=(1-\phi)\boldsymbol{S}+\phi \alpha \boldsymbol{I}$ と書ける．
+このとき
+$\lambda_{\min}(\boldsymbol{V}_\phi)\ge (1-\phi)\lambda_{\min}(\boldsymbol{S})+\phi\alpha$
+より，$\lambda_{\min}$ が底上げされ，
+\eqref{eq:lipschitz_bound} の上界（すなわち解写像の感度）が抑制される方向に働く．
+第4章では，この感度の観点と整合する形で，
+条件数レジーム別に意思決定誤差の tail および $N_{\mathrm{eff}}$ や極端集中確率を比較する．
+
+%========================
 % 第4章：数値実験
 %========================
 \chapter{数値実験}
@@ -759,7 +849,8 @@ DFL-OPT-D は,提案手法の理論的背景を補完する定式化として位
 \label{eq:ewma_cov}
 \end{equation}
 \par
-ここで,$L=13$ はローリング窓長（約四半期）であり,本研究の短期ローリング設定に基づき固定する.また,$\alpha=0.97$ は時間減衰率であり,実務における業界慣例に基づき固定する \cite{jpm2006riskmetrics}.$\bar{\boldsymbol{r}}_t$ は同窓内の平均リターンを表す.
+ここで,$L=13$ はローリング窓長（約四半期）であり,本研究の短期ローリング設定に基づき固定する.また,$\alpha=0.97$ は時間減衰率であり,
+実務における業界慣例に基づき固定する \cite{jpm2006riskmetrics}.$\bar{\boldsymbol{r}}_t$ は同窓内の平均リターンを表す.
 \par
 次に,OAS に基づく縮小共分散行列 $\boldsymbol{V}_t$ を次のように定義する.
 \begin{equation}
@@ -1266,7 +1357,13 @@ Chen, Y., Wiesel, A., \& Hero, A. O. (2010).
 Morgan, J. P. (2006).
 \newblock \emph{RiskMetrics Technical Document}, 4th ed.
 
+\bibitem{bonnansshapiro2000}
+Bonnans, J. F., \& Shapiro, A. (2000).
+\newblock \emph{Perturbation Analysis of Optimization Problems}.
+\newblock Springer.
+
 \end{thebibliography}
+
 %========================
 % Appendix
 %========================
@@ -1368,7 +1465,8 @@ g_i(\mu_i,\boldsymbol{\lambda}_i)
 \delta \boldsymbol{w}_i^\top \boldsymbol{V}_i \boldsymbol{w}_i-(1-\delta)\hat{\boldsymbol{r}}_i^\top \boldsymbol{w}_i
 = \mu_i
 \]
-と表される.これが本文 \eqref{eq:dual_strong_simplified} の等式であり,DFL-OPT-D では各 $i$ についてこの関係を制約 \eqref{eq:dfl_dual_value} として課している.
+と表される.これが本文 \eqref{eq:dual_strong_simplified} の等式であり,
+DFL-OPT-D では各 $i$ についてこの関係を制約 \eqref{eq:dfl_dual_value} として課している.
 
 \section*{C. OAS 縮小係数と実効サンプルサイズ}
 \addcontentsline{toc}{section}{C. OAS 縮小係数と実効サンプルサイズ}
@@ -1447,3 +1545,216 @@ Buy\&Hold(SPY) & \underline{10.35} & \underline{5.64} & 0.57 & 18.14 & $-$6.19 \
 \end{tabular}
 \end{table}
 \end{document}
+
+%========================
+% Appendix E: 命題の導出
+%========================
+\section*{E. 命題 \ref{prop:local_sensitivity} の導出（アクティブ集合固定下）}
+\addcontentsline{toc}{section}{E. 命題 \ref{prop:local_sensitivity} の導出（アクティブ集合固定下）}
+\par
+本節では，命題 \ref{prop:local_sensitivity} の導出を示す．
+以下では簡単のため時点添字を省略し，
+\eqref{eq:lower_qp_sensitivity} の下位問題
+\[
+\min_{\boldsymbol{w}}
+\;f(\boldsymbol{w};\hat{\boldsymbol{r}},\boldsymbol{V})
+:=
+-(1-\delta)\hat{\boldsymbol{r}}^\top \boldsymbol{w}
++\frac{\delta}{2}\boldsymbol{w}^\top \boldsymbol{V}\boldsymbol{w}
+\quad
+\text{s.t.}\quad
+\boldsymbol{1}^\top\boldsymbol{w}=1,\;\boldsymbol{w}\ge \boldsymbol{0}
+\]
+を考える．ここで $\delta>0$，$\boldsymbol{V}\succ\boldsymbol{0}$ とする．
+
+\subsection*{E.1 アクティブ集合固定による縮約}
+\par
+最適解を $\boldsymbol{w}^*(\hat{\boldsymbol{r}},\boldsymbol{V})$ とし，
+正の成分集合（アクティブ集合）を
+\[
+A:=\{j\in\{1,\dots,d\}\mid w_j^*>0\},\qquad N:=A^c
+\]
+とおく．
+アクティブ集合が近傍で不変（すなわち $w_A^*>0$ かつ $w_N^*=0$ が近傍で維持される）と仮定する．
+このとき，制約 $w\ge0$ は局所的に
+\[
+\boldsymbol{w}_N=\boldsymbol{0}
+\]
+という等式制約に置き換えられる．
+したがって，局所的には次の縮約問題と同値になる：
+\begin{equation}
+\min_{\boldsymbol{w}_A\in\mathbb{R}^{|A|}}
+\;-(1-\delta)\hat{\boldsymbol{r}}_A^\top \boldsymbol{w}_A
++\frac{\delta}{2}\boldsymbol{w}_A^\top \boldsymbol{V}_{AA}\boldsymbol{w}_A
+\quad
+\text{s.t.}\quad
+\boldsymbol{1}_A^\top \boldsymbol{w}_A=1.
+\label{eq:reduced_qp}
+\end{equation}
+ここで $\boldsymbol{1}_A$ は $|A|$ 次元の全成分 $1$ ベクトルである．
+$\boldsymbol{V}\succ0$ より主小行列 $\boldsymbol{V}_{AA}\succ0$ であり，
+\eqref{eq:reduced_qp} は強凸な等式制約付きQPである．
+
+\subsection*{E.2 縮約問題のKKT条件}
+\par
+\eqref{eq:reduced_qp} のラグランジュ関数を
+\[
+\mathcal{L}(\boldsymbol{w}_A,\mu)
+=
+-(1-\delta)\hat{\boldsymbol{r}}_A^\top \boldsymbol{w}_A
++\frac{\delta}{2}\boldsymbol{w}_A^\top \boldsymbol{V}_{AA}\boldsymbol{w}_A
++\mu(1-\boldsymbol{1}_A^\top \boldsymbol{w}_A)
+\]
+とする．KKT 条件は
+\begin{align}
+\delta \boldsymbol{V}_{AA}\boldsymbol{w}_A - (1-\delta)\hat{\boldsymbol{r}}_A - \mu \boldsymbol{1}_A &= \boldsymbol{0},
+\label{eq:kkt_reduced_stationarity}\\
+\boldsymbol{1}_A^\top \boldsymbol{w}_A &= 1
+\label{eq:kkt_reduced_budget}
+\end{align}
+である．
+\eqref{eq:kkt_reduced_stationarity} より
+\begin{equation}
+\boldsymbol{w}_A
+=
+\frac{1}{\delta}\boldsymbol{V}_{AA}^{-1}
+\bigl((1-\delta)\hat{\boldsymbol{r}}_A+\mu \boldsymbol{1}_A\bigr).
+\label{eq:wA_mu}
+\end{equation}
+これを \eqref{eq:kkt_reduced_budget} に代入すると
+\[
+\boldsymbol{1}_A^\top \boldsymbol{w}_A
+=
+\frac{1}{\delta}\boldsymbol{1}_A^\top\boldsymbol{V}_{AA}^{-1}
+\bigl((1-\delta)\hat{\boldsymbol{r}}_A+\mu \boldsymbol{1}_A\bigr)
+=1,
+\]
+すなわち
+\begin{equation}
+\mu
+=
+\frac{\delta-(1-\delta)\boldsymbol{1}_A^\top\boldsymbol{V}_{AA}^{-1}\hat{\boldsymbol{r}}_A}
+{\boldsymbol{1}_A^\top\boldsymbol{V}_{AA}^{-1}\boldsymbol{1}_A}.
+\label{eq:mu_closed}
+\end{equation}
+\eqref{eq:mu_closed} を \eqref{eq:wA_mu} に代入すると
+\[
+\boldsymbol{w}_A^*(\hat{\boldsymbol{r}}_A,\boldsymbol{V}_{AA})
+=
+\underbrace{\frac{1-\delta}{\delta}\boldsymbol{V}_{AA}^{-1}\hat{\boldsymbol{r}}_A}_{\text{線形項}}
++
+\underbrace{\frac{1}{\delta}\boldsymbol{V}_{AA}^{-1}\boldsymbol{1}_A\,
+\frac{\delta-(1-\delta)\boldsymbol{1}_A^\top\boldsymbol{V}_{AA}^{-1}\hat{\boldsymbol{r}}_A}
+{\boldsymbol{1}_A^\top\boldsymbol{V}_{AA}^{-1}\boldsymbol{1}_A}}_{\text{アフィン補正}}
+\]
+を得る．よって $\boldsymbol{w}_A^*$ は $\hat{\boldsymbol{r}}_A$ に関して affine である．
+
+\subsection*{E.3 ヤコビアンの導出（式 \eqref{eq:jacobian_affine}）}
+\par
+\eqref{eq:wA_mu} を $\hat{\boldsymbol{r}}_A$ で微分すると
+\[
+\frac{\partial \boldsymbol{w}_A^*}{\partial \hat{\boldsymbol{r}}_A}
+=
+\frac{1-\delta}{\delta}\boldsymbol{V}_{AA}^{-1}
++
+\frac{1}{\delta}\boldsymbol{V}_{AA}^{-1}\boldsymbol{1}_A
+\frac{\partial \mu}{\partial \hat{\boldsymbol{r}}_A}.
+\]
+一方，\eqref{eq:mu_closed} より
+\[
+\mu
+=
+\frac{\delta}{\boldsymbol{1}_A^\top\boldsymbol{V}_{AA}^{-1}\boldsymbol{1}_A}
+-
+\frac{1-\delta}{\boldsymbol{1}_A^\top\boldsymbol{V}_{AA}^{-1}\boldsymbol{1}_A}
+\boldsymbol{1}_A^\top\boldsymbol{V}_{AA}^{-1}\hat{\boldsymbol{r}}_A
+\]
+なので
+\[
+\frac{\partial \mu}{\partial \hat{\boldsymbol{r}}_A}
+=
+-\frac{1-\delta}{\boldsymbol{1}_A^\top\boldsymbol{V}_{AA}^{-1}\boldsymbol{1}_A}
+\boldsymbol{1}_A^\top\boldsymbol{V}_{AA}^{-1}.
+\]
+したがって
+\begin{align}
+\frac{\partial \boldsymbol{w}_A^*}{\partial \hat{\boldsymbol{r}}_A}
+&=
+\frac{1-\delta}{\delta}\boldsymbol{V}_{AA}^{-1}
+-
+\frac{1-\delta}{\delta}
+\boldsymbol{V}_{AA}^{-1}\boldsymbol{1}_A
+(\boldsymbol{1}_A^\top\boldsymbol{V}_{AA}^{-1}\boldsymbol{1}_A)^{-1}
+\boldsymbol{1}_A^\top\boldsymbol{V}_{AA}^{-1},
+\end{align}
+すなわち本文 \eqref{eq:jacobian_affine} を得る．
+
+\subsection*{E.4 局所Lipschitz上界（式 \eqref{eq:lipschitz_bound}）}
+\par
+同一アクティブ集合 $A$ が維持される局所では
+\[
+\Delta \boldsymbol{w}_A^*
+=
+\left(\frac{\partial \boldsymbol{w}_A^*}{\partial \hat{\boldsymbol{r}}_A}\right)\Delta\hat{\boldsymbol{r}}_A
+\]
+が成り立つため，
+\[
+\|\Delta \boldsymbol{w}_A^*\|_2
+\le
+\left\|
+\frac{\partial \boldsymbol{w}_A^*}{\partial \hat{\boldsymbol{r}}_A}
+\right\|_2
+\|\Delta \hat{\boldsymbol{r}}_A\|_2
+\]
+である．
+ここで
+\[
+\boldsymbol{P}_A
+:=
+\boldsymbol{I}
+-
+\boldsymbol{V}_{AA}^{-1}\boldsymbol{1}_A
+(\boldsymbol{1}_A^\top\boldsymbol{V}_{AA}^{-1}\boldsymbol{1}_A)^{-1}
+\boldsymbol{1}_A^\top
+\]
+とおくと，
+\[
+\frac{\partial \boldsymbol{w}_A^*}{\partial \hat{\boldsymbol{r}}_A}
+=
+\frac{1-\delta}{\delta}
+\boldsymbol{P}_A\boldsymbol{V}_{AA}^{-1}.
+\]
+よって
+\[
+\left\|
+\frac{\partial \boldsymbol{w}_A^*}{\partial \hat{\boldsymbol{r}}_A}
+\right\|_2
+\le
+\frac{1-\delta}{\delta}\,
+\|\boldsymbol{P}_A\|_2\,
+\|\boldsymbol{V}_{AA}^{-1}\|_2
+=
+\frac{1-\delta}{\delta}\,
+\|\boldsymbol{P}_A\|_2\,
+\frac{1}{\lambda_{\min}(\boldsymbol{V}_{AA})}.
+\]
+これより
+\[
+\|\Delta \boldsymbol{w}_A^*\|_2
+\le
+C_A\,
+\frac{1-\delta}{\delta}\,
+\frac{1}{\lambda_{\min}(\boldsymbol{V}_{AA})}\,
+\|\Delta \hat{\boldsymbol{r}}_A\|_2
+\]
+が得られる．ただし $C_A:=\|\boldsymbol{P}_A\|_2<\infty$ とおいた．
+最後に $\Delta \boldsymbol{w}^*$ は $N$ 成分がゼロのままなので，
+$\|\Delta \boldsymbol{w}^*\|_2=\|\Delta \boldsymbol{w}_A^*\|_2$ が成り立ち，
+本文の \eqref{eq:lipschitz_bound} が従う．
+\par
+以上で命題 \ref{prop:local_sensitivity} の導出を完了する．
+
+\par
+\noindent\textbf{注記（局所性）}：
+本節の導出は，ある最適解近傍でアクティブ集合 $A$ が不変である局所に限定している．
+境界（$w_j^*=0$ に接する点）では集合が切り替わり得るため，写像は一般に大域的には滑らかでない．

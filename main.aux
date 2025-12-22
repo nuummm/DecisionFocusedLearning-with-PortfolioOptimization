@@ -82,57 +82,61 @@
 \newlabel{eq:dfl_kkt_stationarity}{{3.30}{7}{}{equation.3.30}{}}
 \newlabel{eq:dfl_kkt_complementarity}{{3.31}{7}{}{equation.3.31}{}}
 \newlabel{prop:equivalence}{{3.1}{8}{}{proposition.3.1}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {第4章}数値実験}{9}{}\protected@file@percent }
+\newlabel{eq:lower_qp_sensitivity}{{3.32}{8}{}{equation.3.32}{}}
+\newlabel{prop:local_sensitivity}{{3.2}{8}{}{proposition.3.2}{}}
+\newlabel{eq:jacobian_affine}{{3.33}{8}{}{equation.3.33}{}}
+\newlabel{eq:lipschitz_bound}{{3.34}{8}{}{equation.3.34}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {第4章}数値実験}{10}{}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\jsc@mpt }}
 \@writefile{lot}{\addvspace {10\jsc@mpt }}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}実データ実験の設定}{9}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}実データ実験の設定}{10}{}\protected@file@percent }
 \citation{chen2010oas}
 \citation{jpm2006riskmetrics}
 \citation{jpm2006riskmetrics}
 \citation{chen2010oas}
-\newlabel{eq:ewma_cov}{{4.1}{10}{}{equation.4.1}{}}
-\newlabel{eq:oas_cov}{{4.2}{10}{}{equation.4.2}{}}
+\newlabel{eq:ewma_cov}{{4.1}{11}{}{equation.4.1}{}}
+\newlabel{eq:oas_cov}{{4.2}{11}{}{equation.4.2}{}}
 \citation{butlerkwon2023}
 \citation{butlerkwon2023}
 \citation{elmachtoubgrigas2022}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}実験結果}{12}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}実験結果}{13}{}\protected@file@percent }
 \@writefile{toc}{\setcounter {tocdepth}{2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}実データによるベースライン比較}{12}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces 累積資産推移}}{12}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}実データによるベースライン比較}{13}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces 累積資産推移}}{13}{}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{fig:baseline_cumreturn}{{4.1}{12}{実データによるベースライン比較}{figure.4.1}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces 評価指標の比較}}{12}{}\protected@file@percent }
-\newlabel{tab:baseline_summary}{{4.1}{12}{実データによるベースライン比較}{table.4.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}探索経路制御の効果}{13}{}\protected@file@percent }
-\newlabel{fig:lambda_tuning_sharpe_boxplot}{{4.2a}{13}{}{subfigure.4.2.1}{}}
-\newlabel{sub@fig:lambda_tuning_sharpe_boxplot}{{a}{13}{}{subfigure.4.2.1}{}}
-\newlabel{fig:lambda_tuning_cvar95_boxplot}{{4.2b}{13}{}{subfigure.4.2.2}{}}
-\newlabel{sub@fig:lambda_tuning_cvar95_boxplot}{{b}{13}{}{subfigure.4.2.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces 検証期間における正則化強度ごとの性能分布}}{13}{}\protected@file@percent }
-\newlabel{fig:lambda_tuning_boxplots}{{4.2}{13}{}{figure.4.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces ホールドアウト期間における累積資産推移}}{14}{}\protected@file@percent }
-\newlabel{fig:holdout_cum_wealth_2016_2025}{{4.3}{14}{}{figure.4.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}提案手法の性質分析}{14}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{予測精度と意思決定品質の乖離}{14}{}\protected@file@percent }
-\newlabel{fig:r2_vs_sharpe}{{4.4a}{14}{予測精度と意思決定品質の乖離}{subfigure.4.4.1}{}}
-\newlabel{sub@fig:r2_vs_sharpe}{{a}{14}{予測精度と意思決定品質の乖離}{subfigure.4.4.1}{}}
-\newlabel{fig:r2_vs_cvar95}{{4.4b}{14}{予測精度と意思決定品質の乖離}{subfigure.4.4.2}{}}
-\newlabel{sub@fig:r2_vs_cvar95}{{b}{14}{予測精度と意思決定品質の乖離}{subfigure.4.4.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces 決定係数 $R^2$ と意思決定品質の関係}}{14}{}\protected@file@percent }
-\newlabel{fig:r2_vs_decision_quality}{{4.4}{14}{予測精度と意思決定品質の乖離}{figure.4.4}{}}
-\@writefile{toc}{\contentsline {subsubsection}{条件数レジーム別の比較分析}{15}{}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces 条件数レジーム別: 意思決定誤差と有効資産数 $N_{\mathrm  {eff}}$}}{15}{}\protected@file@percent }
-\newlabel{tab:cond_regime_decision_error_neff}{{4.2}{15}{条件数レジーム別の比較分析}{table.4.2}{}}
-\@writefile{toc}{\contentsline {subsubsection}{ポートフォリオ解 $\bm  {w}$ の構造的特徴}{15}{}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4.3}{\ignorespaces ポートフォリオ構造の要約（太字:1位, 下線:2位. 提案手法は網掛け.）}}{16}{}\protected@file@percent }
-\newlabel{tab:portfolio_structure_summary}{{4.3}{16}{ポートフォリオ解 $\bm  {w}$ の構造的特徴}{table.4.3}{}}
-\@writefile{toc}{\contentsline {subsubsection}{危機局面における挙動}{16}{}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4.4}{\ignorespaces 危機局面における性能指標（太字:1位, 下線:2位. 提案手法は網掛け.）}}{16}{}\protected@file@percent }
-\newlabel{tab:crisis_event_metrics}{{4.4}{16}{危機局面における挙動}{table.4.4}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {第5章}結論}{17}{}\protected@file@percent }
+\newlabel{fig:baseline_cumreturn}{{4.1}{13}{実データによるベースライン比較}{figure.4.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces 評価指標の比較}}{13}{}\protected@file@percent }
+\newlabel{tab:baseline_summary}{{4.1}{13}{実データによるベースライン比較}{table.4.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}探索経路制御の効果}{14}{}\protected@file@percent }
+\newlabel{fig:lambda_tuning_sharpe_boxplot}{{4.2a}{14}{}{subfigure.4.2.1}{}}
+\newlabel{sub@fig:lambda_tuning_sharpe_boxplot}{{a}{14}{}{subfigure.4.2.1}{}}
+\newlabel{fig:lambda_tuning_cvar95_boxplot}{{4.2b}{14}{}{subfigure.4.2.2}{}}
+\newlabel{sub@fig:lambda_tuning_cvar95_boxplot}{{b}{14}{}{subfigure.4.2.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces 検証期間における正則化強度ごとの性能分布}}{14}{}\protected@file@percent }
+\newlabel{fig:lambda_tuning_boxplots}{{4.2}{14}{}{figure.4.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces ホールドアウト期間における累積資産推移}}{15}{}\protected@file@percent }
+\newlabel{fig:holdout_cum_wealth_2016_2025}{{4.3}{15}{}{figure.4.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}提案手法の性質分析}{15}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{予測精度と意思決定品質の乖離}{15}{}\protected@file@percent }
+\newlabel{fig:r2_vs_sharpe}{{4.4a}{15}{予測精度と意思決定品質の乖離}{subfigure.4.4.1}{}}
+\newlabel{sub@fig:r2_vs_sharpe}{{a}{15}{予測精度と意思決定品質の乖離}{subfigure.4.4.1}{}}
+\newlabel{fig:r2_vs_cvar95}{{4.4b}{15}{予測精度と意思決定品質の乖離}{subfigure.4.4.2}{}}
+\newlabel{sub@fig:r2_vs_cvar95}{{b}{15}{予測精度と意思決定品質の乖離}{subfigure.4.4.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces 決定係数 $R^2$ と意思決定品質の関係}}{15}{}\protected@file@percent }
+\newlabel{fig:r2_vs_decision_quality}{{4.4}{15}{予測精度と意思決定品質の乖離}{figure.4.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{条件数レジーム別の比較分析}{16}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces 条件数レジーム別: 意思決定誤差と有効資産数 $N_{\mathrm  {eff}}$}}{16}{}\protected@file@percent }
+\newlabel{tab:cond_regime_decision_error_neff}{{4.2}{16}{条件数レジーム別の比較分析}{table.4.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{ポートフォリオ解 $\bm  {w}$ の構造的特徴}{16}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4.3}{\ignorespaces ポートフォリオ構造の要約（太字:1位, 下線:2位. 提案手法は網掛け.）}}{17}{}\protected@file@percent }
+\newlabel{tab:portfolio_structure_summary}{{4.3}{17}{ポートフォリオ解 $\bm  {w}$ の構造的特徴}{table.4.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{危機局面における挙動}{17}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4.4}{\ignorespaces 危機局面における性能指標（太字:1位, 下線:2位. 提案手法は網掛け.）}}{17}{}\protected@file@percent }
+\newlabel{tab:crisis_event_metrics}{{4.4}{17}{危機局面における挙動}{table.4.4}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {第5章}結論}{18}{}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\jsc@mpt }}
 \@writefile{lot}{\addvspace {10\jsc@mpt }}
-\@writefile{toc}{\contentsline {chapter}{謝辞}{18}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{謝辞}{19}{}\protected@file@percent }
 \bibcite{markowitz1952}{1}
 \bibcite{chopraziemba1993}{2}
 \bibcite{lahoud2025}{3}
@@ -144,16 +148,17 @@
 \bibcite{elmachtoubgrigas2022}{9}
 \bibcite{chen2010oas}{10}
 \bibcite{jpm2006riskmetrics}{11}
-\@writefile{toc}{\contentsline {chapter}{参考文献}{19}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{Appendix}{20}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{A. 命題 \ref {prop:equivalence} の証明}{20}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{B. DFL-OPT-D における強双対性制約の導出}{20}{}\protected@file@percent }
+\bibcite{bonnansshapiro2000}{12}
+\@writefile{toc}{\contentsline {chapter}{参考文献}{20}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{Appendix}{21}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{A. 命題 \ref {prop:equivalence} の証明}{21}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{B. DFL-OPT-D における強双対性制約の導出}{21}{}\protected@file@percent }
 \citation{jpm2006riskmetrics}
 \citation{jpm2006riskmetrics}
-\@writefile{toc}{\contentsline {section}{C. OAS 縮小係数と実効サンプルサイズ}{21}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{D. 初期解＋罰則項あり（全期間）の参考結果}{22}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces 全期間（2006--2025）における累積資産推移（初期解＋罰則項, 取引コスト控除後）}}{22}{}\protected@file@percent }
-\newlabel{fig:appendix_fullperiod_wealth_penalty}{{1}{22}{}{figure.0.1}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces 全期間（2006--2025）における性能指標（初期解＋罰則項, 取引コスト控除後；参考，太字:1位, 下線:2位. 提案手法は網掛け.）}}{22}{}\protected@file@percent }
-\newlabel{tab:appendix_fullperiod_summary_cost}{{1}{22}{}{table.0.1}{}}
-\gdef \@abspage@last{25}
+\@writefile{toc}{\contentsline {section}{C. OAS 縮小係数と実効サンプルサイズ}{22}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{D. 初期解＋罰則項あり（全期間）の参考結果}{23}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces 全期間（2006--2025）における累積資産推移（初期解＋罰則項, 取引コスト控除後）}}{23}{}\protected@file@percent }
+\newlabel{fig:appendix_fullperiod_wealth_penalty}{{1}{23}{}{figure.0.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces 全期間（2006--2025）における性能指標（初期解＋罰則項, 取引コスト控除後；参考，太字:1位, 下線:2位. 提案手法は網掛け.）}}{23}{}\protected@file@percent }
+\newlabel{tab:appendix_fullperiod_summary_cost}{{1}{23}{}{table.0.1}{}}
+\gdef \@abspage@last{26}

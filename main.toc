@@ -11,22 +11,22 @@
 \contentsline {chapter}{\numberline {第3章}提案手法}{5}{}%
 \contentsline {section}{\numberline {3.1}二段階最適化モデル}{5}{}%
 \contentsline {section}{\numberline {3.2}再定式化}{6}{}%
-\contentsline {chapter}{\numberline {第4章}数値実験}{9}{}%
-\contentsline {section}{\numberline {4.1}実データ実験の設定}{9}{}%
-\contentsline {section}{\numberline {4.2}実験結果}{12}{}%
+\contentsline {chapter}{\numberline {第4章}数値実験}{10}{}%
+\contentsline {section}{\numberline {4.1}実データ実験の設定}{10}{}%
+\contentsline {section}{\numberline {4.2}実験結果}{13}{}%
 \setcounter {tocdepth}{2}
-\contentsline {subsection}{\numberline {4.2.1}実データによるベースライン比較}{12}{}%
-\contentsline {subsection}{\numberline {4.2.2}探索経路制御の効果}{13}{}%
-\contentsline {subsection}{\numberline {4.2.3}提案手法の性質分析}{14}{}%
-\contentsline {subsubsection}{予測精度と意思決定品質の乖離}{14}{}%
-\contentsline {subsubsection}{条件数レジーム別の比較分析}{15}{}%
-\contentsline {subsubsection}{ポートフォリオ解 $\bm {w}$ の構造的特徴}{15}{}%
-\contentsline {subsubsection}{危機局面における挙動}{16}{}%
-\contentsline {chapter}{\numberline {第5章}結論}{17}{}%
-\contentsline {chapter}{謝辞}{18}{}%
-\contentsline {chapter}{参考文献}{19}{}%
-\contentsline {chapter}{Appendix}{20}{}%
-\contentsline {section}{A. 命題 \ref {prop:equivalence} の証明}{20}{}%
-\contentsline {section}{B. DFL-OPT-D における強双対性制約の導出}{20}{}%
-\contentsline {section}{C. OAS 縮小係数と実効サンプルサイズ}{21}{}%
-\contentsline {section}{D. 初期解＋罰則項あり（全期間）の参考結果}{22}{}%
+\contentsline {subsection}{\numberline {4.2.1}実データによるベースライン比較}{13}{}%
+\contentsline {subsection}{\numberline {4.2.2}探索経路制御の効果}{14}{}%
+\contentsline {subsection}{\numberline {4.2.3}提案手法の性質分析}{15}{}%
+\contentsline {subsubsection}{予測精度と意思決定品質の乖離}{15}{}%
+\contentsline {subsubsection}{条件数レジーム別の比較分析}{16}{}%
+\contentsline {subsubsection}{ポートフォリオ解 $\bm {w}$ の構造的特徴}{16}{}%
+\contentsline {subsubsection}{危機局面における挙動}{17}{}%
+\contentsline {chapter}{\numberline {第5章}結論}{18}{}%
+\contentsline {chapter}{謝辞}{19}{}%
+\contentsline {chapter}{参考文献}{20}{}%
+\contentsline {chapter}{Appendix}{21}{}%
+\contentsline {section}{A. 命題 \ref {prop:equivalence} の証明}{21}{}%
+\contentsline {section}{B. DFL-OPT-D における強双対性制約の導出}{21}{}%
+\contentsline {section}{C. OAS 縮小係数と実効サンプルサイズ}{22}{}%
+\contentsline {section}{D. 初期解＋罰則項あり（全期間）の参考結果}{23}{}%
