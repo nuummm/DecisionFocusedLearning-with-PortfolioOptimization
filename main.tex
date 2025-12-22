@@ -1153,8 +1153,9 @@ $\eta$ の選択基準としては，検証区間における Sharpe 比の平�
 \centering
 \caption{条件数レジーム別: 意思決定誤差と有効資産数 $N_{\mathrm{eff}}$}
 \label{tab:cond_regime_decision_error_neff}
-\scriptsize
-\setlength{\tabcolsep}{2pt}
+{\footnotesize
+\renewcommand{\arraystretch}{1.1}
+\setlength{\tabcolsep}{3pt}
 \begin{tabular}{lrrrr|rrrr|rrrr}
 \hline
  & \multicolumn{4}{c|}{低（条件数）} & \multicolumn{4}{c|}{中（条件数）} & \multicolumn{4}{c}{高（条件数）} \\
@@ -1169,6 +1170,7 @@ SPO+      & 85.08 & 218.2 & 256.2 & 1.036 & 101.6 & 258.2 & \underline{310.6} & 
 PFL       & 85.48 & 218.2 & 263.9 & \underline{1.079} & 101.1 & \underline{257.5} & 336.0 & \underline{1.101} & 132.0 & 329.1 & 481.3 & \underline{1.106} \\
 \hline
 \end{tabular}
+}
 \end{table}
 
 \par
@@ -1544,7 +1546,6 @@ Buy\&Hold(SPY) & \underline{10.35} & \underline{5.64} & 0.57 & 18.14 & $-$6.19 \
 \hline
 \end{tabular}
 \end{table}
-\end{document}
 
 %========================
 % Appendix E: 命題の導出
@@ -1758,3 +1759,4 @@ $\|\Delta \boldsymbol{w}^*\|_2=\|\Delta \boldsymbol{w}_A^*\|_2$ が成り立ち�
 \noindent\textbf{注記（局所性）}：
 本節の導出は，ある最適解近傍でアクティブ集合 $A$ が不変である局所に限定している．
 境界（$w_j^*=0$ に接する点）では集合が切り替わり得るため，写像は一般に大域的には滑らかでない．
+\end{document}
