@@ -1,0 +1,35 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{test}[2025/12/22 Thesis titlepage]
+
+\makeatletter
+\def\@studentid{}
+\def\@advisor{}
+\def\@majorfield{}
+\def\@programfield{}
+\def\@yearandmonth{}
+
+\newcommand{\studentid}[1]{\gdef\@studentid{#1}}
+\newcommand{\advisor}[1]{\gdef\@advisor{#1}}
+\newcommand{\majorfield}[1]{\gdef\@majorfield{#1}}
+\newcommand{\programfield}[1]{\gdef\@programfield{#1}}
+\newcommand{\yearandmonth}[1]{\gdef\@yearandmonth{#1}}
+
+\renewcommand{\maketitle}{%
+  \begin{titlepage}
+    \centering
+    \vspace*{3.0cm}
+    {\LARGE \bfseries \@title \par}
+    \vfill
+    {\Large \@majorfield \par}
+    \ifx\@programfield\@empty\else{\Large \@programfield \par}\fi
+    \vspace{0.4cm}
+    {\Large \@studentid \par}
+    \vspace{0.4cm}
+    {\Large \@author \par}
+    \vspace{1.0cm}
+    {\Large \@advisor \par}
+    \vspace{1.2cm}
+    {\Large \@yearandmonth \par}
+  \end{titlepage}
+}
+\makeatother
