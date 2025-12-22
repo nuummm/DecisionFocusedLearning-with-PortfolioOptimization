@@ -231,4 +231,7 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmmib
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy8.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr8.tfm
+INPUT ./figs/appendix_fullperiod_wealth_penalty.png
+INPUT ./figs/appendix_fullperiod_wealth_penalty.png
+INPUT ./figs/appendix_fullperiod_wealth_penalty.png
 INPUT main.aux

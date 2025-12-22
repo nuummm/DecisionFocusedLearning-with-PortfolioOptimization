@@ -979,39 +979,6 @@ $\eta$ の選択基準としては，検証区間における Sharpe 比の平�
 \label{fig:lambda_tuning_boxplots}
 \end{figure}
 
-\subsubsection*{θ 摂動に対する安定性評価}
-\par
-次に，探索経路に対する頑健性を評価するため，
-学習初期のパラメータ $\theta$ にランダムな摂動を与える実験を行う．
-摂動強度は弱・強の二水準を設定し，
-各水準について乱数 seed を変えて10回の独立な試行を行う．
-
-\par
-比較対象として，以下の3つの設定を考える．
-\begin{itemize}
-\item 初期化（$\theta=0$）
-\item 初期化（$\theta_{\mathrm{DFL-CF}}$）
-\item 初期化（$\theta_{\mathrm{DFL-CF}}$）＋罰則項
-\end{itemize}
-
-\par
-各試行について，摂動なしの場合と比較した Sharpe 比および CVaR$_{95}$ の差分を算出し，
-その分布を箱ひげ図として可視化する．
-差分の分布が小さいほど，探索経路に対する安定性が高いと解釈できる．
-
-\par\medskip
-\begin{center}
-（＊ここに θ 摂動実験の結果：
-Sharpe / CVaR 差分の箱ひげ図を掲載）
-\end{center}
-\medskip
-
-\par
-結果より，
-初期化（$\theta=0$），初期化（$\theta_{\mathrm{DFL-CF}}$），初期化（$\theta_{\mathrm{DFL-CF}}$）＋罰則項の順に，
-摂動に対する性能変動が小さくなる傾向が確認され，
-探索経路制御が意思決定品質の安定性を改善していることが示唆される.
-
 \subsubsection*{投資成績への影響}
 \par
 最後に，探索経路制御が実際の投資成績に与える影響を確認する．
@@ -1050,7 +1017,8 @@ Sharpe / CVaR 差分の箱ひげ図を掲載）
 本節では，前節までで示した提案手法（DFL-OPT-K）の実証的な性能差が，どのような性質に起因しているのかを詳しく分析する．
 特に本研究では，「予測精度の高さ」そのものではなく，「予測誤差を含んだ状況下で，どのような意思決定が行われているか」という観点から，提案手法の挙動を整理する．
 \par
-以下では，(i) 予測精度と意思決定品質の乖離，(ii) 問題条件の難易度（条件数）に応じた挙動の変化，(iii) ポートフォリオ解 $\boldsymbol{w}$ の構造的特徴，および (iv) 危機局面における挙動，の順に検討する．
+以下では，(i) 予測精度と意思決定品質の乖離，(ii) 問題条件の難易度（条件数）に応じた挙動の変化，(iii) ポートフォリオ解 $\boldsymbol{w}$ の構造的特徴，
+および (iv) 危機局面における挙動，の順に検討する．
 
 \subsubsection{予測精度と意思決定品質の乖離}
 \par
@@ -1090,15 +1058,31 @@ Sharpe / CVaR 差分の箱ひげ図を掲載）
 次に，下位最適化問題の数値的な難易度が，意思決定の品質にどのような影響を与えるかを分析する．
 本研究では，各時点における共分散行列の条件数に基づき，市場環境を「低・中・高」の3つの条件数レジームに分類する．
 
-
-\par\medskip
-\begin{center}
-表（＊ここに条件数レジーム別の比較表を載せる）
-\end{center}
-\medskip
+\begin{table}[H]
+\centering
+\caption{条件数レジーム別: 意思決定誤差と有効資産数 $N_{\mathrm{eff}}$}
+\label{tab:cond_regime_decision_error_neff}
+\scriptsize
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{lrrrr|rrrr|rrrr}
+\hline
+ & \multicolumn{4}{c|}{低（条件数）} & \multicolumn{4}{c|}{中（条件数）} & \multicolumn{4}{c}{高（条件数）} \\
+\cline{2-13}
+Model & 平均 & p90 & p95 & $N_{\mathrm{eff}}$ & 平均 & p90 & p95 & $N_{\mathrm{eff}}$ & 平均 & p90 & p95 & $N_{\mathrm{eff}}$ \\
+\hline
+\rowcolor{gray!10}
+DFL-OPT-K & 84.91 & \textbf{201.1} & \textbf{249.1} & \textbf{1.420} & \textbf{94.60} & \textbf{217.6} & \textbf{286.4} & \textbf{1.482} & 120.9 & \textbf{263.7} & \textbf{360.7} & \textbf{1.530} \\
+DFL-CF    & \textbf{83.56} & 223.7 & 256.7 & 1.062 & 100.1 & 258.6 & 348.2 & 1.059 & 122.9 & 309.9 & 405.7 & 1.049 \\
+IPO-GRAD  & \underline{83.98} & \underline{212.7} & \underline{255.6} & 1.038 & \underline{98.92} & \underline{243.9} & 330.6 & 1.070 & \underline{120.6} & \underline{293.2} & \underline{392.2} & 1.066 \\
+SPO+      & 85.08 & 218.2 & 256.2 & 1.036 & 101.6 & 258.2 & \underline{310.6} & 1.049 & \textbf{119.7} & 320.7 & 410.9 & 1.071 \\
+PFL       & 85.48 & 218.2 & 263.9 & \underline{1.079} & 101.1 & \underline{257.5} & 336.0 & \underline{1.101} & 132.0 & 329.1 & 481.3 & \underline{1.106} \\
+\hline
+\end{tabular}
+\end{table}
 
 \par
-ここには，各レジームにおける意思決定誤差および有効資産数について，全モデルの中央値・平均・上位分位（p90）をまとめている．
+表\ref{tab:cond_regime_decision_error_neff}には，
+各レジームにおける意思決定誤差および有効資産数 $N_{\mathrm{eff}}$をまとめている．
 \par
 この結果から，条件数が高くなるにつれて，多くの比較手法では意思決定誤差が大きくなり，有効資産数が急激に減少する傾向が確認される．
 特に，条件数が高いレジームでは，解が一部の資産に極端に集中する傾向が顕著である．
@@ -1106,16 +1090,47 @@ Sharpe / CVaR 差分の箱ひげ図を掲載）
 一方，提案手法 DFL-OPT-K は，高条件数レジームにおいても意思決定誤差の増大が相対的に抑制されており，有効資産数も安定して維持されている．
 これは，提案手法が数値的に不安定な状況においても，意思決定を過度に歪めない構造を持っていることを示唆する．
 
+\par
+この挙動は，制約付き凸二次計画問題における最適解が，
+アクティブ制約集合に応じた \emph{piecewise affine} な構造を持つことと整合的である．
+すなわち，共分散行列の条件数が高い局面では，
+わずかな予測誤差や数値誤差がアクティブ集合の切り替えを誘発し，
+解が一部の資産に極端に集中するレジームへ遷移しやすい．
+提案手法 DFL-OPT-K では，
+このようなレジーム切り替えが相対的に抑制されている可能性が示唆される．
+さらに，このような高条件数レジームにおける意思決定誤差の tail 抑制は，実際の投資成果にも部分的に反映されている．
+表4.2に示すように，高条件数レジームでは多くの手法で意思決定誤差（平均・tail）が増大する一方，提案手法 DFL-OPT-K は p90/p95 の観点で相対的に小さい値を示しており，数値的に不安定な局面において極端な意思決定の失敗を回避しやすい可能性が示唆される．
+
+
 \subsubsection{ポートフォリオ解 $\boldsymbol{w}$ の構造的特徴}
 \par
-続いて，提案手法がどのようなポートフォリオ構造を生成しているかを分析する．
+前節では，共分散行列の条件数に応じて，
+意思決定誤差や解の安定性が大きく変化することを確認した．
+本節では，そのような数値的特性の違いが，
+実際にどのようなポートフォリオ構造として現れているかを分析する．
 
 
-\par\medskip
-\begin{center}
-表（＊ここにポートフォリオ構造の要約表を載せる）には，各手法について，以下をまとめている．
-\end{center}
-\medskip
+\begin{table}[H]
+\centering
+\caption{ポートフォリオ構造の要約（太字:1位, 下線:2位. 提案手法は網掛け.）}
+\label{tab:portfolio_structure_summary}
+\footnotesize
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lrrrrr}
+\hline
+Model & HHI（平均） & $P(\max_i w_i \ge 0.95)$ & 捕捉率（\%） & 平均ターンオーバー（\%） & 平均 $N_{\mathrm{eff}}$ \\
+\hline
+\rowcolor{gray!10}
+DFL-OPT-K & \textbf{0.772} & \textbf{0.490} & \textbf{43.1} & 24.01 & \textbf{1.477} \\
+DFL-CF    & 0.968 & 0.915 & 27.2 & 24.17 & 1.057 \\
+IPO-GRAD  & 0.967 & 0.912 & 27.3 & 25.24 & 1.058 \\
+SPO+      & 0.970 & 0.915 & 30.1 & \underline{21.02} & 1.052 \\
+PFL       & \underline{0.947} & \underline{0.866} & \underline{30.6} & \textbf{20.73} & \underline{1.095} \\
+\hline
+\end{tabular}
+\end{table}
+\par
+表\ref{tab:portfolio_structure_summary}には，各手法について，以下をまとめている．
 
 \par
 \begin{itemize}
@@ -1125,8 +1140,14 @@ Sharpe / CVaR 差分の箱ひげ図を掲載）
   \item 平均ターンオーバーおよびスイッチ頻度
 \end{itemize}
 \par
-この結果から，PFL 系手法では，特定の資産への極端な集中や，高頻度なポジション切替が生じやすいことが確認される．
-これに対し，提案手法 DFL-OPT-K は，過度な集中を回避しつつ，必要な局面では資産配分を調整するという，より滑らかなポートフォリオ更新を行っている．
+この結果から，PFL 系手法では，
+特定の資産への極端な集中や高頻度なポジション切替が生じやすいことが確認される．
+これは，意思決定問題の解が，
+異なるアクティブ集合に対応するレジーム間を頻繁に行き来している可能性を示唆する．
+これに対し，提案手法 DFL-OPT-K は，
+極端な集中の発生確率を低く抑えつつ，
+必要な局面では資産配分を調整するという，
+より滑らかなポートフォリオ更新を行っている．
 \par
 このような構造的特徴は，前節で確認した下方リスクの抑制や，安定した Sharpe 比の達成と整合的である．
 
@@ -1163,19 +1184,6 @@ PFL       & $-$0.385       & 9.88          & $-$0.291       & 12.06         & $-
 \par
 危機局面において，提案手法は相対的に下方リスクを抑制しつつ，過度な取引を伴わない安定した挙動を示している．
 特に，急激な市場下落局面においても，ポートフォリオが極端な集中状態に陥ることを回避している点が特徴的である．
-\par
-参考として，
-
-
-\par\medskip
-\begin{center}
-図（＊ここに危機局面における資産ウェイト推移図を載せる）
-\end{center}
-\medskip
-
-\par
-ここでは，提案手法と PFL を比較して示している．
-提案手法では，危機局面において安全資産への配分を段階的に増加させる傾向が観察され，意思決定に基づく適応的な挙動が確認できる．
 
 %========================
 % 第5章：結論
@@ -1384,7 +1392,8 @@ g_i(\mu_i,\boldsymbol{\lambda}_i)
 \[
 \mathrm{ESS}:=\frac{1}{\sum_k w_k^2}
 \]
-を用いると,EWMA はおよそ $\mathrm{ESS}\approx \frac{1+\alpha}{1-\alpha}$ 個の独立標本に相当する情報量を持つと解釈できる \cite{jpm2006riskmetrics}.
+を用いると,EWMA はおよそ $\mathrm{ESS}\approx \frac{1+\alpha}{1-\alpha}$ 個の独立標本に
+相当する情報量を持つと解釈できる \cite{jpm2006riskmetrics}.
 本研究ではこの対応関係に基づき,短期ローリング設定における数値的安定性と反応性のバランスを考慮して $\alpha$ を設定する.
 \par
 本研究のように有限窓 $L$ を用いるとき,重みを正規化した $\tilde{w}_k := \frac{(1-\alpha)\alpha^k}{1-\alpha^L}$（$k=0,\dots,L-1$）に対して
@@ -1396,4 +1405,45 @@ n_{\mathrm{eff}}
 \tag{A.2}
 \end{equation}
 となる.特に $L$ が十分大きい場合には $n_{\mathrm{eff}} \approx \frac{1+\alpha}{1-\alpha}$ となり,上の $\mathrm{ESS}$ の近似と整合する.
+
+\section*{D. 初期解＋罰則項あり（全期間）の参考結果}
+\addcontentsline{toc}{section}{D. 初期解＋罰則項あり（全期間）の参考結果}
+\par
+本付録では,初期解＋罰則項を導入した場合について,
+取引コストを控除した実行ベースの損益系列に基づく全期間（2006--2025）の累積資産推移を参考として示す．
+なお,本結果は提案手法の主張を補強するものではなく,
+探索経路制御が実務的なコストを考慮しても致命的な性能劣化を招かないことを確認する目的で提示する．
+\par
+本実験では,ティッカー別の取引コスト（bps）を
+``SPY:5, GLD:10, EEM:10, TLT:5''
+として設定した（デフォルト設定）．
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth]{figs/appendix_fullperiod_wealth_penalty.png}
+\caption{全期間（2006--2025）における累積資産推移（初期解＋罰則項, 取引コスト控除後）}
+\label{fig:appendix_fullperiod_wealth_penalty}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\caption{全期間（2006--2025）における性能指標（初期解＋罰則項, 取引コスト控除後；参考，太字:1位, 下線:2位. 提案手法は網掛け.）}
+\label{tab:appendix_fullperiod_summary_cost}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrrr}
+\hline
+Model & 年率リターン(\%) & 最終資産 & Sharpe 比 & 年率ボラ(\%) & CVaR$_{95}$(\%) \\
+\hline
+\rowcolor{gray!10}
+DFL-OPT-K & \textbf{13.95} & \textbf{12.15} & \textbf{0.83} & \underline{16.76} & \underline{$-$5.21} \\
+DFL-CF & 9.66 & 5.07 & 0.56 & 17.36 & $-$5.65 \\
+IPO-GRAD & 9.85 & 5.25 & 0.57 & 17.39 & $-$5.63 \\
+SPO+ & 9.50 & 4.90 & 0.55 & 17.38 & $-$5.67 \\
+PFL & 5.61 & 2.11 & 0.29 & 19.04 & $-$6.68 \\
+Buy\&Hold(SPY) & \underline{10.35} & \underline{5.64} & 0.57 & 18.14 & $-$6.19 \\
+1/N & 7.13 & 3.64 & \underline{0.62} & \textbf{11.42} & \textbf{$-$3.65} \\
+\hline
+\end{tabular}
+\end{table}
 \end{document}

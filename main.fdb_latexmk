@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1766407787.18629 "/Users/kensei/VScode/卒業研究2/Decision Focused Learning with Portfolio Optimization/main.tex" "main.pdf" "main" 1766407791.78084 0
-  "/Users/kensei/VScode/卒業研究2/Decision Focused Learning with Portfolio Optimization/main.tex" 1766407786.59384 74690 b02c3c640eed927c4419fc5443ce9e32 ""
+["pdflatex"] 1766419761.90279 "/Users/kensei/VScode/卒業研究2/Decision Focused Learning with Portfolio Optimization/main.tex" "main.pdf" "main" 1766419768.21732 0
+  "/Users/kensei/VScode/卒業研究2/Decision Focused Learning with Portfolio Optimization/main.tex" 1766419761.64787 78374 7e44aab6dd7c3faec5ae11fa4288b751 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1246382020 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1246382020 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
@@ -112,16 +112,17 @@
   "/usr/local/texlive/2025/texmf-dist/web2c/texmf.cnf" 1739380943 42148 61becc7c670cd061bb319c643c27fdd4 ""
   "/usr/local/texlive/2025/texmf-var/web2c/xetex/xelatex.fmt" 1765283217 5639808 c4fae1519276c229f4257e2ad8b39b50 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
+  "figs/appendix_fullperiod_wealth_penalty.png" 1766418040.64058 87952 75ff519da2f804ca7ef67801c395cba9 ""
   "figs/baseline_cum_return.png" 1766368288.64551 107090 f902601ff1050d29def746fb5716254f ""
   "figs/holdout_cum_wealth_2016_2025.png" 1766392387.97391 360831 c1471ff09370442a6ed84344152c1ac0 ""
   "figs/lambda_tuning_cvar95_boxplot.png" 1766386299.85421 70264 71f3516f5f2e2dfaf6cea03baace997a ""
   "figs/lambda_tuning_sharpe_boxplot.png" 1766386299.8511 72364 34405b318430f4be79b1119a49c737cd ""
   "figs/r2_vs_cvar_scatter.png" 1766406624.36209 73975 61c08a80cc5c655586e07c7151c81a8a ""
   "figs/r2_vs_sharpe_scatter.png" 1766406624.35892 61669 4feea3f7b91dd5a9dfb4b29117b143ad ""
-  "main.aux" 1766407789.87065 9928 f5353e5e9f6cbce80f49d5641e1c3da8 "pdflatex"
-  "main.lof" 1766407789.87276 569 a799e37c20f151962d253fcd43b6072e "pdflatex"
-  "main.tex" 1766407786.59384 74690 b02c3c640eed927c4419fc5443ce9e32 ""
-  "main.toc" 1766407789.87266 2130 abafbcc614545391051df0b1d0d35abf "pdflatex"
+  "main.aux" 1766419765.94893 11310 fb8fab24b2be3ec2bc92515c97802f96 "pdflatex"
+  "main.lof" 1766419765.95218 740 9ae2e8e026ffac43c7f9340b37011bfb "pdflatex"
+  "main.tex" 1766419761.64787 78374 7e44aab6dd7c3faec5ae11fa4288b751 ""
+  "main.toc" 1766419765.95207 2223 e9ef4dcf038ffcc8cf946574b544ace2 "pdflatex"
   (generated)
   "main.aux"
   "main.lof"

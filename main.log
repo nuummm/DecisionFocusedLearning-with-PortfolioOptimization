@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.12.9)  22 DEC 2025 21:49
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.12.9)  23 DEC 2025 01:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -813,11 +813,11 @@ LaTeX Font Info:    Font shape `TU/HaranoAjiMincho-Regular.otf(1)/m/n' will be
 (Font)              scaled to size 8.32242pt on input line 968.
 File: figs/lambda_tuning_cvar95_boxplot.png Graphic file (type bmp)
 <figs/lambda_tuning_cvar95_boxplot.png>
+File: figs/holdout_cum_wealth_2016_2025.png Graphic file (type bmp)
+<figs/holdout_cum_wealth_2016_2025.png>
 
 
 [13]
-File: figs/holdout_cum_wealth_2016_2025.png Graphic file (type bmp)
-<figs/holdout_cum_wealth_2016_2025.png>
 File: figs/r2_vs_sharpe_scatter.png Graphic file (type bmp)
 <figs/r2_vs_sharpe_scatter.png>
 File: figs/r2_vs_cvar_scatter.png Graphic file (type bmp)
@@ -825,11 +825,11 @@ File: figs/r2_vs_cvar_scatter.png Graphic file (type bmp)
 
 
 [14]
+LaTeX Font Info:    Font shape `TU/HaranoAjiMincho-Regular.otf(1)/m/n' will be
+(Font)              scaled to size 7.3977pt on input line 1121.
+
 
 [15]
-LaTeX Font Info:    Font shape `TU/HaranoAjiMincho-Regular.otf(1)/m/n' will be
-(Font)              scaled to size 7.3977pt on input line 1147.
-
 
 [16]
 第5章
@@ -851,19 +851,24 @@ LaTeX Font Info:    Font shape `TU/HaranoAjiMincho-Regular.otf(1)/m/n' will be
 
 ]
 
-[21] (./main.aux)
+[21]
+File: figs/appendix_fullperiod_wealth_penalty.png Graphic file (type bmp)
+<figs/appendix_fullperiod_wealth_penalty.png>
+
+
+[22] (./main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2022/08/05>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 12948 strings out of 473832
- 295360 string characters out of 5729481
- 734045 words of memory out of 5000000
- 35753 multiletter control sequences out of 15000+600000
+ 13040 strings out of 473832
+ 302472 string characters out of 5729481
+ 746181 words of memory out of 5000000
+ 35844 multiletter control sequences out of 15000+600000
  572743 words of font info for 149 fonts, out of 8000000 for 9000
  1353 hyphenation exceptions out of 8191
  109i,13n,113p,486b,699s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.pdf (24 pages).
+Output written on main.pdf (25 pages).
