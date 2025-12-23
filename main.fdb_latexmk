@@ -1,6 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1766420986.8246 "/Users/kensei/VScode/卒業研究2/Decision Focused Learning with Portfolio Optimization/main.tex" "main.pdf" "main" 1766420990.64449 0
-  "/Users/kensei/VScode/卒業研究2/Decision Focused Learning with Portfolio Optimization/main.tex" 1766420986.55889 90602 8a40ab6cba922107b8e7e5835d7633ef ""
+["pdflatex"] 1766472232.58732 "main.tex" "main.pdf" "main" 1766472240.71305 0
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1246382020 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1246382020 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
@@ -119,10 +118,10 @@
   "figs/lambda_tuning_sharpe_boxplot.png" 1766386299.8511 72364 34405b318430f4be79b1119a49c737cd ""
   "figs/r2_vs_cvar_scatter.png" 1766406624.36209 73975 61c08a80cc5c655586e07c7151c81a8a ""
   "figs/r2_vs_sharpe_scatter.png" 1766406624.35892 61669 4feea3f7b91dd5a9dfb4b29117b143ad ""
-  "main.aux" 1766420988.87248 11595 0be7adb40d0ac4f74cd47082ef9669cb "pdflatex"
-  "main.lof" 1766420988.874 740 d9de25ec2e139350bdd844b16b0a0073 "pdflatex"
-  "main.tex" 1766420986.55889 90602 8a40ab6cba922107b8e7e5835d7633ef ""
-  "main.toc" 1766420988.8739 2225 f7f1afdf5aa95edfd5a38f5263b10ef7 "pdflatex"
+  "main.aux" 1766472240.25713 12030 fc702d8919e3ebb35087dfbf85264891 "pdflatex"
+  "main.lof" 1766472240.26054 740 d9de25ec2e139350bdd844b16b0a0073 "pdflatex"
+  "main.tex" 1766472200.33823 90641 c788efc8d3d9b600a1b89dfd0715a582 ""
+  "main.toc" 1766472240.26025 2343 53716d1351ac2162b0894f7d37255bcd "pdflatex"
   (generated)
   "main.aux"
   "main.lof"
