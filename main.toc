@@ -24,8 +24,8 @@
 \contentsline {subsubsection}{ポートフォリオ構造と分散性の比較分析}{14}{}%
 \contentsline {subsubsection}{危機局面における挙動}{15}{}%
 \contentsline {subsubsection}{複数資産設定での実験結果}{15}{}%
-\contentsline {paragraph}{8 資産}{16}{}%
-\contentsline {paragraph}{6 資産}{17}{}%
+\contentsline {paragraph}{6 資産設定}{16}{}%
+\contentsline {paragraph}{8 資産設定}{17}{}%
 \contentsline {chapter}{\numberline {第5章}結論}{18}{}%
 \contentsline {chapter}{謝辞}{19}{}%
 \contentsline {chapter}{Appendix}{21}{}%

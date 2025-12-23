@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.euc) (TeX Live 2025) (preloaded format=platex 2025.12.9)  24 DEC 2025 02:17
+This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.euc) (TeX Live 2025) (preloaded format=platex 2025.12.9)  24 DEC 2025 02:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -509,13 +509,12 @@ LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
 
 
 [14]
-File: figs/wealth_events_8assets.png Graphic file (type bmp)
-<figs/wealth_events_8assets.png>
-
 
 [15]
 File: figs/wealth_events_6assets.png Graphic file (type bmp)
 <figs/wealth_events_6assets.png>
+File: figs/wealth_events_8assets.png Graphic file (type bmp)
+<figs/wealth_events_8assets.png>
 
 
 [16]
@@ -561,7 +560,7 @@ LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
 
 ]
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 1640.
+(Font)              No change on input line 1727.
 
 
 [21
@@ -587,10 +586,10 @@ L3 programming layer <2025-01-18>
 Here is how much of TeX's memory you used:
  6536 strings out of 473836
  106445 string characters out of 5731189
- 513180 words of memory out of 5000000
+ 514180 words of memory out of 5000000
  29657 multiletter control sequences out of 15000+600000
  582506 words of font info for 130 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  67i,15n,77p,301b,631s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.dvi (29 pages, 124480 bytes).
+Output written on main.dvi (29 pages, 128384 bytes).

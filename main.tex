@@ -1427,14 +1427,14 @@ tail における意思決定誤差および
 \setlength{\tabcolsep}{5pt}
 \begin{tabular}{lrrr}
 \hline
-Model & 捕捉率（\%） & 平均 $N_{\mathrm{eff}}$ & 平均ターンオーバー \\
+Model & 捕捉率（\%） & HHI（平均） & 平均ターンオーバー \\
 \hline
 \rowcolor{gray!10}
-DFL-OPT-K & \textbf{43.1} & \textbf{1.477} & 24.01 \\
-DFL-CF    & 27.2 & 1.057 & 24.17 \\
-IPO-GRAD  & 27.3 & 1.058 & 25.24 \\
-SPO+      & 30.1 & 0.970 & 21.02 \\
-PFL       & 30.6 & 0.947 & \textbf{20.73} \\
+DFL-OPT-K & \textbf{43.1} & \textbf{0.7720} & 24.01 \\
+DFL-CF    & 27.2 & 0.9676 & 24.17 \\
+IPO-GRAD  & 27.3 & 0.9669 & 25.24 \\
+SPO+      & 30.1 & 0.9695 & 21.02 \\
+PFL       & 30.6 & 0.9468 & \textbf{20.73} \\
 \hline
 \end{tabular}
 \end{table}
@@ -1443,17 +1443,25 @@ PFL       & 30.6 & 0.947 & \textbf{20.73} \\
 表\ref{tab:portfolio_structure_summary}は，
 各手法におけるポートフォリオ解 $\boldsymbol{w}$ の構造的特徴を要約したものである．
 ここでは，
-実質的な分散度を表す有効資産数 $N_{\mathrm{eff}}$，
+集中度を表す Herfindahl--Hirschman Index（HHI），
 週次リターン最大資産を十分なウェイトで捕捉している割合（捕捉率），
 およびポートフォリオの更新頻度を表す平均ターンオーバーに着目する．
+
+\par
+捕捉率は，
+「当該週に最も高いリターンを示した資産が，
+ポートフォリオ内で一定以上のウェイトを持っていたか」
+を判定する指標であり，
+本研究では代表的なしきい値として
+$w_i \ge 0.05$ を用いて定義している．
+
 
 \par
 まず，
 予測精度重視型の手法（PFL）や
 解析解ベースの手法では，
-平均 $N_{\mathrm{eff}}$ が 1 前後に留まっており，
-ポートフォリオが実質的に
-単一資産に近い集中状態へと遷移しやすい傾向が確認される．
+HHI が高く，
+ポートフォリオが集中状態へと遷移しやすい傾向が確認される．
 これらの手法では，
 ターンオーバーは相対的に低いものの，
 捕捉率も限定的であり，
@@ -1462,7 +1470,7 @@ PFL       & 30.6 & 0.947 & \textbf{20.73} \\
 \par
 一方，
 提案手法 DFL-OPT-K は，
-平均 $N_{\mathrm{eff}}$ が最も大きく，
+HHI が最も低く，
 過度な集中を回避した分散的なポートフォリオ構造を維持している．
 同時に，
 捕捉率は他手法と比較して明確に高く，
@@ -1491,16 +1499,19 @@ PFL       & 30.6 & 0.947 & \textbf{20.73} \\
 %------------------------
 \subsubsection{危機局面における挙動}
 \par
-最後に，市場の急変動が生じた危機局面における挙動を検証する．
-本研究では，リーマンショック期，COVID-19 初期局面，およびインフレ局面を代表的な危機局面として取り上げる．
-\par
+本節では，
+市場の急激な変動が生じた危機局面における
+各手法の挙動を比較・検証する．
+表\ref{tab:crisis_event_metrics}には，
+各危機局面における
+Sharpe 比および下方リスク指標 CVaR$_{95}$ を示す．
 
 \begin{table}[H]
 \centering
 \caption{危機局面における性能指標の比較}
 \label{tab:crisis_event_metrics}
-\footnotesize
-\setlength{\tabcolsep}{4pt}
+\small
+\setlength{\tabcolsep}{5pt}
 \begin{tabular}{lrr|rr|rr}
 \hline
  & \multicolumn{2}{c|}{リーマン危機} & \multicolumn{2}{c|}{コロナショック} & \multicolumn{2}{c}{インフレ局面} \\
@@ -1518,52 +1529,65 @@ PFL       & $-$0.385       & 9.88          & $-$0.291       & 12.06         & $-
 \end{table}
 
 \par
-ここには，各局面における Sharpe 比，下方リスク指標（CVaR または MaxDD），およびターンオーバーをまとめている．
+表\ref{tab:crisis_event_metrics}より，
+多くの比較手法では，
+危機局面において Sharpe 比が大きく低下すると同時に，
+CVaR$_{95}$ が顕著に増大していることが確認される．
+これは，
+急激な市場変動下では，
+推定誤差が意思決定に増幅されやすく，
+下方リスクが顕在化しやすいことを示唆している．
+
 \par
-危機局面において，提案手法は相対的に下方リスクを抑制しつつ，過度な取引を伴わない安定した挙動を示している．
-特に，急激な市場下落局面においても，ポートフォリオが極端な集中状態に陥ることを回避している点が特徴的である．
+一方，
+提案手法 DFL-OPT-K は，
+すべての危機局面において
+CVaR$_{95}$ を相対的に低水準に抑制しており，
+特に COVID-19 初期局面およびインフレ局面では，
+他手法と比較して高い Sharpe 比を維持している．
+この結果は，
+市場急変時においても，
+提案手法が極端な損失を回避しつつ，
+比較的安定した意思決定を継続していることを示唆する．
+
+\par
+これらの挙動は，
+前節までで確認した
+高条件数レジームにおける
+意思決定誤差の tail 抑制や
+極端集中の回避と整合的である．
+すなわち，
+提案手法は，
+数値的に不安定な市場環境下においても，
+意思決定構造を過度に歪めることなく，
+頑健な投資行動を実現していると解釈できる．
+
+\footnote{
+各危機局面の評価期間は，
+リーマンショック期（2007/07/01--2009/06/30），
+COVID-19 初期局面（2020/02/01--2020/12/31），
+インフレ局面（2022/01/01--2023/12/31）
+として設定した．
+}
 
 %========================
 % 複数資産設定での実験結果
 %========================
 \subsubsection{複数資産設定での実験結果}
+
 \par
-次に，資産数を増やした設定においても，同様の評価を行う．
-ここでは 8 資産（SPY, QQQ, IWM, EFA, EEM, IEF, TLT, GLD）および 6 資産（SPY, EFA, EEM, IEF, TLT, GLD）の 2 設定を比較する．
+本節では，
+資産ユニバースを拡張した場合においても，
+提案手法 DFL-OPT-K により確認された性能傾向が
+維持されるかを検証する．
+4 資産設定を基準として，
+地域分散および株式スタイル・金利感応度の違いを段階的に追加し，
+6 資産および 8 資産設定を構成した．
+いずれの設定においても，
+学習・評価の枠組みおよびハイパーパラメータは
+4 資産設定と同一とする．
 
-\paragraph{8 資産}
-\par
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.98\linewidth]{figs/wealth_events_8assets.png}
-\caption{8 資産設定における累積資産推移（危機局面を含む）}
-\label{fig:wealth_events_8assets}
-\end{figure}
-
-\begin{table}[H]
-\centering
-\caption{8 資産設定における評価指標の比較}
-\label{tab:summary_8assets}
-{\footnotesize
-\setlength{\tabcolsep}{4pt}
-\begin{tabular}{lrrrrr}
-\hline
-Model & Sharpe & Terminal & Ann.\ Return & Ann.\ Vol & CVaR$_{95}$ \\
-\hline
-\rowcolor{gray!10}
-DFL-OPT-K     & \textbf{0.67}    & \textbf{6.81}    & \textbf{10.96}    & \underline{16.30} & \underline{5.44} \\
-DFL-CF        & 0.34             & 2.55             & 6.50              & 18.87             & 6.45             \\
-IPO-GRAD      & 0.35             & 2.56             & 6.48              & 18.71             & 6.50             \\
-SPO+          & 0.39             & 3.18             & 7.74              & 19.65             & 6.48             \\
-PFL           & 0.34             & 2.63             & 6.88              & 20.08             & 6.80             \\
-Buy\&Hold(SPY) & \underline{0.57} & \underline{5.69} & \underline{10.38} & 18.13             & 6.19             \\
-1/N           & \underline{0.60} & 3.81             & 7.48              & \textbf{12.38}    & \textbf{4.08} \\
-\hline
-\end{tabular}
-}
-\end{table}
-
-\paragraph{6 資産}
+\paragraph{6 資産設定}
 \par
 \begin{figure}[H]
 \centering
@@ -1583,17 +1607,80 @@ Buy\&Hold(SPY) & \underline{0.57} & \underline{5.69} & \underline{10.38} & 18.13
 Model & Sharpe & Terminal & Ann.\ Return & Ann.\ Vol & CVaR$_{95}$ \\
 \hline
 \rowcolor{gray!10}
-DFL-OPT-K     & \textbf{0.74}    & \textbf{7.39}    & \textbf{11.17}    & \underline{15.02} & \underline{4.91} \\
-DFL-CF        & 0.48             & 3.75             & 8.08              & 16.97             & 5.67             \\
-IPO-GRAD      & \underline{0.59} & 5.68             & 10.23             & 17.35             & 5.69             \\
-SPO+          & 0.54             & 5.02             & 9.76              & 18.23             & 5.87             \\
-PFL           & 0.31             & 2.19             & 5.73              & 18.76             & 6.64             \\
+DFL-OPT-K      & \textbf{0.74}    & \textbf{7.39}    & \textbf{11.17}    & \underline{15.02} & \underline{4.91} \\
+DFL-CF         & 0.48             & 3.75             & 8.08              & 16.97             & 5.67             \\
+IPO-GRAD       & \underline{0.59} & 5.68             & 10.23             & 17.35             & 5.69             \\
+SPO+           & 0.54             & 5.02             & 9.76              & 18.23             & 5.87             \\
+PFL            & 0.31             & 2.19             & 5.73              & 18.76             & 6.64             \\
 Buy\&Hold(SPY) & 0.57             & \underline{5.69} & \underline{10.38} & 18.13             & 6.19             \\
-1/N           & \underline{0.59} & 3.10             & 6.22              & \textbf{10.54}    & \textbf{3.41} \\
+1/N            & \underline{0.59} & 3.10             & 6.22              & \textbf{10.54}    & \textbf{3.41} \\
 \hline
 \end{tabular}
 }
 \end{table}
+
+\paragraph{8 資産設定}
+\par
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.98\linewidth]{figs/wealth_events_8assets.png}
+\caption{8 資産設定における累積資産推移（危機局面を含む）}
+\label{fig:wealth_events_8assets}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\caption{8 資産設定における評価指標の比較}
+\label{tab:summary_8assets}
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrrr}
+\hline
+Model & Sharpe & Terminal & Ann.\ Return & Ann.\ Vol & CVaR$_{95}$ \\
+\hline
+\rowcolor{gray!10}
+DFL-OPT-K      & \textbf{0.67}    & \textbf{6.81}    & \textbf{10.96}    & \underline{16.30} & \underline{5.44} \\
+DFL-CF         & 0.34             & 2.55             & 6.50              & 18.87             & 6.45             \\
+IPO-GRAD       & 0.35             & 2.56             & 6.48              & 18.71             & 6.50             \\
+SPO+           & 0.39             & 3.18             & 7.74              & 19.65             & 6.48             \\
+PFL            & 0.34             & 2.63             & 6.88              & 20.08             & 6.80             \\
+Buy\&Hold(SPY) & \underline{0.57} & \underline{5.69} & \underline{10.38} & 18.13             & 6.19             \\
+1/N            & \underline{0.60} & 3.81             & 7.48              & \textbf{12.38}    & \textbf{4.08} \\
+\hline
+\end{tabular}
+}
+\end{table}
+
+\par
+図\ref{fig:wealth_events_6assets}および図\ref{fig:wealth_events_8assets}より，
+6 資産・8 資産のいずれの設定においても，
+DFL-OPT-K は長期運用期間を通じて
+比較的滑らかな資産成長を示していることが確認できる．
+特に，
+危機局面を含む期間においても，
+資産価値の急激な毀損が抑制されている点は
+4 資産設定と同様である．
+
+\par
+また，
+表\ref{tab:summary_6assets}および表\ref{tab:summary_8assets}に示す通り，
+DFL-OPT-K は
+Sharpe 比および最終資産価値において
+学習ベースの比較手法を一貫して上回っている．
+同時に，
+CVaR$_{95}$ および年率ボラティリティは
+等分散投資（$1/N$）に次ぐ水準に留まっており，
+高いリターン性能と下方リスク抑制のバランスが
+資産数の増加後も維持されていることが確認できる．
+
+\par
+以上の結果から，
+資産ユニバースを 6 資産および 8 資産へと拡張した場合においても，
+提案手法 DFL-OPT-K は，
+4 資産設定で確認された性能傾向を概ね維持していることが確認された．
+このことは，
+提案手法が特定の資産数や構成に依存することなく，
+実データ環境において一定の頑健性を有していることを示唆している．
 
 %========================
 % 第5章：結論
