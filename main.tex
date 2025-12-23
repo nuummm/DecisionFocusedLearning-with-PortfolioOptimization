@@ -1,23 +1,44 @@
-\documentclass[a4paper,10.5pt]{jreport}
+\documentclass[a4paper,11pt,ja=standard,xelatex]{bxjsreport}
 
-%========================
-% 先輩テンプレ準拠（platex + dvipdfmx）
-%========================
-\usepackage{test}
+\ExplSyntaxOn
+\msg_redirect_name:nnn { xeCJK } { CJKfamily-redef } { none }
+\ExplSyntaxOff
 
-% 余白（geometry は使用しない）
-% A4 / 上下左右 25mm 相当（TARGET の geometry 設定と同値）
-\setlength{\topmargin}{-0.4mm}
-\setlength{\oddsidemargin}{-0.4mm}
-\setlength{\evensidemargin}{-0.4mm}
-\setlength{\textwidth}{160mm}
-\setlength{\textheight}{247mm}
-\setlength{\headheight}{0mm}
-\setlength{\headsep}{0mm}
-\setlength{\footskip}{0mm}
+\usepackage{silence}
+\WarningFilter{caption}{Unknown document class}
 
-\usepackage[dvipdfmx]{graphicx}
-\usepackage[dvipdfmx,table]{xcolor}
+\usepackage{geometry}
+\geometry{reset,top=25mm,bottom=25mm,left=25mm,right=25mm}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\setsansfont{Helvetica}
+\setjamainfont[
+  UprightFont=HaranoAjiMincho-Regular.otf,
+  BoldFont=HaranoAjiMincho-Bold.otf,
+  ItalicFont=HaranoAjiMincho-Regular.otf,
+  ItalicFeatures={FakeSlant=0.2},
+  BoldItalicFont=HaranoAjiMincho-Bold.otf,
+  BoldItalicFeatures={FakeSlant=0.2}
+]{HaranoAjiMincho-Regular.otf}
+\setjasansfont[
+  UprightFont=HaranoAjiGothic-Medium.otf,
+  BoldFont=HaranoAjiGothic-Bold.otf,
+  ItalicFont=HaranoAjiGothic-Medium.otf,
+  ItalicFeatures={FakeSlant=0.2},
+  BoldItalicFont=HaranoAjiGothic-Bold.otf,
+  BoldItalicFeatures={FakeSlant=0.2}
+]{HaranoAjiGothic-Medium.otf}
+\setjamonofont[
+  UprightFont=HaranoAjiGothic-Medium.otf,
+  BoldFont=HaranoAjiGothic-Bold.otf,
+  ItalicFont=HaranoAjiGothic-Medium.otf,
+  ItalicFeatures={FakeSlant=0.2},
+  BoldItalicFont=HaranoAjiGothic-Bold.otf,
+  BoldItalicFeatures={FakeSlant=0.2}
+]{HaranoAjiGothic-Medium.otf}
+
+\usepackage{graphicx}
+\usepackage[table]{xcolor}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsfonts}
@@ -30,6 +51,7 @@
 \usepackage{comment}
 \usepackage{url}
 \usepackage{multirow}
+\usepackage{titlesec}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \theoremstyle{definition}
@@ -37,42 +59,86 @@
 \newtheorem{proposition}{命題}[chapter]
 \renewcommand{\proofname}{\normalfont 証明}
 
-% 目次深さ
-\setcounter{tocdepth}{3}
+% 目次には \section まで載せる（\subsection 以下は載せない）
+\setcounter{tocdepth}{1}
 \newcounter{savedtocdepth}
+\setcounter{page}{-1}
+\setlength{\parskip}{0em}
+\setlength{\topsep}{0em}
+\hbadness=10000
+\vbadness=10000
 
 %========================
-% タイトル情報（test.sty 経由で \maketitle）
+% 章見出し（第X章　題名）
 %========================
-\title{意思決定重視学習を用いたポートフォリオ最適化}
-\author{野坂 健成}
-\studentid{学籍番号：202211661}
-\advisor{指導教員：高野 祐一 准教授}
-\majorfield{経営工学主専攻}
-\programfield{}
-\yearandmonth{令和7年1月21日提出}
-\date{}
+\titleformat{\chapter}[hang]
+  {\huge\bfseries}
+  {第\thechapter 章\quad}
+  {0pt}
+  {}
+\titleformat{name=\chapter,numberless}[hang]
+  {\huge\bfseries}
+  {}
+  {0pt}
+  {}
+\titlespacing*{\chapter}{0pt}{*3}{*2}
+
+%========================
+% 表紙情報
+%========================
+\newcommand{\AcademicYear}{令和6年度}
+\newcommand{\FacultyName}{筑波大学理工学群社会工学類}
+\newcommand{\ThesisType}{卒業研究論文}
+\newcommand{\ThesisTitle}{意思決定重視学習を用いたポートフォリオ最適化}
+\newcommand{\MajorName}{経営工学主専攻}
+\newcommand{\StudentID}{202211661}
+\newcommand{\AuthorName}{野坂 健成}
+\newcommand{\AdvisorName}{高野 祐一 准教授}
+\newcommand{\SubmissionDate}{令和7年1月21日提出}
+
+\title{\ThesisTitle}
+\author{\AuthorName}
+\date{\SubmissionDate}
 
 \begin{document}
 
 %========================
 % 表紙
 %========================
-\maketitle
+\begin{titlepage}
+\centering
+\vspace*{3.0cm}
+{\Large \AcademicYear \par}
+\vspace{0.6cm}
+{\Large \FacultyName \par}
+\vspace{0.8cm}
+{\Large \ThesisType \par}
+\vfill
+{\LARGE \bfseries \ThesisTitle \par}
+\vfill
+{\Large \MajorName \par}
+\vspace{0.4cm}
+{\Large 学籍番号：\StudentID \par}
+\vspace{0.4cm}
+{\Large \AuthorName \par}
+\vspace{1.0cm}
+{\Large 指導教員：\AdvisorName \par}
+\vspace{1.2cm}
+{\Large \SubmissionDate \par}
+\end{titlepage}
 
 %========================
 % 目次・図目次（前付）
 %========================
 \pagenumbering{roman}
-\setcounter{tocdepth}{3}
+\setcounter{tocdepth}{1}
 \tableofcontents
 \listoffigures
-\listoftables
-\pagebreak
+\newpage
 \setcounter{page}{1}
 \pagenumbering{arabic}
 
-%==========================================================================================
+%========================
 % 第1章：序論
 %========================
 \chapter{序論}
@@ -181,7 +247,7 @@ DFL では,学習過程に最適化問題を組み込み,最適化解を介し�
 第4章では,実データを用いた数値実験により提案手法の特性を検証する.
 第5章では,結論と今後の課題を述べる.
 
-%===========================================================================================
+%========================
 % 第2章：既存手法
 %========================
 \chapter{既存手法}
@@ -308,7 +374,7 @@ Exponentially Weighted Moving Average（EWMA）\cite{jpm2006riskmetrics} を組�
 共分散推定手法の比較や最適化は本研究の主目的ではないため,以降の数値実験では全ての比較手法に対して同一の共分散推定法を用い,
 これを固定した上で,DFL による推定モデル学習の効果に焦点を当てる.
 
-%===================================================================================================
+%========================
 % 第3章：提案手法
 %========================
 \chapter{提案手法}
@@ -716,7 +782,7 @@ $\lambda_{\min}(\boldsymbol{V}_\phi)\ge (1-\phi)\lambda_{\min}(\boldsymbol{S})+\
 第4章では，この感度の観点と整合する形で，
 条件数レジーム別に意思決定誤差の tail および $N_{\mathrm{eff}}$ や極端集中確率を比較する．
 
-%==============================================================================================
+%========================
 % 第4章：数値実験
 %========================
 \chapter{数値実験}
@@ -864,8 +930,7 @@ $\lambda_{\min}(\boldsymbol{V}_\phi)\ge (1-\phi)\lambda_{\min}(\boldsymbol{S})+\
   \item DFL-CF：\eqref{eq:upper_level_obj}--\eqref{eq:upper_level_constraint} の下位問題において
   制約を外した場合に得られる解析解に基づく手法であり,\cite{butlerkwon2023} に示される解析的解に対応する.
   本研究では,解析解ベースの基準および初期化候補として用いる.
-  \item SPO+：線形最適化問題に対して機会損失の凸上界を構成することで,勾配ベースの学習を可能にした手法 \cite{elmachtoubgrigas2022}.
-  本研究の制約付き平均--分散問題には直接適用できないため,近似的設定により比較対象に含める.
+  \item SPO+：線形最適化問題に対して機会損失の凸上界を構成することで,勾配ベースの学習を可能にした手法 \cite{elmachtoubgrigas2022}.本研究の制約付き平均--分散問題には直接適用できないため,近似的設定により比較対象に含める.
 \end{itemize}
 \par
 \noindent ベンチマーク（運用戦略）
@@ -1213,13 +1278,12 @@ PFL       & $-$0.385       & 9.88          & $-$0.291       & 12.06         & $-
 危機局面において，提案手法は相対的に下方リスクを抑制しつつ，過度な取引を伴わない安定した挙動を示している．
 特に，急激な市場下落局面においても，ポートフォリオが極端な集中状態に陥ることを回避している点が特徴的である．
 
-%========================================================================================
+%========================
 % 第5章：結論
 %========================
 \chapter{結論}
 \par
-本章では,本研究で得られた知見を総括する.方法論的には,
-制約付き平均--分散ポートフォリオ最適化を下位問題として含む DFL を悲観的二段階最適化として定式化し,
+本章では,本研究で得られた知見を総括する.方法論的には,制約付き平均--分散ポートフォリオ最適化を下位問題として含む DFL を悲観的二段階最適化として定式化し,
 下位問題の最適性条件に基づく2つの単一レベル再定式化（DFL-OPT-D,DFL-OPT-K）を導出した.また,理論的同値性と数値計算上の挙動が必ずしも一致しない点を,
 実データ実験で検証可能な形で整理した.実証的には,週次TAAの実データ実験において,提案手法（DFL-OPT-K）が $R^2$ の向上に依らずに, 
 Sharpe 比の改善や CVaR$_{95}$ の低下を通じて意思決定品質を向上させ得ることを示した.
@@ -1239,8 +1303,68 @@ Sharpe 比の改善や CVaR$_{95}$ の低下を通じて意思決定品質を向
 % 参考文献
 %========================
 \newpage
-\bibliographystyle{jplain}
-\bibliography{cite}
+\begin{thebibliography}{99}
+
+\bibitem{markowitz1952}
+Markowitz, H. (1952).
+\newblock Portfolio Selection.
+\newblock \emph{The Journal of Finance}, 7(1), 77--91.
+
+\bibitem{chopraziemba1993}
+Chopra, V. K., \& Ziemba, W. T. (1993).
+\newblock The Effect of Errors in Means, Variances, and Covariances on Optimal Portfolio Choice.
+\newblock \emph{The Journal of Portfolio Management}, 19(2), 6--11.
+
+\bibitem{lahoud2025}
+Lahoud, A. A., Khan, A. S., Schaffernicht, E., Trincavelli, M., \& Stork, J. A. (2025).
+\newblock Predict-and-Optimize Techniques for Data-Driven Optimization Problems: A Review.
+\newblock \emph{Neural Processing Letters}, 57, 40.
+
+\bibitem{butlerkwon2023}
+Butler, A., \& Kwon, R. H. (2023).
+\newblock Integrating Prediction in Mean--Variance Portfolio Optimization.
+\newblock \emph{Quantitative Finance}, 23(3), 429--452.
+
+\bibitem{mandi2024}
+Mandi, J., Kotary, J., Berden, S., Mulamba, M., Bucarey, V., \& Fioretto, F. (2024).
+\newblock Decision-Focused Learning: Foundations, State of the Art, Benchmark and Future Opportunities.
+\newblock \emph{Journal of Artificial Intelligence Research}, 81, 1623--1701.
+
+\bibitem{lee2025}
+Lee, J., Jeon, H., Bae, H., \& Lee, Y. (2025).
+\newblock Return Prediction for Mean-Variance Portfolio Selection: How Decision-Focused Learning Shapes Forecasting Models.
+\newblock In \emph{Proceedings of ICAIF 2025}, 114--122.
+
+\bibitem{bucarey2024}
+Bucarey, V., Calder\'{o}n, S., Mu\~{n}oz, G., \& Semet, F. (2024).
+\newblock Decision-Focused Predictions via Pessimistic Bilevel Optimization.
+\newblock In \emph{Proceedings of CPAIOR 2024}, LNCS 14742, 127--135.
+
+\bibitem{shah2022}
+Shah, S., Wang, K., Chen, H., Perrault, A., Doshi-Velez, F., \& Tambe, M. (2022).
+\newblock Decision-Focused Learning without Decision-Oracles: Learning Locally Optimized Decision Losses.
+\newblock In \emph{Advances in Neural Information Processing Systems (NeurIPS 2022)}.
+
+\bibitem{elmachtoubgrigas2022}
+Elmachtoub, A. N., \& Grigas, P. (2022).
+\newblock Smart Predict, Then Optimize.
+\newblock \emph{Management Science}, 68(1), 9--26.
+
+\bibitem{chen2010oas}
+Chen, Y., Wiesel, A., \& Hero, A. O. (2010).
+\newblock Shrinkage estimation of high-dimensional covariance matrices.
+\newblock \emph{IEEE Transactions on Signal Processing}, 58(10), 5016--5029.
+
+\bibitem{jpm2006riskmetrics}
+Morgan, J. P. (2006).
+\newblock \emph{RiskMetrics Technical Document}, 4th ed.
+
+\bibitem{bonnansshapiro2000}
+Bonnans, J. F., \& Shapiro, A. (2000).
+\newblock \emph{Perturbation Analysis of Optimization Problems}.
+\newblock Springer.
+
+\end{thebibliography}
 
 %========================
 % Appendix
