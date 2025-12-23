@@ -1,18 +1,18 @@
 # Fdb version 4
-["bibtex main"] 1766492518.40435 "main.aux" "main.bbl" "main" 1766492523.213 0
+["bibtex main"] 1766502618.09941 "main.aux" "main.bbl" "main" 1766502627.94469 0
   "./cite.bib" 1766479969.45234 3348 1a98d22d5b6bc38b5d0f43fac307ab0f ""
   "./jplain.bst" 1766472732.88972 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "main.aux" 1766492520.4654 10464 101a60d7145a3ebf195846522bfee293 "latex"
+  "main.aux" 1766502622.65011 10051 45a011126917e8bf4f5d541fcea6bf1c "latex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["dvipdf"] 1766492520.79882 "main.dvi" "main.pdf" "main" 1766492523.2148 0
-  "main.dvi" 1766492520.46924 123864 c636a1ec234a3a7c6d302c621a54180e "latex"
+["dvipdf"] 1766502623.34914 "main.dvi" "main.pdf" "main" 1766502627.94775 0
+  "main.dvi" 1766502622.65788 117536 255b419f6f8879a658d48d0f4956391d "latex"
   (generated)
   "main.pdf"
   (rewritten before read)
-["latex"] 1766492518.55891 "main.tex" "main.dvi" "main" 1766492523.21317 0
+["latex"] 1766502618.41619 "main.tex" "main.dvi" "main" 1766502627.94504 0
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/ptex-fonts/standard/goth10.tfm" 1463434352 1196 5981e79c37b2cfd27b3612a6783cd4b6 ""
@@ -119,18 +119,18 @@
   "/usr/local/texlive/2025/texmf-var/web2c/euptex/platex.fmt" 1765283228 3336946 09322cf9c7af3f3699caf4fb7226c302 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
   "figs/appendix_fullperiod_wealth_penalty.png" 1766418040.64058 87952 75ff519da2f804ca7ef67801c395cba9 ""
-  "figs/baseline_cum_return.png" 1766368288.64551 107090 f902601ff1050d29def746fb5716254f ""
+  "figs/baseline_cum_return.png" 1766499938.17283 94562 d7756b248ef15f123d316018dac05ff3 ""
   "figs/holdout_cum_wealth_2016_2025.png" 1766392387.97391 360831 c1471ff09370442a6ed84344152c1ac0 ""
   "figs/lambda_tuning_cvar95_boxplot.png" 1766386299.85421 70264 71f3516f5f2e2dfaf6cea03baace997a ""
   "figs/lambda_tuning_sharpe_boxplot.png" 1766386299.8511 72364 34405b318430f4be79b1119a49c737cd ""
   "figs/r2_vs_cvar_scatter.png" 1766406624.36209 73975 61c08a80cc5c655586e07c7151c81a8a ""
   "figs/r2_vs_sharpe_scatter.png" 1766406624.35892 61669 4feea3f7b91dd5a9dfb4b29117b143ad ""
-  "main.aux" 1766492520.4654 10464 101a60d7145a3ebf195846522bfee293 "latex"
-  "main.bbl" 1766492518.55534 2466 77ffdb21f181c2c6813eb39f19dad141 "bibtex main"
-  "main.lof" 1766492520.46904 715 5b83cb5841ef9ac3b91a53530a9a55f7 "latex"
-  "main.lot" 1766492520.46916 872 a19fe2c01a23b6010de073383893d830 "latex"
-  "main.tex" 1766492513.92852 82893 cc9e28236f6810b401f221102ead1370 ""
-  "main.toc" 1766492520.46887 2388 d28853977b1a70a0c0c3cb9e29e9539e "latex"
+  "main.aux" 1766502622.65011 10051 45a011126917e8bf4f5d541fcea6bf1c "latex"
+  "main.bbl" 1766502618.40043 2466 77ffdb21f181c2c6813eb39f19dad141 "bibtex main"
+  "main.lof" 1766502622.6577 700 53aee1ca0e259046fdf0a1ddb586f681 "latex"
+  "main.lot" 1766502622.65778 872 98a226f09f89ff3c44c5244e5c768c76 "latex"
+  "main.tex" 1766502610.03903 78809 a4d9391766d64e1898b3f7d6f3184e90 ""
+  "main.toc" 1766502622.65756 2427 bb2631bea63718fd379a13f6077bbb4f "latex"
   "test.sty" 1766474544.23925 1756 0ffaabe167590fe54aae4828bb952226 ""
   (generated)
   "main.aux"
