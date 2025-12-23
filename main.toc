@@ -27,8 +27,8 @@
 \contentsline {chapter}{\numberline {第5章}結論}{18}{}%
 \contentsline {chapter}{謝辞}{19}{}%
 \contentsline {chapter}{Appendix}{21}{}%
-\contentsline {section}{A. 補題 \ref {prop:equivalence} の証明}{21}{}%
-\contentsline {section}{B. DFL-OPT-D における強双対性制約の導出}{21}{}%
-\contentsline {section}{C. OAS 縮小係数と EWMA の実効サンプルサイズ}{22}{}%
-\contentsline {section}{D. 初期解＋正則化あり（全期間）の参考結果}{23}{}%
-\contentsline {section}{E. 命題 \ref {prop:local_sensitivity} の導出（アクティブ集合固定下）}{23}{}%
+\contentsline {section}{A. DFL-OPT-D における強双対性制約の導出}{21}{}%
+\contentsline {section}{B. 補題 \ref {prop:equivalence} の証明}{22}{}%
+\contentsline {section}{C. 補題3.2 の導出}{22}{}%
+\contentsline {section}{D. OAS 縮小係数と EWMA の実効サンプルサイズ}{24}{}%
+\contentsline {section}{E. 取引コスト控除後の解析解に基づく初期化および L2 正則化項ありの参考結果}{25}{}%

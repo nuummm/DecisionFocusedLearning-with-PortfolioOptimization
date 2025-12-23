@@ -1,18 +1,18 @@
 # Fdb version 4
-["bibtex main"] 1766514571.00794 "main.aux" "main.bbl" "main" 1766514576.61086 0
+["bibtex main"] 1766520250.26876 "main.aux" "main.bbl" "main" 1766520262.59807 0
   "./cite.bib" 1766479969.45234 3348 1a98d22d5b6bc38b5d0f43fac307ab0f ""
   "./jplain.bst" 1766472732.88972 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "main.aux" 1766514573.46656 10978 181ffdfe571ebb417cf5f058ffb69ef9 "latex"
+  "main.aux" 1766520256.15998 11021 e140d27b4ceff155c815ef21c91ef3eb "latex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["dvipdf"] 1766514573.8892 "main.dvi" "main.pdf" "main" 1766514576.61273 0
-  "main.dvi" 1766514573.47006 129644 641fc38cf2145aeef7d051be7d39d768 "latex"
+["dvipdf"] 1766520257.09645 "main.dvi" "main.pdf" "main" 1766520262.60365 0
+  "main.dvi" 1766520256.16705 129556 b8e9c841dbddbec56f0ef44f1ee9fba6 "latex"
   (generated)
   "main.pdf"
   (rewritten before read)
-["latex"] 1766514571.17229 "main.tex" "main.dvi" "main" 1766514576.61104 0
+["latex"] 1766520250.6351 "main.tex" "main.dvi" "main" 1766520262.5983 0
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/ptex-fonts/standard/goth10.tfm" 1463434352 1196 5981e79c37b2cfd27b3612a6783cd4b6 ""
@@ -120,7 +120,7 @@
   "/usr/local/texlive/2025/texmf-dist/web2c/texmf.cnf" 1739380943 42148 61becc7c670cd061bb319c643c27fdd4 ""
   "/usr/local/texlive/2025/texmf-var/web2c/euptex/platex.fmt" 1765283228 3336946 09322cf9c7af3f3699caf4fb7226c302 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "figs/appendix_fullperiod_wealth_penalty.png" 1766418040.64058 87952 75ff519da2f804ca7ef67801c395cba9 ""
+  "figs/appendix_fullperiod_wealth_penalty.png" 1766516423.38969 92751 58f66889486647686daa34b2cffd4f52 ""
   "figs/baseline_cum_return.png" 1766499938.17283 94562 d7756b248ef15f123d316018dac05ff3 ""
   "figs/holdout_cum_wealth_2016_2025.png" 1766392387.97391 360831 c1471ff09370442a6ed84344152c1ac0 ""
   "figs/lambda_tuning_cvar95_boxplot.png" 1766386299.85421 70264 71f3516f5f2e2dfaf6cea03baace997a ""
@@ -129,12 +129,12 @@
   "figs/r2_vs_sharpe_scatter.png" 1766406624.35892 61669 4feea3f7b91dd5a9dfb4b29117b143ad ""
   "figs/wealth_events_6assets.png" 1766503167.74773 115024 8a71f1e42580ecdd3b3c3b644b1b2240 ""
   "figs/wealth_events_8assets.png" 1766503167.73529 102760 cb6009efcc69628fe61c3ec0956d946e ""
-  "main.aux" 1766514573.46656 10978 181ffdfe571ebb417cf5f058ffb69ef9 "latex"
-  "main.bbl" 1766514571.16794 2466 77ffdb21f181c2c6813eb39f19dad141 "bibtex main"
-  "main.lof" 1766514573.46994 921 11920e92090933c5a2593b086e6b5d6f "latex"
-  "main.lot" 1766514573.46999 939 4cd96f542b629864f99536fb1e84fc97 "latex"
-  "main.tex" 1766514566.46931 88927 a63c428aa2d0f723e9e056f5ed595eb3 ""
-  "main.toc" 1766514573.46988 2512 f22c252625b28070a8fcb845cb764c34 "latex"
+  "main.aux" 1766520256.15998 11021 e140d27b4ceff155c815ef21c91ef3eb "latex"
+  "main.bbl" 1766520250.61834 2466 77ffdb21f181c2c6813eb39f19dad141 "bibtex main"
+  "main.lof" 1766520256.16681 923 04f2a80d6f33f2aa2e6cb33e23a5226d "latex"
+  "main.lot" 1766520256.16694 941 ce419739f6e41079db5d7d66479e90c3 "latex"
+  "main.tex" 1766518865.41534 89057 3bfd25efbf63c8c38b7317074acc8759 ""
+  "main.toc" 1766520256.16499 2495 b3c16d4e77c5bb53fe93eae88dae6754 "latex"
   "test.sty" 1766474544.23925 1756 0ffaabe167590fe54aae4828bb952226 ""
   (generated)
   "main.aux"
