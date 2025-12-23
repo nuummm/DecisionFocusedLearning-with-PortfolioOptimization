@@ -9,4 +9,4 @@
 \contentsline {table}{\numberline {4.5}{\ignorespaces 6 資産設定における評価指標の比較}}{16}{}%
 \contentsline {table}{\numberline {4.6}{\ignorespaces 8 資産設定における評価指標の比較}}{17}{}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {1}{\ignorespaces 全期間（2006--2025）における性能指標（初期解＋罰則項, 取引コスト控除後；参考，太字:1位, 下線:2位. 提案手法は網掛け.）}}{23}{}%
+\contentsline {table}{\numberline {1}{\ignorespaces 全期間（2006--2025）における性能指標（初期解＋正則化，取引コスト控除後；参考）}}{23}{}%

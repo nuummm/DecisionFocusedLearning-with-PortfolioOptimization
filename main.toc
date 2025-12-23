@@ -24,13 +24,11 @@
 \contentsline {subsubsection}{ポートフォリオ構造と分散性の比較分析}{14}{}%
 \contentsline {subsubsection}{危機局面における挙動}{15}{}%
 \contentsline {subsubsection}{複数資産設定での実験結果}{15}{}%
-\contentsline {paragraph}{6 資産設定}{16}{}%
-\contentsline {paragraph}{8 資産設定}{17}{}%
 \contentsline {chapter}{\numberline {第5章}結論}{18}{}%
 \contentsline {chapter}{謝辞}{19}{}%
 \contentsline {chapter}{Appendix}{21}{}%
-\contentsline {section}{A. 命題 \ref {prop:equivalence} の証明}{21}{}%
+\contentsline {section}{A. 補題 \ref {prop:equivalence} の証明}{21}{}%
 \contentsline {section}{B. DFL-OPT-D における強双対性制約の導出}{21}{}%
-\contentsline {section}{C. OAS 縮小係数と実効サンプルサイズ}{22}{}%
-\contentsline {section}{D. 初期解＋罰則項あり（全期間）の参考結果}{23}{}%
+\contentsline {section}{C. OAS 縮小係数と EWMA の実効サンプルサイズ}{22}{}%
+\contentsline {section}{D. 初期解＋正則化あり（全期間）の参考結果}{23}{}%
 \contentsline {section}{E. 命題 \ref {prop:local_sensitivity} の導出（アクティブ集合固定下）}{23}{}%

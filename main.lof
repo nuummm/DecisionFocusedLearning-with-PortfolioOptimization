@@ -6,7 +6,7 @@
 \contentsline {figure}{\numberline {4.2}{\ignorespaces 学習期間における正則化強度ごとの性能分布}}{12}{}%
 \contentsline {figure}{\numberline {4.3}{\ignorespaces 評価期間における累積資産推移}}{12}{}%
 \contentsline {figure}{\numberline {4.4}{\ignorespaces 予測精度と意思決定品質の関係}}{13}{}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces 6 資産設定における累積資産推移（危機局面を含む）}}{16}{}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces 8 資産設定における累積資産推移（危機局面を含む）}}{16}{}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces 6 資産設定における累積資産推移}}{16}{}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces 8 資産設定における累積資産推移}}{16}{}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1}{\ignorespaces 全期間（2006--2025）における累積資産推移（初期解＋罰則項, 取引コスト控除後）}}{23}{}%
+\contentsline {figure}{\numberline {1}{\ignorespaces 全期間（2006--2025）における累積資産推移（初期解＋正則化，取引コスト控除後；参考）}}{23}{}%

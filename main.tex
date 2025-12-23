@@ -1587,12 +1587,11 @@ COVID-19 初期局面（2020/02/01--2020/12/31），
 学習・評価の枠組みおよびハイパーパラメータは
 4 資産設定と同一とする．
 
-\paragraph{6 資産設定}
 \par
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.98\linewidth]{figs/wealth_events_6assets.png}
-\caption{6 資産設定における累積資産推移（危機局面を含む）}
+\caption{6 資産設定における累積資産推移}
 \label{fig:wealth_events_6assets}
 \end{figure}
 
@@ -1619,12 +1618,11 @@ Buy\&Hold(SPY) & 0.57             & \underline{5.69} & \underline{10.38} & 18.13
 }
 \end{table}
 
-\paragraph{8 資産設定}
 \par
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.98\linewidth]{figs/wealth_events_8assets.png}
-\caption{8 資産設定における累積資産推移（危機局面を含む）}
+\caption{8 資産設定における累積資産推移}
 \label{fig:wealth_events_8assets}
 \end{figure}
 
@@ -1678,22 +1676,60 @@ CVaR$_{95}$ および年率ボラティリティは
 資産ユニバースを 6 資産および 8 資産へと拡張した場合においても，
 提案手法 DFL-OPT-K は，
 4 資産設定で確認された性能傾向を概ね維持していることが確認された．
-このことは，
-提案手法が特定の資産数や構成に依存することなく，
-実データ環境において一定の頑健性を有していることを示唆している．
+この結果は，
+本研究で検討した資産ユニバースの範囲において，
+提案手法 DFL-OPT-K が，
+資産数の増加後も
+4 資産設定で確認された性能傾向を
+概ね維持していることを示している．
 
 %========================
 % 第5章：結論
 %========================
 \chapter{結論}
 \par
-本章では,本研究で得られた知見を総括する.方法論的には,制約付き平均--分散ポートフォリオ最適化を下位問題として含む DFL を悲観的二段階最適化として定式化し,
-下位問題の最適性条件に基づく2つの単一レベル再定式化（DFL-OPT-D,DFL-OPT-K）を導出した.また,理論的同値性と数値計算上の挙動が必ずしも一致しない点を,
-実データ実験で検証可能な形で整理した.実証的には,週次TAAの実データ実験において,提案手法（DFL-OPT-K）が $R^2$ の向上に依らずに, 
-Sharpe 比の改善や CVaR$_{95}$ の低下を通じて意思決定品質を向上させ得ることを示した.
-改善は平均だけでなく分布の裾（p90/p99）の抑制としても現れ,条件数が高い局面で相対的に下方リスクを抑える傾向が確認された.
-また,この改善は売買量や切替頻度の増加だけでは説明されにくく,COVID-19 局面では安全資産（TLT）への動的シフトが観察された.
-今後は,非凸性に伴う局所解・初期化依存の低減,多資産化と現実的制約の導入,および感度分析や解法安定化を通じた実務適用可能性の検証を進める.
+本研究では，
+制約付き平均--分散ポートフォリオ最適化を下位問題に含む
+意思決定重視学習に着目し，
+定式化と実データ検証の両面から検討を行った．
+従来の予測精度重視学習では，
+予測誤差が小さい場合であっても，
+最適化段階で誤差が増幅され，
+配分が不安定化し得るという課題がある．
+本研究ではこの点を踏まえ，
+下位問題の最適性条件に基づく単一レベル再定式化を与え，
+意思決定品質を直接最小化する学習枠組みを整理した．
+
+\par
+また、週次 TAA を想定した実データ実験を通じて，
+提案手法は予測精度が必ずしも高くないにもかかわらず，
+Sharpe 比および下方リスク指標の観点で
+良好な投資成績を示す傾向が確認された．
+また，
+共分散行列の条件数に基づくレジーム別分析では，
+高条件数局面において多くの手法で意思決定誤差の分布の裾が拡大する一方，
+極端集中確率および誤差分布の裾部における増幅が，
+相対的に抑制される傾向が観察された．
+さらに，
+ポートフォリオ構造の観点からは，分散性を保ちつつ捕捉率も高いという形で，
+極端な集中に依存しない意思決定を行っていることが示された．
+危機局面においても，
+下方リスクを抑制しつつ比較的安定した挙動を示す傾向が確認された．
+加えて，
+資産ユニバースを 6 資産・8 資産へ拡張した場合でも，
+本研究の範囲において，
+学習ベースの比較手法に対して同様の性能傾向が概ね維持されることが確認された．
+
+\par
+なお，本研究の実証結果は，
+本研究で設定した資産ユニバースおよび運用条件の下で得られたものである．
+また，
+提案手法は非凸最適化問題として定式化されており，
+本研究では汎用的な非線形最適化ソルバーを用いて解いているため，
+計算時間はソルバー設計や実装に強く依存する．
+今後は，
+問題構造を活かした近似解法やヒューリスティックなアルゴリズムの設計により，
+より高頻度な意思決定や大規模設定への拡張可能性を検討する余地がある．
 
 %========================
 % 謝辞
@@ -1719,179 +1755,293 @@ Sharpe 比の改善や CVaR$_{95}$ の低下を通じて意思決定品質を向
 \appendix
 \chapter*{Appendix}
 \addcontentsline{toc}{chapter}{Appendix}
-\section*{A. 命題 \ref{prop:equivalence} の証明}
-\addcontentsline{toc}{section}{A. 命題 \ref{prop:equivalence} の証明}
+
+%========================
+% Appendix A
+%========================
+\section*{A. 補題 \ref{prop:equivalence} の証明}
+\addcontentsline{toc}{section}{A. 補題 \ref{prop:equivalence} の証明}
 \par
-本章では,DFL-OPT-D と DFL-OPT-K が理論的に同値であることを示す.
+本節では，DFL-OPT-D と DFL-OPT-K が同一の解集合を持つことを示す．
 \begin{proof}
-各 $i=1,\dots,T$ に対して,下位のポートフォリオ最適化問題 \eqref{eq:lower_level_recall} は目的関数が強凸な二次関数であり,
-等式制約および非負制約からなる凸制約集合を持つ凸二次計画問題である.また,$\boldsymbol{w}_i>\boldsymbol{0}$ かつ $\boldsymbol{1}^\top\boldsymbol{w}_i=1$ を満たす
-内点が存在するため,Slater 条件が成り立つ.したがって,強双対性が成立する.
+各 $i=1,\dots,T$ に対して，下位問題 \eqref{eq:lower_level_recall} は
+$\delta>0$ および $\boldsymbol{V}_i\succ\boldsymbol{0}$ の下で強凸な目的関数と凸制約集合を持つ凸二次計画問題である．
+また，仮定より Slater 条件が成立するため強双対性が成り立ち，
+KKT 条件は最適性の必要十分条件である．
+
 \par
-強双対性の成立より,下位問題の最適解は KKT 条件を満たす点と必要十分に一致する.すなわち,ある双対変数 $(\mu_i,\boldsymbol{\lambda}_i)$ が存在して,停留条件
+以下では，各時点 $i$ を固定して示す（添字 $i$ は省略する）．
+
+\par\noindent
+\textbf{(DFL-OPT-K $\Rightarrow$ DFL-OPT-D)}\;
+DFL-OPT-K の可行解 $(\boldsymbol{w},\mu,\boldsymbol{\lambda})$ は，
+\eqref{eq:dfl_kkt_stationarity}（停留条件）と
+\eqref{eq:dfl_kkt_budget}（予算制約）を満たす．
+したがって，\eqref{eq:dfl_kkt_stationarity} の両辺に $\boldsymbol{w}^\top$ を掛け，
+$\boldsymbol{1}^\top\boldsymbol{w}=1$ を用いると
 \[
-\delta \boldsymbol{V}_i \boldsymbol{w}_i-(1-\delta)\hat{\boldsymbol{r}}_i-\mu_i\boldsymbol{1}-\boldsymbol{\lambda}_i=\boldsymbol{0},
+\delta \boldsymbol{w}^\top \boldsymbol{V}\boldsymbol{w}
+-(1-\delta)\hat{\boldsymbol{r}}^\top\boldsymbol{w}
+-\mu
+=
+\boldsymbol{\lambda}^\top\boldsymbol{w}
 \]
-主問題の可行性
+を得る．
+さらに DFL-OPT-K では相補性 \eqref{eq:dfl_kkt_complementarity} より
+$\boldsymbol{\lambda}^\top\boldsymbol{w}=0$ が成り立つため，
 \[
-\boldsymbol{1}^\top\boldsymbol{w}_i=1,\quad \boldsymbol{w}_i\ge\boldsymbol{0},
+\delta \boldsymbol{w}^\top \boldsymbol{V}\boldsymbol{w}
+-(1-\delta)\hat{\boldsymbol{r}}^\top\boldsymbol{w}
+=\mu
 \]
-双対可行性
+が従う．
+これは DFL-OPT-D の最適値一致条件 \eqref{eq:dfl_dual_value} に一致する．
+他の制約（主・双対可行性および停留条件）は両定式化で共通であるから，
+DFL-OPT-K の可行解は DFL-OPT-D の可行解でもある．
+
+\par\noindent
+\textbf{(DFL-OPT-D $\Rightarrow$ DFL-OPT-K)}\;
+逆に DFL-OPT-D の可行解 $(\boldsymbol{w},\mu,\boldsymbol{\lambda})$ をとる．
+DFL-OPT-D は
+\eqref{eq:dfl_dual_stationarity}（停留条件）と
+\eqref{eq:dfl_dual_budget}（予算制約）を満たすため，上と同様に
 \[
-\boldsymbol{\lambda}_i\ge\boldsymbol{0},
+\delta \boldsymbol{w}^\top \boldsymbol{V}\boldsymbol{w}
+-(1-\delta)\hat{\boldsymbol{r}}^\top\boldsymbol{w}
+-\mu
+=
+\boldsymbol{\lambda}^\top\boldsymbol{w}
 \]
-および相補性条件
+が成り立つ．
+一方，DFL-OPT-D は最適値一致 \eqref{eq:dfl_dual_value} を課しているので，
+左辺は $0$ となり $\boldsymbol{\lambda}^\top\boldsymbol{w}=0$ を得る．
+ここで $\boldsymbol{w}\ge\boldsymbol{0}$ および $\boldsymbol{\lambda}\ge\boldsymbol{0}$ より，
+$\lambda_j w_j\ge 0$ が全成分で成り立つから，
+和が $0$ であることは各成分で $\lambda_j w_j=0$ を意味する．
+したがって
 \[
-\boldsymbol{\lambda}_i\odot\boldsymbol{w}_i=\boldsymbol{0}
+\boldsymbol{\lambda}\odot\boldsymbol{w}=\boldsymbol{0}
 \]
-が同時に成り立つとき, $\boldsymbol{w}_i$ は下位問題の最適解である.
+が従い，DFL-OPT-K の相補性条件 \eqref{eq:dfl_kkt_complementarity} が得られる．
+ゆえに DFL-OPT-D の可行解は DFL-OPT-K の可行解でもある．
+
 \par
-DFL-OPT-K は,上記の KKT 条件を制約として直接組み込んだ定式化である.一方,DFL-OPT-D は,主問題の可行性と双対可行性に加え,
-停留条件 \eqref{eq:dfl_dual_stationarity} と最適値一致条件 \eqref{eq:dfl_dual_value} を課すことで下位問題の最適性を表現している.
-強双対性が成立する凸最適化問題においては,これらの条件は KKT 条件と同値であるため,DFL-OPT-D により許容される $(\boldsymbol{w}_i,\mu_i,\boldsymbol{\lambda}_i)$ の集合は,
-DFL-OPT-K により許容される集合と一致する.
-\par
-以上より,DFL-OPT-D（\eqref{eq:dfl_dual_obj}--\eqref{eq:dfl_dual_stationarity}）と 
-DFL-OPT-K（\eqref{eq:dfl_kkt_obj}--\eqref{eq:dfl_kkt_complementarity}）は同一の解集合を持ち,理論的に等価であることが示された.
+以上より，両定式化は同一の可行集合を持つ．目的関数 \eqref{eq:dfl_kkt_obj}, \eqref{eq:dfl_dual_obj} は共通であるため，
+DFL-OPT-D と DFL-OPT-K は同一の解集合を持つ．
 \end{proof}
 
+%========================
+% Appendix B
+%========================
 \section*{B. DFL-OPT-D における強双対性制約の導出}
 \addcontentsline{toc}{section}{B. DFL-OPT-D における強双対性制約の導出}
 \par
-ここでは,本文 \eqref{eq:dfl_dual_value} および \eqref{eq:dual_strong_simplified}（したがって \eqref{eq:dfl_dual_value}）の導出を,双対関数 $g_i$ の導出を含めて示す.
+本節では，本文で導入した DFL-OPT-D における
+最適値一致制約 \eqref{eq:dfl_dual_value}
+（同値な形として \eqref{eq:dual_strong_simplified}）の導出を示す．
+導出は，下位問題の双対関数と強双対性に基づく．
+
 \par
-まず,ラグランジュ関数 \eqref{eq:lagrangian} に基づき,双対関数を
+各時点 $i$ における下位問題 \eqref{eq:lower_level_recall} に対し，
+ラグランジュ関数 \eqref{eq:lagrangian} を用いて，
+双対関数を
 \[
 g_i(\mu_i,\boldsymbol{\lambda}_i)
-:=\inf_{\boldsymbol{w}_i\in\mathbb{R}^d}\mathcal{L}_i(\boldsymbol{w}_i,\mu_i,\boldsymbol{\lambda}_i)
+:= \inf_{\boldsymbol{w}_i\in\mathbb{R}^d}
+\mathcal{L}_i(\boldsymbol{w}_i,\mu_i,\boldsymbol{\lambda}_i)
 \]
-と定義する.ここで $\mathcal{L}_i$ を $\boldsymbol{w}_i$ で最小化する停留条件は本文 \eqref{eq:dfl_dual_stationarity} であり,これより
+と定義する．
+ここで $\boldsymbol{\lambda}_i\ge\boldsymbol{0}$ とする．
+
+\par
+$\mathcal{L}_i$ を $\boldsymbol{w}_i$ で最小化する停留条件は
+\eqref{eq:dfl_dual_stationarity} と一致し，
+これより
 \[
 \tilde{\boldsymbol{w}}_i(\mu_i,\boldsymbol{\lambda}_i)
-=\frac{1}{\delta}\boldsymbol{V}_i^{-1}\!\left((1-\delta)\hat{\boldsymbol{r}}_i+\mu_i\boldsymbol{1}+\boldsymbol{\lambda}_i\right)
+=
+\frac{1}{\delta}\boldsymbol{V}_i^{-1}
+\!\left(
+(1-\delta)\hat{\boldsymbol{r}}_i
++\mu_i\boldsymbol{1}
++\boldsymbol{\lambda}_i
+\right)
 \]
-を得る.これを代入すると,双対関数は
+を得る．
+これをラグランジュ関数に代入すると，
+双対関数は
 \[
 g_i(\mu_i,\boldsymbol{\lambda}_i)
-=\mu_i-\frac{1}{2\delta}
-\left((1-\delta)\hat{\boldsymbol{r}}_i+\mu_i\boldsymbol{1}+\boldsymbol{\lambda}_i\right)^\top
+=
+\mu_i
+-
+\frac{1}{2\delta}
+\left(
+(1-\delta)\hat{\boldsymbol{r}}_i
++\mu_i\boldsymbol{1}
++\boldsymbol{\lambda}_i
+\right)^\top
 \boldsymbol{V}_i^{-1}
-\left((1-\delta)\hat{\boldsymbol{r}}_i+\mu_i\boldsymbol{1}+\boldsymbol{\lambda}_i\right)
+\left(
+(1-\delta)\hat{\boldsymbol{r}}_i
++\mu_i\boldsymbol{1}
++\boldsymbol{\lambda}_i
+\right)
 \]
-と表される.
+と表される．
+
 \par
-次に,停留条件 \eqref{eq:dfl_dual_stationarity} を
+次に，停留条件
 \[
-\delta \boldsymbol{V}_i \boldsymbol{w}_i=(1-\delta)\hat{\boldsymbol{r}}_i+\mu_i\boldsymbol{1}+\boldsymbol{\lambda}_i
+\delta \boldsymbol{V}_i\boldsymbol{w}_i
+=
+(1-\delta)\hat{\boldsymbol{r}}_i
++\mu_i\boldsymbol{1}
++\boldsymbol{\lambda}_i
 \]
-と書き直し,右辺を $z_i$ とおくと $z_i=\delta \boldsymbol{V}_i\boldsymbol{w}_i$ である.これを上式に代入すると
+を用いて右辺を消去すると，
+双対関数は
 \[
 g_i(\mu_i,\boldsymbol{\lambda}_i)
-=\mu_i-\frac{1}{2\delta}(\delta \boldsymbol{V}_i\boldsymbol{w}_i)^\top \boldsymbol{V}_i^{-1}(\delta \boldsymbol{V}_i\boldsymbol{w}_i)
-=\mu_i-\frac{\delta}{2}\boldsymbol{w}_i^\top \boldsymbol{V}_i \boldsymbol{w}_i
+=
+\mu_i
+-
+\frac{\delta}{2}
+\boldsymbol{w}_i^\top
+\boldsymbol{V}_i
+\boldsymbol{w}_i
 \]
-となり,双対目的値は停留条件を介して $V_i^{-1}$ を含まない形に簡約できる.
-\par
-弱双対性より,任意の主問題の実行可能解 $\boldsymbol{w}_i$ と双対変数 $(\mu_i,\boldsymbol{\lambda}_i)$（$\boldsymbol{\lambda}_i\ge\boldsymbol{0}$）に対して,
-主問題目的値は双対目的値の上界である.したがって,
-\[
--(1-\delta)\hat{\boldsymbol{r}}_i^\top \boldsymbol{w}_i
-+\frac{\delta}{2}\boldsymbol{w}_i^\top \boldsymbol{V}_i \boldsymbol{w}_i
-\ge
-\mu_i-\frac{\delta}{2}\boldsymbol{w}_i^\top \boldsymbol{V}_i \boldsymbol{w}_i
-\]
-が成り立つ.これが本文 \eqref{eq:dfl_dual_value} である.両辺に $\frac{\delta}{2}\boldsymbol{w}_i^\top \boldsymbol{V}_i \boldsymbol{w}_i$ を加えると
-\[
-\delta \boldsymbol{w}_i^\top \boldsymbol{V}_i \boldsymbol{w}_i-(1-\delta)\hat{\boldsymbol{r}}_i^\top \boldsymbol{w}_i
-\ge \mu_i
-\]
-を得る.
-\par
-最後に,強双対性より最適解においては弱双対性の不等式が等号で成立する.このとき KKT 条件の相補性 $\boldsymbol{\lambda}_i\odot\boldsymbol{w}_i=\boldsymbol{0}$ が成り立ち,
-導出中に現れる $\boldsymbol{\lambda}_i^\top\boldsymbol{w}_i$ が消えるため,最適値一致条件は
-\[
-\delta \boldsymbol{w}_i^\top \boldsymbol{V}_i \boldsymbol{w}_i-(1-\delta)\hat{\boldsymbol{r}}_i^\top \boldsymbol{w}_i
-= \mu_i
-\]
-と表される.これが本文 \eqref{eq:dual_strong_simplified} の等式であり,
-DFL-OPT-D では各 $i$ についてこの関係を制約 \eqref{eq:dfl_dual_value} として課している.
+と簡約される．
 
-\section*{C. OAS 縮小係数と実効サンプルサイズ}
-\addcontentsline{toc}{section}{C. OAS 縮小係数と実効サンプルサイズ}
 \par
-ここでは,第4章で用いた OAS の縮小係数 $\phi_t$ と,EWMA の重みに対応する実効サンプルサイズ $n_{\mathrm{eff}}$ の具体式を示す.
+弱双対性より，任意の主問題の実行可能解 $\boldsymbol{w}_i$ と
+双対変数 $(\mu_i,\boldsymbol{\lambda}_i)$ に対して，
+主問題の目的値は双対関数値以上である：
+\[
+-(1-\delta)\hat{\boldsymbol{r}}_i^\top\boldsymbol{w}_i
++\frac{\delta}{2}\boldsymbol{w}_i^\top\boldsymbol{V}_i\boldsymbol{w}_i
+\;\ge\;
+\mu_i
+-
+\frac{\delta}{2}\boldsymbol{w}_i^\top\boldsymbol{V}_i\boldsymbol{w}_i .
+\]
+両辺を整理すると，
+\[
+\delta \boldsymbol{w}_i^\top\boldsymbol{V}_i\boldsymbol{w}_i
+-
+(1-\delta)\hat{\boldsymbol{r}}_i^\top\boldsymbol{w}_i
+\;\ge\;
+\mu_i
+\]
+を得る．
+
 \par
-まず,$d$ 次元の共分散推定に用いるサンプルサイズを $n_{\mathrm{eff}}$ とすると,OAS による縮小係数は
+下位問題は Slater 条件を満たす凸最適化問題であるため，
+強双対性が成立し，
+最適解において上記の不等式は等号で成り立つ．
+このとき KKT 条件の相補性により
+$\boldsymbol{\lambda}_i^\top\boldsymbol{w}_i=0$ が成り立ち，
+双対変数は最適値表現から消去される．
+したがって，
+最適解 $(\boldsymbol{w}_i,\mu_i)$ は
+\[
+\delta \boldsymbol{w}_i^\top\boldsymbol{V}_i\boldsymbol{w}_i
+-
+(1-\delta)\hat{\boldsymbol{r}}_i^\top\boldsymbol{w}_i
+=
+\mu_i
+\]
+を満たす．
+これは本文で用いた最適値一致条件
+\eqref{eq:dfl_dual_value}
+（同値に \eqref{eq:dual_strong_simplified}）である．
+
+%========================
+% Appendix C
+%========================
+\section*{C. OAS 縮小係数と EWMA の実効サンプルサイズ}
+\addcontentsline{toc}{section}{C. OAS 縮小係数と EWMA の実効サンプルサイズ}
+\par
+本節では，第4章で用いた「EWMA 共分散に対する OAS 縮小」の実装上の対応関係を明記する．
+OAS の縮小係数はサンプルサイズ $n$ に依存するため，本研究では EWMA の重み付けにより得られる
+実効サンプルサイズ $n_{\mathrm{eff}}$ を $n$ の代替として用いる．
+
+\par
+まず，$d$ 次元の標本共分散（または重み付き共分散）を $\bm S_t$ とし，
+OAS による縮小係数を $\phi_t$ とする．このとき $\phi_t$ は文献 \cite{chen2010oas} に従い
 \begin{equation}
 \phi_t
 = \min\left\{
 1,\ 
-\frac{\left(1-\frac{2}{d}\right)\mathrm{tr}(\boldsymbol{S}_t^2)+\mathrm{tr}(\boldsymbol{S}_t)^2}
-{\left(n_{\mathrm{eff}}+1-\frac{2}{d}\right)\left(\mathrm{tr}(\boldsymbol{S}_t^2)-\frac{\mathrm{tr}(\boldsymbol{S}_t)^2}{d}\right)}
+\frac{\left(1-\frac{2}{d}\right)\mathrm{tr}(\bm S_t^2)+\mathrm{tr}(\bm S_t)^2}
+{\left(n_{\mathrm{eff}}+1-\frac{2}{d}\right)\left(\mathrm{tr}(\bm S_t^2)-\frac{\mathrm{tr}(\bm S_t)^2}{d}\right)}
 \right\}
-\tag{A.1}
+\label{eq:appendix_oas_phi}
 \end{equation}
-で与えられる.
+で与えられる．
+
 \par
-次に,EWMA における減衰率 $\alpha$ は,重み付き標本に基づく共分散推定の「記憶長」を制御するパラメータとして解釈できる \cite{jpm2006riskmetrics}.
-特に,重み $w_k=(1-\alpha)\alpha^k$ に対して定義される実効サンプルサイズ
-\[
-\mathrm{ESS}:=\frac{1}{\sum_k w_k^2}
-\]
-を用いると,EWMA はおよそ $\mathrm{ESS}\approx \frac{1+\alpha}{1-\alpha}$ 個の独立標本に
-相当する情報量を持つと解釈できる \cite{jpm2006riskmetrics}.
-本研究ではこの対応関係に基づき,短期ローリング設定における数値的安定性と反応性のバランスを考慮して $\alpha$ を設定する.
-\par
-本研究のように有限窓 $L$ を用いるとき,重みを正規化した $\tilde{w}_k := \frac{(1-\alpha)\alpha^k}{1-\alpha^L}$（$k=0,\dots,L-1$）に対して
+次に，EWMA の減衰率を $\alpha\in(0,1)$，有限窓長を $L$ とし，
+正規化重みを $\tilde{w}_k := \frac{(1-\alpha)\alpha^k}{1-\alpha^L}$（$k=0,\dots,L-1$）と定義する．
+このとき実効サンプルサイズを
 \begin{equation}
 n_{\mathrm{eff}}
 := \frac{1}{\sum_{k=0}^{L-1}\tilde{w}_k^2}
-= \frac{(1-\alpha^L)^2}{(1-\alpha)^2}\cdot\frac{1-\alpha^2}{1-\alpha^{2L}}
 = \frac{1+\alpha}{1-\alpha}\cdot\frac{(1-\alpha^L)^2}{1-\alpha^{2L}}
-\tag{A.2}
+\label{eq:appendix_neff}
 \end{equation}
-となる.特に $L$ が十分大きい場合には $n_{\mathrm{eff}} \approx \frac{1+\alpha}{1-\alpha}$ となり,上の $\mathrm{ESS}$ の近似と整合する.
+とおく．特に $L$ が十分大きい場合には
+$n_{\mathrm{eff}} \approx \frac{1+\alpha}{1-\alpha}$ となり，
+EWMA の「記憶長」の近似と整合する \cite{jpm2006riskmetrics}．
 
-\section*{D. 初期解＋罰則項あり（全期間）の参考結果}
-\addcontentsline{toc}{section}{D. 初期解＋罰則項あり（全期間）の参考結果}
+%========================
+% Appendix D: 初期解＋正則化あり（全期間）の参考結果
+%========================
+\section*{D. 初期解＋正則化あり（全期間）の参考結果}
+\addcontentsline{toc}{section}{D. 初期解＋正則化あり（全期間）の参考結果}
 \par
-本付録では,初期解＋罰則項を導入した場合について,
-取引コストを控除した実行ベースの損益系列に基づく全期間（2006--2025）の累積資産推移を参考として示す．
-なお,本結果は提案手法の主張を補強するものではなく,
-探索経路制御が実務的なコストを考慮しても致命的な性能劣化を招かないことを確認する目的で提示する．
+本付録では，第4章で検討した探索経路制御（解析解に基づく初期化および L2 正則化項）について，
+取引コスト控除後の実行ベース損益系列に基づく全期間（2006--2025）の累積資産推移を参考として示す．
+本結果は提案手法の優位性を主張するための追加実験ではなく，
+探索経路制御が実務的なコストを考慮した場合にも性能を著しく損なわないことを確認する目的で提示する．
+
 \par
-本実験では,ティッカー別の取引コスト（bps）を
-``SPY:5, GLD:10, EEM:10, TLT:5''
-として設定した（デフォルト設定）．
+取引コストはティッカー別に（片道）\texttt{SPY: 5 bps, GLD: 10 bps, EEM: 10 bps, TLT: 5 bps}
+として設定し，各リバランス時点の売買量に比例して控除した（他の実験条件は本文と同一）．
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.95\linewidth]{figs/appendix_fullperiod_wealth_penalty.png}
-\caption{全期間（2006--2025）における累積資産推移（初期解＋罰則項, 取引コスト控除後）}
+\caption{全期間（2006--2025）における累積資産推移（初期解＋正則化，取引コスト控除後；参考）}
 \label{fig:appendix_fullperiod_wealth_penalty}
 \end{figure}
 
 \begin{table}[H]
 \centering
-\caption{全期間（2006--2025）における性能指標（初期解＋罰則項, 取引コスト控除後；参考，太字:1位, 下線:2位. 提案手法は網掛け.）}
+\caption{全期間（2006--2025）における性能指標（初期解＋正則化，取引コスト控除後；参考）}
 \label{tab:appendix_fullperiod_summary_cost}
 \footnotesize
 \setlength{\tabcolsep}{4pt}
 \begin{tabular}{lrrrrr}
 \hline
-Model & 年率リターン(\%) & 最終資産 & Sharpe 比 & 年率ボラ(\%) & CVaR$_{95}$(\%) \\
+Model & Sharpe 比 & 最終資産 & 年率リターン(\%) & 年率ボラ(\%) & CVaR$_{95}$ \\
 \hline
 \rowcolor{gray!10}
-DFL-OPT-K & \textbf{13.95} & \textbf{12.15} & \textbf{0.83} & \underline{16.76} & \underline{$-$5.21} \\
-DFL-CF & 9.66 & 5.07 & 0.56 & 17.36 & $-$5.65 \\
-IPO-GRAD & 9.85 & 5.25 & 0.57 & 17.39 & $-$5.63 \\
-SPO+ & 9.50 & 4.90 & 0.55 & 17.38 & $-$5.67 \\
-PFL & 5.61 & 2.11 & 0.29 & 19.04 & $-$6.68 \\
-Buy\&Hold(SPY) & \underline{10.35} & \underline{5.64} & 0.57 & 18.14 & $-$6.19 \\
-1/N & 7.13 & 3.64 & \underline{0.62} & \textbf{11.42} & \textbf{$-$3.65} \\
+DFL-OPT-K & \textbf{0.83} & \textbf{12.15} & \textbf{13.95} & \underline{16.76} & \underline{5.21} \\
+DFL-CF & 0.56 & 5.07 & 9.66 & 17.36 & 5.65 \\
+IPO-GRAD & 0.57 & 5.25 & 9.85 & 17.39 & 5.63 \\
+SPO+ & 0.55 & 4.90 & 9.50 & 17.38 & 5.67 \\
+PFL & 0.29 & 2.11 & 5.61 & 19.04 & 6.68 \\
+Buy\&Hold(SPY) & 0.57 & \underline{5.64} & \underline{10.35} & 18.14 & 6.19 \\
+1/N & \underline{0.62} & 3.64 & 7.13 & \textbf{11.42} & \textbf{3.65} \\
 \hline
 \end{tabular}
 \end{table}
+
+\par
+図\ref{fig:appendix_fullperiod_wealth_penalty}および表\ref{tab:appendix_fullperiod_summary_cost}より，
+探索経路制御を導入した設定においても，
+取引コスト控除後の長期推移が大きく崩れないことが確認できる．
 
 %========================
 % Appendix E: 命題の導出
@@ -1928,7 +2078,7 @@ A:=\{j\in\{1,\dots,d\}\mid w_j^*>0\},\qquad N:=A^c
 \boldsymbol{w}_N=\boldsymbol{0}
 \]
 という等式制約に置き換えられる．
-したがって，局所的には次の縮約問題と同値になる：
+したがって，局所的には次の縮約問題と同値になる.
 \begin{equation}
 \min_{\boldsymbol{w}_A\in\mathbb{R}^{|A|}}
 \;-(1-\delta)\hat{\boldsymbol{r}}_A^\top \boldsymbol{w}_A
