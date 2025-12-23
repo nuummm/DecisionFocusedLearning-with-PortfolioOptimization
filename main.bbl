@@ -1,0 +1,68 @@
+\begin{thebibliography}{10}
+
+\bibitem{bucarey2024}
+V.~Bucarey, S.~Calder{\'o}n, G.~Mu{\~n}oz, and F.~Semet.
+\newblock Decision-focused predictions via pessimistic bilevel optimization.
+\newblock In {\em Proceedings of CPAIOR 2024}, volume 14742 of {\em LNCS},
+  pages 127--135, 2024.
+
+\bibitem{butlerkwon2023}
+Adam Butler and Roy~H. Kwon.
+\newblock Integrating prediction in mean--variance portfolio optimization.
+\newblock {\em Quantitative Finance}, 23(3):429--452, 2023.
+
+\bibitem{chen2010oas}
+Y.~Chen, A.~Wiesel, and Alfred~O. Hero.
+\newblock Shrinkage estimation of high-dimensional covariance matrices.
+\newblock {\em IEEE Transactions on Signal Processing}, 58(10):5016--5029,
+  2010.
+
+\bibitem{chopraziemba1993}
+Vijay~K. Chopra and William~T. Ziemba.
+\newblock The effect of errors in means, variances, and covariances on optimal
+  portfolio choice.
+\newblock {\em The Journal of Portfolio Management}, 19(2):6--11, 1993.
+
+\bibitem{elmachtoubgrigas2022}
+Adam~N. Elmachtoub and Paul Grigas.
+\newblock Smart predict, then optimize.
+\newblock {\em Management Science}, 68(1):9--26, 2022.
+
+\bibitem{jpm2006riskmetrics}
+{J. P. Morgan}.
+\newblock {\em RiskMetrics Technical Document}.
+\newblock 4 edition, 2006.
+
+\bibitem{lahoud2025}
+Ali~A. Lahoud, Asif~S. Khan, Erik Schaffernicht, Marco Trincavelli, and J.~A.
+  Stork.
+\newblock Predict-and-optimize techniques for data-driven optimization
+  problems: A review.
+\newblock {\em Neural Processing Letters}, 57:40, 2025.
+
+\bibitem{lee2025}
+J.~Lee, H.~Jeon, H.~Bae, and Y.~Lee.
+\newblock Return prediction for mean-variance portfolio selection: How
+  decision-focused learning shapes forecasting models.
+\newblock In {\em Proceedings of ICAIF 2025}, pages 114--122, 2025.
+
+\bibitem{mandi2024}
+J.~Mandi, J.~Kotary, S.~Berden, M.~Mulamba, V.~Bucarey, and F.~Fioretto.
+\newblock Decision-focused learning: Foundations, state of the art, benchmark
+  and future opportunities.
+\newblock {\em Journal of Artificial Intelligence Research}, 81:1623--1701,
+  2024.
+
+\bibitem{markowitz1952}
+Harry Markowitz.
+\newblock Portfolio selection.
+\newblock {\em The Journal of Finance}, 7(1):77--91, 1952.
+
+\bibitem{shah2022}
+S.~Shah, K.~Wang, H.~Chen, A.~Perrault, F.~Doshi-Velez, and M.~Tambe.
+\newblock Decision-focused learning without decision-oracles: Learning locally
+  optimized decision losses.
+\newblock In {\em Advances in Neural Information Processing Systems (NeurIPS
+  2022)}, 2022.
+
+\end{thebibliography}

@@ -1,0 +1,81 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{test}[2025/12/23 Thesis titlepage]
+
+\makeatletter
+\def\@academicyear{}\def\@facultyname{}\def\@thesistype{}
+\def\@studentid{}\def\@advisor{}\def\@majorfield{}\def\@programfield{}\def\@yearandmonth{}
+\def\@abstract{}\def\@keywords{}
+
+%% definition of title (REFERENCE 互換)
+\newdimen\vspacetitle \newdimen\vspaceabstract
+\vspacetitle=\textheight
+\vspaceabstract=0.5\textheight
+
+\def\academicyear#1{\gdef\@academicyear{#1}}
+\def\facultyname#1{\gdef\@facultyname{#1}}
+\def\thesistype#1{\gdef\@thesistype{#1}}
+\def\studentid#1{\gdef\@studentid{#1}}
+\def\advisor#1{\gdef\@advisor{#1}}
+\def\majorfield#1{\gdef\@majorfield{#1}}
+\def\programfield#1{\gdef\@programfield{#1}}
+\def\abstract#1{\gdef\@abstract{#1}}
+\def\yearandmonth#1{\gdef\@yearandmonth{#1}}
+\def\keywords#1{\gdef\@keywords{#1}}
+
+\def\keywordsname{\bf Key Words : }
+
+\def\maketitle{\par
+\begingroup
+\def\@makefnmark{\hbox to\z@{$\m@th^{\@thefnmark}$\hss}}%
+\if@twocolumn
+\twocolumn[\@maketitle]
+\else
+\global\@topnum\z@
+\@maketitle \fi\@thanks
+\endgroup
+\let\maketitle\relax
+\let\@maketitle\relax
+\gdef\@abstract{}\gdef\@keywords{}
+\let\abstract\relax \let\keywords\relax
+\gdef\@thanks{}\let\thanks\relax}
+
+\def\@maketitle{%
+\newpage\null
+\thispagestyle{empty}%
+\vbox to \vspacetitle{%
+\vspace*{1cm}
+\begin{center}
+{\huge \@academicyear\par}
+
+\vspace*{5mm}
+{\huge \@facultyname\par}
+
+\vspace*{5mm}
+{\huge \@thesistype\par}
+
+\vfill
+{\huge \@title\par}
+
+\vfill
+{\Large \@majorfield\par}
+\ifx\@programfield\@empty\else
+{\Large \@programfield\par}
+\fi
+
+\vspace*{5mm}
+{\Large \@studentid\par}
+
+\vspace*{5mm}
+{\Large \@author\par}
+
+\vspace*{10mm}
+{\Large \@advisor\par}
+
+\vspace*{10mm}
+{\Large \@yearandmonth\par}
+\end{center}
+\vss
+}%
+\clearpage
+}%
+\makeatother

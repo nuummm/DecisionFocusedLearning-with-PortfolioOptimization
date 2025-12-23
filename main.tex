@@ -1,44 +1,23 @@
-\documentclass[a4paper,11pt,ja=standard,xelatex]{bxjsreport}
+\documentclass[a4paper,10.5pt]{jreport}
 
-\ExplSyntaxOn
-\msg_redirect_name:nnn { xeCJK } { CJKfamily-redef } { none }
-\ExplSyntaxOff
+%========================
+% 先輩テンプレ準拠（platex + dvipdfmx）
+%========================
+\usepackage{test}
 
-\usepackage{silence}
-\WarningFilter{caption}{Unknown document class}
+% 余白（geometry は使用しない）
+% A4 / 上下左右 25mm 相当（TARGET の geometry 設定と同値）
+\setlength{\topmargin}{-0.4mm}
+\setlength{\oddsidemargin}{-0.4mm}
+\setlength{\evensidemargin}{-0.4mm}
+\setlength{\textwidth}{160mm}
+\setlength{\textheight}{247mm}
+\setlength{\headheight}{0mm}
+\setlength{\headsep}{0mm}
+\setlength{\footskip}{0mm}
 
-\usepackage{geometry}
-\geometry{reset,top=25mm,bottom=25mm,left=25mm,right=25mm}
-\usepackage{fontspec}
-\setmainfont{Times New Roman}
-\setsansfont{Helvetica}
-\setjamainfont[
-  UprightFont=HaranoAjiMincho-Regular.otf,
-  BoldFont=HaranoAjiMincho-Bold.otf,
-  ItalicFont=HaranoAjiMincho-Regular.otf,
-  ItalicFeatures={FakeSlant=0.2},
-  BoldItalicFont=HaranoAjiMincho-Bold.otf,
-  BoldItalicFeatures={FakeSlant=0.2}
-]{HaranoAjiMincho-Regular.otf}
-\setjasansfont[
-  UprightFont=HaranoAjiGothic-Medium.otf,
-  BoldFont=HaranoAjiGothic-Bold.otf,
-  ItalicFont=HaranoAjiGothic-Medium.otf,
-  ItalicFeatures={FakeSlant=0.2},
-  BoldItalicFont=HaranoAjiGothic-Bold.otf,
-  BoldItalicFeatures={FakeSlant=0.2}
-]{HaranoAjiGothic-Medium.otf}
-\setjamonofont[
-  UprightFont=HaranoAjiGothic-Medium.otf,
-  BoldFont=HaranoAjiGothic-Bold.otf,
-  ItalicFont=HaranoAjiGothic-Medium.otf,
-  ItalicFeatures={FakeSlant=0.2},
-  BoldItalicFont=HaranoAjiGothic-Bold.otf,
-  BoldItalicFeatures={FakeSlant=0.2}
-]{HaranoAjiGothic-Medium.otf}
-
-\usepackage{graphicx}
-\usepackage[table]{xcolor}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage[dvipdfmx,table]{xcolor}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsfonts}
@@ -51,7 +30,6 @@
 \usepackage{comment}
 \usepackage{url}
 \usepackage{multirow}
-\usepackage{titlesec}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \theoremstyle{definition}
@@ -59,82 +37,41 @@
 \newtheorem{proposition}{命題}[chapter]
 \renewcommand{\proofname}{\normalfont 証明}
 
-% 目次には \section まで載せる（\subsection 以下は載せない）
-\setcounter{tocdepth}{1}
+% 目次深さ
+\setcounter{tocdepth}{3}
 \newcounter{savedtocdepth}
-\setcounter{page}{-1}
-\setlength{\parskip}{0em}
-\setlength{\topsep}{0em}
-\hbadness=10000
-\vbadness=10000
 
 %========================
-% 章見出し（第X章　題名）
+% タイトル情報
 %========================
-\titleformat{\chapter}[hang]
-  {\huge\bfseries}
-  {第\thechapter 章\quad}
-  {0pt}
-  {}
-\titleformat{name=\chapter,numberless}[hang]
-  {\huge\bfseries}
-  {}
-  {0pt}
-  {}
-\titlespacing*{\chapter}{0pt}{*3}{*2}
-
-%========================
-% 表紙情報
-%========================
-\newcommand{\AcademicYear}{令和6年度}
-\newcommand{\FacultyName}{筑波大学理工学群社会工学類}
-\newcommand{\ThesisType}{卒業研究論文}
-\newcommand{\ThesisTitle}{意思決定重視学習を用いたポートフォリオ最適化}
-\newcommand{\MajorName}{経営工学主専攻}
-\newcommand{\StudentID}{202211661}
-\newcommand{\AuthorName}{野坂 健成}
-\newcommand{\AdvisorName}{高野 祐一 准教授}
-\newcommand{\SubmissionDate}{令和7年1月21日提出}
-
-\title{\ThesisTitle}
-\author{\AuthorName}
-\date{\SubmissionDate}
+\title{意思決定重視学習を用いたポートフォリオ最適化}
+\author{野坂 健成}
+\academicyear{令和7年度}
+\facultyname{筑波大学理工学群社会工学類}
+\thesistype{卒業研究論文}
+\studentid{学籍番号：202211661}
+\advisor{指導教員：高野 祐一 准教授}
+\majorfield{経営工学主専攻}
+\programfield{}
+\yearandmonth{令和7年1月21日提出}
+\date{}
 
 \begin{document}
 
 %========================
 % 表紙
 %========================
-\begin{titlepage}
-\centering
-\vspace*{3.0cm}
-{\Large \AcademicYear \par}
-\vspace{0.6cm}
-{\Large \FacultyName \par}
-\vspace{0.8cm}
-{\Large \ThesisType \par}
-\vfill
-{\LARGE \bfseries \ThesisTitle \par}
-\vfill
-{\Large \MajorName \par}
-\vspace{0.4cm}
-{\Large 学籍番号：\StudentID \par}
-\vspace{0.4cm}
-{\Large \AuthorName \par}
-\vspace{1.0cm}
-{\Large 指導教員：\AdvisorName \par}
-\vspace{1.2cm}
-{\Large \SubmissionDate \par}
-\end{titlepage}
+\maketitle
 
 %========================
 % 目次・図目次（前付）
 %========================
 \pagenumbering{roman}
-\setcounter{tocdepth}{1}
+\setcounter{tocdepth}{3}
 \tableofcontents
 \listoffigures
-\newpage
+\listoftables
+\pagebreak
 \setcounter{page}{1}
 \pagenumbering{arabic}
 
@@ -147,50 +84,74 @@
 %========================
 \section{研究背景}
 \par
-金融市場における資産運用では,複数資産への資金配分を決定するポートフォリオ最適化が中心的役割を担う.
-ポートフォリオ最適化では一般に,期待リターンとリスクのトレードオフを考慮した投資配分の決定が求められる.
-近年は機械学習の発展により,各資産の将来リターンをデータ駆動的に推定し,
-その推定値を最適化問題に入力して投資配分を得る枠組みが一般的である.
-このとき,多くの場合で予測誤差を最小化する目的で学習される.
-しかし,この学習目標が必ずしも投資成績（意思決定品質）の改善に直結するとは限らないことが指摘されている\cite{lahoud2025,mandi2024}.
-このギャップの一因は,予測と最適化を独立に扱う二段階構造にある.
-すなわち,わずかな予測誤差であっても最適化段階で増幅され,最終的な投資配分が大きく変化し,
-結果としてリスク調整後成績などの評価指標が悪化する場合があり得る.
-この現象は,推定不確実性が大きい局面や制約を含む現実的設定において,より顕在化しやすい\cite{chopraziemba1993}.
-\par
-以上を背景として,近年,予測精度そのものではなく,後続の最適化問題を通じて定義される意思決定の質を直接最適化する
-意思決定重視学習（Decision-Focused Learning;  DFL）が注目されている\cite{mandi2024}.
-本論文では,「推定値に基づいて得られる投資配分が,理想的配分と比べてどれだけ目的関数値を悪化させるか」を意思決定誤差（機会損失）と呼ぶ.
-DFL では,予測モデルの学習目標を「推定値と実現値の誤差」ではなく,この意思決定誤差を直接最小化するように定める.
+金融市場における資産運用では，複数資産への資金配分を決定するポートフォリオ最適化が中心的役割を担っている．
+ポートフォリオ最適化では一般に，期待リターンとリスクのトレードオフを考慮し，投資家の目的に応じた資産配分を決定することが求められる．
+近年では，機械学習手法の発展に伴い，各資産の将来リターンをデータ駆動的に推定し，その推定値をポートフォリオ最適化問題に入力する枠組みが広く用いられている．
+このとき多くの場合，推定モデルは平均二乗誤差などの予測誤差を最小化する目的で学習される．
+このような学習方針は，予測精度の観点では合理的である一方で，必ずしも最終的な投資成績の改善に直結しないことが指摘されている [7, 9]．
+この乖離の一因として，予測と最適化を独立に扱う二段階構造が挙げられる．
+すなわち，予測誤差が小さい場合であっても，その誤差が後続の最適化段階において増幅され，投資配分が大きく変動する可能性がある．
+この結果，リスク調整後リターンや下方リスク指標などにより評価される投資成績が悪化する場合があり得る．
+このような現象は，推定不確実性が大きい局面や，非負制約などの現実的な制約を含む設定において，特に顕在化しやすいことが知られている [4]．
+以上の背景から，近年では予測精度そのものではなく，後続の最適化問題を通じて得られる投資成績や意思決定の質を学習目標として
+直接最適化する枠組みである意思決定重視学習（Decision-Focused Learning; DFL）が注目されている [9]．DFL は，予測値と実現値の誤差を最小化する
+従来の予測精度重視学習（Prediction-Focused Learning; PFL）とは異なり，推定に基づく意思決定が最終的な投資成績にどのような影響を与えるかを明示的に考慮した学習を行う点に特徴がある．
+
 %========================
 % 問題設定
 %========================
 \section{問題設定}
-\par
-時点 $i=1,\dots,T$ において,各資産に関する特徴量を $\boldsymbol{x}_i$,当該期間の実現リターンを $\boldsymbol{r}_i$ とする.
-\par
-予測モデルはパラメータ $\boldsymbol{\theta}$ を持ち,$\boldsymbol{x}_i$ に基づいて
-期待リターンの推定値 $\hat{\boldsymbol{r}}_i(\boldsymbol{\theta},\boldsymbol{x}_i)$ を出力する.
 
-\par
-各時点における投資配分 $\hat{\boldsymbol{w}}_i(\boldsymbol{\theta})$ は,
-推定値 $\hat{\boldsymbol{r}}_i$ を入力として解かれる制約付きポートフォリオ最適化の最適解として定まる.
-ここで $\mathcal{S}$ はポートフォリオ制約で定まる実行可能集合,$c(\cdot,\cdot)$ は目的関数を表す（具体形は第2章で与える）.
+本節では，本研究で扱う問題設定を定式化する．
+時点 $i=1,\dots,T$ において，各資産に関する特徴量ベクトルを
+$\boldsymbol{x}_i$，当該期間に実現したリターンを
+$\boldsymbol{r}_i$ とする．
+
+\vspace{0.5em}
+\noindent
+\textbf{予測モデル．}
+予測モデルはパラメータ $\boldsymbol{\theta}$ を持ち，
+$\boldsymbol{x}_i$ に基づいて期待リターンの推定値
+$\hat{\boldsymbol{r}}_i(\boldsymbol{\theta},\boldsymbol{x}_i)$
+を出力するものとする．
+
+\vspace{0.5em}
+\noindent
+\textbf{推定値に基づく意思決定．}
+各時点における投資配分
+$\hat{\boldsymbol{w}}_i(\boldsymbol{\theta})$ は，
+推定値 $\hat{\boldsymbol{r}}_i$ を入力として解かれる
+制約付きポートフォリオ最適化問題の最適解として定まる．
+ここで $\mathcal{S}$ はポートフォリオ制約によって定まる実行可能集合，
+$c(\cdot,\cdot)$ は目的関数を表す（具体的な形は第2章で与える）．
+すなわち，
 \[
 \hat{\boldsymbol{w}}_i(\boldsymbol{\theta})
 \in \arg\min_{\boldsymbol{w}\in\mathcal{S}}
-c(\boldsymbol{w},\hat{\boldsymbol{r}}_i(\boldsymbol{\theta},\boldsymbol{x}_i)).
+c(\boldsymbol{w},\hat{\boldsymbol{r}}_i(\boldsymbol{\theta},\boldsymbol{x}_i))
 \]
-\par
-一方,比較の基準として,もし実現リターン $\boldsymbol{r}_i$ が事前に既知であったと仮定した場合に得られる理想的な投資配分を
-\[
-\boldsymbol{w}_i^\star \in \arg\min_{\boldsymbol{w}\in\mathcal{S}} c(\boldsymbol{w},\boldsymbol{r}_i)
-\]
-と定義する.
+と定義する．
 
-\par
-DFL は,予測誤差ではなく,最終的に得られる投資配分の良さに基づく意思決定誤差を学習目標として定める.
-本研究では,各時点の意思決定誤差を
+\vspace{0.5em}
+\noindent
+\textbf{理想的な意思決定．}
+比較の基準として，もし時点 $i$ において実現リターン
+$\boldsymbol{r}_i$ が事前に既知であったと仮定した場合に得られる
+投資配分を，理想的な投資配分として次のように定義する：
+\[
+\boldsymbol{w}_i^\star
+\in \arg\min_{\boldsymbol{w}\in\mathcal{S}}
+c(\boldsymbol{w},\boldsymbol{r}_i).
+\]
+この配分は実運用では利用できないが，
+意思決定の良し悪しを評価するための基準として用いる．
+
+\vspace{0.5em}
+\noindent
+\textbf{学習目標．}
+意思決定重視学習（DFL）では，予測誤差ではなく，
+推定値に基づいて得られる投資配分の良さを学習目標として定める．
+本研究では，各時点 $i$ における意思決定誤差を
 \[
 \ell_i(\boldsymbol{\theta})
 =
@@ -198,8 +159,14 @@ c(\hat{\boldsymbol{w}}_i(\boldsymbol{\theta}),\boldsymbol{r}_i)
 -
 c(\boldsymbol{w}_i^\star,\boldsymbol{r}_i)
 \]
-と定義し,$\frac{1}{T}\sum_{i=1}^T \ell_i(\boldsymbol{\theta})$ を最小化する.
-すなわち,本研究で扱う DFL は,制約付きポートフォリオ最適化を下位問題に含む二段階最適化として定式化される.
+と定義し，その平均
+$\frac{1}{T}\sum_{i=1}^T \ell_i(\boldsymbol{\theta})$
+を最小化する．
+
+以上より，本研究で扱う問題は，
+制約付きポートフォリオ最適化を下位問題に含む
+二段階最適化問題として定式化される．
+
 %========================
 % 関連研究
 %========================
@@ -257,7 +224,8 @@ DFL では,学習過程に最適化問題を組み込み,最適化解を介し�
 \section{ポートフォリオ最適化モデル}
 \par
 本研究では,Markowitz \cite{markowitz1952} による平均--分散ポートフォリオ最適化モデル（Mean--Variance Optimization, MVO）を基準モデルとして採用する.
-本モデルは,期待リターンと分散リスクのトレードオフを明示的に表現できるため,解釈しやすい枠組みとして広く用いられてきた.
+本モデルは,期待リターンと分散リスクのトレードオフを明示的に表現できるため,
+解釈しやすい枠組みとして広く用いられてきた.
 \par
 資産数を $d$ とし,投資配分ベクトルを
 \[
@@ -901,7 +869,8 @@ $\lambda_{\min}(\boldsymbol{V}_\phi)\ge (1-\phi)\lambda_{\min}(\boldsymbol{S})+\
   \item スイッチ頻度（Switch Frequency）：リバランス時点において,最大ウェイトを持つ資産が前期から変更された割合を測定する.本指標は,意思決定の安定性およびポートフォリオ構成の急激な変化の度合いを捉える目的で導入する.
 \end{itemize}
 \par
-以上の評価指標は,すべての比較手法に対して同一の定義および算出方法を適用する.これにより,手法間の性能差が定式化および学習枠組みの違いに起因するものであることを明確にする.
+以上の評価指標は,すべての比較手法に対して同一の定義および算出方法を適用する.これにより,
+手法間の性能差が定式化および学習枠組みの違いに起因するものであることを明確にする.
 
 %========================
 % 比較手法
@@ -1304,68 +1273,8 @@ Sharpe 比の改善や CVaR$_{95}$ の低下を通じて意思決定品質を向
 % 参考文献
 %========================
 \newpage
-\begin{thebibliography}{99}
-
-\bibitem{markowitz1952}
-Markowitz, H. (1952).
-\newblock Portfolio Selection.
-\newblock \emph{The Journal of Finance}, 7(1), 77--91.
-
-\bibitem{chopraziemba1993}
-Chopra, V. K., \& Ziemba, W. T. (1993).
-\newblock The Effect of Errors in Means, Variances, and Covariances on Optimal Portfolio Choice.
-\newblock \emph{The Journal of Portfolio Management}, 19(2), 6--11.
-
-\bibitem{lahoud2025}
-Lahoud, A. A., Khan, A. S., Schaffernicht, E., Trincavelli, M., \& Stork, J. A. (2025).
-\newblock Predict-and-Optimize Techniques for Data-Driven Optimization Problems: A Review.
-\newblock \emph{Neural Processing Letters}, 57, 40.
-
-\bibitem{butlerkwon2023}
-Butler, A., \& Kwon, R. H. (2023).
-\newblock Integrating Prediction in Mean--Variance Portfolio Optimization.
-\newblock \emph{Quantitative Finance}, 23(3), 429--452.
-
-\bibitem{mandi2024}
-Mandi, J., Kotary, J., Berden, S., Mulamba, M., Bucarey, V., \& Fioretto, F. (2024).
-\newblock Decision-Focused Learning: Foundations, State of the Art, Benchmark and Future Opportunities.
-\newblock \emph{Journal of Artificial Intelligence Research}, 81, 1623--1701.
-
-\bibitem{lee2025}
-Lee, J., Jeon, H., Bae, H., \& Lee, Y. (2025).
-\newblock Return Prediction for Mean-Variance Portfolio Selection: How Decision-Focused Learning Shapes Forecasting Models.
-\newblock In \emph{Proceedings of ICAIF 2025}, 114--122.
-
-\bibitem{bucarey2024}
-Bucarey, V., Calder\'{o}n, S., Mu\~{n}oz, G., \& Semet, F. (2024).
-\newblock Decision-Focused Predictions via Pessimistic Bilevel Optimization.
-\newblock In \emph{Proceedings of CPAIOR 2024}, LNCS 14742, 127--135.
-
-\bibitem{shah2022}
-Shah, S., Wang, K., Chen, H., Perrault, A., Doshi-Velez, F., \& Tambe, M. (2022).
-\newblock Decision-Focused Learning without Decision-Oracles: Learning Locally Optimized Decision Losses.
-\newblock In \emph{Advances in Neural Information Processing Systems (NeurIPS 2022)}.
-
-\bibitem{elmachtoubgrigas2022}
-Elmachtoub, A. N., \& Grigas, P. (2022).
-\newblock Smart Predict, Then Optimize.
-\newblock \emph{Management Science}, 68(1), 9--26.
-
-\bibitem{chen2010oas}
-Chen, Y., Wiesel, A., \& Hero, A. O. (2010).
-\newblock Shrinkage estimation of high-dimensional covariance matrices.
-\newblock \emph{IEEE Transactions on Signal Processing}, 58(10), 5016--5029.
-
-\bibitem{jpm2006riskmetrics}
-Morgan, J. P. (2006).
-\newblock \emph{RiskMetrics Technical Document}, 4th ed.
-
-\bibitem{bonnansshapiro2000}
-Bonnans, J. F., \& Shapiro, A. (2000).
-\newblock \emph{Perturbation Analysis of Optimization Problems}.
-\newblock Springer.
-
-\end{thebibliography}
+\bibliographystyle{jplain}
+\bibliography{cite}
 
 %========================
 % Appendix
