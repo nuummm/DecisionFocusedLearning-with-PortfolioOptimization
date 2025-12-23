@@ -1,18 +1,18 @@
 # Fdb version 4
-["bibtex main"] 1766474554.6023 "main.aux" "main.bbl" "main" 1766474559.85773 0
+["bibtex main"] 1766479838.00805 "main.aux" "main.bbl" "main" 1766479844.56705 0
   "./cite.bib" 1766472700.43422 3318 72f80c6ffa76015b9ea8e90dfab97d97 ""
   "./jplain.bst" 1766472732.88972 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "main.aux" 1766474556.93496 11216 326da7d4207ca37d81656fd6771a17d0 "latex"
+  "main.aux" 1766479840.81401 11125 f48df6ca949fb407c35d9d4ad3822b2f "latex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["dvipdf"] 1766474557.29548 "main.dvi" "main.pdf" "main" 1766474559.8596 0
-  "main.dvi" 1766474556.93938 128904 91baece1a200c351ac365062a5e33e1a "latex"
+["dvipdf"] 1766479841.2797 "main.dvi" "main.pdf" "main" 1766479844.56951 0
+  "main.dvi" 1766479840.81984 130592 f58d05fb04ffaabff5365d97894c66b0 "latex"
   (generated)
   "main.pdf"
   (rewritten before read)
-["latex"] 1766474554.77677 "main.tex" "main.dvi" "main" 1766474559.85786 0
+["latex"] 1766479838.20981 "main.tex" "main.dvi" "main" 1766479844.56722 0
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/ptex-fonts/standard/goth10.tfm" 1463434352 1196 5981e79c37b2cfd27b3612a6783cd4b6 ""
@@ -124,12 +124,12 @@
   "figs/lambda_tuning_sharpe_boxplot.png" 1766386299.8511 72364 34405b318430f4be79b1119a49c737cd ""
   "figs/r2_vs_cvar_scatter.png" 1766406624.36209 73975 61c08a80cc5c655586e07c7151c81a8a ""
   "figs/r2_vs_sharpe_scatter.png" 1766406624.35892 61669 4feea3f7b91dd5a9dfb4b29117b143ad ""
-  "main.aux" 1766474556.93496 11216 326da7d4207ca37d81656fd6771a17d0 "latex"
-  "main.bbl" 1766474554.7716 2452 ccc03b62cac32f9eec467e350acdaab1 "bibtex main"
-  "main.lof" 1766474556.9392 715 a55a80a5496d0aa044f31d40ba37893a "latex"
-  "main.lot" 1766474556.93926 872 803d8753c58b4d688040a0ea91d38932 "latex"
-  "main.tex" 1766474410.03534 86389 becc89ed288cb0e82445616038015dfe ""
-  "main.toc" 1766474556.93906 2298 5cee1f2e7e9b5cfbb8dfb08b7bf347ed "latex"
+  "main.aux" 1766479840.81401 11125 f48df6ca949fb407c35d9d4ad3822b2f "latex"
+  "main.bbl" 1766479838.20527 2452 ccc03b62cac32f9eec467e350acdaab1 "bibtex main"
+  "main.lof" 1766479840.8196 715 5aaf6f22ba56aebfbdb6e6c61a689a8b "latex"
+  "main.lot" 1766479840.81971 872 ec6b5fd0a9a9de747d2979bd78890a96 "latex"
+  "main.tex" 1766479752.80845 87490 f0188e5bdebbe6cf7a1f1775e4d2fe18 ""
+  "main.toc" 1766479840.81932 2298 ec1aa9518fec5fb648274b0ce23784b7 "latex"
   "test.sty" 1766474544.23925 1756 0ffaabe167590fe54aae4828bb952226 ""
   (generated)
   "main.aux"
