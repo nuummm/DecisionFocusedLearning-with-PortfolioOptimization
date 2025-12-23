@@ -13,6 +13,8 @@ INPUT /usr/local/texlive/2025/texmf-dist/tex/platex/base/jsize10.clo
 INPUT /usr/local/texlive/2025/texmf-dist/tex/platex/base/jsize10.clo
 INPUT ./test.sty
 INPUT test.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/silence/silence.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/silence/silence.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/graphics/graphicx.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/graphics/graphicx.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/graphics/graphics.sty

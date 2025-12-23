@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.euc) (TeX Live 2025) (preloaded format=platex 2025.12.9)  23 DEC 2025 17:50
+This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.euc) (TeX Live 2025) (preloaded format=platex 2025.12.9)  23 DEC 2025 21:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -36,12 +36,36 @@ Package: test 2025/12/23 Thesis titlepage
 \vspacetitle=\dimen160
 \vspaceabstract=\dimen161
 )
+(/usr/local/texlive/2025/texmf-dist/tex/latex/silence/silence.sty
+Package: silence 2012/07/02 v1.5b Selective filtering of warnings and error mes
+sages
+\sl@Save=\count272
+\sl@StateNumber=\count273
+\sl@MessageCount=\count274
+\sl@Casualties=\count275
+\sl@Filter=\toks18
+\sl@Message=\toks19
+\sl@UnexpandedMessage=\toks20
+\sl@Mess@ge=\toks21
+\sl@WarningCount=\count276
+\sl@WarningNumber=\count277
+\sl@WarningCasualties=\count278
+\sl@TempBOW=\toks22
+\sl@BankOfWarnings=\toks23
+LaTeX Info: Redefining \GenericWarning on input line 433.
+\sl@ErrorCount=\count279
+\sl@ErrorNumber=\count280
+\sl@ErrorCasualties=\count281
+\sl@TempBOE=\toks24
+\sl@BankOfErrors=\toks25
+LaTeX Info: Redefining \GenericError on input line 601.
+)
 (/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
-\KV@toks@=\toks18
+\KV@toks@=\toks26
 )
 (/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
@@ -86,14 +110,14 @@ Package: array 2024/10/17 v2.6g Tabular extension package (FMi)
 \col@sep=\dimen164
 \ar@mcellbox=\box69
 \extrarowheight=\dimen165
-\NC@list=\toks19
+\NC@list=\toks27
 \extratabsurround=\skip51
 \backup@length=\skip52
 \ar@cellbox=\box70
 )
-\everycr=\toks20
+\everycr=\toks28
 \minrowclearance=\skip53
-\rownum=\count272
+\rownum=\count282
 )
 (/usr/local/texlive/2025/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2024/11/05 v2.17t AMS math features
@@ -105,7 +129,7 @@ Package: amstext 2021/08/26 v2.01 AMS text
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks21
+\@emptytoks=\toks29
 \ex@=\dimen166
 ))
 (/usr/local/texlive/2025/texmf-dist/tex/latex/amsmath/amsbsy.sty
@@ -115,14 +139,14 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 (/usr/local/texlive/2025/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count273
+\inf@bad=\count283
 LaTeX Info: Redefining \frac on input line 233.
-\uproot@=\count274
-\leftroot@=\count275
+\uproot@=\count284
+\leftroot@=\count285
 LaTeX Info: Redefining \overline on input line 398.
 LaTeX Info: Redefining \colon on input line 409.
-\classnum@=\count276
-\DOTSCASE@=\count277
+\classnum@=\count286
+\DOTSCASE@=\count287
 LaTeX Info: Redefining \ldots on input line 495.
 LaTeX Info: Redefining \dots on input line 498.
 LaTeX Info: Redefining \cdots on input line 619.
@@ -135,31 +159,31 @@ LaTeX Info: Redefining \Bigg on input line 724.
 \big@size=\dimen168
 LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
-\macc@depth=\count278
+\macc@depth=\count288
 LaTeX Info: Redefining \bmod on input line 904.
 LaTeX Info: Redefining \pmod on input line 909.
 LaTeX Info: Redefining \smash on input line 939.
 LaTeX Info: Redefining \relbar on input line 969.
 LaTeX Info: Redefining \Relbar on input line 970.
-\c@MaxMatrixCols=\count279
+\c@MaxMatrixCols=\count289
 \dotsspace@=\muskip17
-\c@parentequation=\count280
-\dspbrk@lvl=\count281
-\tag@help=\toks22
-\row@=\count282
-\column@=\count283
-\maxfields@=\count284
-\andhelp@=\toks23
+\c@parentequation=\count290
+\dspbrk@lvl=\count291
+\tag@help=\toks30
+\row@=\count292
+\column@=\count293
+\maxfields@=\count294
+\andhelp@=\toks31
 \eqnshift@=\dimen169
 \alignsep@=\dimen170
 \tagshift@=\dimen171
 \tagwidth@=\dimen172
 \totwidth@=\dimen173
 \lineht@=\dimen174
-\@envbody=\toks24
+\@envbody=\toks32
 \multlinegap=\skip55
 \multlinetaggap=\skip56
-\mathdisplay@stack=\toks25
+\mathdisplay@stack=\toks33
 LaTeX Info: Redefining \[ on input line 2953.
 LaTeX Info: Redefining \] on input line 2954.
 )
@@ -176,15 +200,15 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 ))
 (/usr/local/texlive/2025/texmf-dist/tex/latex/amscls/amsthm.sty
 Package: amsthm 2020/05/29 v2.20.6
-\thm@style=\toks26
-\thm@bodyfont=\toks27
-\thm@headfont=\toks28
-\thm@notefont=\toks29
-\thm@headpunct=\toks30
+\thm@style=\toks34
+\thm@bodyfont=\toks35
+\thm@headfont=\toks36
+\thm@notefont=\toks37
+\thm@headpunct=\toks38
 \thm@preskip=\skip57
 \thm@postskip=\skip58
 \thm@headsep=\skip59
-\dth@everypar=\toks31
+\dth@everypar=\toks39
 )
 (/usr/local/texlive/2025/texmf-dist/tex/latex/tools/bm.sty
 Package: bm 2023/12/19 v1.2f Bold Symbol Support (DPC/FMi)
@@ -221,19 +245,15 @@ ifdim \wd \@tempboxa >\hsize \iftdir #1\hskip 1zw#2\relax \par \else #1: #2\rel
 ax \par \fi \else \global \@minipagefalse \hb@xt@ \hsize {\hfil \box \@tempboxa
  \hfil }\fi \vskip \belowcaptionskip  on input line 1175.
 )
-
-Package caption Warning: Unknown document class (or package),
-(caption)                standard defaults will be used.
-See the caption package documentation for explanation.
-
-\c@caption@flags=\count285
-\c@continuedfloat=\count286
+\c@caption@flags=\count295
+\c@continuedfloat=\count296
 )
 Package caption Info: New subtype `subfigure' on input line 238.
-\c@subfigure=\count287
+\c@subfigure=\count297
 Package caption Info: New subtype `subtable' on input line 238.
-\c@subtable=\count288
-) (/usr/local/texlive/2025/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
+\c@subtable=\count298
+)
+(/usr/local/texlive/2025/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
 Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
 \symrsfs=\mathgroup11
 )
@@ -242,21 +262,21 @@ Package: mathtools 2024/10/04 v1.31 mathematical typesetting tools
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count289
-\calc@Bcount=\count290
+\calc@Acount=\count299
+\calc@Bcount=\count300
 \calc@Adimen=\dimen183
 \calc@Bdimen=\dimen184
 \calc@Askip=\skip60
 \calc@Bskip=\skip61
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count291
+\calc@Ccount=\count301
 \calc@Cskip=\skip62
 )
 (/usr/local/texlive/2025/texmf-dist/tex/latex/mathtools/mhsetup.sty
 Package: mhsetup 2021/03/18 v1.4 programming setup (MH)
 )
-\g_MT_multlinerow_int=\count292
+\g_MT_multlinerow_int=\count302
 \l_MT_multwidth_dim=\dimen185
 \origjot=\skip63
 \l_MT_shortvdotswithinadjustabove_dim=\dimen186
@@ -270,10 +290,10 @@ Package: mhsetup 2021/03/18 v1.4 programming setup (MH)
 )
 (/usr/local/texlive/2025/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count293
-\float@exts=\toks32
+\c@float@type=\count303
+\float@exts=\toks40
 \float@box=\box74
-\@float@everytoks=\toks33
+\@float@everytoks=\toks41
 \@floatcapt=\box75
 )
 (/usr/local/texlive/2025/texmf-dist/tex/latex/comment/comment.sty
@@ -287,7 +307,7 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 (/usr/local/texlive/2025/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
 \multirow@colwidth=\skip64
-\multirow@cntb=\count294
+\multirow@cntb=\count304
 \multirow@dima=\skip65
 \bigstrutjot=\dimen193
 )
@@ -298,8 +318,8 @@ nment
 (/usr/local/texlive/2025/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
 )
-\@float@every@algorithm=\toks34
-\c@algorithm=\count295
+\@float@every@algorithm=\toks42
+\c@algorithm=\count305
 )
 (/usr/local/texlive/2025/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
 Package: algpseudocode 
@@ -308,56 +328,53 @@ Package: algpseudocode
 Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
 
 Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
-\c@ALG@line=\count296
-\c@ALG@rem=\count297
-\c@ALG@nested=\count298
+\c@ALG@line=\count306
+\c@ALG@rem=\count307
+\c@ALG@nested=\count308
 \ALG@tlm=\skip66
 \ALG@thistlm=\skip67
-\c@ALG@Lnr=\count299
-\c@ALG@blocknr=\count300
-\c@ALG@storecount=\count301
-\c@ALG@tmpcounter=\count302
+\c@ALG@Lnr=\count309
+\c@ALG@blocknr=\count310
+\c@ALG@storecount=\count311
+\c@ALG@tmpcounter=\count312
 \ALG@tmplength=\skip68
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
 )
-\c@theorem=\count303
-\c@proposition=\count304
-\c@savedtocdepth=\count305
+\c@theorem=\count313
+\c@lemma=\count314
+\c@proposition=\count315
+\c@savedtocdepth=\count316
  (/usr/local/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-dvips.def
 File: l3backend-dvips.def 2024-05-08 L3 backend support: dvips
 \l__pdf_internal_box=\box76
 \l__pdf_backend_content_box=\box77
 \l__pdf_backend_model_box=\box78
-\g__pdf_backend_annotation_int=\count306
-\g__pdf_backend_link_int=\count307
-\g__pdf_backend_link_sf_int=\count308
+\g__pdf_backend_annotation_int=\count317
+\g__pdf_backend_link_int=\count318
+\g__pdf_backend_link_sf_int=\count319
 )
-
-LaTeX Warning: Unused global option(s):
-    [10.5pt].
-
 (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
@@ -367,9 +384,9 @@ Package caption Info: End \AtBeginDocument code.
 
 ]
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <20.74> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 72.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 102.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <20.74> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 72.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 102.
  (./main.toc
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
 (Font)              Font shape `JT1/gt/m/n' tried instead on input line 1.
@@ -388,7 +405,12 @@ LaTeX Font Info:    Trying to load font information for U+rsfs on input line 2.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
-))
+)
+
+LaTeX Warning: Reference `prop:local_sensitivity' on page i undefined on input 
+line 33.
+
+)
 \tf@toc=\write4
 \openout4 = `main.toc'.
 
@@ -416,9 +438,9 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 ]
 第 1 章
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 86.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 116.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 86.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 116.
 
 
 [1
@@ -438,9 +460,9 @@ LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
 [5]
 第 3 章
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 380.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 503.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 380.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 503.
 
 
 [6
@@ -450,29 +472,25 @@ LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
 [7]
 
 [8]
-
-[9]
-
-[10]
 第 4 章
 
 
-[11
+[9
 
 ]
 
-[12]
+[10]
 
-[13]
+[11]
 File: figs/baseline_cum_return.png Graphic file (type bmp)
 <figs/baseline_cum_return.png>
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <9> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 989.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 1066.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <9> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 989.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 1066.
 
 
-[14]
+[12]
 File: figs/lambda_tuning_sharpe_boxplot.png Graphic file (type bmp)
 <figs/lambda_tuning_sharpe_boxplot.png>
 File: figs/lambda_tuning_cvar95_boxplot.png Graphic file (type bmp)
@@ -481,33 +499,33 @@ File: figs/holdout_cum_wealth_2016_2025.png Graphic file (type bmp)
 <figs/holdout_cum_wealth_2016_2025.png>
 
 
-[15]
+[13]
 File: figs/r2_vs_sharpe_scatter.png Graphic file (type bmp)
 <figs/r2_vs_sharpe_scatter.png>
 File: figs/r2_vs_cvar_scatter.png Graphic file (type bmp)
 <figs/r2_vs_cvar_scatter.png>
 
 
-[16]
+[14]
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <8> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 1157.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 1234.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <8> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 1157.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 1234.
 LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
-(Font)              No change on input line 1179.
+(Font)              No change on input line 1256.
 
 
-[17]
+[15]
 
-[18]
+[16]
 第 5 章
 
 
-[19
+[17
 
 ]
 
-[20
+[18
 
 ] (./main.bbl
 LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
@@ -536,40 +554,58 @@ LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
 (Font)              No change on input line 65.
 )
 
-[21
+[19
 
 ]
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 1312.
+(Font)              No change on input line 1389.
 
 
-[22
+[20
 
 ]
 
-[23]
+[21]
 File: figs/appendix_fullperiod_wealth_penalty.png Graphic file (type bmp)
 <figs/appendix_fullperiod_wealth_penalty.png>
 
 
-[24]
+LaTeX Warning: Reference `prop:local_sensitivity' on page 22 undefined on input
+ line 1561.
 
-[25]
 
-[26] (./main.aux)
+LaTeX Warning: Reference `prop:local_sensitivity' on page 22 undefined on input
+ line 1564.
+
+
+
+[22]
+
+[23]
+
+LaTeX Warning: Reference `prop:local_sensitivity' on page 24 undefined on input
+ line 1766.
+
+
+
+[24] (./main.aux)
  ***********
 pLaTeX2e <2023-02-14>+1, based on
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
+
+
+LaTeX Warning: There were undefined references.
+
  ) 
 Here is how much of TeX's memory you used:
- 6372 strings out of 473836
- 103722 string characters out of 5731189
- 514212 words of memory out of 5000000
- 29500 multiletter control sequences out of 15000+600000
+ 6525 strings out of 473836
+ 106094 string characters out of 5731189
+ 516233 words of memory out of 5000000
+ 29649 multiletter control sequences out of 15000+600000
  582317 words of font info for 129 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  67i,13n,77p,495b,631s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.dvi (30 pages, 130592 bytes).
+Output written on main.dvi (28 pages, 123864 bytes).

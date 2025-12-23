@@ -1,0 +1,26 @@
+{
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk (platex+dvipdfmx)",
+      "command": "latexmk",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-pdfdvi",
+        "%DOC%"
+      ]
+    }
+  ],
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk (platex+dvipdfmx)",
+      "tools": [
+        "latexmk (platex+dvipdfmx)"
+      ]
+    }
+  ],
+  "latex-workshop.latex.recipe.default": "latexmk (platex+dvipdfmx)",
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  "latex-workshop.view.pdf.viewer": "tab"
+}

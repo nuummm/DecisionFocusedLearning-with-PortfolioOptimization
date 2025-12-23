@@ -1,18 +1,18 @@
 # Fdb version 4
-["bibtex main"] 1766479838.00805 "main.aux" "main.bbl" "main" 1766479844.56705 0
-  "./cite.bib" 1766472700.43422 3318 72f80c6ffa76015b9ea8e90dfab97d97 ""
+["bibtex main"] 1766492518.40435 "main.aux" "main.bbl" "main" 1766492523.213 0
+  "./cite.bib" 1766479969.45234 3348 1a98d22d5b6bc38b5d0f43fac307ab0f ""
   "./jplain.bst" 1766472732.88972 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "main.aux" 1766479840.81401 11125 f48df6ca949fb407c35d9d4ad3822b2f "latex"
+  "main.aux" 1766492520.4654 10464 101a60d7145a3ebf195846522bfee293 "latex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["dvipdf"] 1766479841.2797 "main.dvi" "main.pdf" "main" 1766479844.56951 0
-  "main.dvi" 1766479840.81984 130592 f58d05fb04ffaabff5365d97894c66b0 "latex"
+["dvipdf"] 1766492520.79882 "main.dvi" "main.pdf" "main" 1766492523.2148 0
+  "main.dvi" 1766492520.46924 123864 c636a1ec234a3a7c6d302c621a54180e "latex"
   (generated)
   "main.pdf"
   (rewritten before read)
-["latex"] 1766479838.20981 "main.tex" "main.dvi" "main" 1766479844.56722 0
+["latex"] 1766492518.55891 "main.tex" "main.dvi" "main" 1766492523.21317 0
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/ptex-fonts/standard/goth10.tfm" 1463434352 1196 5981e79c37b2cfd27b3612a6783cd4b6 ""
@@ -107,6 +107,7 @@
   "/usr/local/texlive/2025/texmf-dist/tex/latex/mathtools/mathtools.sty" 1728349409 62711 3b0ed1d68b598a75677c10d16646d5e5 ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/mathtools/mhsetup.sty" 1616101747 5582 a43dedf8e5ec418356f1e9dfe5d29fc3 ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/multirow/multirow.sty" 1731446765 6696 886c9f3087d0b973ed2c19aa79cb3023 ""
+  "/usr/local/texlive/2025/texmf-dist/tex/latex/silence/silence.sty" 1342202217 17540 5aad5dddd881dee43ad1a83adb336af9 ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/tools/array.sty" 1730496337 14552 27664839421e418b87f56fa4c6f66b1a ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/tools/bm.sty" 1717359999 13236 1aba485b47e3c79a47dc0906cc971820 ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/tools/calc.sty" 1717359999 10214 61188260d324e94bc2f66825d7d3fdf4 ""
@@ -124,12 +125,12 @@
   "figs/lambda_tuning_sharpe_boxplot.png" 1766386299.8511 72364 34405b318430f4be79b1119a49c737cd ""
   "figs/r2_vs_cvar_scatter.png" 1766406624.36209 73975 61c08a80cc5c655586e07c7151c81a8a ""
   "figs/r2_vs_sharpe_scatter.png" 1766406624.35892 61669 4feea3f7b91dd5a9dfb4b29117b143ad ""
-  "main.aux" 1766479840.81401 11125 f48df6ca949fb407c35d9d4ad3822b2f "latex"
-  "main.bbl" 1766479838.20527 2452 ccc03b62cac32f9eec467e350acdaab1 "bibtex main"
-  "main.lof" 1766479840.8196 715 5aaf6f22ba56aebfbdb6e6c61a689a8b "latex"
-  "main.lot" 1766479840.81971 872 ec6b5fd0a9a9de747d2979bd78890a96 "latex"
-  "main.tex" 1766479752.80845 87490 f0188e5bdebbe6cf7a1f1775e4d2fe18 ""
-  "main.toc" 1766479840.81932 2298 ec1aa9518fec5fb648274b0ce23784b7 "latex"
+  "main.aux" 1766492520.4654 10464 101a60d7145a3ebf195846522bfee293 "latex"
+  "main.bbl" 1766492518.55534 2466 77ffdb21f181c2c6813eb39f19dad141 "bibtex main"
+  "main.lof" 1766492520.46904 715 5b83cb5841ef9ac3b91a53530a9a55f7 "latex"
+  "main.lot" 1766492520.46916 872 a19fe2c01a23b6010de073383893d830 "latex"
+  "main.tex" 1766492513.92852 82893 cc9e28236f6810b401f221102ead1370 ""
+  "main.toc" 1766492520.46887 2388 d28853977b1a70a0c0c3cb9e29e9539e "latex"
   "test.sty" 1766474544.23925 1756 0ffaabe167590fe54aae4828bb952226 ""
   (generated)
   "main.aux"

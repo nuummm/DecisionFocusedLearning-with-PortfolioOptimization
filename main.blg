@@ -3,33 +3,32 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
 The style file: jplain.bst
 Database file #1: cite.bib
-Warning--empty publisher in jpm2006riskmetrics
 You've used 11 entries,
             2118 wiz_defined-function locations,
-            568 strings with 5851 characters,
-and the built_in function-call counts, 4127 in all, are:
-= -- 399
+            569 strings with 5863 characters,
+and the built_in function-call counts, 4126 in all, are:
+= -- 400
 > -- 211
 < -- 3
 + -- 84
 - -- 72
-* -- 314
-:= -- 682
+* -- 312
+:= -- 683
 add.period$ -- 33
 call.type$ -- 11
 change.case$ -- 69
 chr.to.int$ -- 0
-cite$ -- 12
+cite$ -- 11
 duplicate$ -- 150
 empty$ -- 312
 format.name$ -- 72
-if$ -- 849
+if$ -- 850
 int.to.chr$ -- 0
 int.to.str$ -- 11
 missing$ -- 12
 newline$ -- 58
 num.names$ -- 22
-pop$ -- 68
+pop$ -- 67
 preamble$ -- 1
 purify$ -- 58
 quote$ -- 0
@@ -41,9 +40,8 @@ text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 42
-warning$ -- 1
+warning$ -- 0
 while$ -- 41
 width$ -- 13
-write$ -- 122
+write$ -- 123
 is.kanji.str$ -- 0
-(There was 1 warning)
