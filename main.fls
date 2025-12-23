@@ -217,8 +217,17 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmmib
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy8.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/ptex-fonts/standard/goth8.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/ptex-fonts/standard/tmin6.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/ptex-fonts/standard/tgoth8.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
+INPUT ./figs/wealth_events_8assets.png
+INPUT ./figs/wealth_events_8assets.png
+INPUT ./figs/wealth_events_8assets.png
+INPUT extractbb -B cropbox -O figs/wealth_events_8assets.png
+INPUT ./figs/wealth_events_6assets.png
+INPUT ./figs/wealth_events_6assets.png
+INPUT ./figs/wealth_events_6assets.png
+INPUT extractbb -B cropbox -O figs/wealth_events_6assets.png
 INPUT ./main.bbl
 INPUT ./main.bbl
 INPUT main.bbl
