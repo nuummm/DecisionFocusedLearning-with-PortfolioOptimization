@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.euc) (TeX Live 2025) (preloaded format=platex 2025.12.9)  25 DEC 2025 00:21
+This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.euc) (TeX Live 2025) (preloaded format=platex 2025.12.9)  25 DEC 2025 00:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -548,18 +548,18 @@ LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
 LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
 (Font)              No change on input line 1815.
 LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
-(Font)              No change on input line 1822.
+(Font)              No change on input line 1821.
 LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
-(Font)              No change on input line 1829.
+(Font)              No change on input line 1827.
 LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
-(Font)              No change on input line 1836.
+(Font)              No change on input line 1834.
 
 
 [21
 
 ]
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 1982.
+(Font)              No change on input line 1980.
 
 
 [22
@@ -591,4 +591,4 @@ Here is how much of TeX's memory you used:
  929 hyphenation exceptions out of 8191
  67i,15n,77p,301b,631s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.dvi (30 pages, 134156 bytes).
+Output written on main.dvi (30 pages, 134164 bytes).
