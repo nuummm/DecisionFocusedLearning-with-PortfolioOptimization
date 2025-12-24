@@ -2,11 +2,11 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces 累積資産推移}}{10}{}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces 学習期間における正則化強度ごとの性能分布}}{11}{}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces 評価期間における累積資産推移}}{11}{}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces 予測精度と意思決定品質の関係}}{12}{}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces 6 資産設定における累積資産推移}}{15}{}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces 8 資産設定における累積資産推移}}{15}{}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces 累積資産推移}}{11}{}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces 学習期間における正則化強度ごとの性能分布}}{12}{}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces 評価期間における累積資産推移}}{12}{}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces 予測精度と意思決定品質の関係}}{13}{}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces 6 資産設定における累積資産推移}}{17}{}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces 8 資産設定における累積資産推移}}{17}{}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces 参考：取引コスト控除後の解析解に基づく初期化および L2 正則化項ありの累積資産推移}}{24}{}%
+\contentsline {figure}{\numberline {6.1}{\ignorespaces 参考：取引コスト控除後の解析解に基づく初期化および L2 正則化項ありの累積資産推移}}{26}{}%

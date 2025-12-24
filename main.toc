@@ -11,23 +11,23 @@
 \contentsline {chapter}{\numberline {第3章}提案手法}{5}{}%
 \contentsline {section}{\numberline {3.1}二段階最適化モデル}{5}{}%
 \contentsline {section}{\numberline {3.2}再定式化}{6}{}%
-\contentsline {chapter}{\numberline {第4章}数値実験}{8}{}%
-\contentsline {section}{\numberline {4.1}実データ実験の設定}{8}{}%
-\contentsline {section}{\numberline {4.2}実験結果}{10}{}%
+\contentsline {chapter}{\numberline {第4章}数値実験}{9}{}%
+\contentsline {section}{\numberline {4.1}実データ実験の設定}{9}{}%
+\contentsline {section}{\numberline {4.2}実験結果}{11}{}%
 \setcounter {tocdepth}{2}
-\contentsline {subsection}{\numberline {4.2.1}ローリング推定による実データ検証}{10}{}%
-\contentsline {subsection}{\numberline {4.2.2}初期化および正則化による探索経路制御の効果}{10}{}%
-\contentsline {subsection}{\numberline {4.2.3}提案手法の性質分析}{12}{}%
-\contentsline {subsubsection}{予測精度と意思決定品質の乖離}{12}{}%
-\contentsline {subsubsection}{条件数レジーム別の比較分析}{12}{}%
-\contentsline {subsubsection}{ポートフォリオ構造と分散性の比較分析}{13}{}%
-\contentsline {subsubsection}{危機局面における挙動}{14}{}%
-\contentsline {subsubsection}{複数資産設定での実験結果}{14}{}%
-\contentsline {chapter}{\numberline {第5章}結論}{17}{}%
-\contentsline {chapter}{謝辞}{18}{}%
-\contentsline {chapter}{Appendix}{20}{}%
-\contentsline {section}{A. DFL-OPT-D における強双対性制約の導出}{20}{}%
-\contentsline {section}{B. 補題 \ref {prop:equivalence} の証明}{21}{}%
-\contentsline {section}{C. 補題3.2 の導出}{21}{}%
-\contentsline {section}{D. OAS 縮小係数と EWMA の実効サンプルサイズ}{23}{}%
-\contentsline {section}{E. 取引コスト控除後の解析解に基づく初期化および L2 正則化項ありの参考結果}{23}{}%
+\contentsline {subsection}{\numberline {4.2.1}ローリング推定による実データ検証}{11}{}%
+\contentsline {subsection}{\numberline {4.2.2}初期化および正則化による探索経路制御の効果}{11}{}%
+\contentsline {subsection}{\numberline {4.2.3}提案手法の性質分析}{13}{}%
+\contentsline {subsubsection}{予測精度と意思決定品質の乖離}{13}{}%
+\contentsline {subsubsection}{条件数レジーム別の比較分析}{13}{}%
+\contentsline {subsubsection}{ポートフォリオの集中度・追随性・安定性の比較分析}{15}{}%
+\contentsline {subsubsection}{危機局面における挙動}{15}{}%
+\contentsline {subsubsection}{複数資産設定での実験結果}{16}{}%
+\contentsline {chapter}{\numberline {第5章}結論}{19}{}%
+\contentsline {chapter}{謝辞}{20}{}%
+\contentsline {chapter}{Appendix}{22}{}%
+\contentsline {section}{A. DFL-OPT-D における強双対性制約の導出}{22}{}%
+\contentsline {section}{B. 補題 \ref {prop:equivalence} の証明}{23}{}%
+\contentsline {section}{C. 補題3.2 の導出}{23}{}%
+\contentsline {section}{D. OAS 縮小係数と EWMA の実効サンプルサイズ}{25}{}%
+\contentsline {section}{E. 取引コスト控除後の解析解に基づく初期化および L2 正則化項ありの参考結果}{25}{}%

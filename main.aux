@@ -38,8 +38,9 @@
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{toc}{\contentsline {section}{\numberline {3.1}二段階最適化モデル}{5}{}\protected@file@percent }
 \newlabel{eq:lower_level_new}{{3.1}{5}{}{equation.3.1}{}}
-\newlabel{eq:upper_level_obj}{{3.6}{5}{}{equation.3.6}{}}
-\newlabel{eq:upper_level_constraint}{{3.7}{5}{}{equation.3.7}{}}
+\newlabel{eq:decision_loss}{{3.5}{5}{}{equation.3.5}{}}
+\newlabel{eq:upper_level_obj}{{3.6}{6}{}{equation.3.6}{}}
+\newlabel{eq:upper_level_constraint}{{3.7}{6}{}{equation.3.7}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.2}再定式化}{6}{}\protected@file@percent }
 \newlabel{eq:lower_level_recall}{{3.8}{6}{}{equation.3.8}{}}
 \newlabel{eq:lower_level_recall_budget}{{3.9}{6}{}{equation.3.9}{}}
@@ -49,12 +50,12 @@
 \newlabel{eq:kkt_budget}{{3.13}{6}{}{equation.3.13}{}}
 \newlabel{eq:kkt_w_nonneg}{{3.14}{6}{}{equation.3.14}{}}
 \newlabel{eq:kkt_complementarity}{{3.16}{6}{}{equation.3.16}{}}
-\newlabel{eq:dfl_kkt_obj}{{3.17}{6}{}{equation.3.17}{}}
-\newlabel{eq:dfl_kkt_budget}{{3.18}{6}{}{equation.3.18}{}}
-\newlabel{eq:dfl_kkt_nonneg}{{3.19}{6}{}{equation.3.19}{}}
-\newlabel{eq:dfl_kkt_lambda_nonneg}{{3.20}{6}{}{equation.3.20}{}}
-\newlabel{eq:dfl_kkt_stationarity}{{3.21}{6}{}{equation.3.21}{}}
-\newlabel{eq:dfl_kkt_complementarity}{{3.22}{6}{}{equation.3.22}{}}
+\newlabel{eq:dfl_kkt_obj}{{3.17}{7}{}{equation.3.17}{}}
+\newlabel{eq:dfl_kkt_budget}{{3.18}{7}{}{equation.3.18}{}}
+\newlabel{eq:dfl_kkt_nonneg}{{3.19}{7}{}{equation.3.19}{}}
+\newlabel{eq:dfl_kkt_lambda_nonneg}{{3.20}{7}{}{equation.3.20}{}}
+\newlabel{eq:dfl_kkt_stationarity}{{3.21}{7}{}{equation.3.21}{}}
+\newlabel{eq:dfl_kkt_complementarity}{{3.22}{7}{}{equation.3.22}{}}
 \newlabel{eq:dual_strong_simplified}{{3.23}{7}{}{equation.3.23}{}}
 \newlabel{eq:dfl_dual_obj}{{3.24}{7}{}{equation.3.24}{}}
 \newlabel{eq:dfl_dual_budget}{{3.25}{7}{}{equation.3.25}{}}
@@ -66,56 +67,56 @@
 \newlabel{lem:structure_stability}{{3.2}{7}{}{lemma.3.2}{}}
 \newlabel{eq:structure_stability_bound}{{3.30}{7}{}{equation.3.30}{}}
 \citation{chen2010oas}
-\@writefile{toc}{\contentsline {chapter}{\numberline {第4章}数値実験}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {第4章}数値実験}{9}{}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}実データ実験の設定}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}実データ実験の設定}{9}{}\protected@file@percent }
 \citation{butlerkwon2023}
 \citation{butlerkwon2023}
 \citation{elmachtoubgrigas2022}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}実験結果}{10}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}実験結果}{11}{}\protected@file@percent }
 \@writefile{toc}{\setcounter {tocdepth}{2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}ローリング推定による実データ検証}{10}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces 累積資産推移}}{10}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}ローリング推定による実データ検証}{11}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces 累積資産推移}}{11}{}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{fig:baseline_cumreturn}{{4.1}{10}{}{figure.4.1}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces 評価指標の比較}}{10}{}\protected@file@percent }
-\newlabel{tab:baseline_summary}{{4.1}{10}{}{table.4.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}初期化および正則化による探索経路制御の効果}{10}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces 学習期間における正則化強度ごとの性能分布}}{11}{}\protected@file@percent }
-\newlabel{fig:lambda_tuning_boxplots}{{4.2}{11}{}{figure.4.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces 評価期間における累積資産推移}}{11}{}\protected@file@percent }
-\newlabel{fig:holdout_cum_wealth_2016_2025}{{4.3}{11}{}{figure.4.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}提案手法の性質分析}{12}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{予測精度と意思決定品質の乖離}{12}{}\protected@file@percent }
-\newlabel{fig:r2_vs_sharpe}{{4.4a}{12}{}{subfigure.4.4.1}{}}
-\newlabel{sub@fig:r2_vs_sharpe}{{a}{12}{}{subfigure.4.4.1}{}}
-\newlabel{fig:r2_vs_cvar95}{{4.4b}{12}{}{subfigure.4.4.2}{}}
-\newlabel{sub@fig:r2_vs_cvar95}{{b}{12}{}{subfigure.4.4.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces 予測精度と意思決定品質の関係}}{12}{}\protected@file@percent }
-\newlabel{fig:r2_vs_decision_quality}{{4.4}{12}{}{figure.4.4}{}}
-\@writefile{toc}{\contentsline {subsubsection}{条件数レジーム別の比較分析}{12}{}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces 条件数レジーム別：意思決定誤差と極端集中確率 $P_{\text  {conc}}$}}{13}{}\protected@file@percent }
-\newlabel{tab:cond_regime_decision_error_neff}{{4.2}{13}{}{table.4.2}{}}
-\@writefile{toc}{\contentsline {subsubsection}{ポートフォリオ構造と分散性の比較分析}{13}{}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4.3}{\ignorespaces ポートフォリオ構造の要約}}{13}{}\protected@file@percent }
-\newlabel{tab:portfolio_structure_summary}{{4.3}{13}{}{table.4.3}{}}
-\@writefile{toc}{\contentsline {subsubsection}{危機局面における挙動}{14}{}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4.4}{\ignorespaces 危機局面における性能指標の比較}}{14}{}\protected@file@percent }
-\newlabel{tab:crisis_event_metrics}{{4.4}{14}{}{table.4.4}{}}
-\@writefile{toc}{\contentsline {subsubsection}{複数資産設定での実験結果}{14}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces 6 資産設定における累積資産推移}}{15}{}\protected@file@percent }
-\newlabel{fig:wealth_events_6assets}{{4.5}{15}{}{figure.4.5}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.5}{\ignorespaces 6 資産設定における評価指標の比較}}{15}{}\protected@file@percent }
-\newlabel{tab:summary_6assets}{{4.5}{15}{}{table.4.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces 8 資産設定における累積資産推移}}{15}{}\protected@file@percent }
-\newlabel{fig:wealth_events_8assets}{{4.6}{15}{}{figure.4.6}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.6}{\ignorespaces 8 資産設定における評価指標の比較}}{16}{}\protected@file@percent }
-\newlabel{tab:summary_8assets}{{4.6}{16}{}{table.4.6}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {第5章}結論}{17}{}\protected@file@percent }
+\newlabel{fig:baseline_cumreturn}{{4.1}{11}{}{figure.4.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces 評価指標の比較}}{11}{}\protected@file@percent }
+\newlabel{tab:baseline_summary}{{4.1}{11}{}{table.4.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}初期化および正則化による探索経路制御の効果}{11}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces 学習期間における正則化強度ごとの性能分布}}{12}{}\protected@file@percent }
+\newlabel{fig:lambda_tuning_boxplots}{{4.2}{12}{}{figure.4.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces 評価期間における累積資産推移}}{12}{}\protected@file@percent }
+\newlabel{fig:holdout_cum_wealth_2016_2025}{{4.3}{12}{}{figure.4.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}提案手法の性質分析}{13}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{予測精度と意思決定品質の乖離}{13}{}\protected@file@percent }
+\newlabel{fig:r2_vs_sharpe}{{4.4a}{13}{}{subfigure.4.4.1}{}}
+\newlabel{sub@fig:r2_vs_sharpe}{{a}{13}{}{subfigure.4.4.1}{}}
+\newlabel{fig:r2_vs_cvar95}{{4.4b}{13}{}{subfigure.4.4.2}{}}
+\newlabel{sub@fig:r2_vs_cvar95}{{b}{13}{}{subfigure.4.4.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces 予測精度と意思決定品質の関係}}{13}{}\protected@file@percent }
+\newlabel{fig:r2_vs_decision_quality}{{4.4}{13}{}{figure.4.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{条件数レジーム別の比較分析}{13}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces 条件数レジーム別：意思決定誤差と極端集中確率 $P_{\text  {conc}}$}}{14}{}\protected@file@percent }
+\newlabel{tab:cond_regime_decision_error_neff}{{4.2}{14}{}{table.4.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{ポートフォリオの集中度・追随性・安定性の比較分析}{15}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4.3}{\ignorespaces ポートフォリオの集中度・追随性・安定性の比較}}{15}{}\protected@file@percent }
+\newlabel{tab:portfolio_structure_summary}{{4.3}{15}{}{table.4.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{危機局面における挙動}{15}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4.4}{\ignorespaces 危機局面における性能指標の比較}}{16}{}\protected@file@percent }
+\newlabel{tab:crisis_event_metrics}{{4.4}{16}{}{table.4.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{複数資産設定での実験結果}{16}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces 6 資産設定における累積資産推移}}{17}{}\protected@file@percent }
+\newlabel{fig:wealth_events_6assets}{{4.5}{17}{}{figure.4.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.5}{\ignorespaces 6 資産設定における評価指標の比較}}{17}{}\protected@file@percent }
+\newlabel{tab:summary_6assets}{{4.5}{17}{}{table.4.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces 8 資産設定における累積資産推移}}{17}{}\protected@file@percent }
+\newlabel{fig:wealth_events_8assets}{{4.6}{17}{}{figure.4.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.6}{\ignorespaces 8 資産設定における評価指標の比較}}{18}{}\protected@file@percent }
+\newlabel{tab:summary_8assets}{{4.6}{18}{}{table.4.6}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {第5章}結論}{19}{}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {chapter}{謝辞}{18}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{謝辞}{20}{}\protected@file@percent }
 \bibstyle{jplain}
 \bibdata{cite}
 \bibcite{bucarey2024}{1}
@@ -129,25 +130,27 @@
 \bibcite{mandi2024}{9}
 \bibcite{markowitz1952}{10}
 \bibcite{shah2022}{11}
-\@writefile{toc}{\contentsline {chapter}{Appendix}{20}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{A. DFL-OPT-D における強双対性制約の導出}{20}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{B. 補題 \ref {prop:equivalence} の証明}{21}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{C. 補題3.2 の導出}{21}{}\protected@file@percent }
-\newlabel{eq:reduced_qp}{{6.16}{21}{}{equation.6.16}{}}
-\newlabel{eq:kkt_reduced_stationarity}{{6.18}{22}{}{equation.6.18}{}}
-\newlabel{eq:kkt_reduced_budget}{{6.19}{22}{}{equation.6.19}{}}
-\newlabel{eq:wA_mu}{{6.20}{22}{}{equation.6.20}{}}
-\newlabel{eq:mu_closed}{{6.22}{22}{}{equation.6.22}{}}
-\newlabel{eq:jacobian_affine}{{6.27}{22}{}{equation.6.27}{}}
+\@writefile{toc}{\contentsline {chapter}{Appendix}{22}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{A. DFL-OPT-D における強双対性制約の導出}{22}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{B. 補題 \ref {prop:equivalence} の証明}{23}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{C. 補題3.2 の導出}{23}{}\protected@file@percent }
+\newlabel{eq:reduced_qp}{{6.16}{23}{}{equation.6.16}{}}
+\newlabel{eq:kkt_reduced_stationarity}{{6.18}{24}{}{equation.6.18}{}}
+\newlabel{eq:kkt_reduced_budget}{{6.19}{24}{}{equation.6.19}{}}
+\newlabel{eq:wA_mu}{{6.20}{24}{}{equation.6.20}{}}
+\newlabel{eq:mu_closed}{{6.22}{24}{}{equation.6.22}{}}
+\newlabel{eq:wA_affine_raw}{{6.23}{24}{}{equation.6.23}{}}
+\newlabel{eq:wA_affine_explicit}{{6.24}{24}{}{equation.6.24}{}}
+\newlabel{eq:jacobian_affine}{{6.28}{24}{}{equation.6.28}{}}
 \citation{chen2010oas}
 \citation{jpm2006riskmetrics}
-\newlabel{eq:lipschitz_bound}{{6.33}{23}{}{equation.6.33}{}}
-\@writefile{toc}{\contentsline {section}{D. OAS 縮小係数と EWMA の実効サンプルサイズ}{23}{}\protected@file@percent }
-\newlabel{eq:appendix_oas_phi}{{6.34}{23}{}{equation.6.34}{}}
-\newlabel{eq:appendix_neff}{{6.35}{23}{}{equation.6.35}{}}
-\@writefile{toc}{\contentsline {section}{E. 取引コスト控除後の解析解に基づく初期化および L2 正則化項ありの参考結果}{23}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces 参考：取引コスト控除後の解析解に基づく初期化および L2 正則化項ありの累積資産推移}}{24}{}\protected@file@percent }
-\newlabel{fig:appendix_fullperiod_wealth_penalty}{{6.1}{24}{}{figure.6.1}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {6.1}{\ignorespaces 参考：取引コスト控除後の解析解に基づく初期化および L2 正則化項ありの性能指標}}{24}{}\protected@file@percent }
-\newlabel{tab:appendix_fullperiod_summary_cost}{{6.1}{24}{}{table.6.1}{}}
-\gdef \@abspage@last{28}
+\newlabel{eq:lipschitz_bound}{{6.33}{25}{}{equation.6.33}{}}
+\@writefile{toc}{\contentsline {section}{D. OAS 縮小係数と EWMA の実効サンプルサイズ}{25}{}\protected@file@percent }
+\newlabel{eq:appendix_oas_phi}{{6.34}{25}{}{equation.6.34}{}}
+\newlabel{eq:appendix_neff}{{6.35}{25}{}{equation.6.35}{}}
+\@writefile{toc}{\contentsline {section}{E. 取引コスト控除後の解析解に基づく初期化および L2 正則化項ありの参考結果}{25}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces 参考：取引コスト控除後の解析解に基づく初期化および L2 正則化項ありの累積資産推移}}{26}{}\protected@file@percent }
+\newlabel{fig:appendix_fullperiod_wealth_penalty}{{6.1}{26}{}{figure.6.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6.1}{\ignorespaces 参考：取引コスト控除後の解析解に基づく初期化および L2 正則化項ありの性能指標}}{26}{}\protected@file@percent }
+\newlabel{tab:appendix_fullperiod_summary_cost}{{6.1}{26}{}{table.6.1}{}}
+\gdef \@abspage@last{30}

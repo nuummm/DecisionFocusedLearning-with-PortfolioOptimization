@@ -2,11 +2,11 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces 評価指標の比較}}{10}{}%
-\contentsline {table}{\numberline {4.2}{\ignorespaces 条件数レジーム別：意思決定誤差と極端集中確率 $P_{\text {conc}}$}}{13}{}%
-\contentsline {table}{\numberline {4.3}{\ignorespaces ポートフォリオ構造の要約}}{13}{}%
-\contentsline {table}{\numberline {4.4}{\ignorespaces 危機局面における性能指標の比較}}{14}{}%
-\contentsline {table}{\numberline {4.5}{\ignorespaces 6 資産設定における評価指標の比較}}{15}{}%
-\contentsline {table}{\numberline {4.6}{\ignorespaces 8 資産設定における評価指標の比較}}{16}{}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces 評価指標の比較}}{11}{}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces 条件数レジーム別：意思決定誤差と極端集中確率 $P_{\text {conc}}$}}{14}{}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces ポートフォリオの集中度・追随性・安定性の比較}}{15}{}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces 危機局面における性能指標の比較}}{16}{}%
+\contentsline {table}{\numberline {4.5}{\ignorespaces 6 資産設定における評価指標の比較}}{17}{}%
+\contentsline {table}{\numberline {4.6}{\ignorespaces 8 資産設定における評価指標の比較}}{18}{}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {6.1}{\ignorespaces 参考：取引コスト控除後の解析解に基づく初期化および L2 正則化項ありの性能指標}}{24}{}%
+\contentsline {table}{\numberline {6.1}{\ignorespaces 参考：取引コスト控除後の解析解に基づく初期化および L2 正則化項ありの性能指標}}{26}{}%

@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.euc) (TeX Live 2025) (preloaded format=platex 2025.12.9)  24 DEC 2025 21:12
+This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.euc) (TeX Live 2025) (preloaded format=platex 2025.12.9)  24 DEC 2025 23:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -465,23 +465,25 @@ LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
 [6]
 
 [7]
+
+[8]
 第 4 章
 
 
-[8
+[9
 
 ]
 
-[9]
+[10]
 File: figs/baseline_cum_return.png Graphic file (type bmp)
 <figs/baseline_cum_return.png>
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <9> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 1009.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 1021.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <9> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 1009.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 1021.
 
 
-[10]
+[11]
 File: figs/lambda_tuning_sharpe_boxplot.png Graphic file (type bmp)
 <figs/lambda_tuning_sharpe_boxplot.png>
 File: figs/lambda_tuning_cvar95_boxplot.png Graphic file (type bmp)
@@ -490,42 +492,43 @@ File: figs/holdout_cum_wealth_2016_2025.png Graphic file (type bmp)
 <figs/holdout_cum_wealth_2016_2025.png>
 
 
-[11]
+[12]
 File: figs/r2_vs_sharpe_scatter.png Graphic file (type bmp)
 <figs/r2_vs_sharpe_scatter.png>
 File: figs/r2_vs_cvar_scatter.png Graphic file (type bmp)
 <figs/r2_vs_cvar_scatter.png>
 
 
-[12]
-LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <8> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 1282.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <8> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 1282.
-LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
-(Font)              No change on input line 1336.
-
-
 [13]
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <8> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 1295.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <8> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 1295.
+
 
 [14]
+
+[15]
 File: figs/wealth_events_6assets.png Graphic file (type bmp)
 <figs/wealth_events_6assets.png>
+
+
+[16]
 File: figs/wealth_events_8assets.png Graphic file (type bmp)
 <figs/wealth_events_8assets.png>
 
 
-[15]
+[17]
 
-[16]
+[18]
 第 5 章
 
 
-[17
+[19
 
 ]
 
-[18
+[20
 
 ] (./main.bbl
 LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
@@ -554,27 +557,27 @@ LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
 (Font)              No change on input line 65.
 )
 
-[19
+[21
 
 ]
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 1827.
+(Font)              No change on input line 1906.
 
 
-[20
+[22
 
 ]
 
-[21]
+[23]
 
-[22]
+[24]
 File: figs/appendix_fullperiod_wealth_penalty.png Graphic file (type bmp)
 <figs/appendix_fullperiod_wealth_penalty.png>
 
 
-[23]
+[25]
 
-[24] (./main.aux)
+[26] (./main.aux)
  ***********
 pLaTeX2e <2023-02-14>+1, based on
 LaTeX2e <2024-11-01> patch level 2
@@ -582,12 +585,12 @@ L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 6538 strings out of 473836
- 106459 string characters out of 5731189
- 517212 words of memory out of 5000000
- 29658 multiletter control sequences out of 15000+600000
+ 6541 strings out of 473836
+ 106518 string characters out of 5731189
+ 518302 words of memory out of 5000000
+ 29661 multiletter control sequences out of 15000+600000
  582674 words of font info for 131 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  67i,15n,77p,301b,631s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.dvi (28 pages, 127228 bytes).
+Output written on main.dvi (30 pages, 133528 bytes).
