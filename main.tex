@@ -118,83 +118,21 @@
 金融市場における資産運用では，複数資産への資金配分を決定するポートフォリオ最適化が中心的役割を担っている．
 ポートフォリオ最適化では一般に，期待リターンとリスクのトレードオフを考慮し，投資家の目的に応じた資産配分を決定することが求められる．
 近年では，機械学習手法の発展に伴い，各資産の将来リターンをデータ駆動的に推定し，その推定値をポートフォリオ最適化問題に入力する枠組みが広く用いられている．
-このとき多くの場合，推定モデルは平均二乗誤差などの予測誤差を最小化する目的で学習される．
-このような学習方針は，予測精度の観点では合理的である一方で，必ずしも最終的な投資成績の改善に直結しないことが指摘されている \cite{elmachtoubgrigas2022,mandi2024}．
+このとき多くの場合，予測モデルは平均二乗誤差などの予測誤差を最小化する目的で学習される．
+このような学習方針は，予測誤差の最小化を目的とする限りにおいては妥当である一方で，必ずしも最終的な投資成績の改善に直結しないことが指摘されている \cite{butlerkwon2023}．
 この乖離の一因として，予測と最適化を独立に扱う二段階構造が挙げられる．
 すなわち，予測誤差が小さい場合であっても，その誤差が後続の最適化段階において増幅され，投資配分が大きく変動する可能性がある．
 この結果，リスク調整後リターンや下方リスク指標などにより評価される投資成績が悪化する場合があり得る．
-このような現象は，推定不確実性が大きい局面や，非負制約などの現実的な制約を含む設定において，特に顕在化しやすいことが知られている \cite{chopraziemba1993}．
-以上の背景から，近年では予測精度そのものではなく，後続の最適化問題を通じて得られる投資成績や意思決定の質を学習目標として
+このような現象は，推定不確実性が大きい局面において特に顕著となることが古くから指摘されている \cite{chopraziemba1993}．
+また，非負制約などの現実的な制約を含む設定では，推定誤差が最適な資産配分に与える影響が増幅されることが知られている．
+一方で，近年では予測精度そのものではなく，後続の最適化問題を通じて得られる意思決定の質を表現した目的関数を学習目標として
 直接最適化する枠組みである意思決定重視学習（Decision-Focused Learning; DFL）が注目されている \cite{mandi2024}．
 \par
-DFL は，予測値と実現値の誤差を最小化する
-従来の予測精度重視学習（Prediction-Focused Learning; PFL）とは異なり，推定に基づく意思決定が最終的な投資成績にどのような影響を与えるかを明示的に考慮した学習を行う点に特徴がある．
+以上の背景から，DFL は予測値と実現値の誤差を最小化する
+従来の枠組みとは異なり，
+後続の最適化問題に基づいて定義される意思決定の質を学習目標とする枠組みである．
+そのため，DFL をポートフォリオ最適化に応用することで，推定と最適化のギャップを緩和し，最終的な投資成績の改善につながることが期待されている．
 
-%========================
-% 問題設定
-%========================
-\section{問題設定}
-
-本節では，本研究で扱う意思決定重視学習の問題設定を定式化する．
-
-時点 $i=1,\dots,T$ において，各資産に関する特徴量ベクトルを
-$\boldsymbol{x}_i$ を用い，当該期間に実現したリターンを
-$\boldsymbol{r}_i$ とする．
-予測モデルはパラメータ $\boldsymbol{\theta}$ を持ち，
-$\boldsymbol{x}_i$ に基づいて各資産の期待リターンの推定値
-$\hat{\boldsymbol{r}}_i(\boldsymbol{\theta},\boldsymbol{x}_i)$
-を出力するものとする．
-
-各時点における投資配分
-$\hat{\boldsymbol{w}}_i(\boldsymbol{\theta})$
-は，推定値 $\hat{\boldsymbol{r}}_i$ を入力として解かれる
-制約付きポートフォリオ最適化問題の最適解として定まる．
-ここで $\mathcal{S}$ はポートフォリオ制約によって定まる実行可能集合，
-$c(\cdot,\cdot)$ は目的関数を表す（具体的な形は第2章で与える）．
-すなわち，次のように定義する.
-\[
-\hat{\boldsymbol{w}}_i(\boldsymbol{\theta})
-\in \arg\min_{\boldsymbol{w}\in\mathcal{S}}
-c(\boldsymbol{w},\hat{\boldsymbol{r}}_i(\boldsymbol{\theta},\boldsymbol{x}_i))
-\]
-
-一方，比較の基準として，もし時点 $i$ において実現リターン
-$\boldsymbol{r}_i$ が事前に既知であったと仮定した場合に得られる
-投資配分を，理想的な投資配分として次のように定義する.
-\[
-\boldsymbol{w}_i^\star
-\in \arg\min_{\boldsymbol{w}\in\mathcal{S}}
-c(\boldsymbol{w},\boldsymbol{r}_i).
-\]
-この配分は実運用では利用できないが，
-推定に基づく意思決定の妥当性を評価するための基準として用いる．
-
-DFL では，
-予測誤差そのものではなく，
-推定値に基づいて得られる投資配分が，
-理想的な投資配分と比べてどの程度劣っているかという観点から
-学習目標を定める．
-本研究では，各時点 $i$ におけるこの差を
-意思決定誤差として
-\[
-\ell_i(\boldsymbol{\theta})
-=
-c(\hat{\boldsymbol{w}}_i(\boldsymbol{\theta}),\boldsymbol{r}_i)
--
-c(\boldsymbol{w}_i^\star,\boldsymbol{r}_i)
-\]
-と定義する．
-
-本研究の学習目標は，
-これらの意思決定誤差の時系列平均
-\[
-\frac{1}{T}\sum_{i=1}^T \ell_i(\boldsymbol{\theta})
-\]
-を最小化することである．
-以上より，本研究で扱う問題は，
-制約付きポートフォリオ最適化を下位問題に含み，
-その最適解を通じて予測モデルのパラメータを学習する
-二段階最適化問題として定式化される．
 
 %========================
 % 関連研究
@@ -204,24 +142,22 @@ c(\boldsymbol{w}_i^\star,\boldsymbol{r}_i)
 ポートフォリオ最適化は Markowitz による平均--分散ポートフォリオ最適化
 （Mean--Variance Optimization; MVO）\cite{markowitz1952}
 を起点として発展してきた．
-MVO は期待リターンとリスクを明示的に扱えるため，
-理論的にも実務的にも解釈しやすい基準モデルとして広く用いられている．
-一方で，MVO の入力となる期待リターンの推定は，
-回帰・時系列モデルから機械学習まで幅広く研究されており，
-推定誤差が最適配分に与える影響が大きいことが知られている．
-特に Chopra and Ziemba\cite{chopraziemba1993} は，
-平均推定誤差がポートフォリオの効用や配分に与える影響を
-定量的に示している．
+MVO は期待リターンとリスクを明示的に扱えることから，
+理論的枠組みとしての明確さと実務上の解釈容易性を併せ持つ基準モデルとして
+広く用いられている
+また，MVO の入力となる期待リターンの推定は，
+回帰・時系列モデルから機械学習まで幅広く研究されている一方で，
+推定誤差がポートフォリオ配分に与える影響が大きいことが知られている\cite{chopraziemba1993}．
 
 従来の多くの研究および実務では，
 予測モデルを平均二乗誤差などの予測誤差を最小化する目的で学習し，
 得られた推定値を最適化問題に入力して配分を決定する
-二段階構造が採用されてきた\cite{lahoud2025}．
+二段階構造が広く採用されてきた\cite{lahoud2025}．
 しかしこの枠組みでは，
 予測モデルの学習目標と，
 後続の最適化で最終的に評価される投資目的が
 必ずしも一致しないため，
-予測精度の向上が投資成績の改善に直結しない場合があり得る\cite{mandi2024}．
+予測精度の向上が投資成績の改善に結びつかない場合が生じ得る\cite{mandi2024}．
 
 この課題に対し，
 予測と最適化を統合的に扱い，
@@ -229,54 +165,51 @@ MVO は期待リターンとリスクを明示的に扱えるため，
 DFL が提案されている\cite{mandi2024}．
 DFL では，
 学習過程に最適化問題を組み込み，
-最適化解を介して定義される意思決定基準を
+最適化解を介して定義される意思決定の質を
 直接最小化することにより，
-上述のギャップを緩和することを目指す．
-さらに，
-平均--分散ポートフォリオ選択に DFL を適用し，
+予測と最適化のギャップを緩和することを目指す．
+近年では，
+MVOに DFL を適用し，
 意思決定構造が推定モデルの学習に与える影響を
 分析する研究も報告されている\cite{lee2025}．
 
-また，
+その一つに，
 MVO を対象として
 推定と最適化を統合的に扱う具体的手法として
 Integrating Prediction in Mean–Variance
-Portfolio Optimization (IPO) が提案されている\cite{butlerkwon2023}．
+Portfolio Optimization (IPO) \cite{butlerkwon2023}が提案されている．
 IPO は，推定モデルの学習段階に最適化問題を直接組み込むことで，
 意思決定に即したパラメータ更新を可能にする一方で，
 非凸最適化に起因する数値的安定性や初期値依存性が課題として指摘されている．
-加えて，
+
+また，
 DFL を悲観的二段階最適化として捉える理論的整理\cite{bucarey2024} や，
 数値安定性・アルゴリズムの観点からの検討\cite{shah2022}
 も進められている．
-
-これらの既存研究では，
-DFL に基づく学習枠組みや理論的性質は広く議論されている一方で，
-制約付き平均--分散ポートフォリオ最適化を下位問題に持つ設定において，
-異なる再定式化が数値計算上どのような挙動の差を示すかについては，
-体系的な整理が十分になされていない．
 
 %========================
 % 本研究の貢献
 %========================
 \section{本研究の貢献}
 
-本研究は，制約付き平均--分散ポートフォリオ最適化を下位問題に含む DFL を対象として，
-定式化と実証の両面から検討を行う．
+本研究は，制約付き平均--分散ポートフォリオ最適化を下位問題に含む
+意思決定重視学習を対象として，定式化と実証の両面から検討を行う．
+特に，非負制約および予算制約を含む実務的な設定において，
+予測と最適化の結合がもたらす効果と，数値計算上の取り扱いを明示的に整理することを目的とする．
 本研究の主な貢献は以下のとおりである．
 
 \begin{enumerate}
-  \item 下位問題の最適性条件に基づき，
-  単一レベル最適化として表現される2通りの同値再定式化を導出し，
-  両者の理論的関係を整理した．
-  これにより，制約付きMVOを含むDFLを実装・検討するための共通の基盤を与えた．
+  \item 下位問題の最適性条件に基づき，意思決定重視学習の二段階最適化問題を単一レベル最適化として表現する
+  2通りの再定式化（KKT 条件に基づく定式化と，強双対性に基づく最適値一致条件による定式化）を導出した．
 
-  \item 数値計算上の実装容易性と安定性の観点から，
-  DFL-OPT-K を主たる提案手法として採用し，
-  週次TAAを想定した実データ実験を通じて，
-  従来の PFL と比較した投資成績に基づく意思決定品質の改善可能性を検証した．
+  \item 週次TAAを想定した実データ実験を通じて，従来の予測精度重視学習や比較手法と比較して，意思決定品質の観点からの改善可能性を検証した．
+  あわせて，初期化および L2 正則化による探索経路制御が，収束挙動および投資性能に与える影響を整理した．
 
-  \item 提案手法から得られた解に基づく分析を通じて，挙動の解釈可能性を整理した．
+  \item 提案手法が示した性能差の要因を理解するため，
+  得られた解の構造に基づく分析を行い，挙動の解釈可能性を整理した．
+  特に，共分散行列の条件数に基づくレジーム別分析や，
+  極端集中確率，ポートフォリオ集中度などの指標を用いた構造分析を通じて，
+  数値的に不安定な局面における意思決定誤差の挙動や配分の極端化との関係を記述した．
 \end{enumerate}
 
 %========================
@@ -285,7 +218,7 @@ DFL に基づく学習枠組みや理論的性質は広く議論されている�
 \section{論文構成}
 
 本論文の構成は以下のとおりである．
-第2章では，既存手法として PFL および予測統合型手法を整理する．
+第2章では，既存手法としてポートフォリオ最適化問題および予測統合型手法を整理する．
 第3章では，提案手法を二段階最適化として再定式化し，両者の関係を示す．
 第4章では，提案手法を用いた実データ実験により，
 性能および挙動の特性を検証する．
@@ -299,8 +232,8 @@ DFL に基づく学習枠組みや理論的性質は広く議論されている�
 ポートフォリオ最適化における代表的な既存手法を整理する．
 まず，基準モデルとして平均--分散ポートフォリオ最適化を概説し，
 次に，推定と最適化の関係性に着目した代表的な学習枠組みとして，
-予測精度重視学習（PFL），予測統合型アプローチ（IPO），
-および意思決定考慮型アプローチ（SPO+）を紹介する．
+予測精度重視学習，予測統合型アプローチ，
+および意思決定考慮型アプローチを紹介する．
 さらに，近年提案された悲観的二段階最適化に基づく
 意思決定重視学習の理論的枠組みについて述べ，
 本研究との関係を明確にする．
@@ -323,9 +256,9 @@ MVO は，期待リターンとリスクのトレードオフを
 正定値対称行列であると仮定し，
 $\boldsymbol{V}\in\mathbb{S}_{++}^d$ とする．
 平均--分散モデルに基づくポートフォリオ最適化問題は，
-次の目的関数を，
+次の目的関数を
 予算制約および非負制約の下で最小化する問題として
-定式化される：
+定式化される．
 \begin{align}
 c(\boldsymbol{w}, \boldsymbol{r})
 &:= -(1-\delta)\boldsymbol{r}^\top \boldsymbol{w}
@@ -335,11 +268,11 @@ c(\boldsymbol{w}, \boldsymbol{r})
 &= 1,
 \\
 \boldsymbol{w}
-&\ge \boldsymbol{0}.
+&\ge \boldsymbol{0}
 \end{align}
 ここで $0<\delta\le1$ は，
 期待リターン項と分散リスク項の相対的な重みを制御する
-パラメータである．
+リスク回避パラメータである．
 $\boldsymbol{V}\in\mathbb{S}_{++}^d$ であるため，
 目的関数は強凸であり，
 実行可能集合が非空である限り，
@@ -361,8 +294,8 @@ $\boldsymbol{V}\in\mathbb{S}_{++}^d$ であるため，
 次の予測モデルを用いる．
 \begin{equation}
 \hat{\boldsymbol{r}}_i(\boldsymbol{\theta},\boldsymbol{x}_i)
-=
-\mathrm{diag}(\boldsymbol{x}_i)\boldsymbol{\theta},
+:=
+\mathrm{diag}(\boldsymbol{x}_i)\boldsymbol{\theta}
 \label{eq:prediction_model}
 \end{equation}
 ここで $\boldsymbol{x}_i\in\mathbb{R}^d$ は特徴量ベクトル，
@@ -382,7 +315,7 @@ $\boldsymbol{\theta}$ は，
 予測誤差の最小化により推定モデルを学習し，
 得られた推定値を用いてポートフォリオ最適化を行う
 二段階構造を，
-本稿では予測精度重視学習（PFL）と呼ぶ\cite{mandi2024}．
+本研究では予測精度重視学習（Prediction--Focused Learning; PFL）と呼ぶ\cite{mandi2024}．
 
 %========================
 % 予測統合型アプローチ
@@ -391,33 +324,29 @@ $\boldsymbol{\theta}$ は，
 
 推定と最適化を分離して扱う従来の二段階構造に対し，
 Butler and Kwon \cite{butlerkwon2023} は，
-平均--分散ポートフォリオ最適化を対象として，
+平均--分散ポートフォリオ最適化（MVO）を対象として，
 推定モデルの学習過程に最適化問題を直接組み込む
 予測統合型アプローチを提案した．
 この手法は
 Integrating Prediction in Mean--Variance Portfolio Optimization（IPO）
-と呼ばれる．
-
-IPO の基本的な考え方は，
+と呼ばれる．IPO の基本的な考え方は，
 予測誤差の最小化ではなく，
-推定値に基づいて得られる最終的な投資配分の良さを通じて，
+推定値に基づいて得られる最終的な意思決定の質を改善する形で，
 予測モデルのパラメータを更新する点にある．
 すなわち，
 予測モデルのパラメータを上位変数，
-制約付き平均--分散ポートフォリオ最適化を下位問題とする
+制約付きMVOを下位問題とする
 二段階最適化問題として学習を定式化することで，
 予測と最適化を明示的に結合する．
 
-一方で，
-IPO における上位問題は一般に非凸となり，
-勾配ベースの手法により学習が行われる．
-そのため，
-計算コストの増大や
-初期値に依存した局所解への収束といった課題が生じ得る．
-また，
-非負制約や予算制約を含む
-実務的な平均--分散ポートフォリオ最適化においては，
-数値的安定性の確保が必ずしも容易でない場合がある．
+一方で，IPO では，非負制約や予算制約を含む制約付き MVO を扱う場合には，下位問題の最適解に依存して定義される上位目的を
+パラメータ $\boldsymbol{\theta}$ について最小化する必要があるため，
+$\boldsymbol{\theta}$ に関する学習問題は一般に非凸となる．
+そのため，学習は最適解写像を介した勾配情報に基づく反復最適化として実行され，
+計算コストの増大や初期値に依存した局所解への収束といった課題が生じ得る．
+また，反復的な学習過程に依存するため，
+推定モデルのパラメータと最終的な配分・性能との関係を解析的に把握しにくく，
+挙動の解釈可能性が低下し得る．
 
 %========================
 % 意思決定考慮型アプローチ
@@ -429,32 +358,34 @@ Elmachtoub and Grigas \cite{elmachtoubgrigas2022} は，
 最適化問題の構造を学習に反映させる手法として
 Smart Predict--then--Optimize（SPO+）を提案した．
 SPO+ は，
-二段階法の枠組みを維持しつつ，
+二段階構造の枠組みを維持しつつ，
 最適化問題に由来する surrogate loss を用いて
 予測モデルを学習する点に特徴がある．
 この意味で，
-SPO+ は純粋な予測精度重視学習よりも
-意思決定を考慮した学習を行う一方，
-最適化問題を学習ループに直接組み込む
+SPO+ は最適化問題を学習ループに直接組み込む
 意思決定重視学習とは異なり，
-二段階構造に基づくアプローチと位置づけられる．
+予測と最適化を分離した二段階構造に基づく手法である．
+一方で，
+純粋な予測精度重視学習と比較すると，
+最適化問題に由来する情報を学習に反映しており，
+意思決定を考慮したアプローチと位置づけられる．
 
 本研究では，
-SPO+ を二段階法における意思決定考慮型手法の代表例として位置づけ，
-比較対象に含める．
+予測精度重視学習と意思決定重視学習の中間的な位置づけを持つ手法として，
+SPO+ を提案手法の比較対象として用いる．
 
 %========================
 % 悲観的二段階最適化に基づく DFL
 %========================
-\section{悲観的二段階最適化に基づく DFL}
+\section{悲観的二段階最適化に基づく意思決定重視学習}
 
 Bucarey ら\cite{bucarey2024}は，
 意思決定重視学習における期待後悔最小化問題を，
 悲観的二段階最適化として厳密に定式化した．
 この枠組みでは，
-予測値に基づいて解かれる下位最適化問題が
+予測値に基づいて解かれる下位問題が
 複数の最適解を持つ場合に，
-その中から上位目的を最も悪化させる解が選択されるという
+その中から上位問題の目的関数を最も悪化させる解が選択されるという
 悲観的解概念に基づいて後悔が定義される．
 
 同論文は，
@@ -473,7 +404,7 @@ NP 完全であることを明らかにしている．
 制約付き平均--分散ポートフォリオ最適化という
 具体的な意思決定問題を対象として，
 最適性条件に基づく再定式化を比較可能な形で整理し，
-後続章における解法設計および実証分析へと接続する．
+後続章における数値実験へと接続する．
 
 %=================================================================================
 % 第3章：提案手法
@@ -486,7 +417,7 @@ NP 完全であることを明らかにしている．
 \section{二段階最適化モデル}
 
 本節では，
-制約付き平均--分散ポートフォリオ最適化を下位問題に含む
+制約付き平均--分散ポートフォリオ最適化（MVO）を下位問題に含む
 意思決定重視学習（DFL）の問題設定を明示し，
 後続の再定式化に向けて，
 二段階最適化問題としての構造を厳密に定式化する．
@@ -494,7 +425,7 @@ NP 完全であることを明らかにしている．
 時点 $i=1,\dots,T$ において，
 特徴量ベクトル $\boldsymbol{x}_i\in\mathbb{R}^d$ および
 実現リターン $\boldsymbol{r}_i\in\mathbb{R}^d$ が観測されるとする．
-期待リターンの推定値は，
+期待リターンの推定値 $\hat{\boldsymbol{r}}_i(\boldsymbol{\theta},\boldsymbol{x}_i)$ は，
 第2章で導入した線形モデル
 \eqref{eq:prediction_model} により与えられるものとし，
 $\boldsymbol{\theta}\in\mathbb{R}^d$ を学習対象のパラメータとする．
@@ -508,6 +439,7 @@ $\boldsymbol{\theta}\in\mathbb{R}^d$ を学習対象のパラメータとする�
 各時点 $i$ における投資配分
 $\hat{\boldsymbol{w}}_i(\boldsymbol{\theta},\boldsymbol{x}_i)$ を，
 次の制約付き最適化問題の解として定義する．
+
 \begin{equation}
 \hat{\boldsymbol{w}}_i(\boldsymbol{\theta},\boldsymbol{x}_i)
 \in
@@ -515,19 +447,21 @@ $\hat{\boldsymbol{w}}_i(\boldsymbol{\theta},\boldsymbol{x}_i)$ を，
 c\!\left(
 \boldsymbol{w}_i,
 \hat{\boldsymbol{r}}_i(\boldsymbol{\theta},\boldsymbol{x}_i)
-\right),
+\right)
 \label{eq:lower_level_new}
 \end{equation}
-ここで目的関数 $c(\cdot,\cdot)$ は
+
+ここで目的関数は
 \begin{equation}
 c(\boldsymbol{w}_i,\boldsymbol{r})
 =
 -(1-\delta)\boldsymbol{r}^\top\boldsymbol{w}_i
 +
 \frac{\delta}{2}\boldsymbol{w}_i^\top\boldsymbol{V}_i\boldsymbol{w}_i,
-\quad 0<\delta\le1,
+\quad 0<\delta\le1
 \end{equation}
-制約集合 $\mathcal{S}$ は
+
+ポートフォリオの制約集合 $\mathcal{S}$ は
 \begin{equation}
 \mathcal{S}
 =
@@ -538,6 +472,7 @@ c(\boldsymbol{w}_i,\boldsymbol{r})
 \boldsymbol{w}_i\ge\boldsymbol{0}
 \right\}
 \end{equation}
+
 で与えられる．
 共分散行列 $\boldsymbol{V}_i$ は
 $\boldsymbol{V}_i\in\mathbb{S}_{++}^d$ と仮定する．
@@ -562,7 +497,7 @@ c(\boldsymbol{w}_i, \boldsymbol{r}_i)
 各時点 $i$ における意思決定誤差を
 \begin{equation}
 \ell_i(\boldsymbol{\theta})
-=
+:=
 c\!\left(
 \hat{\boldsymbol{w}}_i(\boldsymbol{\theta},\boldsymbol{x}_i),
 \boldsymbol{r}_i
@@ -575,13 +510,13 @@ c(\boldsymbol{w}_i^*,\boldsymbol{r}_i)
 次の二段階最適化問題として表される．
 \begin{align}
 \min_{\boldsymbol{\theta}}\quad
-&\frac{1}{T}\sum_{i=1}^T \ell_i(\boldsymbol{\theta}),
+&\frac{1}{T}\sum_{i=1}^T \ell_i(\boldsymbol{\theta})
 \label{eq:upper_level_obj}
 \\
 \text{s.t.}\quad
 &
 \hat{\boldsymbol{w}}_i(\boldsymbol{\theta},\boldsymbol{x}_i)
-\ \text{は}\ \eqref{eq:lower_level_new}\ \text{の最適解}.
+\ \text{は}\ \eqref{eq:lower_level_new}\ \text{の最適解}
 \label{eq:upper_level_constraint}
 \end{align}
 
@@ -600,7 +535,7 @@ c(\boldsymbol{w}_i^*,\boldsymbol{r}_i)
 
 本節では，前節で定義した二段階最適化問題を，
 下位問題の最適性条件に基づいて単一レベル化する．
-具体的には，
+具体的には
 (1) KKT 条件を明示的に組み込む定式化と，
 (2) 強双対性に基づく最適値一致条件を用いる定式化
 の2通りを示す．
@@ -615,7 +550,7 @@ c(\boldsymbol{w}_i^*,\boldsymbol{r}_i)
 \begin{align}
 \min_{\boldsymbol{w}_i} \quad
 & -(1-\delta)\hat{\boldsymbol{r}}_i^\top \boldsymbol{w}_i
-+ \frac{\delta}{2}\boldsymbol{w}_i^\top \boldsymbol{V}_i \boldsymbol{w}_i,
++ \frac{\delta}{2}\boldsymbol{w}_i^\top \boldsymbol{V}_i \boldsymbol{w}_i
 \label{eq:lower_level_recall}\\
 \text{s.t.} \quad
 & \boldsymbol{1}^\top \boldsymbol{w}_i = 1,
@@ -654,7 +589,7 @@ Slater 条件が成立する．
 -(1-\delta)\hat{\boldsymbol{r}}_i
 - \mu_i \boldsymbol{1}
 - \boldsymbol{\lambda}_i
-= \boldsymbol{0},
+= \boldsymbol{0}
 \label{eq:kkt_stationarity}
 \end{equation}
 
@@ -662,19 +597,18 @@ Slater 条件が成立する．
 \begin{align}
 \boldsymbol{1}^\top \boldsymbol{w}_i &= 1,
 \label{eq:kkt_budget}\\
-\boldsymbol{w}_i &\ge \boldsymbol{0},
+\boldsymbol{w}_i &\ge \boldsymbol{0}
 \label{eq:kkt_w_nonneg}
 \end{align}
 
 \item 双対実行可能性
 \begin{equation}
-\boldsymbol{\lambda}_i \ge \boldsymbol{0},
-\label{eq:kkt_lambda_nonneg}
+\boldsymbol{\lambda}_i \ge \boldsymbol{0}
 \end{equation}
 
 \item 相補性条件
 \begin{equation}
-\boldsymbol{\lambda}_i \odot \boldsymbol{w}_i = \boldsymbol{0}.
+\boldsymbol{\lambda}_i \odot \boldsymbol{w}_i = \boldsymbol{0}
 \label{eq:kkt_complementarity}
 \end{equation}
 \end{itemize}
@@ -689,27 +623,27 @@ Slater 条件が成立する．
  \left(
 -(1-\delta)\boldsymbol{r}_i^\top \boldsymbol{w}_i
 + \frac{\delta}{2}\boldsymbol{w}_i^\top \boldsymbol{V}_i \boldsymbol{w}_i
-\right),
+\right)
 \label{eq:dfl_kkt_obj}\\
 \text{s.t.} \quad
 & \boldsymbol{1}^\top \boldsymbol{w}_i = 1,
-\qquad i=1,\dots,T,
+\qquad                        i=1,\dots,T
 \label{eq:dfl_kkt_budget}\\
 & \boldsymbol{w}_i \ge \boldsymbol{0},
-\qquad i=1,\dots,T,
+\qquad i=1,\dots,T
 \label{eq:dfl_kkt_nonneg}\\
 & \boldsymbol{\lambda}_i \ge \boldsymbol{0},
-\qquad i=1,\dots,T,
+\qquad i=1,\dots,T
 \label{eq:dfl_kkt_lambda_nonneg}\\
 & \delta \boldsymbol{V}_i \boldsymbol{w}_i
 -(1-\delta)\hat{\boldsymbol{r}}_i
 - \mu_i \boldsymbol{1}
 - \boldsymbol{\lambda}_i
 = \boldsymbol{0},
-\qquad i=1,\dots,T,
+\qquad i=1,\dots,T
 \label{eq:dfl_kkt_stationarity}\\
 & \boldsymbol{\lambda}_i \odot \boldsymbol{w}_i = \boldsymbol{0},
-\qquad i=1,\dots,T.
+\qquad i=1,\dots,T
 \label{eq:dfl_kkt_complementarity}
 \end{align}
 この定式化を DFL-OPT-K と呼ぶ．
@@ -724,17 +658,19 @@ Slater 条件が成立する．
 下位問題 \eqref{eq:lower_level_recall} は前述の通り Slater 条件を満たす凸最適化問題であるため，
 強双対性が成立する．
 
-ここで stationarity \eqref{eq:dfl_dual_stationarity} と予算制約 $\boldsymbol{1}^\top\boldsymbol{w}_i=1$ を用いると，
+ここで 一階の最適性条件 \eqref{eq:kkt_stationarity} と予算制約 $\boldsymbol{1}^\top\boldsymbol{w}_i=1$ を用いると，
 \[
-\delta \boldsymbol{w}_i^\top \boldsymbol{V}_i \boldsymbol{w}_i
--(1-\delta)\hat{\boldsymbol{r}}_i^\top \boldsymbol{w}_i
--\mu_i
+-(1-\delta)\boldsymbol{r}_i^\top \boldsymbol{w}_i
++ \frac{\delta}{2}\boldsymbol{w}_i^\top \boldsymbol{V}_i \boldsymbol{w}_i
 =
-\boldsymbol{\lambda}_i^\top \boldsymbol{w}_i
+\mu_i
+-
+\frac{\delta}{2}
+\boldsymbol{w}_i^\top
+\boldsymbol{V}_i
+\boldsymbol{w}_i
 \]
-が成り立つ．
-したがって，最適性における相補性 $\boldsymbol{\lambda}_i^\top\boldsymbol{w}_i=0$ は，
-次の「最適値一致」に等価な等式として書ける．（導出の詳細は Appendix に示す．）
+が導出でき，整理すると以下の式を導ける．（導出の詳細は Appendix に示す．）
 \begin{equation}
 \delta \boldsymbol{w}_i^\top \boldsymbol{V}_i \boldsymbol{w}_i
 -(1-\delta)\hat{\boldsymbol{r}}_i^\top \boldsymbol{w}_i
@@ -743,7 +679,7 @@ Slater 条件が成立する．
 \end{equation}
 
 以上より，二段階最適化問題 \eqref{eq:upper_level_obj}--\eqref{eq:upper_level_constraint} は，
-次の単一レベル最適化問題として再定式化できる：
+次の単一レベル最適化問題として再定式化できる．
 \begin{align}
 \min_{\boldsymbol{\theta}, \{\boldsymbol{w}_i,\mu_i,\boldsymbol{\lambda}_i\}_{i=1}^{T}}
 \quad
@@ -795,8 +731,8 @@ Slater 条件を満たすと仮定する．
 DFL-OPT-D と DFL-OPT-K は同一の解集合を持つ．
 \end{lemma}
 
-本研究では，以降の解析の簡潔さの観点から，
-KKT 条件に基づく定式化 DFL-OPT-K を用いる．
+本研究では以降の解析の簡潔さの観点から，
+KKT 条件に基づく定式化 DFL-OPT-K 数値実験に用いる．
 
 %========================
 % 制約付き平均--分散最適化における解の構造と安定
@@ -805,19 +741,19 @@ KKT 条件に基づく定式化 DFL-OPT-K を用いる．
 \label{lem:structure_stability}
 
 $\delta>0$ および $\boldsymbol{V}\succ\boldsymbol{0}$ とし，
-制約付き平均--分散ポートフォリオ最適化問題
+制約付きMVO
 \eqref{eq:lower_level_recall}
 を考える．
-このとき，下位問題は強凸であり，最適解 $\boldsymbol{w}^*$ は一意に定まる．
-さらに，不等式制約のアクティブ集合が近傍で不変である局所においては，
+このとき，下位問題は目的関数が強凸であるため，最適解 $\boldsymbol{w}^*$ は一意に定まる．
+さらに，不等式制約のアクティブ集合が
+$\hat{\boldsymbol{r}}$ の摂動に対して局所的に不変である領域においては，
 最適解 $\boldsymbol{w}^*$ は，
-精度行列 $\boldsymbol{V}^{-1}$ による線形写像
-$(1-\delta)\boldsymbol{V}^{-1}\hat{\boldsymbol{r}}$
-を基準とし，
+共分散行列の逆行列 $\boldsymbol{V}^{-1}$ による線形写像
+$(1-\delta)\boldsymbol{V}^{-1}\hat{\boldsymbol{r}}$ を基点とし，
 等式制約 $\boldsymbol{1}^\top\boldsymbol{w}=1$ および
 アクティブ制約によって定まる可行部分空間への
 射影として表される．
-このとき，推定誤差 $\Delta\hat{\boldsymbol{r}}$ に対する最適解の変動は，
+このとき，十分小さな推定誤差 $\Delta\hat{\boldsymbol{r}}$ に対して最適解の変動は，
 \begin{equation}
 \|\Delta \boldsymbol{w}^*\|_2
 \;\le\;
@@ -828,27 +764,26 @@ C\,
 \label{eq:structure_stability_bound}
 \end{equation}
 を満たす定数 $C<\infty$ により上から抑えられる．
-ここで $C$ は制約集合およびアクティブ集合の構造にのみ依存し，
+ここで $C$ は制約集合の幾何構造およびアクティブ集合の構造にのみ依存し，
 $\boldsymbol{V}$ および $\hat{\boldsymbol{r}}$ には依存しない．
 
-したがって，制約付き平均--分散最適化における最適解の安定性
-（すなわち推定誤差の増幅度）は，
-リスク重み $\delta$ と
+したがって，制約付きMVOにおける最適解の推定誤差による増幅度は，
+リスク回避パラメータ $\delta$ と
 共分散行列 $\boldsymbol{V}$ の最小固有値
 $\lambda_{\min}(\boldsymbol{V})$
 によって構造的に支配される．
 \end{lemma}
 
 補題 \ref{lem:structure_stability} は，最適性条件に基づく定式化を通じて，
-制約付き平均--分散最適化における最適解の構造と安定性を
+制約付きMVOにおける最適解の構造と
+推定誤差に対する局所的安定性を
 解析的に明示した点に意義がある．
 特に，最適解の安定性が共分散行列の最小固有値によって
 支配されることが明らかになる．
-
 この観点からは，共分散行列に対する等方的縮小が，
-推定誤差の増幅を抑制する方向に作用することを
+推定誤差の増幅を抑制する方向に作用し得ることを
 自然に解釈することができる．
-補題の厳密な導出は Appendix に示す．
+（補題の厳密な導出は Appendix に示す．）
 
 %==============================================================================
 % 第4章：数値実験
@@ -1763,7 +1698,7 @@ Sharpe 比および下方リスク指標の観点で
 \addcontentsline{toc}{section}{A. DFL-OPT-D における強双対性制約の導出}
 \par
 本節では，本文で導入した DFL-OPT-D における
-最適値一致制約 \eqref{eq:dfl_dual_value}
+主問題と双対問題の目的関数の一致から導かれる \eqref{eq:dfl_dual_value}
 （同値な形として \eqref{eq:dual_strong_simplified}）の導出を示す．
 導出は，下位問題の双対関数と強双対性に基づく．
 
@@ -1771,19 +1706,19 @@ Sharpe 比および下方リスク指標の観点で
 各時点 $i$ における下位問題 \eqref{eq:lower_level_recall} に対し，
 ラグランジュ関数 \eqref{eq:lagrangian} を用いて，
 双対関数を
-\[
+\begin{equation}
 g_i(\mu_i,\boldsymbol{\lambda}_i)
-:= \inf_{\boldsymbol{w}_i\in\mathbb{R}^d}
+:= \inf_{\boldsymbol{w}_i}
 \mathcal{L}_i(\boldsymbol{w}_i,\mu_i,\boldsymbol{\lambda}_i)
-\]
+\end{equation}
 と定義する．
 ここで $\boldsymbol{\lambda}_i\ge\boldsymbol{0}$ とする．
 
 \par
-$\mathcal{L}_i$ を $\boldsymbol{w}_i$ で最小化する停留条件は
+$\mathcal{L}_i$ を $\boldsymbol{w}_i$ で最小化する一階の最適性条件は
 \eqref{eq:dfl_dual_stationarity} と一致し，
 これより
-\[
+\begin{equation}
 \tilde{\boldsymbol{w}}_i(\mu_i,\boldsymbol{\lambda}_i)
 =
 \frac{1}{\delta}\boldsymbol{V}_i^{-1}
@@ -1792,11 +1727,11 @@ $\mathcal{L}_i$ を $\boldsymbol{w}_i$ で最小化する停留条件は
 +\mu_i\boldsymbol{1}
 +\boldsymbol{\lambda}_i
 \right)
-\]
+\end{equation}
 を得る．
 これをラグランジュ関数に代入すると，
 双対関数は
-\[
+\begin{equation}
 g_i(\mu_i,\boldsymbol{\lambda}_i)
 =
 \mu_i
@@ -1813,21 +1748,20 @@ g_i(\mu_i,\boldsymbol{\lambda}_i)
 +\mu_i\boldsymbol{1}
 +\boldsymbol{\lambda}_i
 \right)
-\]
+\end{equation}
 と表される．
 
 \par
-次に，停留条件
-\[
+次に，一階の最適性条件 \eqref{eq:dfl_dual_stationarity} 
+\begin{equation}
 \delta \boldsymbol{V}_i\boldsymbol{w}_i
 =
 (1-\delta)\hat{\boldsymbol{r}}_i
 +\mu_i\boldsymbol{1}
 +\boldsymbol{\lambda}_i
-\]
-を用いて右辺を消去すると，
-双対関数は
-\[
+\end{equation}
+を用い双対関数に代入すると，
+\begin{equation}
 g_i(\mu_i,\boldsymbol{\lambda}_i)
 =
 \mu_i
@@ -1836,29 +1770,29 @@ g_i(\mu_i,\boldsymbol{\lambda}_i)
 \boldsymbol{w}_i^\top
 \boldsymbol{V}_i
 \boldsymbol{w}_i
-\]
+\end{equation}
 と簡約される．
 
 \par
 弱双対性より，任意の主問題の実行可能解 $\boldsymbol{w}_i$ と
 双対変数 $(\mu_i,\boldsymbol{\lambda}_i)$ に対して，
-主問題の目的値は双対関数値以上である：
-\[
+主問題の目的値は双対関数値以上である．
+\begin{equation}
 -(1-\delta)\hat{\boldsymbol{r}}_i^\top\boldsymbol{w}_i
 +\frac{\delta}{2}\boldsymbol{w}_i^\top\boldsymbol{V}_i\boldsymbol{w}_i
 \;\ge\;
 \mu_i
 -
 \frac{\delta}{2}\boldsymbol{w}_i^\top\boldsymbol{V}_i\boldsymbol{w}_i .
-\]
+\end{equation}
 両辺を整理すると，
-\[
+\begin{equation}
 \delta \boldsymbol{w}_i^\top\boldsymbol{V}_i\boldsymbol{w}_i
 -
 (1-\delta)\hat{\boldsymbol{r}}_i^\top\boldsymbol{w}_i
 \;\ge\;
 \mu_i
-\]
+\end{equation}
 を得る．
 
 \par
@@ -1870,15 +1804,15 @@ $\boldsymbol{\lambda}_i^\top\boldsymbol{w}_i=0$ が成り立ち，
 双対変数は最適値表現から消去される．
 したがって，
 最適解 $(\boldsymbol{w}_i,\mu_i)$ は
-\[
+\begin{equation}
 \delta \boldsymbol{w}_i^\top\boldsymbol{V}_i\boldsymbol{w}_i
 -
 (1-\delta)\hat{\boldsymbol{r}}_i^\top\boldsymbol{w}_i
 =
 \mu_i
-\]
+\end{equation}
 を満たす．
-これは本文で用いた最適値一致条件
+これは本文で用いた
 \eqref{eq:dfl_dual_value}
 （同値に \eqref{eq:dual_strong_simplified}）である．
 
@@ -1900,44 +1834,44 @@ KKT 条件は最適性の必要十分条件である．
 
 \par\noindent
 \textbf{(DFL-OPT-K $\Rightarrow$ DFL-OPT-D)}\;
-DFL-OPT-K の可行解 $(\boldsymbol{w},\mu,\boldsymbol{\lambda})$ は，
-\eqref{eq:dfl_kkt_stationarity}（停留条件）と
-\eqref{eq:dfl_kkt_budget}（予算制約）を満たす．
+DFL-OPT-K の可行解 $(\boldsymbol{w},\mu,\boldsymbol{\lambda})$ は，一階の最適性条件
+\eqref{eq:dfl_kkt_stationarity}と予算制約
+\eqref{eq:dfl_kkt_budget}を満たす．
 したがって，\eqref{eq:dfl_kkt_stationarity} の両辺に $\boldsymbol{w}^\top$ を掛け，
 $\boldsymbol{1}^\top\boldsymbol{w}=1$ を用いると
-\[
+\begin{equation}
 \delta \boldsymbol{w}^\top \boldsymbol{V}\boldsymbol{w}
 -(1-\delta)\hat{\boldsymbol{r}}^\top\boldsymbol{w}
 -\mu
 =
 \boldsymbol{\lambda}^\top\boldsymbol{w}
-\]
+\end{equation}
 を得る．
-さらに DFL-OPT-K では相補性 \eqref{eq:dfl_kkt_complementarity} より
+さらに DFL-OPT-K では相補性条件 \eqref{eq:dfl_kkt_complementarity} より
 $\boldsymbol{\lambda}^\top\boldsymbol{w}=0$ が成り立つため，
-\[
+\begin{equation}
 \delta \boldsymbol{w}^\top \boldsymbol{V}\boldsymbol{w}
 -(1-\delta)\hat{\boldsymbol{r}}^\top\boldsymbol{w}
 =\mu
-\]
+\end{equation}
 が従う．
-これは DFL-OPT-D の最適値一致条件 \eqref{eq:dfl_dual_value} に一致する．
+これは DFL-OPT-D の \eqref{eq:dfl_dual_value} に一致する．
 他の制約（主・双対可行性および停留条件）は両定式化で共通であるから，
 DFL-OPT-K の可行解は DFL-OPT-D の可行解でもある．
 
 \par\noindent
 \textbf{(DFL-OPT-D $\Rightarrow$ DFL-OPT-K)}\;
 逆に DFL-OPT-D の可行解 $(\boldsymbol{w},\mu,\boldsymbol{\lambda})$ をとる．
-DFL-OPT-D は
-\eqref{eq:dfl_dual_stationarity}（停留条件）と
-\eqref{eq:dfl_dual_budget}（予算制約）を満たすため，上と同様に
-\[
+DFL-OPT-D は一階の最適性条件
+\eqref{eq:dfl_dual_stationarity}と予算制約
+\eqref{eq:dfl_dual_budget}を満たすため，上と同様に
+\begin{equation}
 \delta \boldsymbol{w}^\top \boldsymbol{V}\boldsymbol{w}
 -(1-\delta)\hat{\boldsymbol{r}}^\top\boldsymbol{w}
 -\mu
 =
 \boldsymbol{\lambda}^\top\boldsymbol{w}
-\]
+\end{equation}
 が成り立つ．
 一方，DFL-OPT-D は最適値一致 \eqref{eq:dfl_dual_value} を課しているので，
 左辺は $0$ となり $\boldsymbol{\lambda}^\top\boldsymbol{w}=0$ を得る．
@@ -1945,9 +1879,9 @@ DFL-OPT-D は
 $\lambda_j w_j\ge 0$ が全成分で成り立つから，
 和が $0$ であることは各成分で $\lambda_j w_j=0$ を意味する．
 したがって
-\[
+\begin{equation}
 \boldsymbol{\lambda}\odot\boldsymbol{w}=\boldsymbol{0}
-\]
+\end{equation}
 が従い，DFL-OPT-K の相補性条件 \eqref{eq:dfl_kkt_complementarity} が得られる．
 ゆえに DFL-OPT-D の可行解は DFL-OPT-K の可行解でもある．
 
@@ -1957,15 +1891,15 @@ DFL-OPT-D と DFL-OPT-K は同一の解集合を持つ．
 \end{proof}
 
 %========================
-% Appendix C: 命題の導出
+% Appendix C: 補題 の導出
 %========================
 \section*{C. 補題 \ref{lem:structure_stability} の導出}
 \addcontentsline{toc}{section}{C. 補題3.2 の導出}
 \par
 本節では，補題 \ref{lem:structure_stability} の導出を示す．
 以下では簡単のため時点添字を省略し，
-\eqref{eq:lower_qp_sensitivity} の下位問題
-\[
+\eqref{eq:lower_level_recall} の下位問題
+\begin{equation}
 \min_{\boldsymbol{w}}
 \;f(\boldsymbol{w};\hat{\boldsymbol{r}},\boldsymbol{V})
 :=
@@ -1974,22 +1908,21 @@ DFL-OPT-D と DFL-OPT-K は同一の解集合を持つ．
 \quad
 \text{s.t.}\quad
 \boldsymbol{1}^\top\boldsymbol{w}=1,\;\boldsymbol{w}\ge \boldsymbol{0}
-\]
+\end{equation}
 を考える．ここで $\delta>0$，$\boldsymbol{V}\succ\boldsymbol{0}$ とする．
 
-\subsection*{C.1 アクティブ集合固定による縮約}
 \par
 最適解を $\boldsymbol{w}^*(\hat{\boldsymbol{r}},\boldsymbol{V})$ とし，
-正の成分集合（アクティブ集合）を
-\[
+アクティブ集合（正の成分集合）を
+\begin{equation}
 A:=\{j\in\{1,\dots,d\}\mid w_j^*>0\},\qquad N:=A^c
-\]
+\end{equation}
 とおく．
 アクティブ集合が近傍で不変（すなわち $w_A^*>0$ かつ $w_N^*=0$ が近傍で維持される）と仮定する．
-このとき，制約 $w\ge0$ は局所的に
-\[
+このとき，制約 $\boldsymbol{w}\ge\boldsymbol{0}$ は局所的に
+\begin{equation}
 \boldsymbol{w}_N=\boldsymbol{0}
-\]
+\end{equation}
 という等式制約に置き換えられる．
 したがって，局所的には次の縮約問題と同値になる.
 \begin{equation}
@@ -2005,16 +1938,15 @@ A:=\{j\in\{1,\dots,d\}\mid w_j^*>0\},\qquad N:=A^c
 $\boldsymbol{V}\succ0$ より主小行列 $\boldsymbol{V}_{AA}\succ0$ であり，
 \eqref{eq:reduced_qp} は強凸な等式制約付きQPである．
 
-\subsection*{C.2 縮約問題のKKT条件}
 \par
 \eqref{eq:reduced_qp} のラグランジュ関数を
-\[
+\begin{equation}
 \mathcal{L}(\boldsymbol{w}_A,\mu)
 =
 -(1-\delta)\hat{\boldsymbol{r}}_A^\top \boldsymbol{w}_A
 +\frac{\delta}{2}\boldsymbol{w}_A^\top \boldsymbol{V}_{AA}\boldsymbol{w}_A
 +\mu(1-\boldsymbol{1}_A^\top \boldsymbol{w}_A)
-\]
+\end{equation}
 とする．KKT 条件は
 \begin{align}
 \delta \boldsymbol{V}_{AA}\boldsymbol{w}_A - (1-\delta)\hat{\boldsymbol{r}}_A - \mu \boldsymbol{1}_A &= \boldsymbol{0},
@@ -2032,13 +1964,13 @@ $\boldsymbol{V}\succ0$ より主小行列 $\boldsymbol{V}_{AA}\succ0$ であり�
 \label{eq:wA_mu}
 \end{equation}
 これを \eqref{eq:kkt_reduced_budget} に代入すると
-\[
+\begin{equation}
 \boldsymbol{1}_A^\top \boldsymbol{w}_A
 =
 \frac{1}{\delta}\boldsymbol{1}_A^\top\boldsymbol{V}_{AA}^{-1}
 \bigl((1-\delta)\hat{\boldsymbol{r}}_A+\mu \boldsymbol{1}_A\bigr)
 =1,
-\]
+\end{equation}
 すなわち
 \begin{equation}
 \mu
@@ -2048,7 +1980,7 @@ $\boldsymbol{V}\succ0$ より主小行列 $\boldsymbol{V}_{AA}\succ0$ であり�
 \label{eq:mu_closed}
 \end{equation}
 \eqref{eq:mu_closed} を \eqref{eq:wA_mu} に代入すると
-\[
+\begin{equation}
 \boldsymbol{w}_A^*(\hat{\boldsymbol{r}}_A,\boldsymbol{V}_{AA})
 =
 \underbrace{\frac{1-\delta}{\delta}\boldsymbol{V}_{AA}^{-1}\hat{\boldsymbol{r}}_A}_{\text{線形項}}
@@ -2056,36 +1988,35 @@ $\boldsymbol{V}\succ0$ より主小行列 $\boldsymbol{V}_{AA}\succ0$ であり�
 \underbrace{\frac{1}{\delta}\boldsymbol{V}_{AA}^{-1}\boldsymbol{1}_A\,
 \frac{\delta-(1-\delta)\boldsymbol{1}_A^\top\boldsymbol{V}_{AA}^{-1}\hat{\boldsymbol{r}}_A}
 {\boldsymbol{1}_A^\top\boldsymbol{V}_{AA}^{-1}\boldsymbol{1}_A}}_{\text{アフィン補正}}
-\]
-を得る．よって $\boldsymbol{w}_A^*$ は $\hat{\boldsymbol{r}}_A$ に関して affine である．
+\end{equation}
+を得る．よって $\boldsymbol{w}_A^*$ は $\hat{\boldsymbol{r}}_A$ に関してアフィンである．
 
-\subsection*{C.3 ヤコビアンの導出（式 \eqref{eq:jacobian_affine}）}
 \par
 \eqref{eq:wA_mu} を $\hat{\boldsymbol{r}}_A$ で微分すると
-\[
+\begin{equation}
 \frac{\partial \boldsymbol{w}_A^*}{\partial \hat{\boldsymbol{r}}_A}
 =
 \frac{1-\delta}{\delta}\boldsymbol{V}_{AA}^{-1}
 +
 \frac{1}{\delta}\boldsymbol{V}_{AA}^{-1}\boldsymbol{1}_A
 \frac{\partial \mu}{\partial \hat{\boldsymbol{r}}_A}.
-\]
+\end{equation}
 一方，\eqref{eq:mu_closed} より
-\[
+\begin{equation}
 \mu
 =
 \frac{\delta}{\boldsymbol{1}_A^\top\boldsymbol{V}_{AA}^{-1}\boldsymbol{1}_A}
 -
 \frac{1-\delta}{\boldsymbol{1}_A^\top\boldsymbol{V}_{AA}^{-1}\boldsymbol{1}_A}
 \boldsymbol{1}_A^\top\boldsymbol{V}_{AA}^{-1}\hat{\boldsymbol{r}}_A
-\]
+\end{equation}
 なので
-\[
+\begin{equation}
 \frac{\partial \mu}{\partial \hat{\boldsymbol{r}}_A}
 =
 -\frac{1-\delta}{\boldsymbol{1}_A^\top\boldsymbol{V}_{AA}^{-1}\boldsymbol{1}_A}
 \boldsymbol{1}_A^\top\boldsymbol{V}_{AA}^{-1}.
-\]
+\end{equation}
 したがって
 \begin{align}
 \frac{\partial \boldsymbol{w}_A^*}{\partial \hat{\boldsymbol{r}}_A}
@@ -2100,26 +2031,25 @@ $\boldsymbol{V}\succ0$ より主小行列 $\boldsymbol{V}_{AA}\succ0$ であり�
 \end{align}
 すなわち本文 \eqref{eq:jacobian_affine} を得る．
 
-\subsection*{C.4 局所Lipschitz上界（式 \eqref{eq:lipschitz_bound}）}
 \par
 同一アクティブ集合 $A$ が維持される局所では
-\[
+\begin{equation}
 \Delta \boldsymbol{w}_A^*
 =
 \left(\frac{\partial \boldsymbol{w}_A^*}{\partial \hat{\boldsymbol{r}}_A}\right)\Delta\hat{\boldsymbol{r}}_A
-\]
+\end{equation}
 が成り立つため，
-\[
+\begin{equation}
 \|\Delta \boldsymbol{w}_A^*\|_2
 \le
 \left\|
 \frac{\partial \boldsymbol{w}_A^*}{\partial \hat{\boldsymbol{r}}_A}
 \right\|_2
 \|\Delta \hat{\boldsymbol{r}}_A\|_2
-\]
+\end{equation}
 である．
 ここで
-\[
+\begin{equation}
 \boldsymbol{P}_A
 :=
 \boldsymbol{I}
@@ -2127,16 +2057,16 @@ $\boldsymbol{V}\succ0$ より主小行列 $\boldsymbol{V}_{AA}\succ0$ であり�
 \boldsymbol{V}_{AA}^{-1}\boldsymbol{1}_A
 (\boldsymbol{1}_A^\top\boldsymbol{V}_{AA}^{-1}\boldsymbol{1}_A)^{-1}
 \boldsymbol{1}_A^\top
-\]
+\end{equation}
 とおくと，
-\[
+\begin{equation}
 \frac{\partial \boldsymbol{w}_A^*}{\partial \hat{\boldsymbol{r}}_A}
 =
 \frac{1-\delta}{\delta}
 \boldsymbol{P}_A\boldsymbol{V}_{AA}^{-1}.
-\]
+\end{equation}
 よって
-\[
+\begin{equation}
 \left\|
 \frac{\partial \boldsymbol{w}_A^*}{\partial \hat{\boldsymbol{r}}_A}
 \right\|_2
@@ -2148,7 +2078,7 @@ $\boldsymbol{V}\succ0$ より主小行列 $\boldsymbol{V}_{AA}\succ0$ であり�
 \frac{1-\delta}{\delta}\,
 \|\boldsymbol{P}_A\|_2\,
 \frac{1}{\lambda_{\min}(\boldsymbol{V}_{AA})}.
-\]
+\end{equation}
 これより
 \begin{equation}
 \|\Delta \boldsymbol{w}_A^*\|_2
