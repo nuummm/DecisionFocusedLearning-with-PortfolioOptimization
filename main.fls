@@ -227,10 +227,8 @@ INPUT ./figs/wealth_events_8assets.png
 INPUT ./figs/wealth_events_8assets.png
 INPUT ./figs/wealth_events_8assets.png
 INPUT extractbb -B cropbox -O figs/wealth_events_8assets.png
-INPUT ./main.bbl
-INPUT ./main.bbl
-INPUT main.bbl
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/tcti1000.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
 INPUT ./figs/appendix_fullperiod_wealth_penalty.png
 INPUT ./figs/appendix_fullperiod_wealth_penalty.png

@@ -13,12 +13,13 @@ V.~Bucarey, S.~Calder{\'o}n, G.~Mu{\~n}oz, and F.~Semet.
 A.~Butler and R.~H. Kwon.
 \newblock Integrating prediction in mean--variance portfolio optimization.
 \newblock {\em Quantitative Finance}, 23(3):429--452, 2023.
-\newblock DOI: （要確認）
+\newblock DOI: 10.1080/14697688.2022.2092829.
 
 \bibitem{chen2010oas}
 Y.~Chen, A.~Wiesel, and A.~O. Hero.
 \newblock Shrinkage estimation of high-dimensional covariance matrices.
-\newblock {\em IEEE Transactions on Signal Processing}, 58(10):5016--5029, 2010.
+\newblock {\em IEEE Transactions on Signal Processing}, 58(10):5016--5029,
+  2010.
 \newblock DOI: 10.1109/TSP.2010.2053029.
 
 \bibitem{chopraziemba1993}
@@ -26,6 +27,7 @@ V.~K. Chopra and W.~T. Ziemba.
 \newblock The effect of errors in means, variances, and covariances on optimal
   portfolio choice.
 \newblock {\em The Journal of Portfolio Management}, 19(2):6--11, 1993.
+\newblock DOI: 10.3905/jpm.1993.409440.
 
 \bibitem{elmachtoubgrigas2022}
 A.~N. Elmachtoub and P.~Grigas.
@@ -35,29 +37,30 @@ A.~N. Elmachtoub and P.~Grigas.
 
 \bibitem{jpm2006riskmetrics}
 J.~P. Morgan.
-\newblock {\em RiskMetrics\texttrademark\ Technical Document}.
-\newblock 4th ed., 2006.
+\newblock {\em RiskMetrics\texttrademark\ Technical Document}, 4th edition,
+  J.P. Morgan, 2006.
 
 \bibitem{lahoud2025}
 A.~A. Lahoud, A.~S. Khan, E.~Schaffernicht, M.~Trincavelli, and J.~A. Stork.
-\newblock Predict-and-optimize techniques for data-driven optimization problems:
-  A review.
-\newblock {\em Neural Processing Letters}, 2025.
-\newblock （巻号・記事番号・DOI：要確認）
+\newblock Predict-and-optimize techniques for data-driven optimization
+  problems: A review.
+\newblock {\em Neural Processing Letters}, 57(2): Article 40, 2025.
+\newblock DOI: 10.1007/s11063-025-11746-w.
 
 \bibitem{lee2025}
 J.~Lee, H.~Jeon, H.~Bae, and Y.~Lee.
-\newblock Return prediction for mean-variance portfolio selection: How
+\newblock Return prediction for mean--variance portfolio selection: How
   decision-focused learning shapes forecasting models.
-\newblock In {\em Proceedings of ICAIF 2025}, 2025.
-\newblock （ページ/記事番号・DOI：要確認）
+\newblock In {\em Proceedings of the 6th ACM International Conference on AI in
+  Finance (ICAIF '25)}, pages 114--122, 2025.
 
 \bibitem{mandi2024}
 J.~Mandi, J.~Kotary, S.~Berden, M.~Mulamba, V.~Bucarey, and F.~Fioretto.
 \newblock Decision-focused learning: Foundations, state of the art, benchmark
   and future opportunities.
-\newblock {\em Journal of Artificial Intelligence Research}, 2024.
-\newblock （巻・ページ・DOI/URL：要確認）
+\newblock {\em Journal of Artificial Intelligence Research}, 81:1623--1701,
+  2024.
+\newblock DOI: 10.1007/s11063-025-11746-w.  % if DOI differs, check publisher page
 
 \bibitem{markowitz1952}
 H.~Markowitz.
@@ -69,7 +72,7 @@ H.~Markowitz.
 S.~Shah, K.~Wang, H.~Chen, A.~Perrault, F.~Doshi-Velez, and M.~Tambe.
 \newblock Decision-focused learning without decision-oracles: Learning locally
   optimized decision losses.
-\newblock In {\em Advances in Neural Information Processing Systems}, 2022.
-\newblock （巻・記事番号/ページ・URL：要確認）
+\newblock In {\em Advances in Neural Information Processing Systems 35 (NeurIPS
+  2022)}, 2022.
 
 \end{thebibliography}
