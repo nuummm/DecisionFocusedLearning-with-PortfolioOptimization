@@ -19,7 +19,6 @@
 \setlength{\textheight}{247mm}
 \setlength{\headheight}{0mm}
 \setlength{\headsep}{0mm}
-\setlength{\footskip}{0mm}
 
 \usepackage[dvipdfmx]{graphicx}
 \usepackage[dvipdfmx,table]{xcolor}
@@ -101,7 +100,6 @@
 \setcounter{tocdepth}{3}
 \tableofcontents
 \listoffigures
-\listoftables
 \pagebreak
 \setcounter{page}{1}
 \pagenumbering{arabic}
@@ -125,9 +123,9 @@
 この結果，リスク調整後リターンや下方リスク指標などにより評価される投資成績が悪化する場合があり得る．
 このような現象は，推定不確実性が大きい局面において特に顕著となることが古くから指摘されている \cite{chopraziemba1993}．
 また，非負制約などの現実的な制約を含む設定では，推定誤差が最適な資産配分に与える影響が増幅されることが知られている．
+
 一方で，近年では予測精度そのものではなく，後続の最適化問題を通じて得られる意思決定の質を表現した目的関数を学習目標として
 直接最適化する枠組みである意思決定重視学習（Decision-Focused Learning; DFL）が注目されている \cite{mandi2024}．
-\par
 以上の背景から，DFL は予測値と実現値の誤差を最小化する
 従来の枠組みとは異なり，
 後続の最適化問題に基づいて定義される意思決定の質を学習目標とする枠組みである．
@@ -144,11 +142,10 @@
 を起点として発展してきた．
 MVO は期待リターンとリスクを明示的に扱えることから，
 理論的枠組みとしての明確さと実務上の解釈容易性を併せ持つ基準モデルとして
-広く用いられている
+広く用いられている．
 また，MVO の入力となる期待リターンの推定は，
 回帰・時系列モデルから機械学習まで幅広く研究されている一方で，
 推定誤差がポートフォリオ配分に与える影響が大きいことが知られている\cite{chopraziemba1993}．
-
 従来の多くの研究および実務では，
 予測モデルを平均二乗誤差などの予測誤差を最小化する目的で学習し，
 得られた推定値を最適化問題に入力して配分を決定する
@@ -162,7 +159,7 @@ MVO は期待リターンとリスクを明示的に扱えることから，
 この課題に対し，
 予測と最適化を統合的に扱い，
 意思決定の質に基づいて学習を行う枠組みとして
-DFL が提案されている\cite{mandi2024}．
+意思決定重視学習（DFL） が提案されている\cite{mandi2024}．
 DFL では，
 学習過程に最適化問題を組み込み，
 最適化解を介して定義される意思決定の質を
@@ -172,8 +169,7 @@ DFL では，
 MVOに DFL を適用し，
 意思決定構造が推定モデルの学習に与える影響を
 分析する研究も報告されている\cite{lee2025}．
-
-その一つに，
+加えて，
 MVO を対象として
 推定と最適化を統合的に扱う具体的手法として
 Integrating Prediction in Mean–Variance
@@ -181,7 +177,6 @@ Portfolio Optimization (IPO) \cite{butlerkwon2023}が提案されている．
 IPO は，推定モデルの学習段階に最適化問題を直接組み込むことで，
 意思決定に即したパラメータ更新を可能にする一方で，
 非凸最適化に起因する数値的安定性や初期値依存性が課題として指摘されている．
-
 また，
 DFL を悲観的二段階最適化として捉える理論的整理\cite{bucarey2024} や，
 数値安定性・アルゴリズムの観点からの検討\cite{shah2022}
@@ -193,24 +188,22 @@ DFL を悲観的二段階最適化として捉える理論的整理\cite{bucarey
 \section{本研究の貢献}
 
 本研究は，制約付き平均--分散ポートフォリオ最適化を下位問題に含む
-意思決定重視学習を対象として，定式化と実証の両面から検討を行う．
+意思決定重視学習を対象として，
+定式化および数値計算上の取り扱いの両面から体系的な検討を行った点に特徴がある．
 特に，非負制約および予算制約を含む実務的な設定において，
-予測と最適化の結合がもたらす効果と，数値計算上の取り扱いを明示的に整理することを目的とする．
-本研究の主な貢献は以下のとおりである．
+予測と最適化を結合した学習問題がどのような構造を持ち，
+それが数値計算および意思決定結果にどのような影響を及ぼすかを明示的に整理した．
 
-\begin{enumerate}
-  \item 下位問題の最適性条件に基づき，意思決定重視学習の二段階最適化問題を単一レベル最適化として表現する
-  2通りの再定式化（KKT 条件に基づく定式化と，強双対性に基づく最適値一致条件による定式化）を導出した．
-
-  \item 週次TAAを想定した実データ実験を通じて，従来の予測精度重視学習や比較手法と比較して，意思決定品質の観点からの改善可能性を検証した．
-  あわせて，初期化および L2 正則化による探索経路制御が，収束挙動および投資性能に与える影響を整理した．
-
-  \item 提案手法が示した性能差の要因を理解するため，
-  得られた解の構造に基づく分析を行い，挙動の解釈可能性を整理した．
-  特に，共分散行列の条件数に基づくレジーム別分析や，
-  極端集中確率，ポートフォリオ集中度などの指標を用いた構造分析を通じて，
-  数値的に不安定な局面における意思決定誤差の挙動や配分の極端化との関係を記述した．
-\end{enumerate}
+まず，意思決定重視学習における二段階最適化問題に対し，
+下位問題の最適性条件に基づく二通りの再定式化を導出し，
+単一レベルの最適化問題として取り扱えることを示した．
+これにより，理論的構造と数値計算上の実装との対応関係を明確化した．
+次に，実データ実験を通じて，
+従来の予測精度重視学習や既存の比較手法と比較し，
+意思決定品質の観点からの改善可能性を検証した．
+さらに，得られた解の構造に基づく分析を行うことで，
+数値的に不安定な局面における意思決定誤差の挙動と
+資産配分の極端化との関係を明らかにした点も本研究の貢献である．
 
 %========================
 % 論文構成
@@ -288,7 +281,6 @@ $\boldsymbol{V}\in\mathbb{S}_{++}^d$ であるため，
 近年では機械学習手法を用いて期待リターンを推定し，
 その推定値を最適化問題に入力するという枠組みが
 実務・研究の双方で一般的に用いられている\cite{lahoud2025}．
-
 本研究では，
 期待リターンが特徴量に対して線形に表現できると仮定し，
 次の予測モデルを用いる．
@@ -915,6 +907,7 @@ Oracle Approximating Shrinkage（OAS）を適用することで推定する \cit
 %========================
 \subsection*{比較手法}
 
+本研究では，以下の手法を比較対象として用いる．
 \par
 \noindent\textbf{提案手法}
 \begin{itemize}
@@ -943,7 +936,7 @@ Oracle Approximating Shrinkage（OAS）を適用することで推定する \cit
 \end{itemize}
 
 \par
-\noindent\textbf{Decision-Focused Learning 系の参照手法}
+\noindent\textbf{意思決定重視学習系の参照手法}
   \begin{itemize}
 	  \item \textbf{DFL-CF}：
 	  制約を除いた \eqref{eq:upper_level_obj}--\eqref{eq:upper_level_constraint} に対する解析解に基づく手法．
@@ -1109,7 +1102,7 @@ $\eta=5$ は Sharpe 比の水準および安定性の両面で良好であり，
 \includegraphics[width=\linewidth]{figs/lambda_tuning_cvar95_boxplot.png}
 \caption{CVaR$_{95}$}
 \end{subfigure}
-\caption{学習期間における正則化強度ごとの性能分布}
+\caption{検証期間における正則化強度ごとの性能分布}
 \label{fig:lambda_tuning_boxplots}
 \end{figure}
 
@@ -1207,8 +1200,7 @@ Sharpe 比は，
 全手法の中で最も高い $R^2$ を示す一方で，
 Sharpe 比および CVaR$_{95}$ の観点では
 相対的に低い投資成績に留まっている．
-これは，
-平均--分散最適化において，
+これは， MVO において，
 期待リターンの推定誤差が
 ポートフォリオ配分に非線形に影響し得るため，
 予測精度の向上が
@@ -1759,6 +1751,7 @@ Sharpe 比および下方リスク指標の観点で
 % 参考文献
 %========================
 \newpage
+\addcontentsline{toc}{chapter}{参考文献}
 \begin{thebibliography}{10}
 
 \bibitem{bucarey2024}
@@ -1840,15 +1833,12 @@ S.~Shah, K.~Wang, H.~Chen, A.~Perrault, F.~Doshi-Velez, and M.~Tambe.
 % Appendix
 %========================
 \newpage
-\refstepcounter{chapter} % Appendix を第6章として扱う（図表番号を 6.x にする）
-\chapter*{Appendix}
-\addcontentsline{toc}{chapter}{Appendix}
+\chapter{付録}
 
 %========================
 % Appendix A
 %========================
-\section*{A. DFL-OPT-D における強双対性制約の導出}
-\addcontentsline{toc}{section}{A. DFL-OPT-D における強双対性制約の導出}
+\section{付録 A：DFL-OPT-D における強双対性制約の導出}
 \par
 本節では，本文で導入した DFL-OPT-D における
 主問題と双対問題の目的関数の一致から導かれる \eqref{eq:dfl_dual_value}
@@ -1972,8 +1962,7 @@ $\boldsymbol{\lambda}_i^\top\boldsymbol{w}_i=0$ が成り立ち，
 %========================
 % Appendix B
 %========================
-\section*{B. 補題 \ref{prop:equivalence} の証明}
-\addcontentsline{toc}{section}{B. 補題 \ref{prop:equivalence} の証明}
+\section{付録 B：補題3.1の証明}
 \par
 本節では，DFL-OPT-D と DFL-OPT-K が同一の解集合を持つことを示す．
 \begin{proof}
@@ -2046,8 +2035,7 @@ DFL-OPT-D と DFL-OPT-K は同一の解集合を持つ．
 %========================
 % Appendix C: 補題 の導出
 %========================
-\section*{C. 補題 \ref{lem:structure_stability} の導出}
-\addcontentsline{toc}{section}{C. 補題3.2 の導出}
+\section{付録 C：補題3.2の導出}
 \par
 本節では，補題 \ref{lem:structure_stability} の導出を示す．
 以下では簡単のため時点添字を省略し，
@@ -2285,8 +2273,7 @@ $\|\Delta \boldsymbol{w}^*\|_2=\|\Delta \boldsymbol{w}_A^*\|_2$ が成り立ち�
 %========================
 % Appendix D
 %========================
-\section*{D. OAS 縮小係数と EWMA の実効サンプルサイズ}
-\addcontentsline{toc}{section}{D. OAS 縮小係数と EWMA の実効サンプルサイズ}
+\section{付録 D：共分散行列の設定}
 \par
 本節では，第4章で用いたEWMA 共分散に対する OAS 縮小の実装上の対応関係を明記する．
 OAS の縮小係数はサンプルサイズ $n$ に依存するため，本研究では EWMA の重み付けにより得られる
@@ -2308,43 +2295,52 @@ OAS による縮小係数を $\phi_t$ とする．このとき $\phi_t$ は文�
 
 \par
 次に，EWMA の減衰率を $\alpha\in(0,1)$，有限窓長を $L$ とし，
-正規化重みを $\tilde{w}_k := \frac{(1-\alpha)\alpha^k}{1-\alpha^L}$（$k=0,\dots,L-1$）と定義する．
-このとき実効サンプルサイズを
+正規化重みを
+$\tilde{w}_k := \frac{(1-\alpha)\alpha^k}{1-\alpha^L}$（$k=0,\dots,L-1$）
+と定義する．
+このとき，実効サンプルサイズを
 \begin{equation}
 n_{\mathrm{eff}}
 := \frac{1}{\sum_{k=0}^{L-1}\tilde{w}_k^2}
 = \frac{1+\alpha}{1-\alpha}\cdot\frac{(1-\alpha^L)^2}{1-\alpha^{2L}}
 \label{eq:appendix_neff}
 \end{equation}
-とおく．特に $L$ が十分大きい場合には
-$n_{\mathrm{eff}} \approx \frac{1+\alpha}{1-\alpha}$ となり，
-EWMA の記憶長の近似と整合する \cite{jpm2006riskmetrics}．
+と定める．
+特に $L$ が十分大きい場合には
+$n_{\mathrm{eff}} \approx \frac{1+\alpha}{1-\alpha}$ が成り立ち，
+EWMA における記憶長の近似表現と一致する．
+また，本研究では業界慣例に従い，$\alpha = 0.97$ を採用する
+\cite{jpm2006riskmetrics}．
 
 %========================
-% Appendix E: 取引コスト控除後の解析解に基づく初期化および L2 正則化項ありの参考結果
+% Appendix E: 取引コスト控除後の解析解に基づく初期化および正則化項ありの参考結果
 %========================
-\section*{E. 取引コスト控除後の解析解に基づく初期化および L2 正則化項ありの参考結果}
-\addcontentsline{toc}{section}{E. 取引コスト控除後の解析解に基づく初期化および L2 正則化項ありの参考結果}
+\section{付録 E：参考結果（初期化・正則化項あり）}
 \par
-本付録では，第4章で検討した探索経路制御（解析解に基づく初期化および L2 正則化項）について，
-取引コスト控除後の実行ベース損益系列に基づく全期間の累積資産推移を参考として示す．
+本付録では，第4章で検討した探索経路制御
+（解析解に基づく初期化および正則化項）について，
+取引コスト控除後の実行ベース損益系列に基づく
+全期間の累積資産推移を参考として提示する．
 本結果は提案手法の優位性を主張するための追加実験ではなく，
-探索経路制御が実務的なコストを考慮した場合にも性能を著しく損なわないことを確認する目的で提示する．
+探索経路制御が実務的な取引コストを考慮した場合においても，
+性能低下が限定的であることを確認する目的で示すものである．
 
 \par
-取引コストはティッカー別に（片道）\texttt{SPY: 5 bps, GLD: 10 bps, EEM: 10 bps, TLT: 5 bps}
-として設定し，各リバランス時点の売買量に比例して控除した（他の実験条件は本文と同一）．
+取引コストは資産別に片道手数料率を
+\texttt{SPY: 5 bps, GLD: 10 bps, EEM: 10 bps, TLT: 5 bps}
+と設定し，各リバランス時点における売買量に比例して控除した
+（その他の実験条件は本文と同一である）．
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.95\linewidth]{figs/appendix_fullperiod_wealth_penalty.png}
-\caption{参考：取引コスト控除後の解析解に基づく初期化および L2 正則化項ありの累積資産推移}
+\caption{参考：取引コスト控除後の解析解に基づく初期化および正則化項ありの累積資産推移}
 \label{fig:appendix_fullperiod_wealth_penalty}
 \end{figure}
 
 \begin{table}[H]
 \centering
-\caption{参考：取引コスト控除後の解析解に基づく初期化および L2 正則化項ありの性能指標}
+\caption{参考：取引コスト控除後の解析解に基づく初期化および正則化項ありの性能指標}
 \label{tab:appendix_fullperiod_summary_cost}
 \footnotesize
 \setlength{\tabcolsep}{4pt}

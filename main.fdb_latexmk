@@ -1,10 +1,10 @@
 # Fdb version 4
-["dvipdf"] 1766589947.10985 "main.dvi" "main.pdf" "main" 1766589949.88958 0
-  "main.dvi" 1766589947.05439 134164 db7bb4fc7dfb661ed86de4ea053a9331 "latex"
+["dvipdf"] 1766652741.23394 "main.dvi" "main.pdf" "main" 1766652743.93222 0
+  "main.dvi" 1766652741.18805 131640 47ff66ccb1a8c23c1d1e6877b6ee764d "latex"
   (generated)
   "main.pdf"
   (rewritten before read)
-["latex"] 1766589944.39034 "main.tex" "main.dvi" "main" 1766589949.88795 0
+["latex"] 1766652739.10388 "main.tex" "main.dvi" "main" 1766652743.93036 0
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/tcti1000.tfm" 1136768653 2048 3777f70f4372b17e2d3fda2b5684af05 ""
@@ -122,17 +122,15 @@
   "figs/r2_vs_sharpe_scatter.png" 1766406624.35892 61669 4feea3f7b91dd5a9dfb4b29117b143ad ""
   "figs/wealth_events_6assets.png" 1766503167.74773 115024 8a71f1e42580ecdd3b3c3b644b1b2240 ""
   "figs/wealth_events_8assets.png" 1766503167.73529 102760 cb6009efcc69628fe61c3ec0956d946e ""
-  "main.aux" 1766589947.05036 11062 729e1740fa87b0fe5f1812b578c68421 "latex"
-  "main.lof" 1766589947.05429 923 702d71f723c5e0e31bcbb223e223073b "latex"
-  "main.lot" 1766589947.05433 971 be469e299a5883d654b28fb61268d184 "latex"
-  "main.tex" 1766589929.93272 95279 fd26697330c92a4ceac2ce9b2e40a852 ""
-  "main.toc" 1766589947.05421 2472 2d3a98bbd3f002fa790f96bd3731e609 "latex"
+  "main.aux" 1766652741.18439 11251 b76064baac796682f7c4ac224b62487b "latex"
+  "main.lof" 1766652741.18796 939 769b4c3088dba9f6edd2380f104e9b70 "latex"
+  "main.tex" 1766652731.70146 94486 9d8372e3896c93e526d1bb279d2b11fe ""
+  "main.toc" 1766652741.18787 2552 94ab41006479b2b1a17edccdbadb1c5c "latex"
   "test.sty" 1766474544.23925 1756 0ffaabe167590fe54aae4828bb952226 ""
   (generated)
   "main.aux"
   "main.dvi"
   "main.lof"
   "main.log"
-  "main.lot"
   "main.toc"
   (rewritten before read)

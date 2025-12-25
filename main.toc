@@ -25,9 +25,10 @@
 \contentsline {subsubsection}{複数資産設定での実験結果}{16}{}%
 \contentsline {chapter}{\numberline {第5章}結論}{19}{}%
 \contentsline {chapter}{謝辞}{20}{}%
-\contentsline {chapter}{Appendix}{22}{}%
-\contentsline {section}{A. DFL-OPT-D における強双対性制約の導出}{22}{}%
-\contentsline {section}{B. 補題 \ref {prop:equivalence} の証明}{23}{}%
-\contentsline {section}{C. 補題3.2 の導出}{23}{}%
-\contentsline {section}{D. OAS 縮小係数と EWMA の実効サンプルサイズ}{25}{}%
-\contentsline {section}{E. 取引コスト控除後の解析解に基づく初期化および L2 正則化項ありの参考結果}{25}{}%
+\contentsline {chapter}{参考文献}{21}{}%
+\contentsline {chapter}{\numberline {第6章}付録}{22}{}%
+\contentsline {section}{\numberline {6.1}付録 A：DFL-OPT-D における強双対性制約の導出}{22}{}%
+\contentsline {section}{\numberline {6.2}付録 B：補題3.1の証明}{23}{}%
+\contentsline {section}{\numberline {6.3}付録 C：補題3.2の導出}{23}{}%
+\contentsline {section}{\numberline {6.4}付録 D：共分散行列の設定}{25}{}%
+\contentsline {section}{\numberline {6.5}付録 E：参考結果（初期化・正則化項あり）}{25}{}%

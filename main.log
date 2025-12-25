@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.euc) (TeX Live 2025) (preloaded format=platex 2025.12.9)  25 DEC 2025 00:25
+This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.euc) (TeX Live 2025) (preloaded format=platex 2025.12.9)  25 DEC 2025 17:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -357,24 +357,24 @@ File: l3backend-dvips.def 2024-05-08 L3 backend support: dvips
 (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
@@ -384,9 +384,9 @@ Package caption Info: End \AtBeginDocument code.
 
 ]
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <20.74> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 102.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 101.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <20.74> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 102.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 101.
  (./main.toc
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
 (Font)              Font shape `JT1/gt/m/n' tried instead on input line 1.
@@ -422,20 +422,12 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 
 [2
 
-] (./main.lot)
-\tf@lot=\write6
-\openout6 = `main.lot'.
-
-
-
-[3
-
 ]
 第 1 章
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 116.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 114.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 116.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 114.
 
 
 [1
@@ -453,9 +445,9 @@ LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
 [4]
 第 3 章
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 436.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 428.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 436.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 428.
 
 
 [5
@@ -478,9 +470,9 @@ LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
 File: figs/baseline_cum_return.png Graphic file (type bmp)
 <figs/baseline_cum_return.png>
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <9> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 1021.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 1014.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <9> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 1021.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 1014.
 
 
 [11]
@@ -501,9 +493,9 @@ File: figs/r2_vs_cvar_scatter.png Graphic file (type bmp)
 
 [13]
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <8> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 1295.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 1287.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <8> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 1295.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 1287.
 
 
 [14]
@@ -532,34 +524,35 @@ File: figs/wealth_events_8assets.png Graphic file (type bmp)
 
 ]
 LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
-(Font)              No change on input line 1768.
+(Font)              No change on input line 1761.
 LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
-(Font)              No change on input line 1776.
+(Font)              No change on input line 1769.
 LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
-(Font)              No change on input line 1782.
+(Font)              No change on input line 1775.
 LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
-(Font)              No change on input line 1790.
+(Font)              No change on input line 1783.
 LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
-(Font)              No change on input line 1796.
+(Font)              No change on input line 1789.
+LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
+(Font)              No change on input line 1794.
 LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
 (Font)              No change on input line 1801.
 LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
 (Font)              No change on input line 1808.
 LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
-(Font)              No change on input line 1815.
+(Font)              No change on input line 1814.
 LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
-(Font)              No change on input line 1821.
+(Font)              No change on input line 1820.
 LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
 (Font)              No change on input line 1827.
-LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
-(Font)              No change on input line 1834.
 
 
 [21
 
 ]
+第 6 章
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 1980.
+(Font)              No change on input line 1969.
 
 
 [22
@@ -583,12 +576,12 @@ L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 6539 strings out of 473836
- 106505 string characters out of 5731189
+ 6530 strings out of 473836
+ 106366 string characters out of 5731189
  518302 words of memory out of 5000000
- 29661 multiletter control sequences out of 15000+600000
+ 29655 multiletter control sequences out of 15000+600000
  583051 words of font info for 132 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  67i,15n,77p,301b,631s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.dvi (30 pages, 134164 bytes).
+Output written on main.dvi (29 pages, 131640 bytes).
